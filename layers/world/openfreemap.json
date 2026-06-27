@@ -6,8 +6,14 @@
     "abstract": "Free, open vector tile hosting based on OpenStreetMap data. No API key required. Self-hosted and community-run.",
     "access": "free",
     "license": "ODbL 1.0 (data), MIT (tiles)",
-    "categories": ["general-purpose", "street-maps", "transport"],
-    "regions": ["world"],
+    "categories": [
+      "general-purpose",
+      "street-maps",
+      "transport"
+    ],
+    "regions": [
+      "world"
+    ],
     "status": "active"
   },
   "layers": [
@@ -16,7 +22,7 @@
       "title": "Roads",
       "abstract": "Road network from OpenFreeMap vector tiles.",
       "type": "vector",
-      "status": "active",
+      "status": "unknown",
       "requiresKey": false,
       "webmapxConfig": {
         "source": {
@@ -38,14 +44,15 @@
             "legendRole": "overlay"
           }
         }
-      }
+      },
+      "lastChecked": "2026-06-27"
     },
     {
       "id": "ofm-water",
       "title": "Water",
       "abstract": "Water bodies from OpenFreeMap vector tiles.",
       "type": "vector",
-      "status": "active",
+      "status": "unknown",
       "requiresKey": false,
       "webmapxConfig": {
         "source": {
@@ -67,14 +74,15 @@
             "legendRole": "overlay"
           }
         }
-      }
+      },
+      "lastChecked": "2026-06-27"
     },
     {
       "id": "ofm-boundaries",
       "title": "Country Boundaries",
       "abstract": "Administrative boundaries (country level) from OpenFreeMap vector tiles.",
       "type": "vector",
-      "status": "active",
+      "status": "unknown",
       "requiresKey": false,
       "webmapxConfig": {
         "source": {
@@ -86,11 +94,18 @@
           "id": "ofm-boundaries",
           "type": "line",
           "source-layer": "boundary",
-          "filter": ["==", "admin_level", 2],
+          "filter": [
+            "==",
+            "admin_level",
+            2
+          ],
           "paint": {
             "line-color": "#666",
             "line-width": 1,
-            "line-dasharray": [3, 2]
+            "line-dasharray": [
+              3,
+              2
+            ]
           },
           "metadata": {
             "title": "Country Boundaries (OpenFreeMap)",
@@ -98,14 +113,15 @@
             "legendRole": "overlay"
           }
         }
-      }
+      },
+      "lastChecked": "2026-06-27"
     },
     {
       "id": "ofm-buildings",
       "title": "Buildings",
       "abstract": "Building footprints from OpenFreeMap vector tiles.",
       "type": "vector",
-      "status": "active",
+      "status": "unknown",
       "requiresKey": false,
       "webmapxConfig": {
         "source": {
@@ -129,7 +145,8 @@
             "legendRole": "overlay"
           }
         }
-      }
+      },
+      "lastChecked": "2026-06-27"
     }
   ]
 }
