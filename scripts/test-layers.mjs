@@ -55,7 +55,7 @@ function sampleTileUrl(url) {
 
 /** Return the set of key names referenced in a layer's tile URLs */
 function requiredKeys(layer) {
-    const tiles = layer.webmapxConfig?.tiles ?? [];
+    const tiles = layer.webmapxConfig?.source?.tiles ?? [];
     const keys = new Set();
     for (const t of tiles) {
         for (const [, name] of t.matchAll(/\{key-([^}]+)\}/g)) keys.add(name);
@@ -67,9 +67,9 @@ async function testLayer(layer) {
     const cfg = layer.webmapxConfig;
     if (!cfg) return { status: 'unknown', reason: 'no webmapxConfig' };
 
-    const tiles = cfg.tiles;
+    const tiles = cfg.source?.tiles;
     if (!Array.isArray(tiles) || tiles.length === 0) {
-        return { status: 'unknown', reason: 'no tiles array' };
+        return { status: 'unknown', reason: 'no source.tiles array' };
     }
 
     const needed = requiredKeys(layer);
@@ -89,13 +89,19 @@ async function testLayer(layer) {
     }
 }
 
-function allJsonFiles(dir) {
+function allProviderFiles(dir) {
     const results = [];
     for (const entry of readdirSync(dir)) {
+        if (entry === 'index.json') continue;
         const full = join(dir, entry);
         if (statSync(full).isDirectory()) {
-            results.push(...allJsonFiles(full));
+            results.push(...allProviderFiles(full));
         } else if (entry.endsWith('.json')) {
+            // skip $ref link files — they point to dirs already scanned
+            try {
+                const raw = JSON.parse(readFileSync(full, 'utf8'));
+                if (raw.$ref) continue;
+            } catch { continue; }
             results.push(full);
         }
     }
@@ -104,7 +110,7 @@ function allJsonFiles(dir) {
 
 const files = targetFile
     ? [resolve(ROOT, targetFile)]
-    : allJsonFiles(join(ROOT, 'layers'));
+    : allProviderFiles(join(ROOT, 'layers'));
 
 const today = new Date().toISOString().slice(0, 10);
 let totalLayers = 0, passed = 0, failed = 0, skipped = 0;

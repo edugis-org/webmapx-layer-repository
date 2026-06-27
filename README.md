@@ -1,49 +1,70 @@
 # WebMapX Layer Repository
 
-Curated catalog of known map layer services, organized by region and provider.
+Curated catalog of known map layer services, organized by geographic data extent and provider.
 
 ## Structure
 
+The `layers/` directory tree mirrors **geographic data extent** — not provider origin. The same provider (e.g. Esri) can appear in multiple places for different spatial coverages.
+
+The hierarchy is fully recursive: continent → sub-region → country → province/state → city. Depth is up to the administrator.
+
 ```
 layers/
-  world/           # Global services
-  europe/          # European services
+  world/                      # Data covering the entire world
+  europe/                     # Data confined to Europe
+    germany/
+      esri.json               # Esri layers covering Germany only
+      bkg.json                # Bundesamt für Kartographie und Geodäsie
+    netherlands/
+      pdok.json               # PDOK — Dutch public geo-data
+      noord-holland/
+        amsterdam/
+    eu/                       # EU member states as a group
+      germany.json            # { "$ref": "../germany" } → expands europe/germany/
+      netherlands.json        # { "$ref": "../netherlands" }
   north-america/
-  asia/
-  africa/
-  south-america/
-  oceania/
-  <country>/       # Country-specific (e.g. netherlands/, germany/)
-    <provider>.json
+    usa/
+      california/
+  asia/ africa/ south-america/ oceania/
 schema/
-  provider.schema.json   # JSON schema for provider files
+  provider.schema.json        # JSON schema for provider files
 ui/
-  index.html             # Browser UI to browse and search layers
+  index.html                  # Browser UI: browse, search, preview, copy config
 scripts/
-  test-layers.mjs        # Availability tester — checks tiles, updates status/lastChecked
+  build-index.mjs             # Scans layers/ tree → writes layers/index.json
+  test-layers.mjs             # Availability tester: checks tiles, updates status/lastChecked
 ```
+
+### Link files
+
+To avoid duplicating provider files when a region belongs to multiple groupings, place the real files in one directory and use a minimal link file that points to the directory:
+
+```json
+{ "$ref": "../germany" }
+```
+
+From `europe/eu/germany.json`, `../germany` resolves to `europe/germany/`. The index builder expands the link to all provider files in that directory. Adding a new provider to `europe/germany/` automatically makes it appear under `europe/eu/germany` too — no extra link maintenance needed.
 
 ## Provider file format
 
-Each `<provider>.json` file contains one provider and its layers:
+Each `<provider>.json` contains one provider and its layers for the region indicated by the directory:
 
 ```json
 {
   "provider": {
-    "id": "openstreetmap",
-    "name": "OpenStreetMap",
-    "url": "https://www.openstreetmap.org",
-    "abstract": "Community-maintained global street map.",
+    "id": "esri",
+    "name": "Esri",
+    "url": "https://www.esri.com",
+    "abstract": "Esri basemaps and thematic layers covering Germany.",
     "access": "free",              // free | api-key | paid | registration
-    "license": "ODbL 1.0",
-    "categories": ["general-purpose", "street-maps"],
-    "regions": ["world"],
+    "license": "Esri Master License Agreement",
+    "categories": ["general-purpose", "satellite"],
     "status": "active"
   },
   "layers": [
     {
-      "id": "osm-standard",
-      "title": "OSM Standard",
+      "id": "esri-topo-germany",
+      "title": "Topographic (Germany)",
       "type": "raster",            // raster | vector | wms | wmts | wfs | geojson | mvt | 3d-tiles | terrain
       "status": "active",          // active | deprecated | unknown
       "lastChecked": "2026-06-27",
@@ -54,24 +75,33 @@ Each `<provider>.json` file contains one provider and its layers:
 }
 ```
 
-## UI
+API key placeholder syntax in tile URLs: `{key-<providername>}` — matches webmapx substitution convention.
 
-Open `ui/index.html` in a browser (needs a local HTTP server due to JSON fetches):
+## API keys
+
+Copy `apikeys.example.json` → `apikeys.json` (gitignored) and fill in your keys. The UI and tester load this file automatically when present.
+
+In CI, pass keys as environment variables: `APIKEY_OPENWEATHERMAP`, `APIKEY_MAPBOX`, etc.
+
+## UI
 
 ```bash
 npm run serve
 # → http://localhost:5200/ui/
 ```
 
-## Layer availability tester
+- Browse providers by region, search by name/category
+- Config button: copy ready-to-use webmapx layer config (keys substituted if apikeys.json present)
+- Preview button: live MapLibre map preview (enabled when keys available)
+
+## Scripts
 
 ```bash
-node scripts/test-layers.mjs               # test all layers, update status + lastChecked
-node scripts/test-layers.mjs --dry-run     # test only, no file writes
+npm run build-index               # Rebuild layers/index.json after adding/removing files
+npm run test-layers               # Test all layers, write status + lastChecked
+npm run test-layers:dry           # Test without writing files
 node scripts/test-layers.mjs --file layers/world/openstreetmap.json
 ```
-
-Layers requiring an API key are skipped (marked with `requiresKey: true`).
 
 ## Categories
 

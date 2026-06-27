@@ -26,11 +26,18 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Install dependencies
+        run: npm ci
+
       - name: Rebuild index
         run: node scripts/build-index.mjs
 
+      - name: Validate layer files
+        run: node scripts/validate-layers.mjs
+
       - name: Test layer availability
         run: node scripts/test-layers.mjs
+        continue-on-error: true   # unreachable layers don't block the status-commit step
         env:
           # Add API keys as GitHub repository secrets and reference them here.
           # Name pattern: APIKEY_<PROVIDERNAME> (uppercase).

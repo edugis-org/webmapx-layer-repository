@@ -154,12 +154,12 @@ function substituteKeysDeep(obj) {
 }
 
 function layerNeedsKey(layer) {
-  const tiles = layer.webmapxConfig?.tiles ?? [];
+  const tiles = layer.webmapxConfig?.source?.tiles ?? [];
   return tiles.some(t => /\{key-([^}]+)\}/.test(t));
 }
 
 function layerKeysAvailable(layer) {
-  const tiles = layer.webmapxConfig?.tiles ?? [];
+  const tiles = layer.webmapxConfig?.source?.tiles ?? [];
   return tiles.every(t => {
     const matches = [...t.matchAll(/\{key-([^}]+)\}/g)];
     return matches.every(([, name]) => !!apiKeys[name]);
@@ -174,6 +174,7 @@ async function loadIndex() {
 }
 
 async function loadProvider(path) {
+  // path from index.json always points to the real provider file (link files are expanded by build-index)
   const res = await fetch(`${LAYERS_BASE}/${path}`);
   return res.json();
 }
@@ -314,26 +315,18 @@ function initPreviewMap(cfg) {
   const container = document.getElementById('map-preview');
   if (!container.offsetParent) return; // not visible yet
 
-  const tiles = cfg.tiles ?? [];
-  const sourceType = cfg.type === 'vector' || cfg.type === 'mvt' ? 'vector' : 'raster';
+  const source = cfg.source ?? {};
+  const layerDef = cfg.layer ?? {};
+  const sourceId = layerDef.id ?? 'preview-source';
 
   previewMap = new maplibregl.Map({
     container: 'map-preview',
     style: {
       version: 8,
       sources: {
-        'preview-layer': {
-          type: sourceType,
-          tiles,
-          tileSize: cfg.tileSize ?? 256,
-          minzoom: cfg.minzoom ?? 0,
-          maxzoom: cfg.maxzoom ?? 22,
-          attribution: cfg.attribution ?? '',
-        }
+        [sourceId]: source,
       },
-      layers: sourceType === 'raster'
-        ? [{ id: 'preview', type: 'raster', source: 'preview-layer' }]
-        : [{ id: 'preview', type: 'fill', source: 'preview-layer', 'source-layer': cfg['source-layer'] ?? '' }],
+      layers: [{ ...layerDef, source: sourceId }],
     },
     center: [5.3, 52.1],
     zoom: 4,

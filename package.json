@@ -8,8 +8,18 @@
     "build-index": "node scripts/build-index.mjs",
     "test-layers": "node scripts/test-layers.mjs",
     "test-layers:dry": "node scripts/test-layers.mjs --dry-run",
-    "ci": "node scripts/build-index.mjs && node scripts/test-layers.mjs"
+    "validate-layers": "node scripts/validate-layers.mjs",
+    "ci": "node scripts/build-index.mjs && node scripts/validate-layers.mjs && node scripts/test-layers.mjs"
   },
-  "keywords": ["webmapx", "map", "layers", "gis"],
-  "license": "MIT"
+  "keywords": [
+    "webmapx",
+    "map",
+    "layers",
+    "gis"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1"
+  }
 }

@@ -11,7 +11,8 @@
       "weather",
       "environment"
     ],
-    "layerCount": 2
+    "layerCount": 2,
+    "requiresKey": false
   },
   {
     "path": "world/openstreetmap.json",
@@ -24,7 +25,8 @@
       "street-maps",
       "transport"
     ],
-    "layerCount": 2
+    "layerCount": 2,
+    "requiresKey": false
   },
   {
     "path": "world/openweathermap.json",
@@ -36,6 +38,7 @@
       "weather",
       "realtime"
     ],
-    "layerCount": 3
+    "layerCount": 3,
+    "requiresKey": true
   }
 ]

@@ -72,7 +72,46 @@
         "requiresKey":  { "type": "boolean", "default": false },
         "webmapxConfig": {
           "type": "object",
-          "description": "Ready-to-use webmapx layer config (close to MapLibre/Mapbox spec)"
+          "description": "Ready-to-use config for webmapx. source = MapLibre addSource() spec, layer = MapLibre addLayer() spec (without source ref — webmapx injects that).",
+          "required": ["source", "layer"],
+          "properties": {
+            "source": {
+              "type": "object",
+              "required": ["type"],
+              "properties": {
+                "type":        { "type": "string", "enum": ["raster", "vector", "raster-dem", "geojson", "image", "video"] },
+                "tiles":       { "type": "array", "items": { "type": "string" } },
+                "url":         { "type": "string", "description": "TileJSON URL (alternative to tiles array)" },
+                "tileSize":    { "type": "integer" },
+                "minzoom":     { "type": "integer" },
+                "maxzoom":     { "type": "integer" },
+                "attribution": { "type": "string" },
+                "scheme":      { "type": "string", "enum": ["xyz", "tms"] }
+              }
+            },
+            "layer": {
+              "type": "object",
+              "required": ["id", "type"],
+              "properties": {
+                "id":           { "type": "string" },
+                "type":         { "type": "string", "enum": ["raster", "fill", "line", "symbol", "circle", "heatmap", "fill-extrusion", "hillshade", "background"] },
+                "source-layer": { "type": "string", "description": "Required for vector sources" },
+                "minzoom":      { "type": "number" },
+                "maxzoom":      { "type": "number" },
+                "filter":       { "type": "array" },
+                "layout":       { "type": "object" },
+                "paint":        { "type": "object" },
+                "metadata":     {
+                  "type": "object",
+                  "properties": {
+                    "title":      { "type": "string" },
+                    "abstract":   { "type": "string" },
+                    "legendRole": { "type": "string", "enum": ["background", "overlay"] }
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }

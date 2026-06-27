@@ -19,17 +19,23 @@
       "status": "active",
       "requiresKey": false,
       "webmapxConfig": {
-        "type": "raster",
-        "title": "MODIS Terra True Color",
-        "metadata": {
-          "abstract": "Daily true-color imagery from NASA MODIS Terra. Source: NASA GIBS."
+        "source": {
+          "type": "raster",
+          "tiles": [
+            "https://map1.vis.earthdata.nasa.gov/wmts-webmerc/MODIS_Terra_CorrectedReflectance_TrueColor/default/GoogleMapsCompatible_Level9/{z}/{y}/{x}.jpg"
+          ],
+          "tileSize": 256,
+          "maxzoom": 9,
+          "attribution": "Imagery courtesy <a href='https://earthdata.nasa.gov'>NASA GIBS</a>"
         },
-        "tiles": [
-          "https://map1.vis.earthdata.nasa.gov/wmts-webmerc/MODIS_Terra_CorrectedReflectance_TrueColor/default/GoogleMapsCompatible_Level9/{z}/{y}/{x}.jpg"
-        ],
-        "tileSize": 256,
-        "maxzoom": 9,
-        "attribution": "Imagery courtesy <a href='https://earthdata.nasa.gov'>NASA GIBS</a>"
+        "layer": {
+          "id": "modis-terra-truecolor",
+          "type": "raster",
+          "metadata": {
+            "title": "MODIS Terra True Color",
+            "abstract": "Daily true-color imagery from NASA MODIS Terra. Source: NASA GIBS."
+          }
+        }
       }
     },
     {
@@ -40,17 +46,23 @@
       "status": "active",
       "requiresKey": false,
       "webmapxConfig": {
-        "type": "raster",
-        "title": "VIIRS Night Lights",
-        "metadata": {
-          "abstract": "Nighttime lights from the VIIRS Day/Night Band. Source: NASA GIBS."
+        "source": {
+          "type": "raster",
+          "tiles": [
+            "https://map1.vis.earthdata.nasa.gov/wmts-webmerc/VIIRS_SNPP_DayNightBand_ENCC/default/GoogleMapsCompatible_Level8/{z}/{y}/{x}.jpg"
+          ],
+          "tileSize": 256,
+          "maxzoom": 8,
+          "attribution": "Imagery courtesy <a href='https://earthdata.nasa.gov'>NASA GIBS</a>"
         },
-        "tiles": [
-          "https://map1.vis.earthdata.nasa.gov/wmts-webmerc/VIIRS_SNPP_DayNightBand_ENCC/default/GoogleMapsCompatible_Level8/{z}/{y}/{x}.jpg"
-        ],
-        "tileSize": 256,
-        "maxzoom": 8,
-        "attribution": "Imagery courtesy <a href='https://earthdata.nasa.gov'>NASA GIBS</a>"
+        "layer": {
+          "id": "viirs-nighttime-lights",
+          "type": "raster",
+          "metadata": {
+            "title": "VIIRS Night Lights",
+            "abstract": "Nighttime lights from the VIIRS Day/Night Band. Source: NASA GIBS."
+          }
+        }
       }
     }
   ]

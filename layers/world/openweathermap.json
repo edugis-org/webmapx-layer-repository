@@ -20,16 +20,22 @@
       "status": "active",
       "requiresKey": true,
       "webmapxConfig": {
-        "type": "raster",
-        "title": "Precipitation",
-        "metadata": {
-          "abstract": "Current precipitation. Source: OpenWeatherMap.",
-          "legendRole": "overlay"
+        "source": {
+          "type": "raster",
+          "tiles": ["https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid={key-openweathermap}"],
+          "tileSize": 256,
+          "maxzoom": 18,
+          "attribution": "<a href='https://openweathermap.org'>OpenWeatherMap</a>"
         },
-        "tiles": ["https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid={key-openweathermap}"],
-        "tileSize": 256,
-        "maxzoom": 18,
-        "attribution": "<a href='https://openweathermap.org'>OpenWeatherMap</a>"
+        "layer": {
+          "id": "owm-precipitation",
+          "type": "raster",
+          "metadata": {
+            "title": "Precipitation",
+            "abstract": "Current precipitation. Source: OpenWeatherMap.",
+            "legendRole": "overlay"
+          }
+        }
       }
     },
     {
@@ -40,16 +46,22 @@
       "status": "active",
       "requiresKey": true,
       "webmapxConfig": {
-        "type": "raster",
-        "title": "Wind Speed",
-        "metadata": {
-          "abstract": "Current wind speed. Source: OpenWeatherMap.",
-          "legendRole": "overlay"
+        "source": {
+          "type": "raster",
+          "tiles": ["https://tile.openweathermap.org/map/wind_new/{z}/{x}/{y}.png?appid={key-openweathermap}"],
+          "tileSize": 256,
+          "maxzoom": 18,
+          "attribution": "<a href='https://openweathermap.org'>OpenWeatherMap</a>"
         },
-        "tiles": ["https://tile.openweathermap.org/map/wind_new/{z}/{x}/{y}.png?appid={key-openweathermap}"],
-        "tileSize": 256,
-        "maxzoom": 18,
-        "attribution": "<a href='https://openweathermap.org'>OpenWeatherMap</a>"
+        "layer": {
+          "id": "owm-wind",
+          "type": "raster",
+          "metadata": {
+            "title": "Wind Speed",
+            "abstract": "Current wind speed. Source: OpenWeatherMap.",
+            "legendRole": "overlay"
+          }
+        }
       }
     },
     {
@@ -60,16 +72,22 @@
       "status": "active",
       "requiresKey": true,
       "webmapxConfig": {
-        "type": "raster",
-        "title": "Temperature",
-        "metadata": {
-          "abstract": "Current surface temperature. Source: OpenWeatherMap.",
-          "legendRole": "overlay"
+        "source": {
+          "type": "raster",
+          "tiles": ["https://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid={key-openweathermap}"],
+          "tileSize": 256,
+          "maxzoom": 18,
+          "attribution": "<a href='https://openweathermap.org'>OpenWeatherMap</a>"
         },
-        "tiles": ["https://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid={key-openweathermap}"],
-        "tileSize": 256,
-        "maxzoom": 18,
-        "attribution": "<a href='https://openweathermap.org'>OpenWeatherMap</a>"
+        "layer": {
+          "id": "owm-temperature",
+          "type": "raster",
+          "metadata": {
+            "title": "Temperature",
+            "abstract": "Current surface temperature. Source: OpenWeatherMap.",
+            "legendRole": "overlay"
+          }
+        }
       }
     }
   ]
