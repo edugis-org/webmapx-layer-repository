@@ -13,6 +13,86 @@
   },
   "layers": [
     {
+      "id": "maptiler-streets-style",
+      "title": "Streets (full style)",
+      "abstract": "Complete MapTiler Streets vector basemap with labels and POIs.",
+      "type": "vector",
+      "status": "active",
+      "requiresKey": true,
+      "webmapxConfig": {
+        "id": "maptiler-streets-style",
+        "type": "style",
+        "url": "https://api.maptiler.com/maps/streets-v2/style.json?key={key-maptiler}",
+        "title": "MapTiler Streets",
+        "attribution": "<a href='https://www.maptiler.com/copyright/'>MapTiler</a> &copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap contributors</a>",
+        "metadata": {
+          "title": "MapTiler Streets",
+          "abstract": "Full Streets vector basemap style. Source: MapTiler.",
+          "legendRole": "background"
+        }
+      }
+    },
+    {
+      "id": "maptiler-satellite-style",
+      "title": "Satellite (full style)",
+      "abstract": "Complete MapTiler Satellite hybrid style with labels.",
+      "type": "raster",
+      "status": "active",
+      "requiresKey": true,
+      "webmapxConfig": {
+        "id": "maptiler-satellite-style",
+        "type": "style",
+        "url": "https://api.maptiler.com/maps/satellite/style.json?key={key-maptiler}",
+        "title": "MapTiler Satellite",
+        "attribution": "<a href='https://www.maptiler.com/copyright/'>MapTiler</a>",
+        "metadata": {
+          "title": "MapTiler Satellite",
+          "abstract": "Full Satellite hybrid style. Source: MapTiler.",
+          "legendRole": "background"
+        }
+      }
+    },
+    {
+      "id": "maptiler-outdoor-style",
+      "title": "Outdoor (full style)",
+      "abstract": "Complete MapTiler Outdoor vector basemap with trails and contours.",
+      "type": "vector",
+      "status": "active",
+      "requiresKey": true,
+      "webmapxConfig": {
+        "id": "maptiler-outdoor-style",
+        "type": "style",
+        "url": "https://api.maptiler.com/maps/outdoor-v2/style.json?key={key-maptiler}",
+        "title": "MapTiler Outdoor",
+        "attribution": "<a href='https://www.maptiler.com/copyright/'>MapTiler</a> &copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap contributors</a>",
+        "metadata": {
+          "title": "MapTiler Outdoor",
+          "abstract": "Full Outdoor vector basemap style. Source: MapTiler.",
+          "legendRole": "background"
+        }
+      }
+    },
+    {
+      "id": "maptiler-topo-style",
+      "title": "Topo (full style)",
+      "abstract": "Complete MapTiler Topo vector basemap with elevation contours.",
+      "type": "vector",
+      "status": "active",
+      "requiresKey": true,
+      "webmapxConfig": {
+        "id": "maptiler-topo-style",
+        "type": "style",
+        "url": "https://api.maptiler.com/maps/topo-v2/style.json?key={key-maptiler}",
+        "title": "MapTiler Topo",
+        "attribution": "<a href='https://www.maptiler.com/copyright/'>MapTiler</a> &copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap contributors</a>",
+        "metadata": {
+          "title": "MapTiler Topo",
+          "abstract": "Full Topo vector basemap style. Source: MapTiler.",
+          "legendRole": "background"
+        }
+      }
+    },
+    {
       "id": "maptiler-streets",
       "title": "Streets",
       "abstract": "Detailed street map with labels.",

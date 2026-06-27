@@ -18,6 +18,66 @@
   },
   "layers": [
     {
+      "id": "ofm-liberty",
+      "title": "Liberty (full style)",
+      "abstract": "Complete OpenFreeMap basemap in Liberty style — streets, labels, landuse, water, buildings.",
+      "type": "vector",
+      "status": "active",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "id": "ofm-liberty",
+        "type": "style",
+        "url": "https://tiles.openfreemap.org/styles/liberty",
+        "title": "OpenFreeMap Liberty",
+        "attribution": "© <a href='https://openfreemap.org'>OpenFreeMap</a> © <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap contributors</a>",
+        "metadata": {
+          "title": "OpenFreeMap Liberty",
+          "abstract": "Full Liberty basemap style. Source: OpenFreeMap / OpenStreetMap.",
+          "legendRole": "background"
+        }
+      }
+    },
+    {
+      "id": "ofm-bright",
+      "title": "Bright (full style)",
+      "abstract": "Complete OpenFreeMap basemap in Bright style — clean, high-contrast colours.",
+      "type": "vector",
+      "status": "active",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "id": "ofm-bright",
+        "type": "style",
+        "url": "https://tiles.openfreemap.org/styles/bright",
+        "title": "OpenFreeMap Bright",
+        "attribution": "© <a href='https://openfreemap.org'>OpenFreeMap</a> © <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap contributors</a>",
+        "metadata": {
+          "title": "OpenFreeMap Bright",
+          "abstract": "Full Bright basemap style. Source: OpenFreeMap / OpenStreetMap.",
+          "legendRole": "background"
+        }
+      }
+    },
+    {
+      "id": "ofm-positron",
+      "title": "Positron (full style)",
+      "abstract": "Complete OpenFreeMap basemap in Positron style — light, minimal, good for data overlays.",
+      "type": "vector",
+      "status": "active",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "id": "ofm-positron",
+        "type": "style",
+        "url": "https://tiles.openfreemap.org/styles/positron",
+        "title": "OpenFreeMap Positron",
+        "attribution": "© <a href='https://openfreemap.org'>OpenFreeMap</a> © <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap contributors</a>",
+        "metadata": {
+          "title": "OpenFreeMap Positron",
+          "abstract": "Full Positron basemap style. Source: OpenFreeMap / OpenStreetMap.",
+          "legendRole": "background"
+        }
+      }
+    },
+    {
       "id": "ofm-roads",
       "title": "Roads",
       "abstract": "Road network from OpenFreeMap vector tiles.",

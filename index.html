@@ -140,9 +140,7 @@ async function loadApiKeys() {
 }
 
 function substituteKeys(str) {
-  return str
-    .replace(/\{key-([^}]+)\}/g, (m, name) => apiKeys[name] ?? m)
-    .replace(/\{s\}/g, 'a');
+  return str.replace(/\{key-([^}]+)\}/g, (m, name) => apiKeys[name] ?? m);
 }
 
 function substituteKeysDeep(obj) {
@@ -157,13 +155,21 @@ function substituteKeysDeep(obj) {
 }
 
 function layerNeedsKey(layer) {
-  const tiles = layer.webmapxConfig?.source?.tiles ?? [];
-  return tiles.some(t => /\{key-([^}]+)\}/.test(t));
+  const cfg = layer.webmapxConfig ?? {};
+  const candidates = [
+    ...(cfg.source?.tiles ?? []),
+    cfg.url ?? '',
+  ];
+  return candidates.some(t => /\{key-([^}]+)\}/.test(t));
 }
 
 function layerKeysAvailable(layer) {
-  const tiles = layer.webmapxConfig?.source?.tiles ?? [];
-  return tiles.every(t => {
+  const cfg = layer.webmapxConfig ?? {};
+  const candidates = [
+    ...(cfg.source?.tiles ?? []),
+    cfg.url ?? '',
+  ].filter(Boolean);
+  return candidates.every(t => {
     const matches = [...t.matchAll(/\{key-([^}]+)\}/g)];
     return matches.every(([, name]) => !!apiKeys[name]);
   });
@@ -178,13 +184,13 @@ async function loadIndex() {
 
 async function loadProvider(path) {
   // path from index.json always points to the real provider file (link files are expanded by build-index)
-  const res = await fetch(`${LAYERS_BASE}/${path}`);
+  const res = await fetch(`${LAYERS_BASE}/${path}`, { cache: 'no-store' });
   return res.json();
 }
 
 let allIndex = [];
-let allProviders = {};
 let currentProvider = null;
+let currentPath = null;
 
 async function init() {
   await loadApiKeys();
@@ -220,10 +226,9 @@ async function selectProvider(path, id) {
   document.querySelectorAll('.tree-node').forEach(n =>
     n.classList.toggle('selected', n.dataset.id === id));
 
-  if (!allProviders[path]) {
-    allProviders[path] = await loadProvider(path);
-  }
-  currentProvider = allProviders[path];
+  currentProvider = await loadProvider(path);
+  currentPath = path;
+  console.log(`Loaded ${path}: ${currentProvider.layers?.length} layers`, currentProvider.layers?.map(l=>l.id));
   renderMain(currentProvider);
 }
 
@@ -243,6 +248,10 @@ function renderMain(data) {
       </div>
     </div>
     ${provider.abstract ? `<p class="abstract">${provider.abstract}</p>` : ''}
+    <p style="font-size:0.8rem;color:#888;margin-bottom:8px">
+      ${(layers ?? []).length} layers —
+      <a href="${LAYERS_BASE}/${currentPath}" target="_blank">View raw JSON ↗</a>
+    </p>
     <table>
       <thead>
         <tr><th>Layer</th><th>Type</th><th>Status</th><th>Key</th><th></th></tr>
@@ -318,19 +327,23 @@ function initPreviewMap(cfg) {
   const container = document.getElementById('map-preview');
   if (!container.offsetParent) return; // not visible yet
 
-  const source = cfg.source ?? {};
-  const layerDef = cfg.layer ?? {};
-  const sourceId = layerDef.id ?? 'preview-source';
+  let style;
+  if (cfg.type === 'style' && cfg.url) {
+    style = substituteKeys(cfg.url);
+  } else {
+    const source = cfg.source ?? {};
+    const layerDef = cfg.layer ?? {};
+    const sourceId = layerDef.id ?? 'preview-source';
+    style = {
+      version: 8,
+      sources: { [sourceId]: source },
+      layers: [{ ...layerDef, source: sourceId }],
+    };
+  }
 
   previewMap = new maplibregl.Map({
     container: 'map-preview',
-    style: {
-      version: 8,
-      sources: {
-        [sourceId]: source,
-      },
-      layers: [{ ...layerDef, source: sourceId }],
-    },
+    style,
     center: [5.3, 52.1],
     zoom: 4,
   });

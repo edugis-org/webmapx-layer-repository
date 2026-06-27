@@ -52,8 +52,8 @@ jobs:
           APIKEY_NEXTZEN:        ${{ secrets.APIKEY_NEXTZEN }}
           APIKEY_GEODANMAPS:     ${{ secrets.APIKEY_GEODANMAPS }}
 
-      - name: Commit status updates (scheduled/push only)
-        if: github.event_name != 'pull_request'
+      - name: Commit status updates (scheduled runs only)
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"

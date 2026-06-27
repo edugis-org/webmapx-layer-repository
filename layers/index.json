@@ -11,7 +11,7 @@
       "satellite",
       "terrain"
     ],
-    "layerCount": 4,
+    "layerCount": 8,
     "requiresKey": true
   },
   {
@@ -40,7 +40,7 @@
       "street-maps",
       "transport"
     ],
-    "layerCount": 4,
+    "layerCount": 7,
     "requiresKey": false
   },
   {

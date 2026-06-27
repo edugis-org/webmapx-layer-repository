@@ -72,9 +72,16 @@
         "requiresKey":  { "type": "boolean", "default": false },
         "webmapxConfig": {
           "type": "object",
-          "description": "Ready-to-use config for webmapx. source = MapLibre addSource() spec, layer = MapLibre addLayer() spec (without source ref — webmapx injects that).",
-          "required": ["source", "layer"],
+          "description": "Ready-to-use config for webmapx. Either styleUrl (full MapLibre style) or source+layer (addSource/addLayer).",
           "properties": {
+            "type": {
+              "type": "string",
+              "description": "When 'style', this is a CompositeStyleLayerConfig — webmapx fetches url and renders the full style. Omit for source+layer configs."
+            },
+            "url": {
+              "type": "string",
+              "description": "Remote MapLibre style JSON URL. Used when type='style'. May contain {key-<name>} placeholders. webmapx substitutes keys then fetches and renders the full composite style."
+            },
             "source": {
               "type": "object",
               "required": ["type"],
