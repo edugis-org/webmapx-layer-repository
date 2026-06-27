@@ -1,5 +1,20 @@
 [
   {
+    "path": "world/maptiler.json",
+    "region": "world",
+    "providerId": "maptiler",
+    "providerName": "MapTiler",
+    "access": "api-key",
+    "categories": [
+      "general-purpose",
+      "street-maps",
+      "satellite",
+      "terrain"
+    ],
+    "layerCount": 4,
+    "requiresKey": true
+  },
+  {
     "path": "world/nasa-earthdata.json",
     "region": "world",
     "providerId": "nasa-earthdata",
@@ -12,6 +27,20 @@
       "environment"
     ],
     "layerCount": 2,
+    "requiresKey": false
+  },
+  {
+    "path": "world/openfreemap.json",
+    "region": "world",
+    "providerId": "openfreemap",
+    "providerName": "OpenFreeMap",
+    "access": "free",
+    "categories": [
+      "general-purpose",
+      "street-maps",
+      "transport"
+    ],
+    "layerCount": 4,
     "requiresKey": false
   },
   {

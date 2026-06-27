@@ -1,0 +1,135 @@
+{
+  "provider": {
+    "id": "openfreemap",
+    "name": "OpenFreeMap",
+    "url": "https://openfreemap.org",
+    "abstract": "Free, open vector tile hosting based on OpenStreetMap data. No API key required. Self-hosted and community-run.",
+    "access": "free",
+    "license": "ODbL 1.0 (data), MIT (tiles)",
+    "categories": ["general-purpose", "street-maps", "transport"],
+    "regions": ["world"],
+    "status": "active"
+  },
+  "layers": [
+    {
+      "id": "ofm-roads",
+      "title": "Roads",
+      "abstract": "Road network from OpenFreeMap vector tiles.",
+      "type": "vector",
+      "status": "active",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "vector",
+          "url": "https://tiles.openfreemap.org/planet",
+          "attribution": "<a href='https://openfreemap.org'>OpenFreeMap</a> &copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap contributors</a>"
+        },
+        "layer": {
+          "id": "ofm-roads",
+          "type": "line",
+          "source-layer": "transportation",
+          "paint": {
+            "line-color": "#888",
+            "line-width": 1.5
+          },
+          "metadata": {
+            "title": "Roads (OpenFreeMap)",
+            "abstract": "Road network. Source: OpenFreeMap / OpenStreetMap.",
+            "legendRole": "overlay"
+          }
+        }
+      }
+    },
+    {
+      "id": "ofm-water",
+      "title": "Water",
+      "abstract": "Water bodies from OpenFreeMap vector tiles.",
+      "type": "vector",
+      "status": "active",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "vector",
+          "url": "https://tiles.openfreemap.org/planet",
+          "attribution": "<a href='https://openfreemap.org'>OpenFreeMap</a> &copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap contributors</a>"
+        },
+        "layer": {
+          "id": "ofm-water",
+          "type": "fill",
+          "source-layer": "water",
+          "paint": {
+            "fill-color": "#a0c8f0",
+            "fill-opacity": 0.8
+          },
+          "metadata": {
+            "title": "Water (OpenFreeMap)",
+            "abstract": "Water bodies. Source: OpenFreeMap / OpenStreetMap.",
+            "legendRole": "overlay"
+          }
+        }
+      }
+    },
+    {
+      "id": "ofm-boundaries",
+      "title": "Country Boundaries",
+      "abstract": "Administrative boundaries (country level) from OpenFreeMap vector tiles.",
+      "type": "vector",
+      "status": "active",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "vector",
+          "url": "https://tiles.openfreemap.org/planet",
+          "attribution": "<a href='https://openfreemap.org'>OpenFreeMap</a> &copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap contributors</a>"
+        },
+        "layer": {
+          "id": "ofm-boundaries",
+          "type": "line",
+          "source-layer": "boundary",
+          "filter": ["==", "admin_level", 2],
+          "paint": {
+            "line-color": "#666",
+            "line-width": 1,
+            "line-dasharray": [3, 2]
+          },
+          "metadata": {
+            "title": "Country Boundaries (OpenFreeMap)",
+            "abstract": "Country-level administrative boundaries. Source: OpenFreeMap / OpenStreetMap.",
+            "legendRole": "overlay"
+          }
+        }
+      }
+    },
+    {
+      "id": "ofm-buildings",
+      "title": "Buildings",
+      "abstract": "Building footprints from OpenFreeMap vector tiles.",
+      "type": "vector",
+      "status": "active",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "vector",
+          "url": "https://tiles.openfreemap.org/planet",
+          "attribution": "<a href='https://openfreemap.org'>OpenFreeMap</a> &copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap contributors</a>"
+        },
+        "layer": {
+          "id": "ofm-buildings",
+          "type": "fill",
+          "source-layer": "building",
+          "minzoom": 13,
+          "paint": {
+            "fill-color": "#d6c9b4",
+            "fill-opacity": 0.8,
+            "fill-outline-color": "#bbb"
+          },
+          "metadata": {
+            "title": "Buildings (OpenFreeMap)",
+            "abstract": "Building footprints visible from zoom 13. Source: OpenFreeMap / OpenStreetMap.",
+            "legendRole": "overlay"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "provider": {
+    "id": "maptiler",
+    "name": "MapTiler",
+    "url": "https://www.maptiler.com",
+    "abstract": "Cloud map hosting with raster and vector tiles. Streets, satellite, outdoor, and topo basemaps. Free tier available.",
+    "access": "api-key",
+    "apiKeyUrl": "https://cloud.maptiler.com/account/keys/",
+    "license": "Proprietary (free tier available)",
+    "categories": ["general-purpose", "street-maps", "satellite", "terrain"],
+    "regions": ["world"],
+    "status": "active"
+  },
+  "layers": [
+    {
+      "id": "maptiler-streets",
+      "title": "Streets",
+      "abstract": "Detailed street map with labels.",
+      "type": "raster",
+      "status": "active",
+      "requiresKey": true,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": ["https://api.maptiler.com/maps/streets-v2/{z}/{x}/{y}.png?key={key-maptiler}"],
+          "tileSize": 256,
+          "maxzoom": 20,
+          "attribution": "<a href='https://www.maptiler.com/copyright/'>MapTiler</a> &copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap contributors</a>"
+        },
+        "layer": {
+          "id": "maptiler-streets",
+          "type": "raster",
+          "metadata": {
+            "title": "MapTiler Streets",
+            "abstract": "Detailed street map with labels. Source: MapTiler.",
+            "legendRole": "background"
+          }
+        }
+      }
+    },
+    {
+      "id": "maptiler-satellite",
+      "title": "Satellite",
+      "abstract": "High-resolution satellite imagery.",
+      "type": "raster",
+      "status": "active",
+      "requiresKey": true,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": ["https://api.maptiler.com/tiles/satellite-v2/{z}/{x}/{y}.jpg?key={key-maptiler}"],
+          "tileSize": 256,
+          "maxzoom": 20,
+          "attribution": "<a href='https://www.maptiler.com/copyright/'>MapTiler</a>"
+        },
+        "layer": {
+          "id": "maptiler-satellite",
+          "type": "raster",
+          "metadata": {
+            "title": "MapTiler Satellite",
+            "abstract": "High-resolution satellite imagery. Source: MapTiler.",
+            "legendRole": "background"
+          }
+        }
+      }
+    },
+    {
+      "id": "maptiler-outdoor",
+      "title": "Outdoor",
+      "abstract": "Topographic map with hiking trails, contours, and outdoor features.",
+      "type": "raster",
+      "status": "active",
+      "requiresKey": true,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": ["https://api.maptiler.com/maps/outdoor-v2/{z}/{x}/{y}.png?key={key-maptiler}"],
+          "tileSize": 256,
+          "maxzoom": 20,
+          "attribution": "<a href='https://www.maptiler.com/copyright/'>MapTiler</a> &copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap contributors</a>"
+        },
+        "layer": {
+          "id": "maptiler-outdoor",
+          "type": "raster",
+          "metadata": {
+            "title": "MapTiler Outdoor",
+            "abstract": "Topographic map with hiking trails and contours. Source: MapTiler.",
+            "legendRole": "background"
+          }
+        }
+      }
+    },
+    {
+      "id": "maptiler-topo",
+      "title": "Topo",
+      "abstract": "Topographic map with elevation contours.",
+      "type": "raster",
+      "status": "active",
+      "requiresKey": true,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": ["https://api.maptiler.com/maps/topo-v2/{z}/{x}/{y}.png?key={key-maptiler}"],
+          "tileSize": 256,
+          "maxzoom": 20,
+          "attribution": "<a href='https://www.maptiler.com/copyright/'>MapTiler</a> &copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap contributors</a>"
+        },
+        "layer": {
+          "id": "maptiler-topo",
+          "type": "raster",
+          "metadata": {
+            "title": "MapTiler Topo",
+            "abstract": "Topographic map with elevation contours. Source: MapTiler.",
+            "legendRole": "background"
+          }
+        }
+      }
+    }
+  ]
+}
