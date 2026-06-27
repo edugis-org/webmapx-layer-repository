@@ -1,4 +1,359 @@
 <!DOCTYPE html>
-<meta charset="UTF-8">
-<meta http-equiv="refresh" content="0; url=ui/">
-<link rel="canonical" href="ui/">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebMapX Layer Repository</title>
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4/dist/maplibre-gl.css">
+  <script src="https://unpkg.com/maplibre-gl@4/dist/maplibre-gl.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #f5f5f5; color: #1a1a1a; }
+
+    header { background: #0f62fe; color: #fff; padding: 12px 24px; display: flex; align-items: center; gap: 16px; }
+    header h1 { font-size: 1.1rem; font-weight: 600; }
+    .header-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+    header input[type=search] { padding: 6px 12px; border-radius: 4px; border: none; width: 260px; font-size: 0.9rem; }
+    .key-status { font-size: 0.78rem; opacity: 0.85; white-space: nowrap; }
+    .key-status.ok { color: #a8f0c6; }
+    .key-status.none { color: #ffd97d; }
+
+    .layout { display: grid; grid-template-columns: 260px 1fr; min-height: calc(100vh - 48px); }
+
+    aside { background: #fff; border-right: 1px solid #e0e0e0; padding: 12px 0; overflow-y: auto; }
+    .tree-node { padding: 4px 16px; cursor: pointer; font-size: 0.85rem; display: flex; align-items: center; gap: 6px; }
+    .tree-node:hover { background: #f0f4ff; }
+    .tree-node.selected { background: #e8f0fe; font-weight: 600; }
+    .tree-node .badge { margin-left: auto; background: #e0e0e0; border-radius: 10px; padding: 1px 7px; font-size: 0.75rem; }
+    .tree-node .badge.free { background: #d4edda; color: #155724; }
+    .tree-node .badge.api-key { background: #fff3cd; color: #856404; }
+    .tree-node .badge.paid { background: #f8d7da; color: #721c24; }
+    .tree-section { padding: 8px 16px 4px; font-size: 0.7rem; font-weight: 700; color: #666; text-transform: uppercase; letter-spacing: 0.05em; }
+
+    main { padding: 24px; overflow-y: auto; }
+    .empty { color: #666; font-size: 0.95rem; padding: 40px 0; }
+
+    .provider-header { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 20px; }
+    .provider-header h2 { font-size: 1.3rem; }
+    .provider-header a { color: #0f62fe; font-size: 0.85rem; }
+    .meta-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+    .chip { padding: 2px 10px; border-radius: 12px; font-size: 0.75rem; background: #e0e0e0; }
+    .chip.free { background: #d4edda; color: #155724; }
+    .chip.api-key { background: #fff3cd; color: #856404; }
+    .chip.paid { background: #f8d7da; color: #721c24; }
+    .abstract { color: #444; font-size: 0.9rem; margin-bottom: 20px; line-height: 1.5; }
+
+    table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 6px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+    th { background: #f8f8f8; text-align: left; padding: 10px 14px; font-size: 0.8rem; color: #555; border-bottom: 1px solid #e0e0e0; }
+    td { padding: 10px 14px; font-size: 0.85rem; border-bottom: 1px solid #f0f0f0; vertical-align: top; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #fafafa; }
+    .status-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; }
+    .status-dot.active { background: #28a745; }
+    .status-dot.deprecated { background: #dc3545; }
+    .status-dot.unknown { background: #aaa; }
+    .key-badge { background: #fff3cd; color: #856404; padding: 1px 6px; border-radius: 8px; font-size: 0.75rem; }
+    .key-badge.have-key { background: #d4edda; color: #155724; }
+    .action-btn { padding: 3px 10px; font-size: 0.78rem; border: 1px solid #ccc; border-radius: 4px; cursor: pointer; background: #fff; margin-right: 4px; }
+    .action-btn:hover { background: #f0f4ff; border-color: #0f62fe; color: #0f62fe; }
+    .action-btn.preview { border-color: #28a745; color: #28a745; }
+    .action-btn.preview:hover { background: #f0fff4; }
+    .action-btn.preview:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* Config / preview dialog */
+    dialog { border: none; border-radius: 8px; padding: 0; width: 800px; max-width: 95vw; box-shadow: 0 8px 32px rgba(0,0,0,0.2); }
+    dialog::backdrop { background: rgba(0,0,0,0.4); }
+    .dialog-header { padding: 16px 20px; border-bottom: 1px solid #e0e0e0; display: flex; align-items: center; gap: 8px; }
+    .dialog-header h3 { flex: 1; font-size: 1rem; }
+    .dialog-header button { border: none; background: none; font-size: 1.2rem; cursor: pointer; color: #555; }
+    .dialog-tabs { display: flex; gap: 0; border-bottom: 1px solid #e0e0e0; }
+    .dialog-tab { padding: 8px 18px; font-size: 0.85rem; cursor: pointer; border-bottom: 2px solid transparent; }
+    .dialog-tab.active { border-bottom-color: #0f62fe; font-weight: 600; }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+    pre { background: #1e1e1e; color: #d4d4d4; padding: 16px 20px; font-size: 0.8rem; overflow: auto; max-height: 55vh; }
+    #map-preview { width: 100%; height: 360px; }
+    .dialog-footer { padding: 10px 20px; display: flex; gap: 8px; }
+    .copy-btn { padding: 7px 16px; background: #0f62fe; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 0.85rem; }
+    .copy-btn:hover { background: #0353e9; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🗺 WebMapX Layer Repository</h1>
+  <div class="header-right">
+    <span class="key-status" id="key-status"></span>
+    <input type="search" id="search" placeholder="Search providers or layers…">
+  </div>
+</header>
+
+<div class="layout">
+  <aside id="sidebar"></aside>
+  <main id="main"><p class="empty">← Select a provider</p></main>
+</div>
+
+<dialog id="layer-dialog">
+  <div class="dialog-header">
+    <h3 id="dialog-title">Layer</h3>
+    <button onclick="document.getElementById('layer-dialog').close()">✕</button>
+  </div>
+  <div class="dialog-tabs">
+    <div class="dialog-tab active" onclick="switchTab('config')">Config</div>
+    <div class="dialog-tab" onclick="switchTab('preview')" id="tab-preview">Preview</div>
+  </div>
+  <div class="tab-panel active" id="panel-config">
+    <pre id="dialog-code"></pre>
+  </div>
+  <div class="tab-panel" id="panel-preview">
+    <div id="map-preview"></div>
+  </div>
+  <div class="dialog-footer">
+    <button class="copy-btn" onclick="copyConfig()">Copy config</button>
+  </div>
+</dialog>
+
+<script>
+const LAYERS_BASE = './layers';
+let apiKeys = {};
+let activeConfig = null;
+let previewMap = null;
+
+// Load apikeys.json (optional — only present in editor/local environment)
+async function loadApiKeys() {
+  try {
+    const res = await fetch('./apikeys.json');
+    if (res.ok) {
+      apiKeys = await res.json();
+      const count = Object.keys(apiKeys).length;
+      const el = document.getElementById('key-status');
+      el.textContent = `🔑 ${count} key${count !== 1 ? 's' : ''} loaded`;
+      el.className = 'key-status ok';
+    }
+  } catch {
+    // not present — user/public mode
+    const el = document.getElementById('key-status');
+    el.textContent = '⚠ no apikeys.json';
+    el.className = 'key-status none';
+  }
+}
+
+function substituteKeys(str) {
+  return str.replace(/\{key-([^}]+)\}/g, (m, name) => apiKeys[name] ?? m);
+}
+
+function substituteKeysDeep(obj) {
+  if (typeof obj === 'string') return substituteKeys(obj);
+  if (Array.isArray(obj)) return obj.map(substituteKeysDeep);
+  if (obj && typeof obj === 'object') {
+    const r = {};
+    for (const [k, v] of Object.entries(obj)) r[k] = substituteKeysDeep(v);
+    return r;
+  }
+  return obj;
+}
+
+function layerNeedsKey(layer) {
+  const tiles = layer.webmapxConfig?.source?.tiles ?? [];
+  return tiles.some(t => /\{key-([^}]+)\}/.test(t));
+}
+
+function layerKeysAvailable(layer) {
+  const tiles = layer.webmapxConfig?.source?.tiles ?? [];
+  return tiles.every(t => {
+    const matches = [...t.matchAll(/\{key-([^}]+)\}/g)];
+    return matches.every(([, name]) => !!apiKeys[name]);
+  });
+}
+
+// Load provider index
+async function loadIndex() {
+  const res = await fetch(`${LAYERS_BASE}/index.json`);
+  if (!res.ok) throw new Error('index.json not found — run: node scripts/build-index.mjs');
+  return res.json();
+}
+
+async function loadProvider(path) {
+  // path from index.json always points to the real provider file (link files are expanded by build-index)
+  const res = await fetch(`${LAYERS_BASE}/${path}`);
+  return res.json();
+}
+
+let allIndex = [];
+let allProviders = {};
+let currentProvider = null;
+
+async function init() {
+  await loadApiKeys();
+  try {
+    allIndex = await loadIndex();
+  } catch (e) {
+    document.getElementById('sidebar').innerHTML =
+      `<p style="padding:16px;color:#c00;font-size:0.85rem">${e.message}</p>`;
+    return;
+  }
+  renderSidebar(allIndex);
+}
+
+function renderSidebar(index) {
+  const byRegion = {};
+  for (const entry of index) {
+    const r = entry.region || 'world';
+    if (!byRegion[r]) byRegion[r] = [];
+    byRegion[r].push(entry);
+  }
+  document.getElementById('sidebar').innerHTML = Object.entries(byRegion).map(([region, list]) => `
+    <div class="tree-section">${region}</div>
+    ${list.map(e => `
+      <div class="tree-node" data-id="${e.providerId}" onclick="selectProvider('${e.path}', '${e.providerId}')">
+        <span>${e.providerName}</span>
+        <span class="badge ${e.access}">${e.access}</span>
+      </div>
+    `).join('')}
+  `).join('');
+}
+
+async function selectProvider(path, id) {
+  document.querySelectorAll('.tree-node').forEach(n =>
+    n.classList.toggle('selected', n.dataset.id === id));
+
+  if (!allProviders[path]) {
+    allProviders[path] = await loadProvider(path);
+  }
+  currentProvider = allProviders[path];
+  renderMain(currentProvider);
+}
+
+function renderMain(data) {
+  const { provider, layers } = data;
+  const cats = (provider.categories ?? []).map(c => `<span class="chip">${c}</span>`).join('');
+  document.getElementById('main').innerHTML = `
+    <div class="provider-header">
+      <div>
+        <h2>${provider.name}</h2>
+        ${provider.url ? `<a href="${provider.url}" target="_blank">${provider.url}</a>` : ''}
+        <div class="meta-row">
+          <span class="chip ${provider.access}">${provider.access}</span>
+          ${provider.license ? `<span class="chip">${provider.license}</span>` : ''}
+          ${cats}
+        </div>
+      </div>
+    </div>
+    ${provider.abstract ? `<p class="abstract">${provider.abstract}</p>` : ''}
+    <table>
+      <thead>
+        <tr><th>Layer</th><th>Type</th><th>Status</th><th>Key</th><th></th></tr>
+      </thead>
+      <tbody>
+        ${(layers ?? []).map((l, i) => {
+          const needsKey = layerNeedsKey(l);
+          const hasKey = needsKey && layerKeysAvailable(l);
+          const canPreview = !needsKey || hasKey;
+          return `
+          <tr>
+            <td>
+              <strong>${l.title}</strong><br>
+              <span style="color:#555;font-size:0.8rem">${l.abstract ?? ''}</span>
+            </td>
+            <td>${l.type}</td>
+            <td>
+              <span class="status-dot ${l.status ?? 'unknown'}"></span>${l.status ?? 'unknown'}
+              ${l.lastChecked ? `<br><span style="color:#888;font-size:0.75rem">${l.lastChecked}</span>` : ''}
+            </td>
+            <td>${needsKey
+              ? `<span class="key-badge${hasKey ? ' have-key' : ''}">${hasKey ? '🔑 ready' : 'API key'}</span>`
+              : '—'}</td>
+            <td>
+              ${l.webmapxConfig ? `
+                <button class="action-btn" onclick="showConfig(${i})">Config</button>
+                <button class="action-btn preview" onclick="showPreview(${i})" ${canPreview ? '' : 'disabled title="No API key loaded"'}>Preview</button>
+              ` : ''}
+            </td>
+          </tr>`;
+        }).join('')}
+      </tbody>
+    </table>
+  `;
+}
+
+function getLayer(index) {
+  return (currentProvider?.layers ?? [])[index];
+}
+
+function showConfig(index) {
+  const layer = getLayer(index);
+  activeConfig = substituteKeysDeep(layer.webmapxConfig);
+  document.getElementById('dialog-title').textContent = layer.title;
+  document.getElementById('dialog-code').textContent = JSON.stringify(activeConfig, null, 2);
+  switchTab('config');
+  document.getElementById('layer-dialog').showModal();
+}
+
+function showPreview(index) {
+  const layer = getLayer(index);
+  activeConfig = substituteKeysDeep(layer.webmapxConfig);
+  document.getElementById('dialog-title').textContent = layer.title;
+  document.getElementById('dialog-code').textContent = JSON.stringify(activeConfig, null, 2);
+  switchTab('preview');
+  document.getElementById('layer-dialog').showModal();
+  initPreviewMap(activeConfig);
+}
+
+function switchTab(name) {
+  document.querySelectorAll('.dialog-tab').forEach((t, i) =>
+    t.classList.toggle('active', ['config','preview'][i] === name));
+  document.getElementById('panel-config').classList.toggle('active', name === 'config');
+  document.getElementById('panel-preview').classList.toggle('active', name === 'preview');
+  if (name === 'preview' && activeConfig) {
+    // Small delay lets the panel become visible before MapLibre measures the container
+    setTimeout(() => initPreviewMap(activeConfig), 50);
+  }
+}
+
+function initPreviewMap(cfg) {
+  if (previewMap) { previewMap.remove(); previewMap = null; }
+  const container = document.getElementById('map-preview');
+  if (!container.offsetParent) return; // not visible yet
+
+  const source = cfg.source ?? {};
+  const layerDef = cfg.layer ?? {};
+  const sourceId = layerDef.id ?? 'preview-source';
+
+  previewMap = new maplibregl.Map({
+    container: 'map-preview',
+    style: {
+      version: 8,
+      sources: {
+        [sourceId]: source,
+      },
+      layers: [{ ...layerDef, source: sourceId }],
+    },
+    center: [5.3, 52.1],
+    zoom: 4,
+  });
+}
+
+document.getElementById('layer-dialog').addEventListener('close', () => {
+  if (previewMap) { previewMap.remove(); previewMap = null; }
+});
+
+function copyConfig() {
+  navigator.clipboard.writeText(JSON.stringify(activeConfig, null, 2));
+}
+
+document.getElementById('search').addEventListener('input', e => {
+  const q = e.target.value.toLowerCase();
+  const filtered = q
+    ? allIndex.filter(p =>
+        p.providerName?.toLowerCase().includes(q) ||
+        (p.categories ?? []).some(c => c.includes(q)) ||
+        p.region?.includes(q)
+      )
+    : allIndex;
+  renderSidebar(filtered);
+});
+
+init();
+</script>
+</body>
+</html>
