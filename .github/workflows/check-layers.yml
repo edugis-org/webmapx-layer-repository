@@ -1,0 +1,55 @@
+name: Check Layer Availability
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'layers/**'
+  pull_request:
+    paths:
+      - 'layers/**'
+  schedule:
+    # Weekly on Monday 06:00 UTC
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write   # needed to commit status updates on scheduled runs
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Rebuild index
+        run: node scripts/build-index.mjs
+
+      - name: Test layer availability
+        run: node scripts/test-layers.mjs
+        env:
+          # Add API keys as GitHub repository secrets and reference them here.
+          # Name pattern: APIKEY_<PROVIDERNAME> (uppercase).
+          APIKEY_OPENWEATHERMAP: ${{ secrets.APIKEY_OPENWEATHERMAP }}
+          APIKEY_MAPBOX:         ${{ secrets.APIKEY_MAPBOX }}
+          APIKEY_MAPTILER:       ${{ secrets.APIKEY_MAPTILER }}
+          APIKEY_BING:           ${{ secrets.APIKEY_BING }}
+          APIKEY_TOMTOM:         ${{ secrets.APIKEY_TOMTOM }}
+          APIKEY_HERE:           ${{ secrets.APIKEY_HERE }}
+          APIKEY_STADIA:         ${{ secrets.APIKEY_STADIA }}
+          APIKEY_THUNDERFOREST:  ${{ secrets.APIKEY_THUNDERFOREST }}
+          APIKEY_NEXTZEN:        ${{ secrets.APIKEY_NEXTZEN }}
+          APIKEY_GEODANMAPS:     ${{ secrets.APIKEY_GEODANMAPS }}
+
+      - name: Commit status updates (scheduled/push only)
+        if: github.event_name != 'pull_request'
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add layers/
+          git diff --staged --quiet || git commit -m "chore: update layer status [skip ci]"
+          git push

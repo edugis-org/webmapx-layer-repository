@@ -26,7 +26,7 @@
           "abstract": "Current precipitation. Source: OpenWeatherMap.",
           "legendRole": "overlay"
         },
-        "tiles": ["https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid={apikey:openweathermap}"],
+        "tiles": ["https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid={key-openweathermap}"],
         "tileSize": 256,
         "maxzoom": 18,
         "attribution": "<a href='https://openweathermap.org'>OpenWeatherMap</a>"
@@ -46,7 +46,7 @@
           "abstract": "Current wind speed. Source: OpenWeatherMap.",
           "legendRole": "overlay"
         },
-        "tiles": ["https://tile.openweathermap.org/map/wind_new/{z}/{x}/{y}.png?appid={apikey:openweathermap}"],
+        "tiles": ["https://tile.openweathermap.org/map/wind_new/{z}/{x}/{y}.png?appid={key-openweathermap}"],
         "tileSize": 256,
         "maxzoom": 18,
         "attribution": "<a href='https://openweathermap.org'>OpenWeatherMap</a>"
@@ -66,7 +66,7 @@
           "abstract": "Current surface temperature. Source: OpenWeatherMap.",
           "legendRole": "overlay"
         },
-        "tiles": ["https://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid={apikey:openweathermap}"],
+        "tiles": ["https://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid={key-openweathermap}"],
         "tileSize": 256,
         "maxzoom": 18,
         "attribution": "<a href='https://openweathermap.org'>OpenWeatherMap</a>"

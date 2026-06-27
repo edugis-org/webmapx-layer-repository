@@ -1,0 +1,41 @@
+[
+  {
+    "path": "world/nasa-earthdata.json",
+    "region": "world",
+    "providerId": "nasa-earthdata",
+    "providerName": "NASA Earthdata / GIBS",
+    "access": "free",
+    "categories": [
+      "satellite",
+      "climate",
+      "weather",
+      "environment"
+    ],
+    "layerCount": 2
+  },
+  {
+    "path": "world/openstreetmap.json",
+    "region": "world",
+    "providerId": "openstreetmap",
+    "providerName": "OpenStreetMap",
+    "access": "free",
+    "categories": [
+      "general-purpose",
+      "street-maps",
+      "transport"
+    ],
+    "layerCount": 2
+  },
+  {
+    "path": "world/openweathermap.json",
+    "region": "world",
+    "providerId": "openweathermap",
+    "providerName": "OpenWeatherMap",
+    "access": "api-key",
+    "categories": [
+      "weather",
+      "realtime"
+    ],
+    "layerCount": 3
+  }
+]

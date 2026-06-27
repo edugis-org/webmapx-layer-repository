@@ -1,0 +1,12 @@
+{
+  "openweathermap": "your-openweathermap-api-key",
+  "mapbox": "pk.your-mapbox-public-token",
+  "maptiler": "your-maptiler-api-key",
+  "bing": "your-bing-maps-key",
+  "tomtom": "your-tomtom-api-key",
+  "here": "your-here-api-key",
+  "stadia": "your-stadia-maps-api-key",
+  "thunderforest": "your-thunderforest-api-key",
+  "nextzen": "your-nextzen-api-key",
+  "geodanmaps": "your-geodanmaps-api-key"
+}
