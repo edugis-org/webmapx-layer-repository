@@ -1,0 +1,76 @@
+{
+  "provider": {
+    "id": "openweathermap",
+    "name": "OpenWeatherMap",
+    "url": "https://openweathermap.org",
+    "abstract": "Global weather data and tile layers including precipitation, temperature, wind, and cloud cover.",
+    "access": "api-key",
+    "apiKeyUrl": "https://home.openweathermap.org/api_keys",
+    "license": "Proprietary (free tier available)",
+    "categories": ["weather", "realtime"],
+    "regions": ["world"],
+    "status": "active"
+  },
+  "layers": [
+    {
+      "id": "owm-precipitation",
+      "title": "Precipitation",
+      "abstract": "Current precipitation intensity as a tile overlay.",
+      "type": "raster",
+      "status": "active",
+      "requiresKey": true,
+      "webmapxConfig": {
+        "type": "raster",
+        "title": "Precipitation",
+        "metadata": {
+          "abstract": "Current precipitation. Source: OpenWeatherMap.",
+          "legendRole": "overlay"
+        },
+        "tiles": ["https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid={apikey:openweathermap}"],
+        "tileSize": 256,
+        "maxzoom": 18,
+        "attribution": "<a href='https://openweathermap.org'>OpenWeatherMap</a>"
+      }
+    },
+    {
+      "id": "owm-wind",
+      "title": "Wind Speed",
+      "abstract": "Current wind speed and direction overlay.",
+      "type": "raster",
+      "status": "active",
+      "requiresKey": true,
+      "webmapxConfig": {
+        "type": "raster",
+        "title": "Wind Speed",
+        "metadata": {
+          "abstract": "Current wind speed. Source: OpenWeatherMap.",
+          "legendRole": "overlay"
+        },
+        "tiles": ["https://tile.openweathermap.org/map/wind_new/{z}/{x}/{y}.png?appid={apikey:openweathermap}"],
+        "tileSize": 256,
+        "maxzoom": 18,
+        "attribution": "<a href='https://openweathermap.org'>OpenWeatherMap</a>"
+      }
+    },
+    {
+      "id": "owm-temperature",
+      "title": "Temperature",
+      "abstract": "Current surface temperature overlay.",
+      "type": "raster",
+      "status": "active",
+      "requiresKey": true,
+      "webmapxConfig": {
+        "type": "raster",
+        "title": "Temperature",
+        "metadata": {
+          "abstract": "Current surface temperature. Source: OpenWeatherMap.",
+          "legendRole": "overlay"
+        },
+        "tiles": ["https://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid={apikey:openweathermap}"],
+        "tileSize": 256,
+        "maxzoom": 18,
+        "attribution": "<a href='https://openweathermap.org'>OpenWeatherMap</a>"
+      }
+    }
+  ]
+}

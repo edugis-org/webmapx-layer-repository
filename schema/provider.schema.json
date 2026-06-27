@@ -1,0 +1,80 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "provider.schema.json",
+  "title": "WebMapX Layer Repository — Provider File",
+  "type": "object",
+  "required": ["provider", "layers"],
+  "properties": {
+    "provider": {
+      "type": "object",
+      "required": ["id", "name", "access"],
+      "properties": {
+        "id":         { "type": "string", "description": "Unique slug, e.g. 'openstreetmap'" },
+        "name":       { "type": "string", "description": "Human-readable provider name" },
+        "url":        { "type": "string", "format": "uri" },
+        "logo":       { "type": "string", "description": "URL or relative path to provider logo" },
+        "abstract":   { "type": "string", "description": "Short description of what the provider offers" },
+        "access": {
+          "type": "string",
+          "enum": ["free", "api-key", "paid", "registration"],
+          "description": "free = no auth needed; api-key = free with key; paid = commercial; registration = free after sign-up"
+        },
+        "apiKeyUrl":  { "type": "string", "format": "uri", "description": "Where to obtain an API key" },
+        "license":    { "type": "string", "description": "Data license, e.g. ODbL, CC-BY-4.0, proprietary" },
+        "categories": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "general-purpose", "street-maps", "satellite", "elevation", "terrain",
+              "weather", "climate", "population", "boundaries", "transport",
+              "hydrology", "geology", "tectonic", "environment", "land-use",
+              "historical", "realtime", "indoor", "maritime", "aviation"
+            ]
+          }
+        },
+        "regions": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Regions covered, e.g. ['world'], ['europe', 'netherlands']"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["active", "deprecated", "unknown"],
+          "default": "active"
+        },
+        "lastChecked": { "type": "string", "format": "date" }
+      }
+    },
+    "layers": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/layer" }
+    }
+  },
+  "$defs": {
+    "layer": {
+      "type": "object",
+      "required": ["id", "title", "type"],
+      "properties": {
+        "id":       { "type": "string" },
+        "title":    { "type": "string" },
+        "abstract": { "type": "string" },
+        "type": {
+          "type": "string",
+          "enum": ["raster", "vector", "wms", "wmts", "wfs", "geojson", "mvt", "3d-tiles", "terrain"]
+        },
+        "status": {
+          "type": "string",
+          "enum": ["active", "deprecated", "unknown"],
+          "default": "active"
+        },
+        "lastChecked":  { "type": "string", "format": "date" },
+        "requiresKey":  { "type": "boolean", "default": false },
+        "webmapxConfig": {
+          "type": "object",
+          "description": "Ready-to-use webmapx layer config (close to MapLibre/Mapbox spec)"
+        }
+      }
+    }
+  }
+}

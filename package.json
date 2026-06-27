@@ -1,0 +1,13 @@
+{
+  "name": "webmapx-layer-repository",
+  "version": "0.1.0",
+  "description": "Curated repository of map layer services for use with webmapx",
+  "type": "module",
+  "scripts": {
+    "serve": "npx serve . -p 5200",
+    "test-layers": "node scripts/test-layers.mjs",
+    "test-layers:dry": "node scripts/test-layers.mjs --dry-run"
+  },
+  "keywords": ["webmapx", "map", "layers", "gis"],
+  "license": "MIT"
+}
