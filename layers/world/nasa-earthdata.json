@@ -6,8 +6,15 @@
     "abstract": "NASA Global Imagery Browse Services — satellite imagery, climate, and environmental data at global scale.",
     "access": "free",
     "license": "Public Domain (US Government)",
-    "categories": ["satellite", "climate", "weather", "environment"],
-    "regions": ["world"],
+    "categories": [
+      "satellite",
+      "climate",
+      "weather",
+      "environment"
+    ],
+    "regions": [
+      "world"
+    ],
     "status": "active"
   },
   "layers": [
@@ -36,7 +43,8 @@
             "abstract": "Daily true-color imagery from NASA MODIS Terra. Source: NASA GIBS."
           }
         }
-      }
+      },
+      "lastChecked": "2026-06-27"
     },
     {
       "id": "viirs-nighttime-lights",
@@ -63,7 +71,8 @@
             "abstract": "Nighttime lights from the VIIRS Day/Night Band. Source: NASA GIBS."
           }
         }
-      }
+      },
+      "lastChecked": "2026-06-27"
     }
   ]
 }

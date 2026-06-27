@@ -6,8 +6,14 @@
     "abstract": "Community-maintained global street map and geographic database.",
     "access": "free",
     "license": "ODbL 1.0",
-    "categories": ["general-purpose", "street-maps", "transport"],
-    "regions": ["world"],
+    "categories": [
+      "general-purpose",
+      "street-maps",
+      "transport"
+    ],
+    "regions": [
+      "world"
+    ],
     "status": "active"
   },
   "layers": [
@@ -39,7 +45,8 @@
             "legendRole": "background"
           }
         }
-      }
+      },
+      "lastChecked": "2026-06-27"
     },
     {
       "id": "osm-humanitarian",
@@ -51,7 +58,9 @@
       "webmapxConfig": {
         "source": {
           "type": "raster",
-          "tiles": ["https://tile-{s}.openstreetmap.fr/hot/{z}/{x}/{y}.png"],
+          "tiles": [
+            "https://tile-{s}.openstreetmap.fr/hot/{z}/{x}/{y}.png"
+          ],
           "tileSize": 256,
           "maxzoom": 19,
           "attribution": "© <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap contributors</a>, tiles by <a href='https://hot.openstreetmap.org/'>HOT</a>"
@@ -65,7 +74,8 @@
             "legendRole": "background"
           }
         }
-      }
+      },
+      "lastChecked": "2026-06-27"
     }
   ]
 }
