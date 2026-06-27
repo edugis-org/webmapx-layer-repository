@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WebMapX Layer Repository</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗺</text></svg>">
   <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4/dist/maplibre-gl.css">
   <script src="https://unpkg.com/maplibre-gl@4/dist/maplibre-gl.js"></script>
   <style>
@@ -139,7 +140,9 @@ async function loadApiKeys() {
 }
 
 function substituteKeys(str) {
-  return str.replace(/\{key-([^}]+)\}/g, (m, name) => apiKeys[name] ?? m);
+  return str
+    .replace(/\{key-([^}]+)\}/g, (m, name) => apiKeys[name] ?? m)
+    .replace(/\{s\}/g, 'a');
 }
 
 function substituteKeysDeep(obj) {
