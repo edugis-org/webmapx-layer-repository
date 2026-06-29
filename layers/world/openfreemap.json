@@ -45,7 +45,7 @@
           }
         }
       },
-      "lastChecked": "2026-06-27"
+      "lastChecked": "2026-06-29"
     },
     {
       "id": "ofm-water",
@@ -75,7 +75,7 @@
           }
         }
       },
-      "lastChecked": "2026-06-27"
+      "lastChecked": "2026-06-29"
     },
     {
       "id": "ofm-boundaries",
@@ -114,7 +114,7 @@
           }
         }
       },
-      "lastChecked": "2026-06-27"
+      "lastChecked": "2026-06-29"
     },
     {
       "id": "ofm-buildings",
@@ -146,7 +146,7 @@
           }
         }
       },
-      "lastChecked": "2026-06-27"
+      "lastChecked": "2026-06-29"
     }
   ]
 }
