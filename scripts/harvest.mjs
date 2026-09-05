@@ -20,6 +20,13 @@ const OUT = join(ROOT, 'harvested');
 
 const args = process.argv.slice(2);
 const dryRun = args.includes('--dry-run');
+/**
+ * Legends and attribute schemas need a request per service, which a plain
+ * harvest should not pay for. --enrich opts in; responses are cached under
+ * .cache/ so re-running is cheap.
+ */
+const enrich = args.includes('--enrich');
+const CACHE = join(ROOT, '.cache');
 const only = args.includes('--source') ? args[args.indexOf('--source') + 1] : null;
 
 const WMS_TAIL = 'SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true' +
@@ -143,6 +150,101 @@ async function readWmsCapabilities(source) {
     }];
 }
 
+
+/** Fetch with an on-disk cache, so --enrich is cheap to re-run. */
+async function cachedText(url, timeout = 60000) {
+    const key = join(CACHE, Buffer.from(url).toString('base64url').slice(0, 180) + '.txt');
+    if (existsSync(key)) return readFileSync(key, 'utf8');
+    const res = await fetch(url, { signal: AbortSignal.timeout(timeout) });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const text = await res.text();
+    mkdirSync(CACHE, { recursive: true });
+    writeFileSync(key, text);
+    return text;
+}
+
+const XML = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: '@' });
+
+/** layer name -> LegendURL, read from a WMS capabilities document. */
+async function legendsFor(capabilitiesUrl) {
+    const cap = XML.parse(await cachedText(capabilitiesUrl));
+    const root = cap.WMS_Capabilities ?? cap.WMT_MS_Capabilities;
+    const out = new Map();
+    (function walk(node) {
+        for (const l of arr(node?.Layer)) {
+            const href = arr(l.Style)
+                .map(st => arr(st.LegendURL)[0]?.OnlineResource?.['@xlink:href'])
+                .find(Boolean);
+            if (l.Name !== undefined && href) out.set(String(l.Name), String(href));
+            walk(l);
+        }
+    })(root?.Capability);
+    return out;
+}
+
+/** feature type -> attribute list, from a WFS DescribeFeatureType. */
+async function attributesFor(wfsEndpoint, typeName) {
+    const url = `${wfsEndpoint}?SERVICE=WFS&VERSION=2.0.0&REQUEST=DescribeFeatureType` +
+                `&TYPENAMES=${encodeURIComponent(typeName)}`;
+    const doc = XML.parse(await cachedText(url, 40000));
+    const schema = doc.schema ?? doc['xsd:schema'];
+    const types = arr(schema?.complexType ?? schema?.['xsd:complexType']);
+    const seq = types.map(t => {
+        const cc = t.complexContent ?? t['xsd:complexContent'];
+        const ext = cc?.extension ?? cc?.['xsd:extension'];
+        return ext?.sequence ?? ext?.['xsd:sequence'] ?? t.sequence ?? t['xsd:sequence'];
+    }).find(Boolean);
+    const els = arr(seq?.element ?? seq?.['xsd:element']);
+    const attrs = els.map(e => {
+        const type = String(e['@type'] ?? '');
+        return {
+            name: String(e['@name']),
+            ...(type ? { type } : {}),
+            ...(/gml:/.test(type) ? { geometry: true } : {}),
+        };
+    }).filter(a => a.name);
+    return attrs.length ? { attributes: attrs, attributesFrom: url } : null;
+}
+
+/** A WFS alongside a WMS serves the same data with a describable schema. */
+function featuresEndpointFor(endpoint) {
+    if (/\/wms\//.test(endpoint)) return endpoint.replace('/wms/', '/wfs/');
+    if (/\/wms$/.test(endpoint)) return endpoint.replace(/\/wms$/, '/wfs');
+    return null;
+}
+
+/**
+ * Fill in legends and attribute schemas for services already harvested.
+ * Failures are expected and silent per service: a raster service has no WFS,
+ * and plenty of WMS servers publish no LegendURL.
+ */
+async function enrichServices(services) {
+    let legends = 0, schemas = 0;
+    for (const svc of services) {
+        if (svc.type === 'wms' && svc.capabilitiesUrl) {
+            try {
+                const map = await legendsFor(svc.capabilitiesUrl);
+                for (const l of svc.layers) {
+                    const href = map.get(l.name);
+                    if (href) { l.legendUrl = href; legends++; }
+                }
+            } catch { /* no capabilities, or no legends in them */ }
+        }
+        const wfs = svc.type === 'wms' ? featuresEndpointFor(svc.endpoint) : null;
+        if (!wfs) continue;
+        let reachable = false;
+        for (const l of svc.layers) {
+            try {
+                const got = await attributesFor(wfs, l.name);
+                if (got) { Object.assign(l, got); schemas++; reachable = true; }
+            } catch { /* raster service, or this layer has no feature type */ }
+        }
+        if (reachable) svc.featuresEndpoint = wfs;
+        process.stdout.write('.');
+    }
+    return { legends, schemas };
+}
+
 const READERS = { 'pdok-plugin-list': readPdokPluginList, 'wms-capabilities': readWmsCapabilities };
 
 const sources = readdirSync(SOURCES).filter(f => f.endsWith('.json'))
@@ -160,6 +262,12 @@ for (const source of sources) {
     let services;
     try { services = await reader(source); }
     catch (e) { console.log(`failed: ${e.message}`); failed++; continue; }
+
+    if (enrich) {
+        process.stdout.write('\n   enriching ');
+        const { legends, schemas } = await enrichServices(services);
+        process.stdout.write(` ${legends} legends, ${schemas} attribute schemas\n   `);
+    }
 
     const layers = services.reduce((n, s) => n + s.layers.length, 0);
     services = services.filter(s => s.layers.length > 0);

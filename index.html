@@ -75,7 +75,7 @@
     .action-btn.preview:disabled { opacity: 0.4; cursor: not-allowed; }
 
     /* Config / preview dialog */
-    dialog { border: none; border-radius: 8px; padding: 0; width: 800px; max-width: 95vw; box-shadow: 0 8px 32px rgba(0,0,0,0.2); }
+    dialog { border: none; border-radius: 8px; padding: 0; width: 800px; max-width: 95vw; box-shadow: 0 8px 32px rgba(0,0,0,0.2); overscroll-behavior: contain; }
     dialog::backdrop { background: rgba(0,0,0,0.4); }
     .dialog-header { padding: 16px 20px; border-bottom: 1px solid #e0e0e0; display: flex; align-items: center; gap: 8px; }
     .dialog-header h3 { flex: 1; font-size: 1rem; }
@@ -88,7 +88,18 @@
     .tab-panel { display: none; }
     .tab-panel.active { display: block; }
     pre { background: #1e1e1e; color: #d4d4d4; padding: 16px 20px; font-size: 0.8rem; overflow: auto; max-height: 55vh; }
-    #map-preview { width: 100%; height: 360px; }
+    /* Without this the wheel zooms the map and then keeps going, scrolling the
+       layer list behind the modal. */
+    #map-preview { width: 100%; height: 360px; overscroll-behavior: contain; }
+    #panel-info { padding: 16px 20px; max-height: 55vh; overflow: auto; overscroll-behavior: contain; }
+    #panel-info h4 { font-size: 0.82rem; margin-bottom: 8px; color: #555; }
+    #panel-info img { max-width: 100%; background: #fff; border: 1px solid #e0e0e0; border-radius: 4px; padding: 6px; }
+    .attr-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+    .attr-table td { padding: 4px 8px; border-bottom: 1px solid #f0f0f0; }
+    .attr-table td.n { font-family: ui-monospace, monospace; }
+    .attr-table td.t { color: #888; }
+    .info-empty { font-size: 0.82rem; color: #888; line-height: 1.5; }
+    html.modal-open, html.modal-open body { overflow: hidden; }
     .dialog-footer { padding: 10px 20px; display: flex; gap: 8px; }
     .copy-btn { padding: 7px 16px; background: #0f62fe; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 0.85rem; }
     .copy-btn:hover { background: #0353e9; }
@@ -117,6 +128,7 @@
   <div class="dialog-tabs">
     <div class="dialog-tab active" onclick="switchTab('config')">Config</div>
     <div class="dialog-tab" onclick="switchTab('preview')" id="tab-preview">Preview</div>
+    <div class="dialog-tab" onclick="switchTab('info')" id="tab-info">Legend &amp; fields</div>
     <div id="style-selector">Style: <select id="style-select" onchange="applySelectedStyle()"></select></div>
   </div>
   <div class="tab-panel active" id="panel-config">
@@ -124,6 +136,9 @@
   </div>
   <div class="tab-panel" id="panel-preview">
     <div id="map-preview"></div>
+  </div>
+  <div class="tab-panel" id="panel-info">
+    <div id="layer-info"></div>
   </div>
   <div class="dialog-footer">
     <button class="copy-btn" onclick="copyConfig()">Copy config</button>
@@ -440,13 +455,44 @@ function getLayer(index) {
   return currentProvider ? allLayers(currentProvider)[index] : undefined;
 }
 
+function renderInfo(layer) {
+  const attrs = layer.attributes ?? [];
+  const parts = [];
+  if (layer.legendUrl) {
+    parts.push(`<h4>Legend</h4><img src="${layer.legendUrl}" alt="Legend for ${layer.title}" loading="lazy">`);
+  }
+  if (attrs.length) {
+    parts.push(`<h4 style="margin-top:14px">Fields (${attrs.length})</h4>
+      <table class="attr-table">${attrs.map(a => `
+        <tr>
+          <td class="n">${a.name}${a.geometry ? ' <span style="color:#0f62fe">◆</span>' : ''}</td>
+          <td class="t">${a.type ?? ''}</td>
+        </tr>`).join('')}</table>
+      ${layer.attributesFrom ? `<p style="font-size:0.72rem;color:#aaa;margin-top:8px">from <a href="${layer.attributesFrom}" target="_blank">DescribeFeatureType</a></p>` : ''}`);
+  }
+  if (!parts.length) {
+    // Say which of the two reasons applies, rather than just showing nothing.
+    parts.push(`<p class="info-empty">No legend or field list recorded for this layer.<br>
+      Legends come from the LegendURL a WMS publishes in its capabilities, and fields from the
+      matching WFS — a raster service has neither. Run <code>npm run harvest -- --enrich</code>
+      to collect them.</p>`);
+  }
+  document.getElementById('layer-info').innerHTML = parts.join('');
+}
+
+function openDialog() {
+  document.documentElement.classList.add('modal-open');
+  document.getElementById('layer-dialog').showModal();
+}
+
 function showConfig(index) {
   const layer = getLayer(index);
   activeConfig = resolveConfig(layer);
   document.getElementById('dialog-title').textContent = layer.title;
   document.getElementById('dialog-code').textContent = JSON.stringify(activeConfig, null, 2);
+  renderInfo(layer);
   switchTab('config');
-  document.getElementById('layer-dialog').showModal();
+  openDialog();
 }
 
 async function showPreview(index) {
@@ -454,8 +500,9 @@ async function showPreview(index) {
   activeConfig = resolveConfig(layer);
   document.getElementById('dialog-title').textContent = layer.title;
   document.getElementById('dialog-code').textContent = JSON.stringify(activeConfig, null, 2);
+  renderInfo(layer);
   switchTab('preview');
-  document.getElementById('layer-dialog').showModal();
+  openDialog();
 
   // Load styles file if available
   activeLayerStyles = null;
@@ -493,10 +540,12 @@ function applySelectedStyle() {
 }
 
 function switchTab(name) {
+  const tabs = ['config', 'preview', 'info'];
   document.querySelectorAll('.dialog-tab').forEach((t, i) =>
-    t.classList.toggle('active', ['config','preview'][i] === name));
-  document.getElementById('panel-config').classList.toggle('active', name === 'config');
-  document.getElementById('panel-preview').classList.toggle('active', name === 'preview');
+    t.classList.toggle('active', tabs[i] === name));
+  for (const t of tabs) {
+    document.getElementById(`panel-${t}`).classList.toggle('active', t === name);
+  }
   if (name === 'preview' && activeConfig) {
     // Small delay lets the panel become visible before MapLibre measures the container
     setTimeout(() => initPreviewMap(activeConfig), 50);
@@ -549,6 +598,7 @@ function initPreviewMap(cfg) {
 }
 
 document.getElementById('layer-dialog').addEventListener('close', () => {
+  document.documentElement.classList.remove('modal-open');
   if (previewMap) { previewMap.remove(); previewMap = null; }
 });
 

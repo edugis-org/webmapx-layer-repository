@@ -105,11 +105,30 @@ product returns that day's orbital swaths, so no choice of date yields a full
 global field — only a composited or analysed product does. Picking a better time
 is not a way to get full cover; choosing the right product is.
 
+## Legends and attributes
+
+A WMS cannot describe its own fields. `GetFeatureInfo` samples a point and
+returns whatever happens to be there, so it tells you about one feature, not
+about the layer — and nothing at all where the map is empty.
+
+Field schemas come from the matching **WFS `DescribeFeatureType`** instead: a
+typed list, no point required. A WFS usually sits beside the WMS on the same
+path, so `/wms/` becomes `/wfs/`. Where that 404s the data is genuinely raster
+and has no attributes to describe, which is itself worth recording.
+
+Legends come from the **`LegendURL` in the capabilities document**, not from a
+constructed `GetLegendGraphic` call — PDOK answers that one with
+`OperationNotSupported` while publishing legend images perfectly well.
+
+`--enrich` collects both. On PDOK it finds 1649 legends and 1373 field schemas
+across 1822 layers.
+
 ## Scripts
 
 | command | does |
 |---|---|
 | `npm run harvest` | read `sources/`, write `harvested/` |
+| `npm run harvest -- --enrich` | also collect legends and field schemas (a request per service, cached in `.cache/`) |
 | `npm run build-index` | index `layers/` + `harvested/` into `layers/index.json` |
 | `npm run validate-layers` | check every provider file against the schema |
 | `npm run test-layers` | probe availability, append to `status/` |

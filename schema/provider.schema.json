@@ -88,6 +88,11 @@
         "availability": { "$ref": "#/$defs/availability" },
         "cost":         { "$ref": "#/$defs/cost", "description": "Only when this endpoint is priced apart from the provider default — a high-SLA provider can still run one experimental service" },
         "operator":     { "$ref": "#/$defs/operator", "description": "Only when this endpoint is run by someone other than the provider, e.g. a cache fronting an upstream service" },
+        "featuresEndpoint": {
+          "type": "string",
+          "description": "Companion service serving the same data as features, typically a WFS alongside a WMS. Where attribute schemas come from; absent for genuinely raster services, which have no attributes to describe."
+        },
+        "legendUrl": { "type": "string", "description": "Legend for the service as a whole, when it publishes one rather than per layer" },
         "harvestedFrom": { "type": "string", "description": "Where this service description came from, when it was generated rather than hand-written. Its presence means the entry is machine-maintained and hand edits will be overwritten." },
         "layers": { "type": "array", "items": { "$ref": "#/$defs/layer" } }
       }
@@ -246,6 +251,25 @@
         },
         "lastChecked":  { "type": "string", "format": "date", "description": "Date of the last availability probe. Uptime history lives in status/." },
         "requiresKey":  { "type": "boolean", "default": false },
+        "legendUrl": {
+          "type": "string",
+          "description": "Image explaining the layer's symbology. Read from the LegendURL a WMS capabilities document publishes per style — not assumed to be a GetLegendGraphic call, which many services do not implement."
+        },
+        "attributes": {
+          "type": "array",
+          "description": "Fields carried by this layer's features, when the data is not raster. A WMS cannot describe these: GetFeatureInfo samples a point and returns whatever happens to be there. The schema comes from the matching WFS DescribeFeatureType, or an OGC API Features queryables document.",
+          "items": {
+            "type": "object",
+            "required": ["name"],
+            "properties": {
+              "name": { "type": "string" },
+              "type": { "type": "string", "description": "As the service declares it, e.g. string, long, gml:GeometryPropertyType" },
+              "title": { "type": "string" },
+              "geometry": { "type": "boolean", "description": "True for the geometry property rather than an attribute" }
+            }
+          }
+        },
+        "attributesFrom": { "type": "string", "description": "URL the attribute list was read from, so a stale one can be traced and refreshed" },
         "webmapxConfig": {
           "type": "object",
           "description": "Ready-to-use config for webmapx. Either styleUrl (full MapLibre style) or source+layer (addSource/addLayer).",
