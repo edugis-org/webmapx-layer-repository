@@ -1,0 +1,81 @@
+{
+  "provider": {
+    "id": "gbif",
+    "name": "GBIF",
+    "url": "https://www.gbif.org",
+    "abstract": "Global Biodiversity Information Facility — open occurrence data for species worldwide. Free tile API, no key required.",
+    "access": "free",
+    "license": "CC BY 4.0",
+    "categories": ["environment"],
+    "regions": ["world"],
+    "status": "active"
+  },
+  "layers": [
+    {
+      "id": "gbif-occurrences-all",
+      "title": "All Species Occurrences",
+      "abstract": "Density map of all GBIF species occurrence records worldwide.",
+      "type": "raster",
+      "status": "active",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": ["https://api.gbif.org/v2/map/occurrence/density/{z}/{x}/{y}@1x.png?srs=EPSG:3857&style=purpleYellow.point"],
+          "tileSize": 256,
+          "maxzoom": 14,
+          "attribution": "&copy; <a href='https://www.gbif.org'>GBIF</a>"
+        },
+        "layer": {
+          "id": "gbif-occurrences-all",
+          "type": "raster",
+          "metadata": { "title": "GBIF All Occurrences", "abstract": "Density of all species occurrence records. Source: GBIF.", "legendRole": "overlay" }
+        }
+      }
+    },
+    {
+      "id": "gbif-occurrences-plants",
+      "title": "Plant Occurrences (Plantae)",
+      "abstract": "Density map of plant occurrence records from GBIF. Kingdom Plantae (taxonKey=6).",
+      "type": "raster",
+      "status": "active",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": ["https://api.gbif.org/v2/map/occurrence/density/{z}/{x}/{y}@1x.png?srs=EPSG:3857&style=green.point&taxonKey=6"],
+          "tileSize": 256,
+          "maxzoom": 14,
+          "attribution": "&copy; <a href='https://www.gbif.org'>GBIF</a>"
+        },
+        "layer": {
+          "id": "gbif-occurrences-plants",
+          "type": "raster",
+          "metadata": { "title": "GBIF Plant Occurrences", "abstract": "Plant occurrence density. Source: GBIF.", "legendRole": "overlay" }
+        }
+      }
+    },
+    {
+      "id": "gbif-occurrences-birds",
+      "title": "Bird Occurrences (Aves)",
+      "abstract": "Density map of bird occurrence records from GBIF. Class Aves (taxonKey=212).",
+      "type": "raster",
+      "status": "active",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": ["https://api.gbif.org/v2/map/occurrence/density/{z}/{x}/{y}@1x.png?srs=EPSG:3857&style=blue.point&taxonKey=212"],
+          "tileSize": 256,
+          "maxzoom": 14,
+          "attribution": "&copy; <a href='https://www.gbif.org'>GBIF</a>"
+        },
+        "layer": {
+          "id": "gbif-occurrences-birds",
+          "type": "raster",
+          "metadata": { "title": "GBIF Bird Occurrences", "abstract": "Bird occurrence density. Source: GBIF.", "legendRole": "overlay" }
+        }
+      }
+    }
+  ]
+}

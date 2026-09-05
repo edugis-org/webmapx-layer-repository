@@ -1,5 +1,132 @@
 [
   {
+    "path": "world/carto.json",
+    "region": "world",
+    "providerId": "carto",
+    "providerName": "CARTO",
+    "access": "free",
+    "categories": [
+      "general-purpose",
+      "street-maps"
+    ],
+    "layerCount": 5,
+    "requiresKey": false
+  },
+  {
+    "path": "world/copernicus-marine.json",
+    "region": "world",
+    "providerId": "copernicus-marine",
+    "providerName": "Copernicus Marine Service (CMEMS)",
+    "access": "api-key",
+    "categories": [
+      "climate",
+      "environment",
+      "hydrology"
+    ],
+    "layerCount": 3,
+    "requiresKey": true
+  },
+  {
+    "path": "world/esri.json",
+    "region": "world",
+    "providerId": "esri",
+    "providerName": "Esri",
+    "access": "free",
+    "categories": [
+      "general-purpose",
+      "street-maps",
+      "satellite",
+      "terrain"
+    ],
+    "layerCount": 14,
+    "requiresKey": false
+  },
+  {
+    "path": "world/europe/netherlands/pdok.json",
+    "region": "world/europe/eu",
+    "providerId": "pdok",
+    "providerName": "PDOK",
+    "access": "free",
+    "categories": [
+      "general-purpose",
+      "satellite",
+      "elevation",
+      "terrain"
+    ],
+    "layerCount": 8,
+    "requiresKey": false,
+    "linkedFrom": "world/europe/eu/netherlands.json"
+  },
+  {
+    "path": "world/europe/netherlands/pdok.json",
+    "region": "world/europe/netherlands",
+    "providerId": "pdok",
+    "providerName": "PDOK",
+    "access": "free",
+    "categories": [
+      "general-purpose",
+      "satellite",
+      "elevation",
+      "terrain"
+    ],
+    "layerCount": 8,
+    "requiresKey": false
+  },
+  {
+    "path": "world/gbif.json",
+    "region": "world",
+    "providerId": "gbif",
+    "providerName": "GBIF",
+    "access": "free",
+    "categories": [
+      "environment"
+    ],
+    "layerCount": 3,
+    "requiresKey": false
+  },
+  {
+    "path": "world/ghsl.json",
+    "region": "world",
+    "providerId": "ghsl",
+    "providerName": "GHSL (EU JRC)",
+    "access": "free",
+    "categories": [
+      "population",
+      "land-use"
+    ],
+    "layerCount": 3,
+    "requiresKey": false
+  },
+  {
+    "path": "world/google.json",
+    "region": "world",
+    "providerId": "google",
+    "providerName": "Google Maps",
+    "access": "free",
+    "categories": [
+      "general-purpose",
+      "street-maps",
+      "satellite"
+    ],
+    "layerCount": 3,
+    "requiresKey": false
+  },
+  {
+    "path": "world/mapbox.json",
+    "region": "world",
+    "providerId": "mapbox",
+    "providerName": "Mapbox",
+    "access": "api-key",
+    "categories": [
+      "general-purpose",
+      "street-maps",
+      "satellite",
+      "terrain"
+    ],
+    "layerCount": 6,
+    "requiresKey": true
+  },
+  {
     "path": "world/maptiler.json",
     "region": "world",
     "providerId": "maptiler",
@@ -15,6 +142,20 @@
     "requiresKey": true
   },
   {
+    "path": "world/microsoft.json",
+    "region": "world",
+    "providerId": "microsoft",
+    "providerName": "Microsoft Bing Maps",
+    "access": "free",
+    "categories": [
+      "general-purpose",
+      "street-maps",
+      "satellite"
+    ],
+    "layerCount": 3,
+    "requiresKey": false
+  },
+  {
     "path": "world/nasa-earthdata.json",
     "region": "world",
     "providerId": "nasa-earthdata",
@@ -26,8 +167,21 @@
       "weather",
       "environment"
     ],
-    "layerCount": 2,
+    "layerCount": 6,
     "requiresKey": false
+  },
+  {
+    "path": "world/openaip.json",
+    "region": "world",
+    "providerId": "openaip",
+    "providerName": "OpenAIP",
+    "access": "api-key",
+    "categories": [
+      "aviation",
+      "transport"
+    ],
+    "layerCount": 1,
+    "requiresKey": true
   },
   {
     "path": "world/openfreemap.json",
@@ -41,6 +195,31 @@
       "transport"
     ],
     "layerCount": 7,
+    "requiresKey": false
+  },
+  {
+    "path": "world/openrailwaymap.json",
+    "region": "world",
+    "providerId": "openrailwaymap",
+    "providerName": "OpenRailwayMap",
+    "access": "free",
+    "categories": [
+      "transport"
+    ],
+    "layerCount": 4,
+    "requiresKey": false
+  },
+  {
+    "path": "world/openseamap.json",
+    "region": "world",
+    "providerId": "openseamap",
+    "providerName": "OpenSeaMap",
+    "access": "free",
+    "categories": [
+      "maritime",
+      "transport"
+    ],
+    "layerCount": 1,
     "requiresKey": false
   },
   {
@@ -58,6 +237,19 @@
     "requiresKey": false
   },
   {
+    "path": "world/opentopomap.json",
+    "region": "world",
+    "providerId": "opentopomap",
+    "providerName": "OpenTopoMap",
+    "access": "free",
+    "categories": [
+      "terrain",
+      "general-purpose"
+    ],
+    "layerCount": 1,
+    "requiresKey": false
+  },
+  {
     "path": "world/openweathermap.json",
     "region": "world",
     "providerId": "openweathermap",
@@ -69,5 +261,66 @@
     ],
     "layerCount": 3,
     "requiresKey": true
+  },
+  {
+    "path": "world/sedac.json",
+    "region": "world",
+    "providerId": "sedac",
+    "providerName": "NASA SEDAC (CIESIN)",
+    "access": "free",
+    "categories": [
+      "population",
+      "environment"
+    ],
+    "layerCount": 3,
+    "requiresKey": false
+  },
+  {
+    "path": "world/stadia.json",
+    "region": "world",
+    "providerId": "stadia",
+    "providerName": "Stadia Maps (Stamen styles)",
+    "access": "free",
+    "categories": [
+      "general-purpose",
+      "artistic",
+      "terrain"
+    ],
+    "layerCount": 6,
+    "requiresKey": false
+  },
+  {
+    "path": "world/tomtom.json",
+    "region": "world",
+    "providerId": "tomtom",
+    "providerName": "TomTom",
+    "access": "api-key",
+    "categories": [
+      "general-purpose",
+      "street-maps",
+      "satellite"
+    ],
+    "layerCount": 3,
+    "requiresKey": true
+  },
+  {
+    "path": "world/usgs.json",
+    "region": "world",
+    "providerId": "usgs",
+    "providerName": "USGS",
+    "access": "free",
+    "categories": [
+      "geology",
+      "tectonic",
+      "realtime",
+      "environment"
+    ],
+    "layerCount": 3,
+    "requiresKey": false,
+    "layerStyles": {
+      "usgs-earthquakes-day": "world/styles/usgs-earthquakes-day.json",
+      "usgs-earthquakes-month-m45": "world/styles/usgs-earthquakes-month-m45.json",
+      "usgs-earthquakes-week-significant": "world/styles/usgs-earthquakes-week-significant.json"
+    }
   }
 ]

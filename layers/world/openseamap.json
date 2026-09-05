@@ -1,0 +1,37 @@
+{
+  "provider": {
+    "id": "openseamap",
+    "name": "OpenSeaMap",
+    "url": "https://www.openseamap.org",
+    "abstract": "Marine chart overlay derived from OpenStreetMap — buoys, lighthouses, depth contours, and nautical marks. Free, no key required. Use as overlay on a basemap.",
+    "access": "free",
+    "license": "ODbL",
+    "categories": ["maritime", "transport"],
+    "regions": ["world"],
+    "status": "active"
+  },
+  "layers": [
+    {
+      "id": "openseamap",
+      "title": "OpenSeaMap",
+      "abstract": "Nautical chart overlay — buoys, lighthouses, depth contours, and sea marks. Transparent overlay — add a basemap underneath.",
+      "type": "raster",
+      "status": "active",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": ["https://tiles.openseamap.org/seamark/{z}/{x}/{y}.png"],
+          "tileSize": 256,
+          "maxzoom": 18,
+          "attribution": "&copy; <a href='https://www.openseamap.org'>OpenSeaMap</a> contributors"
+        },
+        "layer": {
+          "id": "openseamap",
+          "type": "raster",
+          "metadata": { "title": "OpenSeaMap", "abstract": "Nautical chart overlay. Source: OpenSeaMap.", "legendRole": "overlay", "previewCenter": [4.9, 52.4], "previewZoom": 10 }
+        }
+      }
+    }
+  ]
+}

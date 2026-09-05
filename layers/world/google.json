@@ -1,0 +1,108 @@
+{
+  "provider": {
+    "id": "google",
+    "name": "Google Maps",
+    "url": "https://maps.google.com",
+    "abstract": "Google Maps tile services. Unofficial tile URLs — check Google Maps Platform Terms of Service for your use case.",
+    "access": "free",
+    "license": "Google Maps/Google Earth APIs Terms of Service",
+    "categories": ["general-purpose", "street-maps", "satellite"],
+    "regions": ["world"],
+    "status": "active"
+  },
+  "layers": [
+    {
+      "id": "google-satellite",
+      "title": "Satellite",
+      "abstract": "Google satellite imagery.",
+      "type": "raster",
+      "status": "active",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": [
+            "https://mt0.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
+            "https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
+            "https://mt2.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
+            "https://mt3.google.com/vt/lyrs=s&x={x}&y={y}&z={z}"
+          ],
+          "tileSize": 256,
+          "maxzoom": 20,
+          "attribution": "&copy; <a href='https://maps.google.com'>Google</a>"
+        },
+        "layer": {
+          "id": "google-satellite",
+          "type": "raster",
+          "metadata": {
+            "title": "Google Satellite",
+            "abstract": "Google satellite imagery.",
+            "legendRole": "background"
+          }
+        }
+      }
+    },
+    {
+      "id": "google-hybrid",
+      "title": "Hybrid (satellite + labels)",
+      "abstract": "Google satellite imagery with road and label overlay.",
+      "type": "raster",
+      "status": "active",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": [
+            "https://mt0.google.com/vt/lyrs=y&x={x}&y={y}&z={z}",
+            "https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}",
+            "https://mt2.google.com/vt/lyrs=y&x={x}&y={y}&z={z}",
+            "https://mt3.google.com/vt/lyrs=y&x={x}&y={y}&z={z}"
+          ],
+          "tileSize": 256,
+          "maxzoom": 20,
+          "attribution": "&copy; <a href='https://maps.google.com'>Google</a>"
+        },
+        "layer": {
+          "id": "google-hybrid",
+          "type": "raster",
+          "metadata": {
+            "title": "Google Hybrid",
+            "abstract": "Google satellite with labels.",
+            "legendRole": "background"
+          }
+        }
+      }
+    },
+    {
+      "id": "google-streets",
+      "title": "Streets",
+      "abstract": "Google street map.",
+      "type": "raster",
+      "status": "active",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": [
+            "https://mt0.google.com/vt/lyrs=m&x={x}&y={y}&z={z}",
+            "https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}",
+            "https://mt2.google.com/vt/lyrs=m&x={x}&y={y}&z={z}",
+            "https://mt3.google.com/vt/lyrs=m&x={x}&y={y}&z={z}"
+          ],
+          "tileSize": 256,
+          "maxzoom": 20,
+          "attribution": "&copy; <a href='https://maps.google.com'>Google</a>"
+        },
+        "layer": {
+          "id": "google-streets",
+          "type": "raster",
+          "metadata": {
+            "title": "Google Streets",
+            "abstract": "Google street map.",
+            "legendRole": "background"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "layerId": "usgs-earthquakes-month-m45",
+  "styles": [
+    {
+      "id": "bare",
+      "title": "Bare",
+      "layer": {
+        "type": "circle",
+        "paint": {
+          "circle-radius": 6,
+          "circle-color": "#3388ff",
+          "circle-opacity": 0.8,
+          "circle-stroke-width": 1,
+          "circle-stroke-color": "#fff"
+        }
+      }
+    },
+    {
+      "id": "by-magnitude",
+      "title": "By magnitude",
+      "layer": {
+        "type": "circle",
+        "paint": {
+          "circle-radius": ["interpolate", ["linear"], ["get", "mag"], 4.5, 5, 7, 14, 9, 28],
+          "circle-color": ["interpolate", ["linear"], ["get", "mag"], 4.5, "#fd8d3c", 6, "#e31a1c", 8, "#800026"],
+          "circle-opacity": 0.8,
+          "circle-stroke-width": 1,
+          "circle-stroke-color": "#fff"
+        }
+      }
+    }
+  ]
+}

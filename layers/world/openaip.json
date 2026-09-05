@@ -1,0 +1,38 @@
+{
+  "provider": {
+    "id": "openaip",
+    "name": "OpenAIP",
+    "url": "https://www.openaip.net",
+    "abstract": "OpenAIP aviation chart overlay — airspaces, airports, navaids, and reporting points. Free API key required.",
+    "access": "api-key",
+    "apiKeyUrl": "https://www.openaip.net/users/sign_up",
+    "license": "CC BY-NC-SA 4.0",
+    "categories": ["aviation", "transport"],
+    "regions": ["world"],
+    "status": "active"
+  },
+  "layers": [
+    {
+      "id": "openaip-map",
+      "title": "Aviation Chart",
+      "abstract": "Airspaces, airports, navaids, and reporting points overlay. Transparent — add a basemap underneath.",
+      "type": "raster",
+      "status": "active",
+      "requiresKey": true,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": ["https://api.tiles.openaip.net/api/data/openaip/{z}/{x}/{y}.png?apiKey={key-openaip}"],
+          "tileSize": 256,
+          "maxzoom": 14,
+          "attribution": "&copy; <a href='https://www.openaip.net'>OpenAIP</a>"
+        },
+        "layer": {
+          "id": "openaip-map",
+          "type": "raster",
+          "metadata": { "title": "OpenAIP Aviation Chart", "abstract": "Aviation chart overlay. Source: OpenAIP.", "legendRole": "overlay" }
+        }
+      }
+    }
+  ]
+}

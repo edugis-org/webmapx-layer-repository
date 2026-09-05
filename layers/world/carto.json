@@ -1,0 +1,150 @@
+{
+  "provider": {
+    "id": "carto",
+    "name": "CARTO",
+    "url": "https://carto.com",
+    "abstract": "CARTO basemap styles — Voyager, Light Matter, and Dark Matter. Free CDN tiles, no key required.",
+    "access": "free",
+    "license": "CC BY 3.0 / CARTO",
+    "categories": ["general-purpose", "street-maps"],
+    "regions": ["world"],
+    "status": "active"
+  },
+  "layers": [
+    {
+      "id": "carto-voyager",
+      "title": "Voyager",
+      "abstract": "Clean, colorful basemap with roads, labels, and points of interest.",
+      "type": "raster",
+      "status": "active",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": [
+            "https://a.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png",
+            "https://b.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png",
+            "https://c.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png",
+            "https://d.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png"
+          ],
+          "tileSize": 256,
+          "maxzoom": 19,
+          "attribution": "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors &copy; <a href='https://carto.com/attributions'>CARTO</a>"
+        },
+        "layer": {
+          "id": "carto-voyager",
+          "type": "raster",
+          "metadata": { "title": "CARTO Voyager", "abstract": "Colorful general-purpose basemap. Source: CARTO.", "legendRole": "background" }
+        }
+      }
+    },
+    {
+      "id": "carto-light-matter",
+      "title": "Light Matter",
+      "abstract": "Minimal light basemap — ideal for data overlays.",
+      "type": "raster",
+      "status": "active",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": [
+            "https://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
+            "https://b.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
+            "https://c.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
+            "https://d.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"
+          ],
+          "tileSize": 256,
+          "maxzoom": 19,
+          "attribution": "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors &copy; <a href='https://carto.com/attributions'>CARTO</a>"
+        },
+        "layer": {
+          "id": "carto-light-matter",
+          "type": "raster",
+          "metadata": { "title": "CARTO Light Matter", "abstract": "Minimal light basemap for overlays. Source: CARTO.", "legendRole": "background" }
+        }
+      }
+    },
+    {
+      "id": "carto-light-matter-no-labels",
+      "title": "Light Matter (no labels)",
+      "abstract": "Minimal light basemap without labels — clean background for custom label layers.",
+      "type": "raster",
+      "status": "active",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": [
+            "https://a.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png",
+            "https://b.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png",
+            "https://c.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png",
+            "https://d.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png"
+          ],
+          "tileSize": 256,
+          "maxzoom": 19,
+          "attribution": "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors &copy; <a href='https://carto.com/attributions'>CARTO</a>"
+        },
+        "layer": {
+          "id": "carto-light-matter-no-labels",
+          "type": "raster",
+          "metadata": { "title": "CARTO Light Matter (no labels)", "abstract": "Light basemap without labels. Source: CARTO.", "legendRole": "background" }
+        }
+      }
+    },
+    {
+      "id": "carto-dark-matter",
+      "title": "Dark Matter",
+      "abstract": "Dark basemap — ideal for bright thematic data overlays.",
+      "type": "raster",
+      "status": "active",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": [
+            "https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png",
+            "https://b.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png",
+            "https://c.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png",
+            "https://d.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png"
+          ],
+          "tileSize": 256,
+          "maxzoom": 19,
+          "attribution": "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors &copy; <a href='https://carto.com/attributions'>CARTO</a>"
+        },
+        "layer": {
+          "id": "carto-dark-matter",
+          "type": "raster",
+          "metadata": { "title": "CARTO Dark Matter", "abstract": "Dark basemap for bright overlays. Source: CARTO.", "legendRole": "background" }
+        }
+      }
+    },
+    {
+      "id": "carto-dark-matter-no-labels",
+      "title": "Dark Matter (no labels)",
+      "abstract": "Dark basemap without labels.",
+      "type": "raster",
+      "status": "active",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": [
+            "https://a.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png",
+            "https://b.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png",
+            "https://c.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png",
+            "https://d.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png"
+          ],
+          "tileSize": 256,
+          "maxzoom": 19,
+          "attribution": "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors &copy; <a href='https://carto.com/attributions'>CARTO</a>"
+        },
+        "layer": {
+          "id": "carto-dark-matter-no-labels",
+          "type": "raster",
+          "metadata": { "title": "CARTO Dark Matter (no labels)", "abstract": "Dark basemap without labels. Source: CARTO.", "legendRole": "background" }
+        }
+      }
+    }
+  ]
+}

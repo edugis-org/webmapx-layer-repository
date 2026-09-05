@@ -1,0 +1,41 @@
+{
+  "provider": {
+    "id": "opentopomap",
+    "name": "OpenTopoMap",
+    "url": "https://opentopomap.org",
+    "abstract": "Topographic map rendered from OpenStreetMap data and SRTM elevation data. Free, no key required.",
+    "access": "free",
+    "license": "CC BY-SA / ODbL",
+    "categories": ["terrain", "general-purpose"],
+    "regions": ["world"],
+    "status": "active"
+  },
+  "layers": [
+    {
+      "id": "opentopomap",
+      "title": "OpenTopoMap",
+      "abstract": "Contour lines, hillshading, and topographic detail from OSM + SRTM.",
+      "type": "raster",
+      "status": "active",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": [
+            "https://a.tile.opentopomap.org/{z}/{x}/{y}.png",
+            "https://b.tile.opentopomap.org/{z}/{x}/{y}.png",
+            "https://c.tile.opentopomap.org/{z}/{x}/{y}.png"
+          ],
+          "tileSize": 256,
+          "maxzoom": 17,
+          "attribution": "Map data: &copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors, <a href='http://viewfinderpanoramas.org'>SRTM</a> | Map style: &copy; <a href='https://opentopomap.org'>OpenTopoMap</a> (<a href='https://creativecommons.org/licenses/by-sa/3.0/'>CC-BY-SA</a>)"
+        },
+        "layer": {
+          "id": "opentopomap",
+          "type": "raster",
+          "metadata": { "title": "OpenTopoMap", "abstract": "Topographic map from OSM + SRTM. Source: OpenTopoMap.", "legendRole": "background" }
+        }
+      }
+    }
+  ]
+}

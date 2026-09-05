@@ -1,0 +1,347 @@
+{
+  "provider": {
+    "id": "esri",
+    "name": "Esri",
+    "url": "https://www.esri.com",
+    "abstract": "Esri ArcGIS Online basemap tile services. Free for development and non-commercial use with attribution.",
+    "access": "free",
+    "license": "Esri Master License Agreement",
+    "categories": ["general-purpose", "street-maps", "satellite", "terrain"],
+    "regions": ["world"],
+    "status": "active"
+  },
+  "layers": [
+    {
+      "id": "esri-world-street-map",
+      "title": "World Street Map",
+      "abstract": "General-purpose street map with labels, roads, and boundaries.",
+      "type": "raster",
+      "status": "active",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": ["https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}"],
+          "tileSize": 256,
+          "maxzoom": 19,
+          "attribution": "Tiles &copy; <a href='https://www.esri.com'>Esri</a>"
+        },
+        "layer": {
+          "id": "esri-world-street-map",
+          "type": "raster",
+          "metadata": {
+            "title": "Esri World Street Map",
+            "abstract": "General-purpose street map. Source: Esri.",
+            "legendRole": "background"
+          }
+        }
+      }
+    },
+    {
+      "id": "esri-world-imagery",
+      "title": "World Imagery",
+      "abstract": "High-resolution satellite and aerial imagery worldwide.",
+      "type": "raster",
+      "status": "active",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": ["https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"],
+          "tileSize": 256,
+          "maxzoom": 19,
+          "attribution": "Tiles &copy; <a href='https://www.esri.com'>Esri</a>, Maxar, Earthstar Geographics"
+        },
+        "layer": {
+          "id": "esri-world-imagery",
+          "type": "raster",
+          "metadata": {
+            "title": "Esri World Imagery",
+            "abstract": "Satellite and aerial imagery. Source: Esri / Maxar.",
+            "legendRole": "background"
+          }
+        }
+      }
+    },
+    {
+      "id": "esri-world-topo-map",
+      "title": "World Topo Map",
+      "abstract": "Topographic map with contours, terrain shading, and land cover.",
+      "type": "raster",
+      "status": "active",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": ["https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}"],
+          "tileSize": 256,
+          "maxzoom": 19,
+          "attribution": "Tiles &copy; <a href='https://www.esri.com'>Esri</a>"
+        },
+        "layer": {
+          "id": "esri-world-topo-map",
+          "type": "raster",
+          "metadata": {
+            "title": "Esri World Topo Map",
+            "abstract": "Topographic map with terrain and contours. Source: Esri.",
+            "legendRole": "background"
+          }
+        }
+      }
+    },
+    {
+      "id": "esri-light-gray-canvas",
+      "title": "Light Gray Canvas",
+      "abstract": "Minimal light gray basemap, ideal for thematic data overlays.",
+      "type": "raster",
+      "status": "active",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": ["https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}"],
+          "tileSize": 256,
+          "maxzoom": 16,
+          "attribution": "Tiles &copy; <a href='https://www.esri.com'>Esri</a>"
+        },
+        "layer": {
+          "id": "esri-light-gray-canvas",
+          "type": "raster",
+          "metadata": {
+            "title": "Esri Light Gray Canvas",
+            "abstract": "Minimal light gray basemap for data overlays. Source: Esri.",
+            "legendRole": "background"
+          }
+        }
+      }
+    },
+    {
+      "id": "esri-dark-gray-canvas",
+      "title": "Dark Gray Canvas",
+      "abstract": "Minimal dark gray basemap, ideal for bright thematic data overlays.",
+      "type": "raster",
+      "status": "active",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": ["https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}"],
+          "tileSize": 256,
+          "maxzoom": 16,
+          "attribution": "Tiles &copy; <a href='https://www.esri.com'>Esri</a>"
+        },
+        "layer": {
+          "id": "esri-dark-gray-canvas",
+          "type": "raster",
+          "metadata": {
+            "title": "Esri Dark Gray Canvas",
+            "abstract": "Minimal dark gray basemap for bright data overlays. Source: Esri.",
+            "legendRole": "background"
+          }
+        }
+      }
+    },
+    {
+      "id": "esri-ocean-basemap",
+      "title": "Ocean Basemap",
+      "abstract": "Ocean-focused basemap with bathymetry and coastal detail.",
+      "type": "raster",
+      "status": "active",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": ["https://server.arcgisonline.com/ArcGIS/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}"],
+          "tileSize": 256,
+          "maxzoom": 13,
+          "attribution": "Tiles &copy; <a href='https://www.esri.com'>Esri</a>, GEBCO, NOAA"
+        },
+        "layer": {
+          "id": "esri-ocean-basemap",
+          "type": "raster",
+          "metadata": {
+            "title": "Esri Ocean Basemap",
+            "abstract": "Ocean-focused basemap with bathymetry. Source: Esri / GEBCO / NOAA.",
+            "legendRole": "background"
+          }
+        }
+      }
+    },
+    {
+      "id": "esri-natgeo-world-map",
+      "title": "National Geographic World Map",
+      "abstract": "National Geographic style map with terrain, land cover, and political boundaries.",
+      "type": "raster",
+      "status": "active",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": ["https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}"],
+          "tileSize": 256,
+          "maxzoom": 12,
+          "attribution": "Tiles &copy; <a href='https://www.esri.com'>Esri</a>, National Geographic"
+        },
+        "layer": {
+          "id": "esri-natgeo-world-map",
+          "type": "raster",
+          "metadata": { "title": "Esri NatGeo World Map", "abstract": "National Geographic style basemap. Source: Esri / NatGeo.", "legendRole": "background" }
+        }
+      }
+    },
+    {
+      "id": "esri-world-physical-map",
+      "title": "World Physical Map",
+      "abstract": "Physical map showing terrain, land cover, and water bodies without political labels.",
+      "type": "raster",
+      "status": "active",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": ["https://server.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}"],
+          "tileSize": 256,
+          "maxzoom": 8,
+          "attribution": "Tiles &copy; <a href='https://www.esri.com'>Esri</a>, US National Park Service"
+        },
+        "layer": {
+          "id": "esri-world-physical-map",
+          "type": "raster",
+          "metadata": { "title": "Esri World Physical Map", "abstract": "Physical terrain and land cover. Source: Esri / USGS.", "legendRole": "background" }
+        }
+      }
+    },
+    {
+      "id": "esri-world-shaded-relief",
+      "title": "World Shaded Relief",
+      "abstract": "Hillshaded terrain relief without roads or labels — ideal as a base layer under overlays.",
+      "type": "raster",
+      "status": "active",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": ["https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}"],
+          "tileSize": 256,
+          "maxzoom": 13,
+          "attribution": "Tiles &copy; <a href='https://www.esri.com'>Esri</a>, USGS, NOAA"
+        },
+        "layer": {
+          "id": "esri-world-shaded-relief",
+          "type": "raster",
+          "metadata": { "title": "Esri World Shaded Relief", "abstract": "Hillshaded terrain without labels. Source: Esri / USGS.", "legendRole": "background" }
+        }
+      }
+    },
+    {
+      "id": "esri-world-hillshade",
+      "title": "World Hillshade",
+      "abstract": "High-resolution hillshade layer for use as a semi-transparent overlay on top of other basemaps.",
+      "type": "raster",
+      "status": "active",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": ["https://server.arcgisonline.com/ArcGIS/rest/services/Elevation/World_Hillshade/MapServer/tile/{z}/{y}/{x}"],
+          "tileSize": 256,
+          "maxzoom": 16,
+          "attribution": "Tiles &copy; <a href='https://www.esri.com'>Esri</a>"
+        },
+        "layer": {
+          "id": "esri-world-hillshade",
+          "type": "raster",
+          "metadata": { "title": "Esri World Hillshade", "abstract": "High-res hillshade overlay. Source: Esri.", "legendRole": "overlay" }
+        }
+      }
+    },
+    {
+      "id": "esri-world-hillshade-dark",
+      "title": "World Hillshade Dark",
+      "abstract": "Dark hillshade layer for use over light basemaps.",
+      "type": "raster",
+      "status": "active",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": ["https://server.arcgisonline.com/ArcGIS/rest/services/Elevation/World_Hillshade_Dark/MapServer/tile/{z}/{y}/{x}"],
+          "tileSize": 256,
+          "maxzoom": 16,
+          "attribution": "Tiles &copy; <a href='https://www.esri.com'>Esri</a>"
+        },
+        "layer": {
+          "id": "esri-world-hillshade-dark",
+          "type": "raster",
+          "metadata": { "title": "Esri World Hillshade Dark", "abstract": "Dark hillshade overlay. Source: Esri.", "legendRole": "overlay" }
+        }
+      }
+    },
+    {
+      "id": "esri-world-terrain-base",
+      "title": "World Terrain Base",
+      "abstract": "Terrain basemap with hillshading, land cover, and water — no roads or labels.",
+      "type": "raster",
+      "status": "active",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": ["https://server.arcgisonline.com/ArcGIS/rest/services/World_Terrain_Base/MapServer/tile/{z}/{y}/{x}"],
+          "tileSize": 256,
+          "maxzoom": 13,
+          "attribution": "Tiles &copy; <a href='https://www.esri.com'>Esri</a>, USGS, NPS"
+        },
+        "layer": {
+          "id": "esri-world-terrain-base",
+          "type": "raster",
+          "metadata": { "title": "Esri World Terrain Base", "abstract": "Terrain with hillshading, no labels. Source: Esri / USGS.", "legendRole": "background" }
+        }
+      }
+    },
+    {
+      "id": "esri-world-boundaries-places",
+      "title": "World Boundaries and Places",
+      "abstract": "Transparent reference overlay with boundaries, cities, and place names. Use over imagery or terrain.",
+      "type": "raster",
+      "status": "active",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": ["https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}"],
+          "tileSize": 256,
+          "maxzoom": 19,
+          "attribution": "Tiles &copy; <a href='https://www.esri.com'>Esri</a>"
+        },
+        "layer": {
+          "id": "esri-world-boundaries-places",
+          "type": "raster",
+          "metadata": { "title": "Esri Boundaries and Places", "abstract": "Reference overlay: boundaries, cities, labels. Source: Esri.", "legendRole": "overlay" }
+        }
+      }
+    },
+    {
+      "id": "esri-world-transportation",
+      "title": "World Transportation",
+      "abstract": "Transparent road and transport network overlay — use over imagery or terrain basemaps.",
+      "type": "raster",
+      "status": "active",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": ["https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Transportation/MapServer/tile/{z}/{y}/{x}"],
+          "tileSize": 256,
+          "maxzoom": 19,
+          "attribution": "Tiles &copy; <a href='https://www.esri.com'>Esri</a>"
+        },
+        "layer": {
+          "id": "esri-world-transportation",
+          "type": "raster",
+          "metadata": { "title": "Esri World Transportation", "abstract": "Road network overlay. Source: Esri.", "legendRole": "overlay" }
+        }
+      }
+    }
+  ]
+}

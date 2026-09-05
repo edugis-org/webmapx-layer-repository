@@ -73,6 +73,118 @@
         }
       },
       "lastChecked": "2026-08-31"
+    },
+    {
+      "id": "ghrsst-sea-surface-temperature",
+      "title": "Sea Surface Temperature (daily)",
+      "abstract": "Daily global sea surface temperature from the GHRSST L4 MUR product at 1km resolution.",
+      "type": "wmts",
+      "status": "active",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": ["https://map1.vis.earthdata.nasa.gov/wmts-webmerc/GHRSST_Sea_Surface_Temperature/default/GoogleMapsCompatible_Level7/{z}/{y}/{x}.png"],
+          "tileSize": 256,
+          "maxzoom": 7,
+          "attribution": "Imagery courtesy <a href='https://earthdata.nasa.gov'>NASA GIBS</a> / GHRSST"
+        },
+        "layer": {
+          "id": "ghrsst-sea-surface-temperature",
+          "type": "raster",
+          "metadata": {
+            "title": "Sea Surface Temperature",
+            "abstract": "Daily global SST. Cold = blue/purple, warm = red/yellow. Source: NASA GIBS / GHRSST.",
+            "legendRole": "overlay",
+            "previewCenter": [0, 20],
+            "previewZoom": 2
+          }
+        }
+      }
+    },
+    {
+      "id": "modis-terra-ndvi",
+      "title": "NDVI Vegetation Index (8-day)",
+      "abstract": "8-day composite Normalized Difference Vegetation Index from MODIS Terra. Green = dense vegetation, brown = bare soil.",
+      "type": "wmts",
+      "status": "active",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": ["https://map1.vis.earthdata.nasa.gov/wmts-webmerc/MODIS_Terra_NDVI_8Day/default/GoogleMapsCompatible_Level9/{z}/{y}/{x}.png"],
+          "tileSize": 256,
+          "maxzoom": 9,
+          "attribution": "Imagery courtesy <a href='https://earthdata.nasa.gov'>NASA GIBS</a>"
+        },
+        "layer": {
+          "id": "modis-terra-ndvi",
+          "type": "raster",
+          "metadata": {
+            "title": "MODIS NDVI",
+            "abstract": "8-day vegetation index. Source: NASA GIBS / MODIS Terra.",
+            "legendRole": "overlay",
+            "previewCenter": [0, 20],
+            "previewZoom": 2
+          }
+        }
+      }
+    },
+    {
+      "id": "modis-aqua-chlorophyll",
+      "title": "Ocean Chlorophyll-a (monthly)",
+      "abstract": "Monthly ocean chlorophyll-a concentration from MODIS Aqua. Indicates phytoplankton abundance and ocean productivity.",
+      "type": "wmts",
+      "status": "active",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": ["https://map1.vis.earthdata.nasa.gov/wmts-webmerc/MODIS_Aqua_Chlorophyll_A/default/GoogleMapsCompatible_Level7/{z}/{y}/{x}.png"],
+          "tileSize": 256,
+          "maxzoom": 7,
+          "attribution": "Imagery courtesy <a href='https://earthdata.nasa.gov'>NASA GIBS</a>"
+        },
+        "layer": {
+          "id": "modis-aqua-chlorophyll",
+          "type": "raster",
+          "metadata": {
+            "title": "Ocean Chlorophyll-a",
+            "abstract": "Monthly phytoplankton / ocean productivity. Source: NASA GIBS / MODIS Aqua.",
+            "legendRole": "overlay",
+            "previewCenter": [0, 20],
+            "previewZoom": 2
+          }
+        }
+      }
+    },
+    {
+      "id": "modis-terra-snow-cover",
+      "title": "Snow Cover (daily)",
+      "abstract": "Daily snow cover extent from MODIS Terra.",
+      "type": "wmts",
+      "status": "active",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": ["https://map1.vis.earthdata.nasa.gov/wmts-webmerc/MODIS_Terra_Snow_Cover_Daily/default/GoogleMapsCompatible_Level8/{z}/{y}/{x}.png"],
+          "tileSize": 256,
+          "maxzoom": 8,
+          "attribution": "Imagery courtesy <a href='https://earthdata.nasa.gov'>NASA GIBS</a>"
+        },
+        "layer": {
+          "id": "modis-terra-snow-cover",
+          "type": "raster",
+          "metadata": {
+            "title": "Snow Cover",
+            "abstract": "Daily snow cover extent. Source: NASA GIBS / MODIS Terra.",
+            "legendRole": "overlay",
+            "previewCenter": [0, 55],
+            "previewZoom": 2
+          }
+        }
+      }
     }
   ]
 }

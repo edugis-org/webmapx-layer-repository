@@ -1,0 +1,99 @@
+{
+  "provider": {
+    "id": "sedac",
+    "name": "NASA SEDAC (CIESIN)",
+    "url": "https://sedac.ciesin.columbia.edu",
+    "abstract": "NASA Socioeconomic Data and Applications Center — gridded population, urbanization, and human environment interaction datasets. Free WMS, no key required.",
+    "access": "free",
+    "license": "CC BY 4.0",
+    "categories": ["population", "environment"],
+    "regions": ["world"],
+    "status": "active"
+  },
+  "layers": [
+    {
+      "id": "sedac-gpw-population-density-2020",
+      "title": "Population Density 2020 (GPW v4)",
+      "abstract": "Gridded Population of the World v4 — estimated persons per km² for 2020 at ~5km resolution.",
+      "type": "wms",
+      "status": "active",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": ["https://sedac.ciesin.columbia.edu/geoserver/gpw-v4/wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&LAYERS=gpw-v4:gpw-v4-population-density_2020&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"],
+          "tileSize": 256,
+          "maxzoom": 8,
+          "attribution": "<a href='https://sedac.ciesin.columbia.edu'>NASA SEDAC / CIESIN</a>"
+        },
+        "layer": {
+          "id": "sedac-gpw-population-density-2020",
+          "type": "raster",
+          "metadata": {
+            "title": "Population Density 2020",
+            "abstract": "Persons per km², 2020. Source: NASA SEDAC GPW v4.",
+            "legendRole": "overlay",
+            "previewCenter": [20, 30],
+            "previewZoom": 2
+          }
+        }
+      }
+    },
+    {
+      "id": "sedac-gpw-population-count-2020",
+      "title": "Population Count 2020 (GPW v4)",
+      "abstract": "Gridded total population count per grid cell for 2020.",
+      "type": "wms",
+      "status": "active",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": ["https://sedac.ciesin.columbia.edu/geoserver/gpw-v4/wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&LAYERS=gpw-v4:gpw-v4-population-count_2020&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"],
+          "tileSize": 256,
+          "maxzoom": 8,
+          "attribution": "<a href='https://sedac.ciesin.columbia.edu'>NASA SEDAC / CIESIN</a>"
+        },
+        "layer": {
+          "id": "sedac-gpw-population-count-2020",
+          "type": "raster",
+          "metadata": {
+            "title": "Population Count 2020",
+            "abstract": "Total population per grid cell, 2020. Source: NASA SEDAC GPW v4.",
+            "legendRole": "overlay",
+            "previewCenter": [20, 30],
+            "previewZoom": 2
+          }
+        }
+      }
+    },
+    {
+      "id": "sedac-gpw-land-area",
+      "title": "Urban/Rural Population Composition",
+      "abstract": "Urban-rural population composition grid from GPW v4.",
+      "type": "wms",
+      "status": "active",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": ["https://sedac.ciesin.columbia.edu/geoserver/gpw-v4/wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&LAYERS=gpw-v4:gpw-v4-basic-demographic-characteristics-rev11-a000-65plus-count_2010&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"],
+          "tileSize": 256,
+          "maxzoom": 8,
+          "attribution": "<a href='https://sedac.ciesin.columbia.edu'>NASA SEDAC / CIESIN</a>"
+        },
+        "layer": {
+          "id": "sedac-gpw-land-area",
+          "type": "raster",
+          "metadata": {
+            "title": "Population Age 65+ (2010)",
+            "abstract": "Gridded count of population age 65+, 2010. Source: NASA SEDAC GPW v4.",
+            "legendRole": "overlay",
+            "previewCenter": [20, 30],
+            "previewZoom": 2
+          }
+        }
+      }
+    }
+  ]
+}

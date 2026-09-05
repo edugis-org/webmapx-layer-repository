@@ -1,0 +1,173 @@
+{
+  "provider": {
+    "id": "stadia",
+    "name": "Stadia Maps (Stamen styles)",
+    "url": "https://stadiamaps.com",
+    "abstract": "Stadia Maps hosts the classic Stamen Design tile styles: Watercolor, Toner, and Terrain. Free tier — authenticate by domain (no API key in URL needed).",
+    "access": "free",
+    "setupUrl": "https://client.stadiamaps.com/dashboard",
+    "note": "Register your domain as a 'Property' at https://client.stadiamaps.com/dashboard to use these tiles without an API key.",
+    "license": "CC BY 3.0 (Stamen) / Stadia Maps Terms",
+    "categories": ["general-purpose", "artistic", "terrain"],
+    "regions": ["world"],
+    "status": "active"
+  },
+  "layers": [
+    {
+      "id": "stadia-watercolor",
+      "title": "Watercolor",
+      "abstract": "Classic Stamen Watercolor style — hand-painted aesthetic with soft pastels.",
+      "type": "raster",
+      "status": "active",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": ["https://tiles.stadiamaps.com/tiles/stamen_watercolor/{z}/{x}/{y}.jpg"],
+          "tileSize": 256,
+          "maxzoom": 16,
+          "attribution": "Map tiles by <a href='https://stamen.com'>Stamen Design</a>, under <a href='https://creativecommons.org/licenses/by/3.0'>CC BY 3.0</a>. Data by <a href='https://openstreetmap.org'>OpenStreetMap</a>, under <a href='https://creativecommons.org/licenses/by-sa/3.0'>CC BY SA</a>."
+        },
+        "layer": {
+          "id": "stadia-watercolor",
+          "type": "raster",
+          "metadata": {
+            "title": "Stamen Watercolor",
+            "abstract": "Hand-painted watercolor aesthetic basemap. Source: Stamen / Stadia.",
+            "legendRole": "background"
+          }
+        }
+      }
+    },
+    {
+      "id": "stadia-toner",
+      "title": "Toner",
+      "abstract": "Classic Stamen Toner style — high-contrast black and white.",
+      "type": "raster",
+      "status": "active",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": ["https://tiles.stadiamaps.com/tiles/stamen_toner/{z}/{x}/{y}.png"],
+          "tileSize": 256,
+          "maxzoom": 20,
+          "attribution": "Map tiles by <a href='https://stamen.com'>Stamen Design</a>, under <a href='https://creativecommons.org/licenses/by/3.0'>CC BY 3.0</a>. Data by <a href='https://openstreetmap.org'>OpenStreetMap</a>, under <a href='https://www.openstreetmap.org/copyright'>ODbL</a>."
+        },
+        "layer": {
+          "id": "stadia-toner",
+          "type": "raster",
+          "metadata": {
+            "title": "Stamen Toner",
+            "abstract": "High-contrast black and white basemap. Source: Stamen / Stadia.",
+            "legendRole": "background"
+          }
+        }
+      }
+    },
+    {
+      "id": "stadia-toner-lite",
+      "title": "Toner Lite",
+      "abstract": "Lighter version of Stamen Toner — subtle gray on white.",
+      "type": "raster",
+      "status": "active",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": ["https://tiles.stadiamaps.com/tiles/stamen_toner_lite/{z}/{x}/{y}.png"],
+          "tileSize": 256,
+          "maxzoom": 20,
+          "attribution": "Map tiles by <a href='https://stamen.com'>Stamen Design</a>, under <a href='https://creativecommons.org/licenses/by/3.0'>CC BY 3.0</a>. Data by <a href='https://openstreetmap.org'>OpenStreetMap</a>, under <a href='https://www.openstreetmap.org/copyright'>ODbL</a>."
+        },
+        "layer": {
+          "id": "stadia-toner-lite",
+          "type": "raster",
+          "metadata": {
+            "title": "Stamen Toner Lite",
+            "abstract": "Subtle gray-on-white basemap. Source: Stamen / Stadia.",
+            "legendRole": "background"
+          }
+        }
+      }
+    },
+    {
+      "id": "stadia-terrain",
+      "title": "Terrain",
+      "abstract": "Stamen Terrain — hillshading and natural earth colors with road overlay.",
+      "type": "raster",
+      "status": "active",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": ["https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}.png"],
+          "tileSize": 256,
+          "maxzoom": 18,
+          "attribution": "Map tiles by <a href='https://stamen.com'>Stamen Design</a>, under <a href='https://creativecommons.org/licenses/by/3.0'>CC BY 3.0</a>. Data by <a href='https://openstreetmap.org'>OpenStreetMap</a>, under <a href='https://creativecommons.org/licenses/by-sa/3.0'>CC BY SA</a>."
+        },
+        "layer": {
+          "id": "stadia-terrain",
+          "type": "raster",
+          "metadata": {
+            "title": "Stamen Terrain",
+            "abstract": "Hillshading with natural earth colors. Source: Stamen / Stadia.",
+            "legendRole": "background"
+          }
+        }
+      }
+    },
+    {
+      "id": "stadia-alidade-smooth",
+      "title": "Alidade Smooth",
+      "abstract": "Stadia's own minimal light basemap — clean and modern.",
+      "type": "raster",
+      "status": "active",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": ["https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}.png"],
+          "tileSize": 256,
+          "maxzoom": 20,
+          "attribution": "&copy; <a href='https://stadiamaps.com'>Stadia Maps</a> &copy; <a href='https://openstreetmap.org'>OpenStreetMap contributors</a>"
+        },
+        "layer": {
+          "id": "stadia-alidade-smooth",
+          "type": "raster",
+          "metadata": {
+            "title": "Stadia Alidade Smooth",
+            "abstract": "Clean minimal light basemap. Source: Stadia Maps.",
+            "legendRole": "background"
+          }
+        }
+      }
+    },
+    {
+      "id": "stadia-alidade-smooth-dark",
+      "title": "Alidade Smooth Dark",
+      "abstract": "Stadia's minimal dark basemap.",
+      "type": "raster",
+      "status": "active",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": ["https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}.png"],
+          "tileSize": 256,
+          "maxzoom": 20,
+          "attribution": "&copy; <a href='https://stadiamaps.com'>Stadia Maps</a> &copy; <a href='https://openstreetmap.org'>OpenStreetMap contributors</a>"
+        },
+        "layer": {
+          "id": "stadia-alidade-smooth-dark",
+          "type": "raster",
+          "metadata": {
+            "title": "Stadia Alidade Smooth Dark",
+            "abstract": "Clean minimal dark basemap. Source: Stadia Maps.",
+            "legendRole": "background"
+          }
+        }
+      }
+    }
+  ]
+}
