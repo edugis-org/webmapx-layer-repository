@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "source.schema.json",
+  "title": "WebMapX Layer Repository — Harvest Source",
+  "description": "A curated pointer to somewhere layers can be read from automatically. This is the hand-maintained part of the catalog: reviewing one means judging whether an endpoint is worth trusting, which a person can do — as opposed to eyeballing the thousands of layer records it yields, which nobody can. Everything downstream is generated into harvested/ and is not in git.",
+  "type": "object",
+  "required": ["id", "type", "url", "provider"],
+  "properties": {
+    "id":    { "type": "string", "description": "Slug, unique across sources/" },
+    "title": { "type": "string" },
+    "type": {
+      "type": "string",
+      "enum": ["wms-capabilities", "wmts-capabilities", "pdok-plugin-list", "ogc-api-records"],
+      "description": "How to read this source. Self-describing services (WMS/WMTS GetCapabilities, OGC API) versus third-party catalogues that already did the harvesting, of which the QGIS PDOK plugin's layer list is one."
+    },
+    "url": { "type": "string", "description": "Where to read it. A capabilities document, or the catalogue file itself." },
+    "provider": {
+      "type": "object",
+      "required": ["id", "name"],
+      "description": "Who the harvested layers belong to. Read off the source rather than inferred from its hostname, because a catalogue or cache is not the provider of what it lists.",
+      "properties": {
+        "id":   { "type": "string" },
+        "name": { "type": "string" },
+        "url":  { "type": "string" },
+        "operator": { "type": "object", "additionalProperties": true },
+        "license":  { "type": "string" },
+        "access":   { "type": "string", "enum": ["free", "api-key", "paid", "registration"], "default": "free" }
+      }
+    },
+    "region": { "type": "string", "description": "Path under layers/ the output belongs to, e.g. world/europe/netherlands" },
+    "maintainer": { "type": "string", "description": "Who keeps the source itself current. That a list is maintained by a known person is a fact about the source, not about each layer in it." },
+    "note": { "type": "string" },
+    "include": {
+      "type": "object",
+      "description": "Which of the source's layers to take. A capabilities document usually offers far more than is worth publishing.",
+      "properties": {
+        "serviceTypes": { "type": "array", "items": { "type": "string" }, "description": "Default: those a web map can render (wms, wmts, api tiles)" },
+        "crs":     { "type": "string", "default": "EPSG:3857", "description": "Drop layers the service cannot deliver in this CRS" },
+        "match":   { "type": "string", "description": "Regular expression the layer name or title must match" },
+        "exclude": { "type": "string", "description": "Regular expression that disqualifies a layer" },
+        "limit":   { "type": "integer", "description": "Cap on layers taken, for a first pass at a very large source" }
+      }
+    },
+    "enabled": { "type": "boolean", "default": true }
+  }
+}

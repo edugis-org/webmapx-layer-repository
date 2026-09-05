@@ -1,120 +1,119 @@
 # WebMapX Layer Repository
 
-Curated catalog of known map layer services, organized by geographic data extent and provider.
+A catalog of map layer services: who provides them, what endpoints they run, what
+layers those serve, and whether any of it is actually up.
 
-## Structure
+## What is curated and what is generated
 
-The `layers/` directory tree mirrors **geographic data extent** — not provider origin. The same provider (e.g. Esri) can appear in multiple places for different spatial coverages.
+Two kinds of data live here, and the difference decides where each belongs.
 
-The hierarchy is fully recursive: continent → sub-region → country → province/state → city. Depth is up to the administrator.
+**Curated** — in git, hand-written, reviewed in pull requests:
+
+- `sources/` — pointers to places layers can be read from automatically. One
+  entry is about ten lines and yields hundreds or thousands of layers. Reviewing
+  one means judging whether an endpoint is worth trusting, which a person can do.
+- `layers/` — layer definitions written by hand, for services that do not
+  describe themselves. A Google or Bing tile template has no capabilities
+  document; somebody has to write it down.
+
+**Generated** — not in git, rebuilt on demand:
+
+- `harvested/` — produced by `npm run harvest` from `sources/`. Regenerated
+  wholesale, like `node_modules`. Never edit it; the next harvest overwrites it.
+
+**Measured** — in git, because it cannot be regenerated:
+
+- `status/` — the uptime record. Rerunning nothing recreates "up 51 of the last
+  52 weeks"; it only accrues by observing, so it is committed like any other
+  irreplaceable data.
+
+```bash
+npm install
+npm run harvest       # sources/ -> harvested/
+npm run build-index   # layers/ + harvested/ -> layers/index.json
+npm run build         # both of the above
+npm run serve         # browse at http://localhost:5200
+```
+
+A fresh clone has no `harvested/`; the index notes its absence and the site
+serves the curated layers alone until you run the harvest.
+
+## Provider → service → layer
+
+```
+provider   Who publishes the data. Identified by who they are, not by the
+           hostname serving it — a cache is not the provider of what it fronts.
+  service  One endpoint. PDOK runs a WMTS for basemaps, a WMS for thematic
+           overlays and a WFS for features. The endpoint sets the CRS list,
+           formats, auth and rate limit for everything it serves, so those are
+           stated once here rather than repeated per layer.
+    layer  One dataset as one renderable thing, with a ready-to-use
+           webmapxConfig.
+```
+
+`layers/` mirrors **geographic extent**, not provider origin, and is fully
+recursive: continent → country → province → city. The same provider appears
+wherever it has coverage.
 
 ```
 layers/
-  world/                      # Data covering the entire world
-  europe/                     # Data confined to Europe
-    germany/
-      esri.json               # Esri layers covering Germany only
-      bkg.json                # Bundesamt für Kartographie und Geodäsie
-    netherlands/
-      pdok.json               # PDOK — Dutch public geo-data
-      noord-holland/
-        amsterdam/
-    eu/                       # EU member states as a group
-      germany.json            # { "$ref": "../germany" } → expands europe/germany/
-      netherlands.json        # { "$ref": "../netherlands" }
-  north-america/
-    usa/
-      california/
-  asia/ africa/ south-america/ oceania/
-schema/
-  provider.schema.json        # JSON schema for provider files
-ui/
-  index.html                  # Browser UI: browse, search, preview, copy config
-scripts/
-  build-index.mjs             # Scans layers/ tree → writes layers/index.json
-  test-layers.mjs             # Availability tester: checks tiles, updates status/lastChecked
+  world/                          data covering the whole world
+    esri.json  nasa-earthdata.json  …
+    styles/                       style variants, keyed by layerId
+    europe/
+      netherlands/
+        pdok.json  rivm.json  rce.json
+        flevoland/  noord-holland/amsterdam/
+      belgium/
+    north-america/caribbean-netherlands/
 ```
 
-### Link files
+## Availability
 
-To avoid duplicating provider files when a region belongs to multiple groupings, place the real files in one directory and use a minimal link file that points to the directory:
+`npm run test-layers` probes one tile or feature per layer and records what it
+finds. Two fields, deliberately separate:
 
-```json
-{ "$ref": "../germany" }
-```
+- `lifecycle` — what the operator says: `stable`, `beta`, `deprecated`,
+  `retired`. Curated, never written by tooling.
+- `availability` — what was measured: `up`, `down`, `auth-required`,
+  `unreachable`, `unknown`. Written only by the prober, never by hand.
 
-From `europe/eu/germany.json`, `../germany` resolves to `europe/germany/`. The index builder expands the link to all provider files in that directory. Adding a new provider to `europe/germany/` automatically makes it appear under `europe/eu/germany` too — no extra link maintenance needed.
+Uptime in `status/` excludes probes that reached no verdict: a layer that could
+not be tested is not a layer that failed.
 
-## Provider file format
+Availability is measurement, not validation. `test-layers` exits 0 whatever it
+finds — an upstream service being down is not a defect in this repository. Only
+`validate-layers`, which checks the files themselves, can fail a build.
 
-Each `<provider>.json` contains one provider and its layers for the region indicated by the directory:
+## Credentials
 
-```json
-{
-  "provider": {
-    "id": "esri",
-    "name": "Esri",
-    "url": "https://www.esri.com",
-    "abstract": "Esri basemaps and thematic layers covering Germany.",
-    "access": "free",              // free | api-key | paid | registration
-    "license": "Esri Master License Agreement",
-    "categories": ["general-purpose", "satellite"],
-    "status": "active"
-  },
-  "layers": [
-    {
-      "id": "esri-topo-germany",
-      "title": "Topographic (Germany)",
-      "type": "raster",            // raster | vector | wms | wmts | wfs | geojson | mvt | 3d-tiles | terrain
-      "status": "active",          // active | deprecated | unknown
-      "lastChecked": "2026-06-27",
-      "requiresKey": false,
-      "webmapxConfig": { ... }     // ready-to-use webmapx layer config
-    }
-  ]
-}
-```
+Copy `apikeys.example.json` to `apikeys.json` (gitignored) and fill in what you
+have. `referer` matters as much as the keys: Stadia issues no API key at all and
+authenticates on the request origin, and MapTiler locks keys to registered
+origins. In CI, pass keys as `APIKEY_<NAME>` secrets and the origin as
+`PROBE_REFERER`.
 
-API key placeholder syntax in tile URLs: `{key-<providername>}` — matches webmapx substitution convention.
+## Time-dimensioned layers
 
-## API keys
+Where a service needs an instant in the URL, the template carries `{time}` and
+the layer declares a `time` block modelled on the OGC WMTS `<Dimension>`, whose
+UOM is ISO 8601. MapLibre does not substitute `{time}`; `lib/time.mjs` does,
+and is shared by the prober and the UI.
 
-Copy `apikeys.example.json` → `apikeys.json` (gitignored) and fill in your keys. The UI and tester load this file automatically when present.
-
-In CI, pass keys as environment variables: `APIKEY_OPENWEATHERMAP`, `APIKEY_MAPBOX`, etc.
-
-## UI
-
-```bash
-npm run serve
-# → http://localhost:5200/ui/
-```
-
-- Browse providers by region, search by name/category
-- Config button: copy ready-to-use webmapx layer config (keys substituted if apikeys.json present)
-- Preview button: live MapLibre map preview (enabled when keys available)
+`coverage` says whether one instant covers the extent at all. A satellite L2
+product returns that day's orbital swaths, so no choice of date yields a full
+global field — only a composited or analysed product does. Picking a better time
+is not a way to get full cover; choosing the right product is.
 
 ## Scripts
 
-```bash
-npm run build-index               # Rebuild layers/index.json after adding/removing files
-npm run test-layers               # Test all layers, write status + lastChecked
-npm run test-layers:dry           # Test without writing files
-node scripts/test-layers.mjs --file layers/world/openstreetmap.json
-```
+| command | does |
+|---|---|
+| `npm run harvest` | read `sources/`, write `harvested/` |
+| `npm run build-index` | index `layers/` + `harvested/` into `layers/index.json` |
+| `npm run validate-layers` | check every provider file against the schema |
+| `npm run test-layers` | probe availability, append to `status/` |
+| `npm run migrate-services` | one-shot: convert legacy `layers[]` to `services[]` |
 
-## Categories
-
-`general-purpose` · `street-maps` · `satellite` · `elevation` · `terrain` ·
-`weather` · `climate` · `population` · `boundaries` · `transport` ·
-`hydrology` · `geology` · `tectonic` · `environment` · `land-use` ·
-`historical` · `realtime` · `indoor` · `maritime` · `aviation`
-
-## Access types
-
-| Value | Meaning |
-|-------|---------|
-| `free` | No authentication needed |
-| `api-key` | Free with a registered API key |
-| `registration` | Free after account sign-up |
-| `paid` | Commercial subscription required |
+Schemas live in `schema/`: `provider.schema.json` (providers, services, layers),
+`source.schema.json` (harvest sources), `status.schema.json` (uptime history).

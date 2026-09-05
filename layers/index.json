@@ -531,5 +531,29 @@
       "usgs-earthquakes-month-m45": "world/styles/usgs-earthquakes-month-m45.json",
       "usgs-earthquakes-week-significant": "world/styles/usgs-earthquakes-week-significant.json"
     }
+  },
+  {
+    "path": "../harvested/world/europe/netherlands/pdok.json",
+    "region": "world/europe/netherlands",
+    "harvested": true,
+    "providerId": "pdok",
+    "providerName": "PDOK",
+    "access": "free",
+    "categories": [],
+    "layerCount": 1822,
+    "serviceCount": 232,
+    "requiresKey": false
+  },
+  {
+    "path": "../harvested/world/europe/netherlands/rivm.json",
+    "region": "world/europe/netherlands",
+    "harvested": true,
+    "providerId": "rivm",
+    "providerName": "RIVM",
+    "access": "free",
+    "categories": [],
+    "layerCount": 15,
+    "serviceCount": 1,
+    "requiresKey": false
   }
 ]

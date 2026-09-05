@@ -1,0 +1,18 @@
+{
+  "id": "rivm-geoserver",
+  "title": "RIVM GeoServer WMS",
+  "type": "wms-capabilities",
+  "url": "https://data.rivm.nl/geo/dmg/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities",
+  "note": "Environmental and public-health themes. Read straight from the service's own capabilities document, so it stays current without anyone maintaining a list.",
+  "provider": {
+    "id": "rivm",
+    "name": "RIVM",
+    "url": "https://www.rivm.nl",
+    "license": "CC-BY-4.0",
+    "access": "free",
+    "operator": { "type": "government", "country": "NL" }
+  },
+  "region": "world/europe/netherlands",
+  "include": { "crs": "EPSG:3857" },
+  "enabled": true
+}

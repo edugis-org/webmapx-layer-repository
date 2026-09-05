@@ -17,6 +17,7 @@ import { layerCount, services, allLayers } from '../lib/catalog.mjs';
 
 const ROOT = resolve(fileURLToPath(import.meta.url), '../../');
 const LAYERS_DIR = join(ROOT, 'layers');
+const HARVESTED_DIR = join(ROOT, 'harvested');
 
 function providerJsonFiles(dir) {
     // Recursive — used when expanding a $ref directory; skips nested $ref link files
@@ -69,13 +70,16 @@ function findLayerStyles(file, providerId) {
     return map;
 }
 
-function indexEntry(file, region, refSource) {
+function indexEntry(file, region, refSource, harvested = false) {
     const raw = JSON.parse(readFileSync(file, 'utf8'));
     const providerId = raw.provider?.id;
     const layerStyles = providerId ? findLayerStyles(file, providerId) : {};
     return {
-        path: relative(LAYERS_DIR, file),
+        path: harvested
+            ? `../harvested/${relative(HARVESTED_DIR, file)}`   // gitignored build output
+            : relative(LAYERS_DIR, file),
         region,
+        ...(harvested ? { harvested: true } : {}),
         providerId,
         providerName: raw.provider?.name,
         access: raw.provider?.access,
@@ -116,6 +120,20 @@ for (const file of files) {
     } catch (e) {
         console.warn(`⚠️  Skipped ${rel}: ${e.message}`);
     }
+}
+
+// harvested/ is produced by `npm run harvest` and is not in git. It is indexed
+// when present so the site can serve it, and simply absent when it is not.
+if (existsSync(HARVESTED_DIR)) {
+    for (const file of providerJsonFiles(HARVESTED_DIR)) {
+        const rel = relative(HARVESTED_DIR, file);
+        const region = rel.split('/').slice(0, -1).join('/') || 'world';
+        try { index.push(indexEntry(file, region, null, true)); }
+        catch (e) { console.warn(`⚠️  harvested/${rel}: ${e.message}`); }
+    }
+    console.log(`⛏  included ${index.filter(e => e.harvested).length} harvested provider file(s)`);
+} else {
+    console.log('ℹ️  no harvested/ directory — run: npm run harvest');
 }
 
 const outPath = join(LAYERS_DIR, 'index.json');

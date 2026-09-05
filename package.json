@@ -5,11 +5,14 @@
   "type": "module",
   "scripts": {
     "serve": "npx serve . -p 5200",
+    "harvest": "node scripts/harvest.mjs",
     "build-index": "node scripts/build-index.mjs",
+    "build": "npm run harvest && npm run build-index",
     "test-layers": "node scripts/test-layers.mjs",
     "test-layers:dry": "node scripts/test-layers.mjs --dry-run",
     "validate-layers": "node scripts/validate-layers.mjs",
-    "ci": "node scripts/build-index.mjs && node scripts/validate-layers.mjs && node scripts/test-layers.mjs"
+    "migrate-services": "node scripts/migrate-services.mjs",
+    "ci": "npm run build && node scripts/validate-layers.mjs && node scripts/test-layers.mjs"
   },
   "keywords": [
     "webmapx",
@@ -21,5 +24,8 @@
   "devDependencies": {
     "ajv": "^8.20.0",
     "ajv-formats": "^3.0.1"
+  },
+  "dependencies": {
+    "fast-xml-parser": "^5.11.1"
   }
 }

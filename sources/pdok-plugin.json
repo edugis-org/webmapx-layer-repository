@@ -1,0 +1,22 @@
+{
+  "id": "pdok-plugin",
+  "title": "PDOK services, via the QGIS PDOK Services Plugin",
+  "type": "pdok-plugin-list",
+  "url": "https://raw.githubusercontent.com/opengeogroep/pdokservicesplugin/master/pdokservicesplugin/resources/layers-pdok.json",
+  "maintainer": "Richard Duivenvoorde / OpenGeoGroep",
+  "note": "The plugin already scans PDOK for services and their metadata, so harvesting its output avoids re-walking every PDOK capabilities document. Layer, service and dataset metadata identifiers are carried through, so entries can be traced back to the national catalogue.",
+  "provider": {
+    "id": "pdok",
+    "name": "PDOK",
+    "url": "https://www.pdok.nl",
+    "license": "CC-BY-4.0",
+    "access": "free",
+    "operator": { "type": "government", "country": "NL" }
+  },
+  "region": "world/europe/netherlands",
+  "include": {
+    "serviceTypes": ["wms", "wmts", "api tiles"],
+    "crs": "EPSG:3857"
+  },
+  "enabled": true
+}
