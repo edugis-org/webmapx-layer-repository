@@ -21,15 +21,28 @@
 
     .layout { display: grid; grid-template-columns: 260px 1fr; min-height: calc(100vh - 48px); }
 
-    aside { background: #fff; border-right: 1px solid #e0e0e0; padding: 12px 0; overflow-y: auto; }
-    .tree-node { padding: 4px 16px; cursor: pointer; font-size: 0.85rem; display: flex; align-items: center; gap: 6px; }
+    aside { background: #fff; border-right: 1px solid #e0e0e0; padding: 8px 0; overflow-y: auto; }
+    .region-node { padding: 5px 16px; cursor: pointer; font-size: 0.85rem; display: flex; align-items: center; gap: 6px; user-select: none; }
+    .region-node:hover { background: #f0f4ff; }
+    .region-node.selected { background: #e8f0fe; font-weight: 600; }
+    .region-node .count { margin-left: auto; background: #e0e0e0; border-radius: 10px; padding: 1px 7px; font-size: 0.72rem; color: #555; }
+    .region-node .arrow { font-size: 0.65rem; width: 12px; color: #888; }
+    .tree-node { padding: 4px 16px; cursor: pointer; font-size: 0.82rem; display: flex; align-items: center; gap: 6px; }
     .tree-node:hover { background: #f0f4ff; }
     .tree-node.selected { background: #e8f0fe; font-weight: 600; }
-    .tree-node .badge { margin-left: auto; background: #e0e0e0; border-radius: 10px; padding: 1px 7px; font-size: 0.75rem; }
+    .tree-node .badge { margin-left: auto; background: #e0e0e0; border-radius: 10px; padding: 1px 7px; font-size: 0.72rem; }
     .tree-node .badge.free { background: #d4edda; color: #155724; }
     .tree-node .badge.api-key { background: #fff3cd; color: #856404; }
     .tree-node .badge.paid { background: #f8d7da; color: #721c24; }
-    .tree-section { padding: 8px 16px 4px; font-size: 0.7rem; font-weight: 700; color: #666; text-transform: uppercase; letter-spacing: 0.05em; }
+    .region-children { display: none; }
+    .region-children.open { display: block; }
+    /* provider card grid in main */
+    .provider-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; margin-top: 16px; }
+    .provider-card { background: #fff; border: 1px solid #e0e0e0; border-radius: 6px; padding: 14px; cursor: pointer; transition: box-shadow .15s; }
+    .provider-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.12); border-color: #0f62fe; }
+    .provider-card h3 { font-size: 0.95rem; margin: 0 0 4px; }
+    .provider-card .card-meta { font-size: 0.75rem; color: #666; margin-bottom: 6px; }
+    .provider-card .card-desc { font-size: 0.78rem; color: #444; line-height: 1.4; }
 
     main { padding: 24px; overflow-y: auto; }
     .empty { color: #666; font-size: 0.95rem; padding: 40px 0; }
@@ -67,9 +80,11 @@
     .dialog-header { padding: 16px 20px; border-bottom: 1px solid #e0e0e0; display: flex; align-items: center; gap: 8px; }
     .dialog-header h3 { flex: 1; font-size: 1rem; }
     .dialog-header button { border: none; background: none; font-size: 1.2rem; cursor: pointer; color: #555; }
-    .dialog-tabs { display: flex; gap: 0; border-bottom: 1px solid #e0e0e0; }
+    .dialog-tabs { display: flex; align-items: center; gap: 0; border-bottom: 1px solid #e0e0e0; }
     .dialog-tab { padding: 8px 18px; font-size: 0.85rem; cursor: pointer; border-bottom: 2px solid transparent; }
     .dialog-tab.active { border-bottom-color: #0f62fe; font-weight: 600; }
+    #style-selector { display: none; margin-left: auto; padding: 0 12px; font-size: 0.82rem; color: #555; }
+    #style-selector select { font-size: 0.82rem; margin-left: 4px; }
     .tab-panel { display: none; }
     .tab-panel.active { display: block; }
     pre { background: #1e1e1e; color: #d4d4d4; padding: 16px 20px; font-size: 0.8rem; overflow: auto; max-height: 55vh; }
@@ -102,6 +117,7 @@
   <div class="dialog-tabs">
     <div class="dialog-tab active" onclick="switchTab('config')">Config</div>
     <div class="dialog-tab" onclick="switchTab('preview')" id="tab-preview">Preview</div>
+    <div id="style-selector">Style: <select id="style-select" onchange="applySelectedStyle()"></select></div>
   </div>
   <div class="tab-panel active" id="panel-config">
     <pre id="dialog-code"></pre>
@@ -114,11 +130,14 @@
   </div>
 </dialog>
 
-<script>
+<script type="module">
+import { resolveTimeDeep, hasTimeToken, resolveTimeValue } from './lib/time.mjs';
 const LAYERS_BASE = './layers';
 let apiKeys = {};
 let activeConfig = null;
 let previewMap = null;
+let activeLayerStyles = null; // array of {id, title, layer} from styles file
+let currentIndexEntry = null; // index entry for current provider
 
 // Load apikeys.json (optional — only present in editor/local environment)
 async function loadApiKeys() {
@@ -141,6 +160,13 @@ async function loadApiKeys() {
 
 function substituteKeys(str) {
   return str.replace(/\{key-([^}]+)\}/g, (m, name) => apiKeys[name] ?? m);
+}
+
+// {time} is not a MapLibre token — the consumer resolves it. Do it at the same
+// point as key substitution so the preview and the copied config agree.
+function resolveConfig(layer) {
+  const cfg = substituteKeysDeep(layer.webmapxConfig);
+  return layer.time ? resolveTimeDeep(cfg, layer.time) : cfg;
 }
 
 function substituteKeysDeep(obj) {
@@ -191,6 +217,7 @@ async function loadProvider(path) {
 let allIndex = [];
 let currentProvider = null;
 let currentPath = null;
+let currentRegion = null;
 
 async function init() {
   await loadApiKeys();
@@ -202,24 +229,106 @@ async function init() {
     return;
   }
   renderSidebar(allIndex);
+  // auto-select and open World
+  const worldNode = document.querySelector('[data-region="world"]');
+  if (worldNode) toggleRegion(worldNode, 'world');
+}
+
+// Build nested region tree: { name, path, children: [], entries: [] }
+function buildRegionTree(index) {
+  const primary = index.filter(e => !e.linkedFrom);
+  const tree = { name: 'root', path: '', children: [], entries: [] };
+  for (const entry of primary) {
+    const parts = (entry.region || 'world').split('/');
+    let node = tree;
+    let builtPath = '';
+    for (const part of parts) {
+      builtPath = builtPath ? `${builtPath}/${part}` : part;
+      let child = node.children.find(c => c.name === part);
+      if (!child) {
+        child = { name: part, path: builtPath, children: [], entries: [] };
+        node.children.push(child);
+      }
+      node = child;
+    }
+    node.entries.push(entry);
+  }
+  return tree;
+}
+
+function regionLabel(name) {
+  const labels = { world: '🌍 World', europe: '🗺️ Europe', netherlands: '🇳🇱 Netherlands',
+    germany: '🇩🇪 Germany', eu: '🇪🇺 EU', france: '🇫🇷 France', uk: '🇬🇧 United Kingdom' };
+  return labels[name] ?? (name.charAt(0).toUpperCase() + name.slice(1));
+}
+
+function countEntries(node) {
+  return node.entries.length + node.children.reduce((s, c) => s + countEntries(c), 0);
+}
+
+function renderRegionNode(node, depth = 0) {
+  const indent = depth * 14;
+  const hasChildren = node.children.length > 0;
+  const total = countEntries(node);
+  return `
+    <div class="region-node" style="padding-left:${16 + indent}px" data-region="${node.path}" onclick="toggleRegion(this,'${node.path}')">
+      <span class="arrow">${hasChildren ? '▶' : ''}</span>
+      <span>${regionLabel(node.name)}</span>
+      <span class="count">${total}</span>
+    </div>
+    <div class="region-children" id="rc-${node.path.replace(/\//g,'-')}">
+      ${node.children.map(c => renderRegionNode(c, depth + 1)).join('')}
+    </div>`;
 }
 
 function renderSidebar(index) {
-  const byRegion = {};
-  for (const entry of index) {
-    const r = entry.region || 'world';
-    if (!byRegion[r]) byRegion[r] = [];
-    byRegion[r].push(entry);
+  const tree = buildRegionTree(index);
+  document.getElementById('sidebar').innerHTML =
+    tree.children.map(c => renderRegionNode(c, 0)).join('');
+}
+
+function toggleRegion(el, region) {
+  const childBox = document.getElementById('rc-' + region.replace(/\//g, '-'));
+  const arrow = el.querySelector('.arrow');
+  if (childBox?.children.length) {
+    const open = childBox.classList.toggle('open');
+    if (arrow) arrow.textContent = open ? '▼' : '▶';
   }
-  document.getElementById('sidebar').innerHTML = Object.entries(byRegion).map(([region, list]) => `
-    <div class="tree-section">${region}</div>
-    ${list.map(e => `
-      <div class="tree-node" data-id="${e.providerId}" onclick="selectProvider('${e.path}', '${e.providerId}')">
-        <span>${e.providerName}</span>
-        <span class="badge ${e.access}">${e.access}</span>
-      </div>
-    `).join('')}
-  `).join('');
+  document.querySelectorAll('.region-node').forEach(n => n.classList.remove('selected'));
+  el.classList.add('selected');
+  selectRegion(region);
+}
+
+function selectRegion(region) {
+  currentRegion = region;
+  currentProvider = null;
+  currentPath = null;
+  const entries = allIndex.filter(e => e.region === region && !e.linkedFrom);
+  if (entries.length === 0) {
+    document.getElementById('main').innerHTML = `<p class="empty">No providers for this region yet.</p>`;
+    return;
+  }
+  renderProviderGrid(region, entries);
+}
+
+function renderProviderGrid(region, entries) {
+  const label = region.split('/').map(regionLabel).join(' › ');
+  document.getElementById('main').innerHTML = `
+    <h2 style="margin-bottom:4px">${label}</h2>
+    <p style="color:#888;font-size:0.82rem;margin-bottom:16px">${entries.length} provider${entries.length !== 1 ? 's' : ''}</p>
+    <div class="provider-grid">
+      ${entries.map(e => `
+        <div class="provider-card" onclick="selectProvider('${e.path}', '${e.providerId}')">
+          <h3>${e.providerName}</h3>
+          <div class="card-meta">
+            <span class="chip ${e.access}" style="font-size:0.7rem;padding:1px 7px">${e.access}</span>
+            ${e.layerCount} layer${e.layerCount !== 1 ? 's' : ''}
+            ${e.requiresKey ? ' · 🔑' : ''}
+          </div>
+          <div class="card-desc">${(e.categories ?? []).join(', ')}</div>
+        </div>
+      `).join('')}
+    </div>`;
 }
 
 async function selectProvider(path, id) {
@@ -228,14 +337,21 @@ async function selectProvider(path, id) {
 
   currentProvider = await loadProvider(path);
   currentPath = path;
-  console.log(`Loaded ${path}: ${currentProvider.layers?.length} layers`, currentProvider.layers?.map(l=>l.id));
+  currentIndexEntry = allIndex.find(e => e.path === path) ?? null;
   renderMain(currentProvider);
 }
 
 function renderMain(data) {
   const { provider, layers } = data;
   const cats = (provider.categories ?? []).map(c => `<span class="chip">${c}</span>`).join('');
-  document.getElementById('main').innerHTML = `
+  const breadcrumb = currentRegion
+    ? `<p style="font-size:0.8rem;color:#888;margin-bottom:12px">
+        <a href="#" onclick="selectRegion('${currentRegion}');return false" style="color:#0f62fe">
+          ← ${currentRegion.split('/').map(regionLabel).join(' › ')}
+        </a>
+      </p>`
+    : '';
+  document.getElementById('main').innerHTML = breadcrumb + `
     <div class="provider-header">
       <div>
         <h2>${provider.name}</h2>
@@ -248,6 +364,7 @@ function renderMain(data) {
       </div>
     </div>
     ${provider.abstract ? `<p class="abstract">${provider.abstract}</p>` : ''}
+    ${provider.note ? `<p style="font-size:0.82rem;color:#856404;background:#fff3cd;border-radius:4px;padding:6px 10px;margin-bottom:8px">ℹ️ ${provider.note}</p>` : ''}
     <p style="font-size:0.8rem;color:#888;margin-bottom:8px">
       ${(layers ?? []).length} layers —
       <a href="${LAYERS_BASE}/${currentPath}" target="_blank">View raw JSON ↗</a>
@@ -273,7 +390,7 @@ function renderMain(data) {
               ${l.lastChecked ? `<br><span style="color:#888;font-size:0.75rem">${l.lastChecked}</span>` : ''}
             </td>
             <td>${needsKey
-              ? `<span class="key-badge${hasKey ? ' have-key' : ''}">${hasKey ? '🔑 ready' : 'API key'}</span>`
+              ? `<span class="key-badge${hasKey ? ' have-key' : ''}">${hasKey ? '🔑 ready' : (provider.apiKeyUrl ? `<a href="${provider.apiKeyUrl}" target="_blank" style="color:inherit">API key ↗</a>` : 'API key')}</span>`
               : '—'}</td>
             <td>
               ${l.webmapxConfig ? `
@@ -294,20 +411,53 @@ function getLayer(index) {
 
 function showConfig(index) {
   const layer = getLayer(index);
-  activeConfig = substituteKeysDeep(layer.webmapxConfig);
+  activeConfig = resolveConfig(layer);
   document.getElementById('dialog-title').textContent = layer.title;
   document.getElementById('dialog-code').textContent = JSON.stringify(activeConfig, null, 2);
   switchTab('config');
   document.getElementById('layer-dialog').showModal();
 }
 
-function showPreview(index) {
+async function showPreview(index) {
   const layer = getLayer(index);
-  activeConfig = substituteKeysDeep(layer.webmapxConfig);
+  activeConfig = resolveConfig(layer);
   document.getElementById('dialog-title').textContent = layer.title;
   document.getElementById('dialog-code').textContent = JSON.stringify(activeConfig, null, 2);
   switchTab('preview');
   document.getElementById('layer-dialog').showModal();
+
+  // Load styles file if available
+  activeLayerStyles = null;
+  const stylesPath = currentIndexEntry?.layerStyles?.[layer.id];
+  const styleSelector = document.getElementById('style-selector');
+  const styleSelect = document.getElementById('style-select');
+  if (stylesPath) {
+    try {
+      const res = await fetch(`${LAYERS_BASE}/${stylesPath}`, { cache: 'no-store' });
+      if (res.ok) {
+        const sf = await res.json();
+        activeLayerStyles = sf.styles ?? null;
+      }
+    } catch { /* styles optional */ }
+  }
+  if (activeLayerStyles?.length > 1) {
+    styleSelect.innerHTML = activeLayerStyles.map(s =>
+      `<option value="${s.id}">${s.title}</option>`).join('');
+    styleSelector.style.display = 'flex';
+  } else {
+    styleSelector.style.display = 'none';
+  }
+
+  initPreviewMap(activeConfig);
+}
+
+function applySelectedStyle() {
+  if (!activeLayerStyles || !activeConfig) return;
+  const id = document.getElementById('style-select').value;
+  const style = activeLayerStyles.find(s => s.id === id);
+  if (!style) return;
+  activeConfig = { ...activeConfig, layer: { ...style.layer, id: activeConfig.layer?.id } };
+  document.getElementById('dialog-code').textContent = JSON.stringify(activeConfig, null, 2);
   initPreviewMap(activeConfig);
 }
 
@@ -334,18 +484,27 @@ function initPreviewMap(cfg) {
     const source = cfg.source ?? {};
     const layerDef = cfg.layer ?? {};
     const sourceId = layerDef.id ?? 'preview-source';
+    const isOverlay = source.type === 'geojson' || layerDef.metadata?.legendRole === 'overlay';
+    const baseLayers = isOverlay ? [
+      { id: '_bg', type: 'background', paint: { 'background-color': '#e8eaed' } },
+    ] : [];
     style = {
       version: 8,
+      glyphs: 'https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf',
       sources: { [sourceId]: source },
-      layers: [{ ...layerDef, source: sourceId }],
+      layers: [...baseLayers, { ...layerDef, source: sourceId }],
     };
   }
 
+  const isGlobal = cfg.source?.type === 'geojson';
+  const meta = cfg.layer?.metadata ?? cfg.metadata ?? {};
+  const center = meta.previewCenter ?? (isGlobal ? [10, 20] : [5.3, 52.1]);
+  const zoom = meta.previewZoom ?? (isGlobal ? 1 : 4);
   previewMap = new maplibregl.Map({
     container: 'map-preview',
     style,
-    center: [5.3, 52.1],
-    zoom: 4,
+    center,
+    zoom,
   });
 }
 
@@ -367,6 +526,13 @@ document.getElementById('search').addEventListener('input', e => {
       )
     : allIndex;
   renderSidebar(filtered);
+});
+
+// Inline onclick= handlers resolve against the global scope, which a module does
+// not share. Bind them explicitly.
+Object.assign(window, {
+  selectProvider, selectRegion, toggleRegion, showConfig, showPreview,
+  switchTab, copyConfig,
 });
 
 init();
