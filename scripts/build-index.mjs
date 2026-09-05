@@ -10,7 +10,7 @@
  * Usage: node scripts/build-index.mjs
  */
 
-import { readFileSync, writeFileSync, readdirSync, statSync } from 'fs';
+import { readFileSync, writeFileSync, readdirSync, statSync, existsSync } from 'fs';
 import { join, resolve, relative } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -41,6 +41,7 @@ function allJsonFiles(dir) {
         if (entry === 'index.json') continue;
         const full = join(dir, entry);
         if (statSync(full).isDirectory()) {
+            if (entry === 'styles') continue; // reserved — not a region
             results.push(...allJsonFiles(full));
         } else if (entry.endsWith('.json')) {
             results.push(full);
@@ -49,17 +50,38 @@ function allJsonFiles(dir) {
     return results;
 }
 
+function findLayerStyles(file, providerId) {
+    // Look in {same-dir}/styles/{providerId}-{layerId}.json
+    const stylesDir = join(file, '..', 'styles');
+    if (!existsSync(stylesDir)) return {};
+    const prefix = `${providerId}-`;
+    const styleFiles = readdirSync(stylesDir).filter(f => f.startsWith(prefix) && f.endsWith('.json'));
+    const map = {};
+    for (const sf of styleFiles) {
+        try {
+            const raw = JSON.parse(readFileSync(join(stylesDir, sf), 'utf8'));
+            if (raw.layerId) {
+                map[raw.layerId] = relative(LAYERS_DIR, join(stylesDir, sf));
+            }
+        } catch { /* skip */ }
+    }
+    return map;
+}
+
 function indexEntry(file, region, refSource) {
     const raw = JSON.parse(readFileSync(file, 'utf8'));
+    const providerId = raw.provider?.id;
+    const layerStyles = providerId ? findLayerStyles(file, providerId) : {};
     return {
         path: relative(LAYERS_DIR, file),
         region,
-        providerId: raw.provider?.id,
+        providerId,
         providerName: raw.provider?.name,
         access: raw.provider?.access,
         categories: raw.provider?.categories ?? [],
         layerCount: raw.layers?.length ?? 0,
         requiresKey: (raw.layers ?? []).some(l => l.requiresKey === true),
+        ...(Object.keys(layerStyles).length ? { layerStyles } : {}),
         ...(refSource ? { linkedFrom: refSource } : {}),
     };
 }

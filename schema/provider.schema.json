@@ -20,13 +20,15 @@
           "description": "free = no auth needed; api-key = free with key; paid = commercial; registration = free after sign-up"
         },
         "apiKeyUrl":  { "type": "string", "format": "uri", "description": "Where to obtain an API key" },
+        "setupUrl":   { "type": "string", "format": "uri", "description": "Setup or dashboard URL for domain/property registration" },
+        "note":       { "type": "string", "description": "Free-text setup note shown in the UI, e.g. authentication instructions" },
         "license":    { "type": "string", "description": "Data license, e.g. ODbL, CC-BY-4.0, proprietary" },
         "categories": {
           "type": "array",
           "items": {
             "type": "string",
             "enum": [
-              "general-purpose", "street-maps", "satellite", "elevation", "terrain",
+              "general-purpose", "street-maps", "satellite", "elevation", "terrain", "artistic",
               "weather", "climate", "population", "boundaries", "transport",
               "hydrology", "geology", "tectonic", "environment", "land-use",
               "historical", "realtime", "indoor", "maritime", "aviation"
@@ -113,7 +115,9 @@
                   "properties": {
                     "title":      { "type": "string" },
                     "abstract":   { "type": "string" },
-                    "legendRole": { "type": "string", "enum": ["background", "overlay"] }
+                    "legendRole": { "type": "string", "enum": ["background", "overlay"] },
+                    "previewCenter": { "type": "array", "items": { "type": "number" }, "minItems": 2, "maxItems": 2, "description": "[lng, lat] for preview map center" },
+                    "previewZoom": { "type": "number", "description": "Zoom level for preview map" }
                   }
                 }
               }

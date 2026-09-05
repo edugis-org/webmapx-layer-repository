@@ -30,6 +30,7 @@ function allProviderFiles(dir) {
         if (entry === 'index.json') continue;
         const full = join(dir, entry);
         if (statSync(full).isDirectory()) {
+            if (entry === 'styles') continue; // reserved — skip
             results.push(...allProviderFiles(full));
         } else if (entry.endsWith('.json')) {
             try {
