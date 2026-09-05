@@ -6,8 +6,13 @@
     "abstract": "CARTO basemap styles — Voyager, Light Matter, and Dark Matter. Free CDN tiles, no key required.",
     "access": "free",
     "license": "CC BY 3.0 / CARTO",
-    "categories": ["general-purpose", "street-maps"],
-    "regions": ["world"],
+    "categories": [
+      "general-purpose",
+      "street-maps"
+    ],
+    "regions": [
+      "world"
+    ],
     "status": "active"
   },
   "layers": [
@@ -34,9 +39,15 @@
         "layer": {
           "id": "carto-voyager",
           "type": "raster",
-          "metadata": { "title": "CARTO Voyager", "abstract": "Colorful general-purpose basemap. Source: CARTO.", "legendRole": "background" }
+          "metadata": {
+            "title": "CARTO Voyager",
+            "abstract": "Colorful general-purpose basemap. Source: CARTO.",
+            "legendRole": "background"
+          }
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "carto-light-matter",
@@ -61,9 +72,15 @@
         "layer": {
           "id": "carto-light-matter",
           "type": "raster",
-          "metadata": { "title": "CARTO Light Matter", "abstract": "Minimal light basemap for overlays. Source: CARTO.", "legendRole": "background" }
+          "metadata": {
+            "title": "CARTO Light Matter",
+            "abstract": "Minimal light basemap for overlays. Source: CARTO.",
+            "legendRole": "background"
+          }
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "carto-light-matter-no-labels",
@@ -88,9 +105,15 @@
         "layer": {
           "id": "carto-light-matter-no-labels",
           "type": "raster",
-          "metadata": { "title": "CARTO Light Matter (no labels)", "abstract": "Light basemap without labels. Source: CARTO.", "legendRole": "background" }
+          "metadata": {
+            "title": "CARTO Light Matter (no labels)",
+            "abstract": "Light basemap without labels. Source: CARTO.",
+            "legendRole": "background"
+          }
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "carto-dark-matter",
@@ -115,9 +138,15 @@
         "layer": {
           "id": "carto-dark-matter",
           "type": "raster",
-          "metadata": { "title": "CARTO Dark Matter", "abstract": "Dark basemap for bright overlays. Source: CARTO.", "legendRole": "background" }
+          "metadata": {
+            "title": "CARTO Dark Matter",
+            "abstract": "Dark basemap for bright overlays. Source: CARTO.",
+            "legendRole": "background"
+          }
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "carto-dark-matter-no-labels",
@@ -142,9 +171,15 @@
         "layer": {
           "id": "carto-dark-matter-no-labels",
           "type": "raster",
-          "metadata": { "title": "CARTO Dark Matter (no labels)", "abstract": "Dark basemap without labels. Source: CARTO.", "legendRole": "background" }
+          "metadata": {
+            "title": "CARTO Dark Matter (no labels)",
+            "abstract": "Dark basemap without labels. Source: CARTO.",
+            "legendRole": "background"
+          }
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     }
   ]
 }

@@ -35,7 +35,9 @@
           "abstract": "Full Liberty basemap style. Source: OpenFreeMap / OpenStreetMap.",
           "legendRole": "background"
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "ofm-bright",
@@ -55,7 +57,9 @@
           "abstract": "Full Bright basemap style. Source: OpenFreeMap / OpenStreetMap.",
           "legendRole": "background"
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "ofm-positron",
@@ -75,14 +79,16 @@
           "abstract": "Full Positron basemap style. Source: OpenFreeMap / OpenStreetMap.",
           "legendRole": "background"
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "ofm-roads",
       "title": "Roads",
       "abstract": "Road network from OpenFreeMap vector tiles.",
       "type": "vector",
-      "status": "unknown",
+      "status": "active",
       "requiresKey": false,
       "webmapxConfig": {
         "source": {
@@ -105,14 +111,15 @@
           }
         }
       },
-      "lastChecked": "2026-08-31"
+      "lastChecked": "2026-09-05",
+      "availability": "up"
     },
     {
       "id": "ofm-water",
       "title": "Water",
       "abstract": "Water bodies from OpenFreeMap vector tiles.",
       "type": "vector",
-      "status": "unknown",
+      "status": "active",
       "requiresKey": false,
       "webmapxConfig": {
         "source": {
@@ -135,14 +142,15 @@
           }
         }
       },
-      "lastChecked": "2026-08-31"
+      "lastChecked": "2026-09-05",
+      "availability": "up"
     },
     {
       "id": "ofm-boundaries",
       "title": "Country Boundaries",
       "abstract": "Administrative boundaries (country level) from OpenFreeMap vector tiles.",
       "type": "vector",
-      "status": "unknown",
+      "status": "active",
       "requiresKey": false,
       "webmapxConfig": {
         "source": {
@@ -174,14 +182,15 @@
           }
         }
       },
-      "lastChecked": "2026-08-31"
+      "lastChecked": "2026-09-05",
+      "availability": "up"
     },
     {
       "id": "ofm-buildings",
       "title": "Buildings",
       "abstract": "Building footprints from OpenFreeMap vector tiles.",
       "type": "vector",
-      "status": "unknown",
+      "status": "active",
       "requiresKey": false,
       "webmapxConfig": {
         "source": {
@@ -206,7 +215,8 @@
           }
         }
       },
-      "lastChecked": "2026-08-31"
+      "lastChecked": "2026-09-05",
+      "availability": "up"
     }
   ]
 }

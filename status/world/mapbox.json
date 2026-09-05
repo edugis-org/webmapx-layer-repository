@@ -1,0 +1,132 @@
+{
+  "provider": "mapbox",
+  "source": "world/mapbox.json",
+  "layers": {
+    "mapbox-streets": {
+      "checks": [
+        {
+          "date": "2026-09-05",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 67
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-05",
+        "lastChecked": "2026-09-05",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-05"
+      }
+    },
+    "mapbox-satellite": {
+      "checks": [
+        {
+          "date": "2026-09-05",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 52
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-05",
+        "lastChecked": "2026-09-05",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-05"
+      }
+    },
+    "mapbox-satellite-streets": {
+      "checks": [
+        {
+          "date": "2026-09-05",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 11
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-05",
+        "lastChecked": "2026-09-05",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-05"
+      }
+    },
+    "mapbox-outdoors": {
+      "checks": [
+        {
+          "date": "2026-09-05",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 14
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-05",
+        "lastChecked": "2026-09-05",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-05"
+      }
+    },
+    "mapbox-light": {
+      "checks": [
+        {
+          "date": "2026-09-05",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 14
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-05",
+        "lastChecked": "2026-09-05",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-05"
+      }
+    },
+    "mapbox-dark": {
+      "checks": [
+        {
+          "date": "2026-09-05",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 14
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-05",
+        "lastChecked": "2026-09-05",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-05"
+      }
+    }
+  }
+}

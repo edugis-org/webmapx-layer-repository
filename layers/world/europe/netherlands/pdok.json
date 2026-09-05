@@ -6,8 +6,15 @@
     "abstract": "Publieke Dienstverlening Op de Kaart — Dutch national geospatial infrastructure. Open tile services for topography, aerial photography, elevation, and cadastral data.",
     "access": "free",
     "license": "CC0 / Open Data",
-    "categories": ["general-purpose", "satellite", "elevation", "terrain"],
-    "regions": ["netherlands"],
+    "categories": [
+      "general-purpose",
+      "satellite",
+      "elevation",
+      "terrain"
+    ],
+    "regions": [
+      "netherlands"
+    ],
     "status": "active"
   },
   "layers": [
@@ -21,7 +28,9 @@
       "webmapxConfig": {
         "source": {
           "type": "raster",
-          "tiles": ["https://service.pdok.nl/brt/achtergrondkaart/wmts/v2_0/standaard/EPSG:3857/{z}/{x}/{y}.png"],
+          "tiles": [
+            "https://service.pdok.nl/brt/achtergrondkaart/wmts/v2_0/standaard/EPSG:3857/{z}/{x}/{y}.png"
+          ],
           "tileSize": 256,
           "maxzoom": 19,
           "attribution": "<a href='https://www.pdok.nl'>PDOK</a> / Kadaster"
@@ -33,11 +42,16 @@
             "title": "BRT Achtergrondkaart Standaard",
             "abstract": "Dutch topographic background map. Source: PDOK / Kadaster.",
             "legendRole": "background",
-            "previewCenter": [5.3, 52.1],
+            "previewCenter": [
+              5.3,
+              52.1
+            ],
             "previewZoom": 8
           }
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "pdok-brt-grijs",
@@ -49,7 +63,9 @@
       "webmapxConfig": {
         "source": {
           "type": "raster",
-          "tiles": ["https://service.pdok.nl/brt/achtergrondkaart/wmts/v2_0/grijs/EPSG:3857/{z}/{x}/{y}.png"],
+          "tiles": [
+            "https://service.pdok.nl/brt/achtergrondkaart/wmts/v2_0/grijs/EPSG:3857/{z}/{x}/{y}.png"
+          ],
           "tileSize": 256,
           "maxzoom": 19,
           "attribution": "<a href='https://www.pdok.nl'>PDOK</a> / Kadaster"
@@ -61,11 +77,16 @@
             "title": "BRT Achtergrondkaart Grijs",
             "abstract": "Grey topographic background map for overlays. Source: PDOK / Kadaster.",
             "legendRole": "background",
-            "previewCenter": [5.3, 52.1],
+            "previewCenter": [
+              5.3,
+              52.1
+            ],
             "previewZoom": 8
           }
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "pdok-brt-pastel",
@@ -77,7 +98,9 @@
       "webmapxConfig": {
         "source": {
           "type": "raster",
-          "tiles": ["https://service.pdok.nl/brt/achtergrondkaart/wmts/v2_0/pastel/EPSG:3857/{z}/{x}/{y}.png"],
+          "tiles": [
+            "https://service.pdok.nl/brt/achtergrondkaart/wmts/v2_0/pastel/EPSG:3857/{z}/{x}/{y}.png"
+          ],
           "tileSize": 256,
           "maxzoom": 19,
           "attribution": "<a href='https://www.pdok.nl'>PDOK</a> / Kadaster"
@@ -89,11 +112,16 @@
             "title": "BRT Achtergrondkaart Pastel",
             "abstract": "Pastel topographic background map. Source: PDOK / Kadaster.",
             "legendRole": "background",
-            "previewCenter": [5.3, 52.1],
+            "previewCenter": [
+              5.3,
+              52.1
+            ],
             "previewZoom": 8
           }
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "pdok-brt-water",
@@ -105,7 +133,9 @@
       "webmapxConfig": {
         "source": {
           "type": "raster",
-          "tiles": ["https://service.pdok.nl/brt/achtergrondkaart/wmts/v2_0/water/EPSG:3857/{z}/{x}/{y}.png"],
+          "tiles": [
+            "https://service.pdok.nl/brt/achtergrondkaart/wmts/v2_0/water/EPSG:3857/{z}/{x}/{y}.png"
+          ],
           "tileSize": 256,
           "maxzoom": 19,
           "attribution": "<a href='https://www.pdok.nl'>PDOK</a> / Kadaster"
@@ -117,11 +147,16 @@
             "title": "BRT Achtergrondkaart Water",
             "abstract": "Water-themed topographic map. Source: PDOK / Kadaster.",
             "legendRole": "background",
-            "previewCenter": [5.3, 52.1],
+            "previewCenter": [
+              5.3,
+              52.1
+            ],
             "previewZoom": 8
           }
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "pdok-luchtfoto-actueel",
@@ -133,7 +168,9 @@
       "webmapxConfig": {
         "source": {
           "type": "raster",
-          "tiles": ["https://service.pdok.nl/hwh/luchtfotorgb/wmts/v1_0/Actueel_orthoHR/EPSG:3857/{z}/{x}/{y}.jpeg"],
+          "tiles": [
+            "https://service.pdok.nl/hwh/luchtfotorgb/wmts/v1_0/Actueel_orthoHR/EPSG:3857/{z}/{x}/{y}.jpeg"
+          ],
           "tileSize": 256,
           "maxzoom": 19,
           "attribution": "<a href='https://www.pdok.nl'>PDOK</a> / Beeldmateriaal.nl"
@@ -145,11 +182,16 @@
             "title": "Luchtfoto Actueel HR",
             "abstract": "Current high-resolution aerial orthophoto of the Netherlands. Source: PDOK.",
             "legendRole": "background",
-            "previewCenter": [5.3, 52.1],
+            "previewCenter": [
+              5.3,
+              52.1
+            ],
             "previewZoom": 12
           }
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "pdok-luchtfoto-2023",
@@ -161,7 +203,9 @@
       "webmapxConfig": {
         "source": {
           "type": "raster",
-          "tiles": ["https://service.pdok.nl/hwh/luchtfotorgb/wmts/v1_0/2023_orthoHR/EPSG:3857/{z}/{x}/{y}.jpeg"],
+          "tiles": [
+            "https://service.pdok.nl/hwh/luchtfotorgb/wmts/v1_0/2023_orthoHR/EPSG:3857/{z}/{x}/{y}.jpeg"
+          ],
           "tileSize": 256,
           "maxzoom": 19,
           "attribution": "<a href='https://www.pdok.nl'>PDOK</a> / Beeldmateriaal.nl"
@@ -173,11 +217,16 @@
             "title": "Luchtfoto 2023",
             "abstract": "Aerial orthophoto of the Netherlands, 2023. Source: PDOK.",
             "legendRole": "background",
-            "previewCenter": [5.3, 52.1],
+            "previewCenter": [
+              5.3,
+              52.1
+            ],
             "previewZoom": 12
           }
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "pdok-ahn-dtm",
@@ -189,7 +238,9 @@
       "webmapxConfig": {
         "source": {
           "type": "raster",
-          "tiles": ["https://service.pdok.nl/rws/ahn/wms/v1_0?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&LAYERS=dtm_05m&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"],
+          "tiles": [
+            "https://service.pdok.nl/rws/ahn/wms/v1_0?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&LAYERS=dtm_05m&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
+          ],
           "tileSize": 256,
           "maxzoom": 15,
           "attribution": "<a href='https://www.pdok.nl'>PDOK</a> / RWS AHN"
@@ -201,11 +252,16 @@
             "title": "AHN4 DTM 0.5m",
             "abstract": "Ground elevation model at 0.5m. Source: PDOK / RWS AHN4.",
             "legendRole": "overlay",
-            "previewCenter": [5.3, 52.1],
+            "previewCenter": [
+              5.3,
+              52.1
+            ],
             "previewZoom": 10
           }
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "pdok-ahn-dsm",
@@ -217,7 +273,9 @@
       "webmapxConfig": {
         "source": {
           "type": "raster",
-          "tiles": ["https://service.pdok.nl/rws/ahn/wms/v1_0?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&LAYERS=dsm_05m&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"],
+          "tiles": [
+            "https://service.pdok.nl/rws/ahn/wms/v1_0?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&LAYERS=dsm_05m&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
+          ],
           "tileSize": 256,
           "maxzoom": 15,
           "attribution": "<a href='https://www.pdok.nl'>PDOK</a> / RWS AHN"
@@ -229,11 +287,16 @@
             "title": "AHN4 DSM 0.5m",
             "abstract": "Surface elevation including buildings and vegetation. Source: PDOK / RWS AHN4.",
             "legendRole": "overlay",
-            "previewCenter": [5.3, 52.1],
+            "previewCenter": [
+              5.3,
+              52.1
+            ],
             "previewZoom": 10
           }
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     }
   ]
 }

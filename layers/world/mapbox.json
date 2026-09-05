@@ -7,8 +7,15 @@
     "access": "api-key",
     "apiKeyUrl": "https://account.mapbox.com/access-tokens/",
     "license": "Mapbox Terms of Service",
-    "categories": ["general-purpose", "street-maps", "satellite", "terrain"],
-    "regions": ["world"],
+    "categories": [
+      "general-purpose",
+      "street-maps",
+      "satellite",
+      "terrain"
+    ],
+    "regions": [
+      "world"
+    ],
     "status": "active"
   },
   "layers": [
@@ -22,8 +29,14 @@
       "webmapxConfig": {
         "type": "style",
         "url": "https://api.mapbox.com/styles/v1/mapbox/streets-v12?access_token={key-mapbox}",
-        "metadata": { "title": "Mapbox Streets", "abstract": "Full Streets vector basemap. Source: Mapbox.", "legendRole": "background" }
-      }
+        "metadata": {
+          "title": "Mapbox Streets",
+          "abstract": "Full Streets vector basemap. Source: Mapbox.",
+          "legendRole": "background"
+        }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "mapbox-satellite",
@@ -35,8 +48,14 @@
       "webmapxConfig": {
         "type": "style",
         "url": "https://api.mapbox.com/styles/v1/mapbox/satellite-v9?access_token={key-mapbox}",
-        "metadata": { "title": "Mapbox Satellite", "abstract": "Satellite imagery. Source: Mapbox.", "legendRole": "background" }
-      }
+        "metadata": {
+          "title": "Mapbox Satellite",
+          "abstract": "Satellite imagery. Source: Mapbox.",
+          "legendRole": "background"
+        }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "mapbox-satellite-streets",
@@ -48,8 +67,14 @@
       "webmapxConfig": {
         "type": "style",
         "url": "https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v12?access_token={key-mapbox}",
-        "metadata": { "title": "Mapbox Satellite Streets", "abstract": "Satellite with labels. Source: Mapbox.", "legendRole": "background" }
-      }
+        "metadata": {
+          "title": "Mapbox Satellite Streets",
+          "abstract": "Satellite with labels. Source: Mapbox.",
+          "legendRole": "background"
+        }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "mapbox-outdoors",
@@ -61,8 +86,14 @@
       "webmapxConfig": {
         "type": "style",
         "url": "https://api.mapbox.com/styles/v1/mapbox/outdoors-v12?access_token={key-mapbox}",
-        "metadata": { "title": "Mapbox Outdoors", "abstract": "Terrain and hiking map. Source: Mapbox.", "legendRole": "background" }
-      }
+        "metadata": {
+          "title": "Mapbox Outdoors",
+          "abstract": "Terrain and hiking map. Source: Mapbox.",
+          "legendRole": "background"
+        }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "mapbox-light",
@@ -74,8 +105,14 @@
       "webmapxConfig": {
         "type": "style",
         "url": "https://api.mapbox.com/styles/v1/mapbox/light-v11?access_token={key-mapbox}",
-        "metadata": { "title": "Mapbox Light", "abstract": "Minimal light basemap. Source: Mapbox.", "legendRole": "background" }
-      }
+        "metadata": {
+          "title": "Mapbox Light",
+          "abstract": "Minimal light basemap. Source: Mapbox.",
+          "legendRole": "background"
+        }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "mapbox-dark",
@@ -87,8 +124,14 @@
       "webmapxConfig": {
         "type": "style",
         "url": "https://api.mapbox.com/styles/v1/mapbox/dark-v11?access_token={key-mapbox}",
-        "metadata": { "title": "Mapbox Dark", "abstract": "Minimal dark basemap. Source: Mapbox.", "legendRole": "background" }
-      }
+        "metadata": {
+          "title": "Mapbox Dark",
+          "abstract": "Minimal dark basemap. Source: Mapbox.",
+          "legendRole": "background"
+        }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     }
   ]
 }

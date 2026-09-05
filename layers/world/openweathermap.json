@@ -7,8 +7,13 @@
     "access": "api-key",
     "apiKeyUrl": "https://home.openweathermap.org/api_keys",
     "license": "Proprietary (free tier available)",
-    "categories": ["weather", "realtime"],
-    "regions": ["world"],
+    "categories": [
+      "weather",
+      "realtime"
+    ],
+    "regions": [
+      "world"
+    ],
     "status": "active"
   },
   "layers": [
@@ -22,7 +27,9 @@
       "webmapxConfig": {
         "source": {
           "type": "raster",
-          "tiles": ["https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid={key-openweathermap}"],
+          "tiles": [
+            "https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid={key-openweathermap}"
+          ],
           "tileSize": 256,
           "maxzoom": 18,
           "attribution": "<a href='https://openweathermap.org'>OpenWeatherMap</a>"
@@ -36,7 +43,9 @@
             "legendRole": "overlay"
           }
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "owm-wind",
@@ -48,7 +57,9 @@
       "webmapxConfig": {
         "source": {
           "type": "raster",
-          "tiles": ["https://tile.openweathermap.org/map/wind_new/{z}/{x}/{y}.png?appid={key-openweathermap}"],
+          "tiles": [
+            "https://tile.openweathermap.org/map/wind_new/{z}/{x}/{y}.png?appid={key-openweathermap}"
+          ],
           "tileSize": 256,
           "maxzoom": 18,
           "attribution": "<a href='https://openweathermap.org'>OpenWeatherMap</a>"
@@ -62,7 +73,9 @@
             "legendRole": "overlay"
           }
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "owm-temperature",
@@ -74,7 +87,9 @@
       "webmapxConfig": {
         "source": {
           "type": "raster",
-          "tiles": ["https://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid={key-openweathermap}"],
+          "tiles": [
+            "https://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid={key-openweathermap}"
+          ],
           "tileSize": 256,
           "maxzoom": 18,
           "attribution": "<a href='https://openweathermap.org'>OpenWeatherMap</a>"
@@ -88,7 +103,9 @@
             "legendRole": "overlay"
           }
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     }
   ]
 }

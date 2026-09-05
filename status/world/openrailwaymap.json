@@ -1,0 +1,90 @@
+{
+  "provider": "openrailwaymap",
+  "source": "world/openrailwaymap.json",
+  "layers": {
+    "openrailwaymap-standard": {
+      "checks": [
+        {
+          "date": "2026-09-05",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 90
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-05",
+        "lastChecked": "2026-09-05",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-05"
+      }
+    },
+    "openrailwaymap-maxspeed": {
+      "checks": [
+        {
+          "date": "2026-09-05",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 80
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-05",
+        "lastChecked": "2026-09-05",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-05"
+      }
+    },
+    "openrailwaymap-signals": {
+      "checks": [
+        {
+          "date": "2026-09-05",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 82
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-05",
+        "lastChecked": "2026-09-05",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-05"
+      }
+    },
+    "openrailwaymap-electrification": {
+      "checks": [
+        {
+          "date": "2026-09-05",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 88
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-05",
+        "lastChecked": "2026-09-05",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-05"
+      }
+    }
+  }
+}

@@ -8,8 +8,14 @@
     "apiKeyUrl": "https://data.marine.copernicus.eu/register",
     "note": "Register at https://data.marine.copernicus.eu/register for a free account. Use your username as the key name 'copernicus-marine-user' and password as 'copernicus-marine-pass', or use the WMS endpoint with Basic Auth configured in your environment.",
     "license": "Copernicus Marine Service Product Licence",
-    "categories": ["climate", "environment", "hydrology"],
-    "regions": ["world"],
+    "categories": [
+      "climate",
+      "environment",
+      "hydrology"
+    ],
+    "regions": [
+      "world"
+    ],
     "status": "active"
   },
   "layers": [
@@ -23,7 +29,9 @@
       "webmapxConfig": {
         "source": {
           "type": "raster",
-          "tiles": ["https://nrt.cmems-du.eu/thredds/wms/METOFFICE-GLO-SST-L4-NRT-OBS-SST-V2?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&LAYERS=analysed_sst&STYLES=boxfill/rainbow&COLORSCALERANGE=271,305&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"],
+          "tiles": [
+            "https://nrt.cmems-du.eu/thredds/wms/METOFFICE-GLO-SST-L4-NRT-OBS-SST-V2?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&LAYERS=analysed_sst&STYLES=boxfill/rainbow&COLORSCALERANGE=271,305&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
+          ],
           "tileSize": 256,
           "maxzoom": 7,
           "attribution": "<a href='https://marine.copernicus.eu'>Copernicus Marine Service</a>"
@@ -35,11 +43,16 @@
             "title": "CMEMS Sea Surface Temperature",
             "abstract": "Daily global SST (Kelvin scale 271-305K). Source: Copernicus Marine / Met Office.",
             "legendRole": "overlay",
-            "previewCenter": [0, 20],
+            "previewCenter": [
+              0,
+              20
+            ],
             "previewZoom": 2
           }
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "cmems-salinity-global",
@@ -51,7 +64,9 @@
       "webmapxConfig": {
         "source": {
           "type": "raster",
-          "tiles": ["https://nrt.cmems-du.eu/thredds/wms/global-analysis-forecast-phy-001-024?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&LAYERS=so&STYLES=boxfill/rainbow&COLORSCALERANGE=30,40&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"],
+          "tiles": [
+            "https://nrt.cmems-du.eu/thredds/wms/global-analysis-forecast-phy-001-024?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&LAYERS=so&STYLES=boxfill/rainbow&COLORSCALERANGE=30,40&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
+          ],
           "tileSize": 256,
           "maxzoom": 7,
           "attribution": "<a href='https://marine.copernicus.eu'>Copernicus Marine Service</a>"
@@ -63,11 +78,16 @@
             "title": "CMEMS Ocean Salinity",
             "abstract": "Surface salinity (PSU 30-40). Source: Copernicus Marine Service.",
             "legendRole": "overlay",
-            "previewCenter": [0, 20],
+            "previewCenter": [
+              0,
+              20
+            ],
             "previewZoom": 2
           }
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "cmems-sea-level-anomaly",
@@ -79,7 +99,9 @@
       "webmapxConfig": {
         "source": {
           "type": "raster",
-          "tiles": ["https://nrt.cmems-du.eu/thredds/wms/dataset-duacs-nrt-global-merged-allsat-phy-l4?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&LAYERS=sla&STYLES=boxfill/redblue&COLORSCALERANGE=-0.5,0.5&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"],
+          "tiles": [
+            "https://nrt.cmems-du.eu/thredds/wms/dataset-duacs-nrt-global-merged-allsat-phy-l4?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&LAYERS=sla&STYLES=boxfill/redblue&COLORSCALERANGE=-0.5,0.5&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
+          ],
           "tileSize": 256,
           "maxzoom": 7,
           "attribution": "<a href='https://marine.copernicus.eu'>Copernicus Marine Service</a>"
@@ -91,11 +113,16 @@
             "title": "CMEMS Sea Level Anomaly",
             "abstract": "Sea level deviation from mean (±0.5m). Source: Copernicus Marine / DUACS.",
             "legendRole": "overlay",
-            "previewCenter": [0, 20],
+            "previewCenter": [
+              0,
+              20
+            ],
             "previewZoom": 2
           }
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     }
   ]
 }

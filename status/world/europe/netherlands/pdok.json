@@ -1,0 +1,174 @@
+{
+  "provider": "pdok",
+  "source": "world/europe/netherlands/pdok.json",
+  "layers": {
+    "pdok-brt-standaard": {
+      "checks": [
+        {
+          "date": "2026-09-05",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 99
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-05",
+        "lastChecked": "2026-09-05",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-05"
+      }
+    },
+    "pdok-brt-grijs": {
+      "checks": [
+        {
+          "date": "2026-09-05",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 88
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-05",
+        "lastChecked": "2026-09-05",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-05"
+      }
+    },
+    "pdok-brt-pastel": {
+      "checks": [
+        {
+          "date": "2026-09-05",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 109
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-05",
+        "lastChecked": "2026-09-05",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-05"
+      }
+    },
+    "pdok-brt-water": {
+      "checks": [
+        {
+          "date": "2026-09-05",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 90
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-05",
+        "lastChecked": "2026-09-05",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-05"
+      }
+    },
+    "pdok-luchtfoto-actueel": {
+      "checks": [
+        {
+          "date": "2026-09-05",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 74
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-05",
+        "lastChecked": "2026-09-05",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-05"
+      }
+    },
+    "pdok-luchtfoto-2023": {
+      "checks": [
+        {
+          "date": "2026-09-05",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 171
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-05",
+        "lastChecked": "2026-09-05",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-05"
+      }
+    },
+    "pdok-ahn-dtm": {
+      "checks": [
+        {
+          "date": "2026-09-05",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 55
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-05",
+        "lastChecked": "2026-09-05",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-05"
+      }
+    },
+    "pdok-ahn-dsm": {
+      "checks": [
+        {
+          "date": "2026-09-05",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 56
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-05",
+        "lastChecked": "2026-09-05",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-05"
+      }
+    }
+  }
+}

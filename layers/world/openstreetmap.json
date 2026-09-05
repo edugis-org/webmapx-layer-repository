@@ -46,7 +46,8 @@
           }
         }
       },
-      "lastChecked": "2026-08-31"
+      "lastChecked": "2026-09-05",
+      "availability": "up"
     },
     {
       "id": "osm-humanitarian",
@@ -77,7 +78,8 @@
           }
         }
       },
-      "lastChecked": "2026-08-31"
+      "lastChecked": "2026-09-05",
+      "availability": "up"
     }
   ]
 }

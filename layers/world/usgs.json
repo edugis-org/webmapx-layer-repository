@@ -6,8 +6,15 @@
     "abstract": "U.S. Geological Survey open data — earthquake feeds, imagery, and scientific datasets.",
     "access": "free",
     "license": "Public Domain (U.S. Government)",
-    "categories": ["geology", "tectonic", "realtime", "environment"],
-    "regions": ["world"],
+    "categories": [
+      "geology",
+      "tectonic",
+      "realtime",
+      "environment"
+    ],
+    "regions": [
+      "world"
+    ],
     "status": "active"
   },
   "layers": [
@@ -40,7 +47,9 @@
             "legendRole": "overlay"
           }
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "usgs-earthquakes-week-significant",
@@ -71,7 +80,9 @@
             "legendRole": "overlay"
           }
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "usgs-earthquakes-month-m45",
@@ -102,7 +113,9 @@
             "legendRole": "overlay"
           }
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     }
   ]
 }

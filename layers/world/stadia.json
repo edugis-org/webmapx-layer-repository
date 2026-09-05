@@ -8,8 +8,14 @@
     "setupUrl": "https://client.stadiamaps.com/dashboard",
     "note": "Register your domain as a 'Property' at https://client.stadiamaps.com/dashboard to use these tiles without an API key.",
     "license": "CC BY 3.0 (Stamen) / Stadia Maps Terms",
-    "categories": ["general-purpose", "artistic", "terrain"],
-    "regions": ["world"],
+    "categories": [
+      "general-purpose",
+      "artistic",
+      "terrain"
+    ],
+    "regions": [
+      "world"
+    ],
     "status": "active"
   },
   "layers": [
@@ -23,7 +29,9 @@
       "webmapxConfig": {
         "source": {
           "type": "raster",
-          "tiles": ["https://tiles.stadiamaps.com/tiles/stamen_watercolor/{z}/{x}/{y}.jpg"],
+          "tiles": [
+            "https://tiles.stadiamaps.com/tiles/stamen_watercolor/{z}/{x}/{y}.jpg"
+          ],
           "tileSize": 256,
           "maxzoom": 16,
           "attribution": "Map tiles by <a href='https://stamen.com'>Stamen Design</a>, under <a href='https://creativecommons.org/licenses/by/3.0'>CC BY 3.0</a>. Data by <a href='https://openstreetmap.org'>OpenStreetMap</a>, under <a href='https://creativecommons.org/licenses/by-sa/3.0'>CC BY SA</a>."
@@ -37,7 +45,9 @@
             "legendRole": "background"
           }
         }
-      }
+      },
+      "availability": "auth-required",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "stadia-toner",
@@ -49,7 +59,9 @@
       "webmapxConfig": {
         "source": {
           "type": "raster",
-          "tiles": ["https://tiles.stadiamaps.com/tiles/stamen_toner/{z}/{x}/{y}.png"],
+          "tiles": [
+            "https://tiles.stadiamaps.com/tiles/stamen_toner/{z}/{x}/{y}.png"
+          ],
           "tileSize": 256,
           "maxzoom": 20,
           "attribution": "Map tiles by <a href='https://stamen.com'>Stamen Design</a>, under <a href='https://creativecommons.org/licenses/by/3.0'>CC BY 3.0</a>. Data by <a href='https://openstreetmap.org'>OpenStreetMap</a>, under <a href='https://www.openstreetmap.org/copyright'>ODbL</a>."
@@ -63,7 +75,9 @@
             "legendRole": "background"
           }
         }
-      }
+      },
+      "availability": "auth-required",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "stadia-toner-lite",
@@ -75,7 +89,9 @@
       "webmapxConfig": {
         "source": {
           "type": "raster",
-          "tiles": ["https://tiles.stadiamaps.com/tiles/stamen_toner_lite/{z}/{x}/{y}.png"],
+          "tiles": [
+            "https://tiles.stadiamaps.com/tiles/stamen_toner_lite/{z}/{x}/{y}.png"
+          ],
           "tileSize": 256,
           "maxzoom": 20,
           "attribution": "Map tiles by <a href='https://stamen.com'>Stamen Design</a>, under <a href='https://creativecommons.org/licenses/by/3.0'>CC BY 3.0</a>. Data by <a href='https://openstreetmap.org'>OpenStreetMap</a>, under <a href='https://www.openstreetmap.org/copyright'>ODbL</a>."
@@ -89,7 +105,9 @@
             "legendRole": "background"
           }
         }
-      }
+      },
+      "availability": "auth-required",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "stadia-terrain",
@@ -101,7 +119,9 @@
       "webmapxConfig": {
         "source": {
           "type": "raster",
-          "tiles": ["https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}.png"],
+          "tiles": [
+            "https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}.png"
+          ],
           "tileSize": 256,
           "maxzoom": 18,
           "attribution": "Map tiles by <a href='https://stamen.com'>Stamen Design</a>, under <a href='https://creativecommons.org/licenses/by/3.0'>CC BY 3.0</a>. Data by <a href='https://openstreetmap.org'>OpenStreetMap</a>, under <a href='https://creativecommons.org/licenses/by-sa/3.0'>CC BY SA</a>."
@@ -115,7 +135,9 @@
             "legendRole": "background"
           }
         }
-      }
+      },
+      "availability": "auth-required",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "stadia-alidade-smooth",
@@ -127,7 +149,9 @@
       "webmapxConfig": {
         "source": {
           "type": "raster",
-          "tiles": ["https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}.png"],
+          "tiles": [
+            "https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}.png"
+          ],
           "tileSize": 256,
           "maxzoom": 20,
           "attribution": "&copy; <a href='https://stadiamaps.com'>Stadia Maps</a> &copy; <a href='https://openstreetmap.org'>OpenStreetMap contributors</a>"
@@ -141,7 +165,9 @@
             "legendRole": "background"
           }
         }
-      }
+      },
+      "availability": "auth-required",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "stadia-alidade-smooth-dark",
@@ -153,7 +179,9 @@
       "webmapxConfig": {
         "source": {
           "type": "raster",
-          "tiles": ["https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}.png"],
+          "tiles": [
+            "https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}.png"
+          ],
           "tileSize": 256,
           "maxzoom": 20,
           "attribution": "&copy; <a href='https://stadiamaps.com'>Stadia Maps</a> &copy; <a href='https://openstreetmap.org'>OpenStreetMap contributors</a>"
@@ -167,7 +195,9 @@
             "legendRole": "background"
           }
         }
-      }
+      },
+      "availability": "auth-required",
+      "lastChecked": "2026-09-05"
     }
   ]
 }

@@ -6,8 +6,12 @@
     "abstract": "Global Biodiversity Information Facility — open occurrence data for species worldwide. Free tile API, no key required.",
     "access": "free",
     "license": "CC BY 4.0",
-    "categories": ["environment"],
-    "regions": ["world"],
+    "categories": [
+      "environment"
+    ],
+    "regions": [
+      "world"
+    ],
     "status": "active"
   },
   "layers": [
@@ -21,7 +25,9 @@
       "webmapxConfig": {
         "source": {
           "type": "raster",
-          "tiles": ["https://api.gbif.org/v2/map/occurrence/density/{z}/{x}/{y}@1x.png?srs=EPSG:3857&style=purpleYellow.point"],
+          "tiles": [
+            "https://api.gbif.org/v2/map/occurrence/density/{z}/{x}/{y}@1x.png?srs=EPSG:3857&style=purpleYellow.point"
+          ],
           "tileSize": 256,
           "maxzoom": 14,
           "attribution": "&copy; <a href='https://www.gbif.org'>GBIF</a>"
@@ -29,9 +35,15 @@
         "layer": {
           "id": "gbif-occurrences-all",
           "type": "raster",
-          "metadata": { "title": "GBIF All Occurrences", "abstract": "Density of all species occurrence records. Source: GBIF.", "legendRole": "overlay" }
+          "metadata": {
+            "title": "GBIF All Occurrences",
+            "abstract": "Density of all species occurrence records. Source: GBIF.",
+            "legendRole": "overlay"
+          }
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "gbif-occurrences-plants",
@@ -43,7 +55,9 @@
       "webmapxConfig": {
         "source": {
           "type": "raster",
-          "tiles": ["https://api.gbif.org/v2/map/occurrence/density/{z}/{x}/{y}@1x.png?srs=EPSG:3857&style=green.point&taxonKey=6"],
+          "tiles": [
+            "https://api.gbif.org/v2/map/occurrence/density/{z}/{x}/{y}@1x.png?srs=EPSG:3857&style=green.point&taxonKey=6"
+          ],
           "tileSize": 256,
           "maxzoom": 14,
           "attribution": "&copy; <a href='https://www.gbif.org'>GBIF</a>"
@@ -51,9 +65,15 @@
         "layer": {
           "id": "gbif-occurrences-plants",
           "type": "raster",
-          "metadata": { "title": "GBIF Plant Occurrences", "abstract": "Plant occurrence density. Source: GBIF.", "legendRole": "overlay" }
+          "metadata": {
+            "title": "GBIF Plant Occurrences",
+            "abstract": "Plant occurrence density. Source: GBIF.",
+            "legendRole": "overlay"
+          }
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "gbif-occurrences-birds",
@@ -65,7 +85,9 @@
       "webmapxConfig": {
         "source": {
           "type": "raster",
-          "tiles": ["https://api.gbif.org/v2/map/occurrence/density/{z}/{x}/{y}@1x.png?srs=EPSG:3857&style=blue.point&taxonKey=212"],
+          "tiles": [
+            "https://api.gbif.org/v2/map/occurrence/density/{z}/{x}/{y}@1x.png?srs=EPSG:3857&style=blue.point&taxonKey=212"
+          ],
           "tileSize": 256,
           "maxzoom": 14,
           "attribution": "&copy; <a href='https://www.gbif.org'>GBIF</a>"
@@ -73,9 +95,15 @@
         "layer": {
           "id": "gbif-occurrences-birds",
           "type": "raster",
-          "metadata": { "title": "GBIF Bird Occurrences", "abstract": "Bird occurrence density. Source: GBIF.", "legendRole": "overlay" }
+          "metadata": {
+            "title": "GBIF Bird Occurrences",
+            "abstract": "Bird occurrence density. Source: GBIF.",
+            "legendRole": "overlay"
+          }
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     }
   ]
 }

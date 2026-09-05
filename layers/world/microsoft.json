@@ -6,8 +6,14 @@
     "abstract": "Microsoft Bing Maps aerial and street tiles via Virtual Earth. Uses {quadkey} addressing supported by MapLibre.",
     "access": "free",
     "license": "Microsoft Bing Maps Terms of Use",
-    "categories": ["general-purpose", "street-maps", "satellite"],
-    "regions": ["world"],
+    "categories": [
+      "general-purpose",
+      "street-maps",
+      "satellite"
+    ],
+    "regions": [
+      "world"
+    ],
     "status": "active"
   },
   "layers": [
@@ -40,7 +46,9 @@
             "legendRole": "background"
           }
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "bing-hybrid",
@@ -71,7 +79,9 @@
             "legendRole": "background"
           }
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "bing-streets",
@@ -102,7 +112,9 @@
             "legendRole": "background"
           }
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     }
   ]
 }

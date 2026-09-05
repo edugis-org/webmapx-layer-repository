@@ -7,8 +7,14 @@
     "access": "api-key",
     "apiKeyUrl": "https://developer.tomtom.com/user/register",
     "license": "TomTom Developer Terms",
-    "categories": ["general-purpose", "street-maps", "satellite"],
-    "regions": ["world"],
+    "categories": [
+      "general-purpose",
+      "street-maps",
+      "satellite"
+    ],
+    "regions": [
+      "world"
+    ],
     "status": "active"
   },
   "layers": [
@@ -22,7 +28,9 @@
       "webmapxConfig": {
         "source": {
           "type": "raster",
-          "tiles": ["https://api.tomtom.com/map/1/tile/basic/main/{z}/{x}/{y}.png?key={key-tomtom}"],
+          "tiles": [
+            "https://api.tomtom.com/map/1/tile/basic/main/{z}/{x}/{y}.png?key={key-tomtom}"
+          ],
           "tileSize": 256,
           "maxzoom": 22,
           "attribution": "&copy; <a href='https://www.tomtom.com'>TomTom</a>"
@@ -30,9 +38,15 @@
         "layer": {
           "id": "tomtom-basic",
           "type": "raster",
-          "metadata": { "title": "TomTom Basic", "abstract": "Street map. Source: TomTom.", "legendRole": "background" }
+          "metadata": {
+            "title": "TomTom Basic",
+            "abstract": "Street map. Source: TomTom.",
+            "legendRole": "background"
+          }
         }
-      }
+      },
+      "availability": "auth-required",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "tomtom-satellite",
@@ -44,7 +58,9 @@
       "webmapxConfig": {
         "source": {
           "type": "raster",
-          "tiles": ["https://api.tomtom.com/map/1/tile/sat/main/{z}/{x}/{y}.jpg?key={key-tomtom}"],
+          "tiles": [
+            "https://api.tomtom.com/map/1/tile/sat/main/{z}/{x}/{y}.jpg?key={key-tomtom}"
+          ],
           "tileSize": 256,
           "maxzoom": 22,
           "attribution": "&copy; <a href='https://www.tomtom.com'>TomTom</a>"
@@ -52,9 +68,15 @@
         "layer": {
           "id": "tomtom-satellite",
           "type": "raster",
-          "metadata": { "title": "TomTom Satellite", "abstract": "Satellite imagery. Source: TomTom.", "legendRole": "background" }
+          "metadata": {
+            "title": "TomTom Satellite",
+            "abstract": "Satellite imagery. Source: TomTom.",
+            "legendRole": "background"
+          }
         }
-      }
+      },
+      "availability": "auth-required",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "tomtom-hybrid",
@@ -66,7 +88,9 @@
       "webmapxConfig": {
         "source": {
           "type": "raster",
-          "tiles": ["https://api.tomtom.com/map/1/tile/hybrid/main/{z}/{x}/{y}.png?key={key-tomtom}"],
+          "tiles": [
+            "https://api.tomtom.com/map/1/tile/hybrid/main/{z}/{x}/{y}.png?key={key-tomtom}"
+          ],
           "tileSize": 256,
           "maxzoom": 22,
           "attribution": "&copy; <a href='https://www.tomtom.com'>TomTom</a>"
@@ -74,9 +98,15 @@
         "layer": {
           "id": "tomtom-hybrid",
           "type": "raster",
-          "metadata": { "title": "TomTom Hybrid", "abstract": "Satellite with roads and labels. Source: TomTom.", "legendRole": "background" }
+          "metadata": {
+            "title": "TomTom Hybrid",
+            "abstract": "Satellite with roads and labels. Source: TomTom.",
+            "legendRole": "background"
+          }
         }
-      }
+      },
+      "availability": "auth-required",
+      "lastChecked": "2026-09-05"
     }
   ]
 }

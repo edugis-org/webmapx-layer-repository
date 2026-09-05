@@ -1,0 +1,72 @@
+{
+  "provider": "ghsl",
+  "source": "world/ghsl.json",
+  "layers": {
+    "ghsl-population-2020": {
+      "checks": [
+        {
+          "date": "2026-09-05",
+          "availability": "down",
+          "httpStatus": 404,
+          "ms": 389,
+          "reason": "HTTP 404"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-05",
+        "lastChecked": "2026-09-05",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-05"
+      }
+    },
+    "ghsl-built-up-2020": {
+      "checks": [
+        {
+          "date": "2026-09-05",
+          "availability": "down",
+          "httpStatus": 404,
+          "ms": 275,
+          "reason": "HTTP 404"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-05",
+        "lastChecked": "2026-09-05",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-05"
+      }
+    },
+    "ghsl-settlement-model-2020": {
+      "checks": [
+        {
+          "date": "2026-09-05",
+          "availability": "down",
+          "httpStatus": 404,
+          "ms": 281,
+          "reason": "HTTP 404"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-05",
+        "lastChecked": "2026-09-05",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-05"
+      }
+    }
+  }
+}

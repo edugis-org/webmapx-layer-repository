@@ -1,0 +1,174 @@
+{
+  "provider": "maptiler",
+  "source": "world/maptiler.json",
+  "layers": {
+    "maptiler-streets-style": {
+      "checks": [
+        {
+          "date": "2026-09-05",
+          "availability": "auth-required",
+          "httpStatus": 403,
+          "ms": 102,
+          "reason": "HTTP 403 (endpoint answered but rejected our credentials)"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-05",
+        "lastChecked": "2026-09-05",
+        "current": "auth-required",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1
+      }
+    },
+    "maptiler-satellite-style": {
+      "checks": [
+        {
+          "date": "2026-09-05",
+          "availability": "auth-required",
+          "httpStatus": 403,
+          "ms": 75,
+          "reason": "HTTP 403 (endpoint answered but rejected our credentials)"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-05",
+        "lastChecked": "2026-09-05",
+        "current": "auth-required",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1
+      }
+    },
+    "maptiler-outdoor-style": {
+      "checks": [
+        {
+          "date": "2026-09-05",
+          "availability": "auth-required",
+          "httpStatus": 403,
+          "ms": 25,
+          "reason": "HTTP 403 (endpoint answered but rejected our credentials)"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-05",
+        "lastChecked": "2026-09-05",
+        "current": "auth-required",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1
+      }
+    },
+    "maptiler-topo-style": {
+      "checks": [
+        {
+          "date": "2026-09-05",
+          "availability": "auth-required",
+          "httpStatus": 403,
+          "ms": 24,
+          "reason": "HTTP 403 (endpoint answered but rejected our credentials)"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-05",
+        "lastChecked": "2026-09-05",
+        "current": "auth-required",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1
+      }
+    },
+    "maptiler-streets": {
+      "checks": [
+        {
+          "date": "2026-09-05",
+          "availability": "auth-required",
+          "httpStatus": 403,
+          "ms": 41,
+          "reason": "HTTP 403 (endpoint answered but rejected our credentials)"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-05",
+        "lastChecked": "2026-09-05",
+        "current": "auth-required",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1
+      }
+    },
+    "maptiler-satellite": {
+      "checks": [
+        {
+          "date": "2026-09-05",
+          "availability": "auth-required",
+          "httpStatus": 403,
+          "ms": 24,
+          "reason": "HTTP 403 (endpoint answered but rejected our credentials)"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-05",
+        "lastChecked": "2026-09-05",
+        "current": "auth-required",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1
+      }
+    },
+    "maptiler-outdoor": {
+      "checks": [
+        {
+          "date": "2026-09-05",
+          "availability": "auth-required",
+          "httpStatus": 403,
+          "ms": 70,
+          "reason": "HTTP 403 (endpoint answered but rejected our credentials)"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-05",
+        "lastChecked": "2026-09-05",
+        "current": "auth-required",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1
+      }
+    },
+    "maptiler-topo": {
+      "checks": [
+        {
+          "date": "2026-09-05",
+          "availability": "auth-required",
+          "httpStatus": 403,
+          "ms": 68,
+          "reason": "HTTP 403 (endpoint answered but rejected our credentials)"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-05",
+        "lastChecked": "2026-09-05",
+        "current": "auth-required",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1
+      }
+    }
+  }
+}

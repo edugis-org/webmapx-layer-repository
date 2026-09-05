@@ -6,8 +6,12 @@
     "abstract": "Detailed railway infrastructure overlay derived from OpenStreetMap. Free, no key required. Use as overlay on a basemap.",
     "access": "free",
     "license": "ODbL",
-    "categories": ["transport"],
-    "regions": ["world"],
+    "categories": [
+      "transport"
+    ],
+    "regions": [
+      "world"
+    ],
     "status": "active"
   },
   "layers": [
@@ -33,9 +37,15 @@
         "layer": {
           "id": "openrailwaymap-standard",
           "type": "raster",
-          "metadata": { "title": "OpenRailwayMap Standard", "abstract": "Railway lines overlay. Source: OpenRailwayMap.", "legendRole": "overlay" }
+          "metadata": {
+            "title": "OpenRailwayMap Standard",
+            "abstract": "Railway lines overlay. Source: OpenRailwayMap.",
+            "legendRole": "overlay"
+          }
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "openrailwaymap-maxspeed",
@@ -59,9 +69,15 @@
         "layer": {
           "id": "openrailwaymap-maxspeed",
           "type": "raster",
-          "metadata": { "title": "OpenRailwayMap Max Speed", "abstract": "Railways coloured by max speed. Source: OpenRailwayMap.", "legendRole": "overlay" }
+          "metadata": {
+            "title": "OpenRailwayMap Max Speed",
+            "abstract": "Railways coloured by max speed. Source: OpenRailwayMap.",
+            "legendRole": "overlay"
+          }
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "openrailwaymap-signals",
@@ -85,9 +101,15 @@
         "layer": {
           "id": "openrailwaymap-signals",
           "type": "raster",
-          "metadata": { "title": "OpenRailwayMap Signals", "abstract": "Railway signal infrastructure. Source: OpenRailwayMap.", "legendRole": "overlay" }
+          "metadata": {
+            "title": "OpenRailwayMap Signals",
+            "abstract": "Railway signal infrastructure. Source: OpenRailwayMap.",
+            "legendRole": "overlay"
+          }
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "openrailwaymap-electrification",
@@ -111,9 +133,15 @@
         "layer": {
           "id": "openrailwaymap-electrification",
           "type": "raster",
-          "metadata": { "title": "OpenRailwayMap Electrification", "abstract": "Railway electrification types. Source: OpenRailwayMap.", "legendRole": "overlay" }
+          "metadata": {
+            "title": "OpenRailwayMap Electrification",
+            "abstract": "Railway electrification types. Source: OpenRailwayMap.",
+            "legendRole": "overlay"
+          }
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     }
   ]
 }

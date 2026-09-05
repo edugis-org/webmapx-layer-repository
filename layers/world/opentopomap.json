@@ -6,8 +6,13 @@
     "abstract": "Topographic map rendered from OpenStreetMap data and SRTM elevation data. Free, no key required.",
     "access": "free",
     "license": "CC BY-SA / ODbL",
-    "categories": ["terrain", "general-purpose"],
-    "regions": ["world"],
+    "categories": [
+      "terrain",
+      "general-purpose"
+    ],
+    "regions": [
+      "world"
+    ],
     "status": "active"
   },
   "layers": [
@@ -33,9 +38,15 @@
         "layer": {
           "id": "opentopomap",
           "type": "raster",
-          "metadata": { "title": "OpenTopoMap", "abstract": "Topographic map from OSM + SRTM. Source: OpenTopoMap.", "legendRole": "background" }
+          "metadata": {
+            "title": "OpenTopoMap",
+            "abstract": "Topographic map from OSM + SRTM. Source: OpenTopoMap.",
+            "legendRole": "background"
+          }
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     }
   ]
 }

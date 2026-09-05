@@ -1,0 +1,69 @@
+{
+  "provider": "tomtom",
+  "source": "world/tomtom.json",
+  "layers": {
+    "tomtom-basic": {
+      "checks": [
+        {
+          "date": "2026-09-05",
+          "availability": "auth-required",
+          "httpStatus": 403,
+          "ms": 82,
+          "reason": "HTTP 403 (endpoint answered but rejected our credentials)"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-05",
+        "lastChecked": "2026-09-05",
+        "current": "auth-required",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1
+      }
+    },
+    "tomtom-satellite": {
+      "checks": [
+        {
+          "date": "2026-09-05",
+          "availability": "auth-required",
+          "httpStatus": 403,
+          "ms": 57,
+          "reason": "HTTP 403 (endpoint answered but rejected our credentials)"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-05",
+        "lastChecked": "2026-09-05",
+        "current": "auth-required",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1
+      }
+    },
+    "tomtom-hybrid": {
+      "checks": [
+        {
+          "date": "2026-09-05",
+          "availability": "auth-required",
+          "httpStatus": 403,
+          "ms": 2636,
+          "reason": "HTTP 403 (endpoint answered but rejected our credentials)"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-05",
+        "lastChecked": "2026-09-05",
+        "current": "auth-required",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1
+      }
+    }
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "provider": "sedac",
+  "source": "world/sedac.json",
+  "layers": {
+    "sedac-gpw-population-density-2020": {
+      "checks": [
+        {
+          "date": "2026-09-05",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 379
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-05",
+        "lastChecked": "2026-09-05",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-05"
+      }
+    },
+    "sedac-gpw-population-count-2020": {
+      "checks": [
+        {
+          "date": "2026-09-05",
+          "availability": "unreachable",
+          "ms": 8000,
+          "reason": "The operation was aborted due to timeout"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-05",
+        "lastChecked": "2026-09-05",
+        "current": "unreachable",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-05"
+      }
+    },
+    "sedac-gpw-land-area": {
+      "checks": [
+        {
+          "date": "2026-09-05",
+          "availability": "unreachable",
+          "ms": 8001,
+          "reason": "The operation was aborted due to timeout"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-05",
+        "lastChecked": "2026-09-05",
+        "current": "unreachable",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-05"
+      }
+    }
+  }
+}

@@ -1,0 +1,175 @@
+{
+  "provider": "nasa-earthdata",
+  "source": "world/nasa-earthdata.json",
+  "layers": {
+    "modis-terra-truecolor": {
+      "checks": [
+        {
+          "date": "2026-09-05",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 482
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-05",
+        "lastChecked": "2026-09-05",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-05"
+      }
+    },
+    "viirs-nighttime-lights": {
+      "checks": [
+        {
+          "date": "2026-09-05",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 323
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-05",
+        "lastChecked": "2026-09-05",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-05"
+      }
+    },
+    "ghrsst-sea-surface-temperature": {
+      "checks": [
+        {
+          "date": "2026-09-05",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 336
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-05",
+        "lastChecked": "2026-09-05",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-05"
+      }
+    },
+    "modis-terra-ndvi": {
+      "checks": [
+        {
+          "date": "2026-09-05",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 331
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-05",
+        "lastChecked": "2026-09-05",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-05"
+      }
+    },
+    "modis-aqua-chlorophyll": {
+      "checks": [
+        {
+          "date": "2026-09-05",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 397
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-05",
+        "lastChecked": "2026-09-05",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-05"
+      }
+    },
+    "modis-terra-snow-cover": {
+      "checks": [
+        {
+          "date": "2026-09-05",
+          "availability": "down",
+          "httpStatus": 400,
+          "ms": 806,
+          "reason": "HTTP 400"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-05",
+        "lastChecked": "2026-09-05",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-05"
+      }
+    },
+    "modis-terra-snow-cover-monthly": {
+      "checks": [
+        {
+          "date": "2026-09-05",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 394
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-05",
+        "lastChecked": "2026-09-05",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-05"
+      }
+    },
+    "modis-aqua-chlorophyll-l2": {
+      "checks": [
+        {
+          "date": "2026-09-05",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 389
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-05",
+        "lastChecked": "2026-09-05",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-05"
+      }
+    }
+  }
+}

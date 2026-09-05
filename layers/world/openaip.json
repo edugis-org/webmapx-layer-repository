@@ -7,8 +7,13 @@
     "access": "api-key",
     "apiKeyUrl": "https://www.openaip.net/users/sign_up",
     "license": "CC BY-NC-SA 4.0",
-    "categories": ["aviation", "transport"],
-    "regions": ["world"],
+    "categories": [
+      "aviation",
+      "transport"
+    ],
+    "regions": [
+      "world"
+    ],
     "status": "active"
   },
   "layers": [
@@ -22,7 +27,9 @@
       "webmapxConfig": {
         "source": {
           "type": "raster",
-          "tiles": ["https://api.tiles.openaip.net/api/data/openaip/{z}/{x}/{y}.png?apiKey={key-openaip}"],
+          "tiles": [
+            "https://api.tiles.openaip.net/api/data/openaip/{z}/{x}/{y}.png?apiKey={key-openaip}"
+          ],
           "tileSize": 256,
           "maxzoom": 14,
           "attribution": "&copy; <a href='https://www.openaip.net'>OpenAIP</a>"
@@ -30,9 +37,15 @@
         "layer": {
           "id": "openaip-map",
           "type": "raster",
-          "metadata": { "title": "OpenAIP Aviation Chart", "abstract": "Aviation chart overlay. Source: OpenAIP.", "legendRole": "overlay" }
+          "metadata": {
+            "title": "OpenAIP Aviation Chart",
+            "abstract": "Aviation chart overlay. Source: OpenAIP.",
+            "legendRole": "overlay"
+          }
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     }
   ]
 }

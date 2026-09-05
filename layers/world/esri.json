@@ -6,8 +6,15 @@
     "abstract": "Esri ArcGIS Online basemap tile services. Free for development and non-commercial use with attribution.",
     "access": "free",
     "license": "Esri Master License Agreement",
-    "categories": ["general-purpose", "street-maps", "satellite", "terrain"],
-    "regions": ["world"],
+    "categories": [
+      "general-purpose",
+      "street-maps",
+      "satellite",
+      "terrain"
+    ],
+    "regions": [
+      "world"
+    ],
     "status": "active"
   },
   "layers": [
@@ -21,7 +28,9 @@
       "webmapxConfig": {
         "source": {
           "type": "raster",
-          "tiles": ["https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}"],
+          "tiles": [
+            "https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}"
+          ],
           "tileSize": 256,
           "maxzoom": 19,
           "attribution": "Tiles &copy; <a href='https://www.esri.com'>Esri</a>"
@@ -35,7 +44,9 @@
             "legendRole": "background"
           }
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "esri-world-imagery",
@@ -47,7 +58,9 @@
       "webmapxConfig": {
         "source": {
           "type": "raster",
-          "tiles": ["https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"],
+          "tiles": [
+            "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+          ],
           "tileSize": 256,
           "maxzoom": 19,
           "attribution": "Tiles &copy; <a href='https://www.esri.com'>Esri</a>, Maxar, Earthstar Geographics"
@@ -61,7 +74,9 @@
             "legendRole": "background"
           }
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "esri-world-topo-map",
@@ -73,7 +88,9 @@
       "webmapxConfig": {
         "source": {
           "type": "raster",
-          "tiles": ["https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}"],
+          "tiles": [
+            "https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}"
+          ],
           "tileSize": 256,
           "maxzoom": 19,
           "attribution": "Tiles &copy; <a href='https://www.esri.com'>Esri</a>"
@@ -87,7 +104,9 @@
             "legendRole": "background"
           }
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "esri-light-gray-canvas",
@@ -99,7 +118,9 @@
       "webmapxConfig": {
         "source": {
           "type": "raster",
-          "tiles": ["https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}"],
+          "tiles": [
+            "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}"
+          ],
           "tileSize": 256,
           "maxzoom": 16,
           "attribution": "Tiles &copy; <a href='https://www.esri.com'>Esri</a>"
@@ -113,7 +134,9 @@
             "legendRole": "background"
           }
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "esri-dark-gray-canvas",
@@ -125,7 +148,9 @@
       "webmapxConfig": {
         "source": {
           "type": "raster",
-          "tiles": ["https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}"],
+          "tiles": [
+            "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}"
+          ],
           "tileSize": 256,
           "maxzoom": 16,
           "attribution": "Tiles &copy; <a href='https://www.esri.com'>Esri</a>"
@@ -139,7 +164,9 @@
             "legendRole": "background"
           }
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "esri-ocean-basemap",
@@ -151,7 +178,9 @@
       "webmapxConfig": {
         "source": {
           "type": "raster",
-          "tiles": ["https://server.arcgisonline.com/ArcGIS/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}"],
+          "tiles": [
+            "https://server.arcgisonline.com/ArcGIS/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}"
+          ],
           "tileSize": 256,
           "maxzoom": 13,
           "attribution": "Tiles &copy; <a href='https://www.esri.com'>Esri</a>, GEBCO, NOAA"
@@ -165,7 +194,9 @@
             "legendRole": "background"
           }
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "esri-natgeo-world-map",
@@ -177,7 +208,9 @@
       "webmapxConfig": {
         "source": {
           "type": "raster",
-          "tiles": ["https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}"],
+          "tiles": [
+            "https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}"
+          ],
           "tileSize": 256,
           "maxzoom": 12,
           "attribution": "Tiles &copy; <a href='https://www.esri.com'>Esri</a>, National Geographic"
@@ -185,9 +218,15 @@
         "layer": {
           "id": "esri-natgeo-world-map",
           "type": "raster",
-          "metadata": { "title": "Esri NatGeo World Map", "abstract": "National Geographic style basemap. Source: Esri / NatGeo.", "legendRole": "background" }
+          "metadata": {
+            "title": "Esri NatGeo World Map",
+            "abstract": "National Geographic style basemap. Source: Esri / NatGeo.",
+            "legendRole": "background"
+          }
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "esri-world-physical-map",
@@ -199,7 +238,9 @@
       "webmapxConfig": {
         "source": {
           "type": "raster",
-          "tiles": ["https://server.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}"],
+          "tiles": [
+            "https://server.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}"
+          ],
           "tileSize": 256,
           "maxzoom": 8,
           "attribution": "Tiles &copy; <a href='https://www.esri.com'>Esri</a>, US National Park Service"
@@ -207,9 +248,15 @@
         "layer": {
           "id": "esri-world-physical-map",
           "type": "raster",
-          "metadata": { "title": "Esri World Physical Map", "abstract": "Physical terrain and land cover. Source: Esri / USGS.", "legendRole": "background" }
+          "metadata": {
+            "title": "Esri World Physical Map",
+            "abstract": "Physical terrain and land cover. Source: Esri / USGS.",
+            "legendRole": "background"
+          }
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "esri-world-shaded-relief",
@@ -221,7 +268,9 @@
       "webmapxConfig": {
         "source": {
           "type": "raster",
-          "tiles": ["https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}"],
+          "tiles": [
+            "https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}"
+          ],
           "tileSize": 256,
           "maxzoom": 13,
           "attribution": "Tiles &copy; <a href='https://www.esri.com'>Esri</a>, USGS, NOAA"
@@ -229,9 +278,15 @@
         "layer": {
           "id": "esri-world-shaded-relief",
           "type": "raster",
-          "metadata": { "title": "Esri World Shaded Relief", "abstract": "Hillshaded terrain without labels. Source: Esri / USGS.", "legendRole": "background" }
+          "metadata": {
+            "title": "Esri World Shaded Relief",
+            "abstract": "Hillshaded terrain without labels. Source: Esri / USGS.",
+            "legendRole": "background"
+          }
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "esri-world-hillshade",
@@ -243,7 +298,9 @@
       "webmapxConfig": {
         "source": {
           "type": "raster",
-          "tiles": ["https://server.arcgisonline.com/ArcGIS/rest/services/Elevation/World_Hillshade/MapServer/tile/{z}/{y}/{x}"],
+          "tiles": [
+            "https://server.arcgisonline.com/ArcGIS/rest/services/Elevation/World_Hillshade/MapServer/tile/{z}/{y}/{x}"
+          ],
           "tileSize": 256,
           "maxzoom": 16,
           "attribution": "Tiles &copy; <a href='https://www.esri.com'>Esri</a>"
@@ -251,9 +308,15 @@
         "layer": {
           "id": "esri-world-hillshade",
           "type": "raster",
-          "metadata": { "title": "Esri World Hillshade", "abstract": "High-res hillshade overlay. Source: Esri.", "legendRole": "overlay" }
+          "metadata": {
+            "title": "Esri World Hillshade",
+            "abstract": "High-res hillshade overlay. Source: Esri.",
+            "legendRole": "overlay"
+          }
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "esri-world-hillshade-dark",
@@ -265,7 +328,9 @@
       "webmapxConfig": {
         "source": {
           "type": "raster",
-          "tiles": ["https://server.arcgisonline.com/ArcGIS/rest/services/Elevation/World_Hillshade_Dark/MapServer/tile/{z}/{y}/{x}"],
+          "tiles": [
+            "https://server.arcgisonline.com/ArcGIS/rest/services/Elevation/World_Hillshade_Dark/MapServer/tile/{z}/{y}/{x}"
+          ],
           "tileSize": 256,
           "maxzoom": 16,
           "attribution": "Tiles &copy; <a href='https://www.esri.com'>Esri</a>"
@@ -273,9 +338,15 @@
         "layer": {
           "id": "esri-world-hillshade-dark",
           "type": "raster",
-          "metadata": { "title": "Esri World Hillshade Dark", "abstract": "Dark hillshade overlay. Source: Esri.", "legendRole": "overlay" }
+          "metadata": {
+            "title": "Esri World Hillshade Dark",
+            "abstract": "Dark hillshade overlay. Source: Esri.",
+            "legendRole": "overlay"
+          }
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "esri-world-terrain-base",
@@ -287,7 +358,9 @@
       "webmapxConfig": {
         "source": {
           "type": "raster",
-          "tiles": ["https://server.arcgisonline.com/ArcGIS/rest/services/World_Terrain_Base/MapServer/tile/{z}/{y}/{x}"],
+          "tiles": [
+            "https://server.arcgisonline.com/ArcGIS/rest/services/World_Terrain_Base/MapServer/tile/{z}/{y}/{x}"
+          ],
           "tileSize": 256,
           "maxzoom": 13,
           "attribution": "Tiles &copy; <a href='https://www.esri.com'>Esri</a>, USGS, NPS"
@@ -295,9 +368,15 @@
         "layer": {
           "id": "esri-world-terrain-base",
           "type": "raster",
-          "metadata": { "title": "Esri World Terrain Base", "abstract": "Terrain with hillshading, no labels. Source: Esri / USGS.", "legendRole": "background" }
+          "metadata": {
+            "title": "Esri World Terrain Base",
+            "abstract": "Terrain with hillshading, no labels. Source: Esri / USGS.",
+            "legendRole": "background"
+          }
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "esri-world-boundaries-places",
@@ -309,7 +388,9 @@
       "webmapxConfig": {
         "source": {
           "type": "raster",
-          "tiles": ["https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}"],
+          "tiles": [
+            "https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}"
+          ],
           "tileSize": 256,
           "maxzoom": 19,
           "attribution": "Tiles &copy; <a href='https://www.esri.com'>Esri</a>"
@@ -317,9 +398,15 @@
         "layer": {
           "id": "esri-world-boundaries-places",
           "type": "raster",
-          "metadata": { "title": "Esri Boundaries and Places", "abstract": "Reference overlay: boundaries, cities, labels. Source: Esri.", "legendRole": "overlay" }
+          "metadata": {
+            "title": "Esri Boundaries and Places",
+            "abstract": "Reference overlay: boundaries, cities, labels. Source: Esri.",
+            "legendRole": "overlay"
+          }
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "esri-world-transportation",
@@ -331,7 +418,9 @@
       "webmapxConfig": {
         "source": {
           "type": "raster",
-          "tiles": ["https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Transportation/MapServer/tile/{z}/{y}/{x}"],
+          "tiles": [
+            "https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Transportation/MapServer/tile/{z}/{y}/{x}"
+          ],
           "tileSize": 256,
           "maxzoom": 19,
           "attribution": "Tiles &copy; <a href='https://www.esri.com'>Esri</a>"
@@ -339,9 +428,15 @@
         "layer": {
           "id": "esri-world-transportation",
           "type": "raster",
-          "metadata": { "title": "Esri World Transportation", "abstract": "Road network overlay. Source: Esri.", "legendRole": "overlay" }
+          "metadata": {
+            "title": "Esri World Transportation",
+            "abstract": "Road network overlay. Source: Esri.",
+            "legendRole": "overlay"
+          }
         }
-      }
+      },
+      "availability": "up",
+      "lastChecked": "2026-09-05"
     }
   ]
 }

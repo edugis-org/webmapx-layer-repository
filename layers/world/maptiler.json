@@ -7,8 +7,15 @@
     "access": "api-key",
     "apiKeyUrl": "https://cloud.maptiler.com/account/keys/",
     "license": "Proprietary (free tier available)",
-    "categories": ["general-purpose", "street-maps", "satellite", "terrain"],
-    "regions": ["world"],
+    "categories": [
+      "general-purpose",
+      "street-maps",
+      "satellite",
+      "terrain"
+    ],
+    "regions": [
+      "world"
+    ],
     "status": "active"
   },
   "layers": [
@@ -30,7 +37,9 @@
           "abstract": "Full Streets vector basemap style. Source: MapTiler.",
           "legendRole": "background"
         }
-      }
+      },
+      "availability": "auth-required",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "maptiler-satellite-style",
@@ -50,7 +59,9 @@
           "abstract": "Full Satellite hybrid style. Source: MapTiler.",
           "legendRole": "background"
         }
-      }
+      },
+      "availability": "auth-required",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "maptiler-outdoor-style",
@@ -70,7 +81,9 @@
           "abstract": "Full Outdoor vector basemap style. Source: MapTiler.",
           "legendRole": "background"
         }
-      }
+      },
+      "availability": "auth-required",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "maptiler-topo-style",
@@ -90,7 +103,9 @@
           "abstract": "Full Topo vector basemap style. Source: MapTiler.",
           "legendRole": "background"
         }
-      }
+      },
+      "availability": "auth-required",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "maptiler-streets",
@@ -102,7 +117,9 @@
       "webmapxConfig": {
         "source": {
           "type": "raster",
-          "tiles": ["https://api.maptiler.com/maps/streets-v2/{z}/{x}/{y}.png?key={key-maptiler}"],
+          "tiles": [
+            "https://api.maptiler.com/maps/streets-v2/{z}/{x}/{y}.png?key={key-maptiler}"
+          ],
           "tileSize": 256,
           "maxzoom": 20,
           "attribution": "<a href='https://www.maptiler.com/copyright/'>MapTiler</a> &copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap contributors</a>"
@@ -116,7 +133,9 @@
             "legendRole": "background"
           }
         }
-      }
+      },
+      "availability": "auth-required",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "maptiler-satellite",
@@ -128,7 +147,9 @@
       "webmapxConfig": {
         "source": {
           "type": "raster",
-          "tiles": ["https://api.maptiler.com/tiles/satellite-v2/{z}/{x}/{y}.jpg?key={key-maptiler}"],
+          "tiles": [
+            "https://api.maptiler.com/tiles/satellite-v2/{z}/{x}/{y}.jpg?key={key-maptiler}"
+          ],
           "tileSize": 256,
           "maxzoom": 20,
           "attribution": "<a href='https://www.maptiler.com/copyright/'>MapTiler</a>"
@@ -142,7 +163,9 @@
             "legendRole": "background"
           }
         }
-      }
+      },
+      "availability": "auth-required",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "maptiler-outdoor",
@@ -154,7 +177,9 @@
       "webmapxConfig": {
         "source": {
           "type": "raster",
-          "tiles": ["https://api.maptiler.com/maps/outdoor-v2/{z}/{x}/{y}.png?key={key-maptiler}"],
+          "tiles": [
+            "https://api.maptiler.com/maps/outdoor-v2/{z}/{x}/{y}.png?key={key-maptiler}"
+          ],
           "tileSize": 256,
           "maxzoom": 20,
           "attribution": "<a href='https://www.maptiler.com/copyright/'>MapTiler</a> &copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap contributors</a>"
@@ -168,7 +193,9 @@
             "legendRole": "background"
           }
         }
-      }
+      },
+      "availability": "auth-required",
+      "lastChecked": "2026-09-05"
     },
     {
       "id": "maptiler-topo",
@@ -180,7 +207,9 @@
       "webmapxConfig": {
         "source": {
           "type": "raster",
-          "tiles": ["https://api.maptiler.com/maps/topo-v2/{z}/{x}/{y}.png?key={key-maptiler}"],
+          "tiles": [
+            "https://api.maptiler.com/maps/topo-v2/{z}/{x}/{y}.png?key={key-maptiler}"
+          ],
           "tileSize": 256,
           "maxzoom": 20,
           "attribution": "<a href='https://www.maptiler.com/copyright/'>MapTiler</a> &copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap contributors</a>"
@@ -194,7 +223,9 @@
             "legendRole": "background"
           }
         }
-      }
+      },
+      "availability": "auth-required",
+      "lastChecked": "2026-09-05"
     }
   ]
 }
