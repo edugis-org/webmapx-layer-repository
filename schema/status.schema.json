@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "status.schema.json",
+  "title": "WebMapX Layer Repository — Availability Record",
+  "description": "Machine-written uptime history for one provider file. Lives at status/<same path as the provider file>. Kept out of the provider files so curated data stays hand-editable and its diffs stay readable — an append-only history in the same file would bury every real edit. Never edit by hand; scripts/test-layers.mjs owns these files.",
+  "type": "object",
+  "required": ["provider", "source", "layers"],
+  "properties": {
+    "provider": { "type": "string", "description": "provider.id of the file this records" },
+    "source":   { "type": "string", "description": "Path of the provider file, relative to layers/, e.g. 'world/esri.json'" },
+    "layers": {
+      "type": "object",
+      "description": "Keyed by layer.id.",
+      "additionalProperties": { "$ref": "#/$defs/layerRecord" }
+    }
+  },
+  "$defs": {
+    "layerRecord": {
+      "type": "object",
+      "required": ["checks"],
+      "properties": {
+        "summary": {
+          "type": "object",
+          "description": "Derived from checks on every write, so the UI can rank without recomputing. Regenerable — checks is the source of truth.",
+          "properties": {
+            "firstChecked": { "type": "string", "format": "date" },
+            "lastChecked":  { "type": "string", "format": "date" },
+            "current":      { "$ref": "provider.schema.json#/$defs/availability" },
+            "checks":       { "type": "integer", "description": "Probes retained in the window" },
+            "up":           { "type": "integer", "description": "Probes that returned up" },
+            "uptime":       { "type": ["number", "null"], "minimum": 0, "maximum": 1, "description": "up / probes that reached a verdict. Probes recorded as unknown are excluded from both — a layer we could not test is not a layer that failed. null when no probe has yet reached a verdict: no evidence, which is not the same as 0%." },
+            "untested":     { "type": "integer", "description": "Probes recorded as unknown, e.g. a missing API key. A high count means the uptime figure rests on little evidence." },
+            "consecutiveFailures": { "type": "integer", "description": "Failing probes since the last up. Drives the 'looks abandoned' signal." },
+            "lastUp":       { "type": "string", "format": "date" },
+            "lastDown":     { "type": "string", "format": "date" }
+          }
+        },
+        "checks": {
+          "type": "array",
+          "description": "Oldest first, appended one per run. Capped at 104 entries — two years of the weekly cron — by dropping from the front; summary.firstChecked keeps the start date after entries roll off.",
+          "maxItems": 104,
+          "items": {
+            "type": "object",
+            "required": ["date", "availability"],
+            "properties": {
+              "date":         { "type": "string", "format": "date" },
+              "availability": { "$ref": "provider.schema.json#/$defs/availability" },
+              "httpStatus":   { "type": "integer", "description": "Absent when no HTTP response was received" },
+              "ms":           { "type": "integer", "description": "Round-trip time. A service degrading before it fails shows up here first." },
+              "reason":       { "type": "string", "description": "Error text, for unreachable or unknown" }
+            }
+          }
+        }
+      }
+    }
+  }
+}
