@@ -3,7 +3,7 @@
   "$id": "provider.schema.json",
   "title": "WebMapX Layer Repository — Provider File",
   "type": "object",
-  "required": ["provider", "layers"],
+  "required": ["provider"],
   "properties": {
     "provider": {
       "type": "object",
@@ -54,12 +54,44 @@
         "lastChecked": { "type": "string", "format": "date", "description": "Date of the last availability probe. Point-in-time only; the uptime record lives in status/ (see status.schema.json)." }
       }
     },
+    "services": {
+      "type": "array",
+      "description": "The endpoints this provider runs. A provider may operate several: a WMTS for basemaps, a WMS for thematic overlays, a WFS for features. Grouping layers under the service that serves them keeps the endpoint, its CRS list, formats and auth stated once instead of repeated on every layer.",
+      "items": { "$ref": "#/$defs/service" }
+    },
     "layers": {
       "type": "array",
+      "description": "DEPRECATED — layers now hang off a service. Retained so pre-migration files still validate; scripts/migrate-services.mjs converts them.",
+      "deprecated": true,
       "items": { "$ref": "#/$defs/layer" }
     }
   },
   "$defs": {
+    "service": {
+      "type": "object",
+      "required": ["id", "type", "layers"],
+      "properties": {
+        "id":       { "type": "string", "description": "Slug, unique within the provider file" },
+        "title":    { "type": "string" },
+        "abstract": { "type": "string" },
+        "type": {
+          "type": "string",
+          "enum": ["wms", "wmts", "wfs", "wcs", "xyz", "vector-tiles", "geojson", "style", "ogc-api-tiles", "ogc-api-features", "arcgis-rest"],
+          "description": "Protocol the endpoint speaks. Distinct from a layer's rendering type: a WMS service yields raster layers, an OGC API Features service yields vector ones."
+        },
+        "endpoint": { "type": "string", "description": "Base URL of the service, without request parameters. The identity of the service — two layers sharing it share an operator, an SLA and a rate limit." },
+        "capabilitiesUrl": { "type": "string", "description": "Self-description document (WMS/WMTS GetCapabilities, OGC API landing page). Where a harvester re-reads this service." },
+        "crs":     { "type": "array", "items": { "type": "string" }, "description": "Coordinate reference systems advertised, e.g. EPSG:3857. A service without EPSG:3857 cannot be used directly by MapLibre." },
+        "formats": { "type": "array", "items": { "type": "string" }, "description": "Output formats advertised, e.g. image/png" },
+        "metadataId": { "type": "string", "description": "Service metadata identifier in the provider's catalogue, e.g. an INSPIRE service_md_id" },
+        "lifecycle":    { "$ref": "#/$defs/lifecycle" },
+        "availability": { "$ref": "#/$defs/availability" },
+        "cost":         { "$ref": "#/$defs/cost", "description": "Only when this endpoint is priced apart from the provider default — a high-SLA provider can still run one experimental service" },
+        "operator":     { "$ref": "#/$defs/operator", "description": "Only when this endpoint is run by someone other than the provider, e.g. a cache fronting an upstream service" },
+        "harvestedFrom": { "type": "string", "description": "Where this service description came from, when it was generated rather than hand-written. Its presence means the entry is machine-maintained and hand edits will be overwritten." },
+        "layers": { "type": "array", "items": { "$ref": "#/$defs/layer" } }
+      }
+    },
     "timeDimension": {
       "type": "object",
       "description": "Declares that this layer's endpoint carries a time dimension, written as a {time} token in the tile template. Modelled on the OGC WMTS 1.0.0 <Dimension> element, whose UOM for this dimension is ISO8601; WMS-T (WMS 1.3.0 Annex C) uses the same ISO 8601 vocabulary for its TIME parameter. The consumer resolves {time} to a concrete ISO 8601 value before requesting tiles.",
@@ -192,9 +224,11 @@
       "type": "object",
       "required": ["id", "title", "type"],
       "properties": {
-        "id":       { "type": "string" },
+        "id":       { "type": "string", "description": "Slug, unique within the provider file — the uptime history keys on it" },
+        "name":     { "type": "string", "description": "Identifier the service itself uses, e.g. the WMS LAYERS value or WMTS layer identifier. The id is ours; this is theirs." },
         "title":    { "type": "string" },
         "abstract": { "type": "string" },
+        "datasetId": { "type": "string", "description": "Dataset metadata identifier in the provider's catalogue. Several layers may render the same dataset." },
         "type": {
           "type": "string",
           "enum": ["raster", "vector", "wms", "wmts", "wfs", "geojson", "mvt", "3d-tiles", "terrain"]

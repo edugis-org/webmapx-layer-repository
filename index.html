@@ -132,6 +132,7 @@
 
 <script type="module">
 import { resolveTimeDeep, hasTimeToken, resolveTimeValue } from './lib/time.mjs';
+import { layerEntries, allLayers, services } from './lib/catalog.mjs';
 const LAYERS_BASE = './layers';
 let apiKeys = {};
 let activeConfig = null;
@@ -342,7 +343,9 @@ async function selectProvider(path, id) {
 }
 
 function renderMain(data) {
-  const { provider, layers } = data;
+  const provider = data.provider;
+  const entries = layerEntries(data);          // layers now hang off services
+  const layers = entries.map(e => e.layer);
   const cats = (provider.categories ?? []).map(c => `<span class="chip">${c}</span>`).join('');
   const breadcrumb = currentRegion
     ? `<p style="font-size:0.8rem;color:#888;margin-bottom:12px">
@@ -366,12 +369,12 @@ function renderMain(data) {
     ${provider.abstract ? `<p class="abstract">${provider.abstract}</p>` : ''}
     ${provider.note ? `<p style="font-size:0.82rem;color:#856404;background:#fff3cd;border-radius:4px;padding:6px 10px;margin-bottom:8px">ℹ️ ${provider.note}</p>` : ''}
     <p style="font-size:0.8rem;color:#888;margin-bottom:8px">
-      ${(layers ?? []).length} layers —
+      ${layers.length} layers across ${services(data).length} service${services(data).length === 1 ? '' : 's'} —
       <a href="${LAYERS_BASE}/${currentPath}" target="_blank">View raw JSON ↗</a>
     </p>
     <table>
       <thead>
-        <tr><th>Layer</th><th>Type</th><th>Status</th><th>Key</th><th></th></tr>
+        <tr><th>Layer</th><th>Service</th><th>Type</th><th>Status</th><th>Key</th><th></th></tr>
       </thead>
       <tbody>
         ${(layers ?? []).map((l, i) => {
@@ -383,6 +386,10 @@ function renderMain(data) {
             <td>
               <strong>${l.title}</strong><br>
               <span style="color:#555;font-size:0.8rem">${l.abstract ?? ''}</span>
+            </td>
+            <td>
+              <span style="font-size:0.78rem">${entries[i].service.title ?? entries[i].service.id}</span>
+              ${entries[i].service.endpoint ? `<br><span style="color:#999;font-size:0.7rem" title="${entries[i].service.endpoint}">${entries[i].service.type}</span>` : ''}
             </td>
             <td>${l.type}</td>
             <td>
@@ -406,7 +413,7 @@ function renderMain(data) {
 }
 
 function getLayer(index) {
-  return (currentProvider?.layers ?? [])[index];
+  return currentProvider ? allLayers(currentProvider)[index] : undefined;
 }
 
 function showConfig(index) {

@@ -14,134 +14,143 @@
     ],
     "status": "active"
   },
-  "layers": [
+  "services": [
     {
-      "id": "openrailwaymap-standard",
-      "title": "Railways (standard)",
-      "abstract": "All railway lines with track classification. Transparent overlay — add a basemap underneath.",
-      "type": "raster",
-      "status": "active",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "source": {
-          "type": "raster",
-          "tiles": [
-            "https://a.tiles.openrailwaymap.org/standard/{z}/{x}/{y}.png",
-            "https://b.tiles.openrailwaymap.org/standard/{z}/{x}/{y}.png",
-            "https://c.tiles.openrailwaymap.org/standard/{z}/{x}/{y}.png"
-          ],
-          "tileSize": 256,
-          "maxzoom": 19,
-          "attribution": "&copy; <a href='https://www.openrailwaymap.org'>OpenRailwayMap</a> &copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap contributors</a>"
-        },
-        "layer": {
+      "id": "a-tiles-openrailwaymap-org",
+      "title": "OpenRailwayMap XYZ",
+      "type": "xyz",
+      "endpoint": "https://a.tiles.openrailwaymap.org",
+      "availability": "up",
+      "layers": [
+        {
           "id": "openrailwaymap-standard",
+          "title": "Railways (standard)",
+          "abstract": "All railway lines with track classification. Transparent overlay — add a basemap underneath.",
           "type": "raster",
-          "metadata": {
-            "title": "OpenRailwayMap Standard",
-            "abstract": "Railway lines overlay. Source: OpenRailwayMap.",
-            "legendRole": "overlay"
-          }
-        }
-      },
-      "availability": "up",
-      "lastChecked": "2026-09-05"
-    },
-    {
-      "id": "openrailwaymap-maxspeed",
-      "title": "Railways (max speed)",
-      "abstract": "Railway lines coloured by maximum speed. Transparent overlay.",
-      "type": "raster",
-      "status": "active",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "source": {
-          "type": "raster",
-          "tiles": [
-            "https://a.tiles.openrailwaymap.org/maxspeed/{z}/{x}/{y}.png",
-            "https://b.tiles.openrailwaymap.org/maxspeed/{z}/{x}/{y}.png",
-            "https://c.tiles.openrailwaymap.org/maxspeed/{z}/{x}/{y}.png"
-          ],
-          "tileSize": 256,
-          "maxzoom": 19,
-          "attribution": "&copy; <a href='https://www.openrailwaymap.org'>OpenRailwayMap</a> &copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap contributors</a>"
+          "status": "active",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://a.tiles.openrailwaymap.org/standard/{z}/{x}/{y}.png",
+                "https://b.tiles.openrailwaymap.org/standard/{z}/{x}/{y}.png",
+                "https://c.tiles.openrailwaymap.org/standard/{z}/{x}/{y}.png"
+              ],
+              "tileSize": 256,
+              "maxzoom": 19,
+              "attribution": "&copy; <a href='https://www.openrailwaymap.org'>OpenRailwayMap</a> &copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap contributors</a>"
+            },
+            "layer": {
+              "id": "openrailwaymap-standard",
+              "type": "raster",
+              "metadata": {
+                "title": "OpenRailwayMap Standard",
+                "abstract": "Railway lines overlay. Source: OpenRailwayMap.",
+                "legendRole": "overlay"
+              }
+            }
+          },
+          "availability": "up",
+          "lastChecked": "2026-09-05"
         },
-        "layer": {
+        {
           "id": "openrailwaymap-maxspeed",
+          "title": "Railways (max speed)",
+          "abstract": "Railway lines coloured by maximum speed. Transparent overlay.",
           "type": "raster",
-          "metadata": {
-            "title": "OpenRailwayMap Max Speed",
-            "abstract": "Railways coloured by max speed. Source: OpenRailwayMap.",
-            "legendRole": "overlay"
-          }
-        }
-      },
-      "availability": "up",
-      "lastChecked": "2026-09-05"
-    },
-    {
-      "id": "openrailwaymap-signals",
-      "title": "Railways (signals)",
-      "abstract": "Railway signal infrastructure overlay.",
-      "type": "raster",
-      "status": "active",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "source": {
-          "type": "raster",
-          "tiles": [
-            "https://a.tiles.openrailwaymap.org/signals/{z}/{x}/{y}.png",
-            "https://b.tiles.openrailwaymap.org/signals/{z}/{x}/{y}.png",
-            "https://c.tiles.openrailwaymap.org/signals/{z}/{x}/{y}.png"
-          ],
-          "tileSize": 256,
-          "maxzoom": 19,
-          "attribution": "&copy; <a href='https://www.openrailwaymap.org'>OpenRailwayMap</a> &copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap contributors</a>"
+          "status": "active",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://a.tiles.openrailwaymap.org/maxspeed/{z}/{x}/{y}.png",
+                "https://b.tiles.openrailwaymap.org/maxspeed/{z}/{x}/{y}.png",
+                "https://c.tiles.openrailwaymap.org/maxspeed/{z}/{x}/{y}.png"
+              ],
+              "tileSize": 256,
+              "maxzoom": 19,
+              "attribution": "&copy; <a href='https://www.openrailwaymap.org'>OpenRailwayMap</a> &copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap contributors</a>"
+            },
+            "layer": {
+              "id": "openrailwaymap-maxspeed",
+              "type": "raster",
+              "metadata": {
+                "title": "OpenRailwayMap Max Speed",
+                "abstract": "Railways coloured by max speed. Source: OpenRailwayMap.",
+                "legendRole": "overlay"
+              }
+            }
+          },
+          "availability": "up",
+          "lastChecked": "2026-09-05"
         },
-        "layer": {
+        {
           "id": "openrailwaymap-signals",
+          "title": "Railways (signals)",
+          "abstract": "Railway signal infrastructure overlay.",
           "type": "raster",
-          "metadata": {
-            "title": "OpenRailwayMap Signals",
-            "abstract": "Railway signal infrastructure. Source: OpenRailwayMap.",
-            "legendRole": "overlay"
-          }
-        }
-      },
-      "availability": "up",
-      "lastChecked": "2026-09-05"
-    },
-    {
-      "id": "openrailwaymap-electrification",
-      "title": "Railways (electrification)",
-      "abstract": "Railway electrification type overlay.",
-      "type": "raster",
-      "status": "active",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "source": {
-          "type": "raster",
-          "tiles": [
-            "https://a.tiles.openrailwaymap.org/electrification/{z}/{x}/{y}.png",
-            "https://b.tiles.openrailwaymap.org/electrification/{z}/{x}/{y}.png",
-            "https://c.tiles.openrailwaymap.org/electrification/{z}/{x}/{y}.png"
-          ],
-          "tileSize": 256,
-          "maxzoom": 19,
-          "attribution": "&copy; <a href='https://www.openrailwaymap.org'>OpenRailwayMap</a> &copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap contributors</a>"
+          "status": "active",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://a.tiles.openrailwaymap.org/signals/{z}/{x}/{y}.png",
+                "https://b.tiles.openrailwaymap.org/signals/{z}/{x}/{y}.png",
+                "https://c.tiles.openrailwaymap.org/signals/{z}/{x}/{y}.png"
+              ],
+              "tileSize": 256,
+              "maxzoom": 19,
+              "attribution": "&copy; <a href='https://www.openrailwaymap.org'>OpenRailwayMap</a> &copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap contributors</a>"
+            },
+            "layer": {
+              "id": "openrailwaymap-signals",
+              "type": "raster",
+              "metadata": {
+                "title": "OpenRailwayMap Signals",
+                "abstract": "Railway signal infrastructure. Source: OpenRailwayMap.",
+                "legendRole": "overlay"
+              }
+            }
+          },
+          "availability": "up",
+          "lastChecked": "2026-09-05"
         },
-        "layer": {
+        {
           "id": "openrailwaymap-electrification",
+          "title": "Railways (electrification)",
+          "abstract": "Railway electrification type overlay.",
           "type": "raster",
-          "metadata": {
-            "title": "OpenRailwayMap Electrification",
-            "abstract": "Railway electrification types. Source: OpenRailwayMap.",
-            "legendRole": "overlay"
-          }
+          "status": "active",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://a.tiles.openrailwaymap.org/electrification/{z}/{x}/{y}.png",
+                "https://b.tiles.openrailwaymap.org/electrification/{z}/{x}/{y}.png",
+                "https://c.tiles.openrailwaymap.org/electrification/{z}/{x}/{y}.png"
+              ],
+              "tileSize": 256,
+              "maxzoom": 19,
+              "attribution": "&copy; <a href='https://www.openrailwaymap.org'>OpenRailwayMap</a> &copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap contributors</a>"
+            },
+            "layer": {
+              "id": "openrailwaymap-electrification",
+              "type": "raster",
+              "metadata": {
+                "title": "OpenRailwayMap Electrification",
+                "abstract": "Railway electrification types. Source: OpenRailwayMap.",
+                "legendRole": "overlay"
+              }
+            }
+          },
+          "availability": "up",
+          "lastChecked": "2026-09-05"
         }
-      },
-      "availability": "up",
-      "lastChecked": "2026-09-05"
+      ]
     }
   ]
 }

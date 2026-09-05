@@ -13,6 +13,7 @@
 import { readFileSync, writeFileSync, readdirSync, statSync, existsSync } from 'fs';
 import { join, resolve, relative } from 'path';
 import { fileURLToPath } from 'url';
+import { layerCount, services, allLayers } from '../lib/catalog.mjs';
 
 const ROOT = resolve(fileURLToPath(import.meta.url), '../../');
 const LAYERS_DIR = join(ROOT, 'layers');
@@ -79,8 +80,9 @@ function indexEntry(file, region, refSource) {
         providerName: raw.provider?.name,
         access: raw.provider?.access,
         categories: raw.provider?.categories ?? [],
-        layerCount: raw.layers?.length ?? 0,
-        requiresKey: (raw.layers ?? []).some(l => l.requiresKey === true),
+        layerCount: layerCount(raw),
+        serviceCount: services(raw).length,
+        requiresKey: allLayers(raw).some(l => l.requiresKey === true),
         ...(Object.keys(layerStyles).length ? { layerStyles } : {}),
         ...(refSource ? { linkedFrom: refSource } : {}),
     };

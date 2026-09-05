@@ -16,36 +16,45 @@
     ],
     "status": "active"
   },
-  "layers": [
+  "services": [
     {
-      "id": "openaip-map",
-      "title": "Aviation Chart",
-      "abstract": "Airspaces, airports, navaids, and reporting points overlay. Transparent — add a basemap underneath.",
-      "type": "raster",
-      "status": "active",
-      "requiresKey": true,
-      "webmapxConfig": {
-        "source": {
-          "type": "raster",
-          "tiles": [
-            "https://api.tiles.openaip.net/api/data/openaip/{z}/{x}/{y}.png?apiKey={key-openaip}"
-          ],
-          "tileSize": 256,
-          "maxzoom": 14,
-          "attribution": "&copy; <a href='https://www.openaip.net'>OpenAIP</a>"
-        },
-        "layer": {
-          "id": "openaip-map",
-          "type": "raster",
-          "metadata": {
-            "title": "OpenAIP Aviation Chart",
-            "abstract": "Aviation chart overlay. Source: OpenAIP.",
-            "legendRole": "overlay"
-          }
-        }
-      },
+      "id": "api-tiles-openaip-net",
+      "title": "OpenAIP XYZ",
+      "type": "xyz",
+      "endpoint": "https://api.tiles.openaip.net",
       "availability": "up",
-      "lastChecked": "2026-09-05"
+      "layers": [
+        {
+          "id": "openaip-map",
+          "title": "Aviation Chart",
+          "abstract": "Airspaces, airports, navaids, and reporting points overlay. Transparent — add a basemap underneath.",
+          "type": "raster",
+          "status": "active",
+          "requiresKey": true,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://api.tiles.openaip.net/api/data/openaip/{z}/{x}/{y}.png?apiKey={key-openaip}"
+              ],
+              "tileSize": 256,
+              "maxzoom": 14,
+              "attribution": "&copy; <a href='https://www.openaip.net'>OpenAIP</a>"
+            },
+            "layer": {
+              "id": "openaip-map",
+              "type": "raster",
+              "metadata": {
+                "title": "OpenAIP Aviation Chart",
+                "abstract": "Aviation chart overlay. Source: OpenAIP.",
+                "legendRole": "overlay"
+              }
+            }
+          },
+          "availability": "up",
+          "lastChecked": "2026-09-05"
+        }
+      ]
     }
   ]
 }

@@ -15,41 +15,50 @@
     ],
     "status": "active"
   },
-  "layers": [
+  "services": [
     {
-      "id": "openseamap",
-      "title": "OpenSeaMap",
-      "abstract": "Nautical chart overlay — buoys, lighthouses, depth contours, and sea marks. Transparent overlay — add a basemap underneath.",
-      "type": "raster",
-      "status": "active",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "source": {
-          "type": "raster",
-          "tiles": [
-            "https://tiles.openseamap.org/seamark/{z}/{x}/{y}.png"
-          ],
-          "tileSize": 256,
-          "maxzoom": 18,
-          "attribution": "&copy; <a href='https://www.openseamap.org'>OpenSeaMap</a> contributors"
-        },
-        "layer": {
-          "id": "openseamap",
-          "type": "raster",
-          "metadata": {
-            "title": "OpenSeaMap",
-            "abstract": "Nautical chart overlay. Source: OpenSeaMap.",
-            "legendRole": "overlay",
-            "previewCenter": [
-              4.9,
-              52.4
-            ],
-            "previewZoom": 10
-          }
-        }
-      },
+      "id": "tiles-openseamap-org",
+      "title": "OpenSeaMap XYZ",
+      "type": "xyz",
+      "endpoint": "https://tiles.openseamap.org",
       "availability": "up",
-      "lastChecked": "2026-09-05"
+      "layers": [
+        {
+          "id": "openseamap",
+          "title": "OpenSeaMap",
+          "abstract": "Nautical chart overlay — buoys, lighthouses, depth contours, and sea marks. Transparent overlay — add a basemap underneath.",
+          "type": "raster",
+          "status": "active",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://tiles.openseamap.org/seamark/{z}/{x}/{y}.png"
+              ],
+              "tileSize": 256,
+              "maxzoom": 18,
+              "attribution": "&copy; <a href='https://www.openseamap.org'>OpenSeaMap</a> contributors"
+            },
+            "layer": {
+              "id": "openseamap",
+              "type": "raster",
+              "metadata": {
+                "title": "OpenSeaMap",
+                "abstract": "Nautical chart overlay. Source: OpenSeaMap.",
+                "legendRole": "overlay",
+                "previewCenter": [
+                  4.9,
+                  52.4
+                ],
+                "previewZoom": 10
+              }
+            }
+          },
+          "availability": "up",
+          "lastChecked": "2026-09-05"
+        }
+      ]
     }
   ]
 }

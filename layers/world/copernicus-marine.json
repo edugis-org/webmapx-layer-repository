@@ -18,111 +18,138 @@
     ],
     "status": "active"
   },
-  "layers": [
+  "services": [
     {
-      "id": "cmems-sst-global",
-      "title": "Sea Surface Temperature (SST)",
-      "abstract": "Daily global sea surface temperature analysis from the CMEMS Global Ocean Physics Analysis product.",
+      "id": "thredds-wms-metoffice-glo-sst-l4-nrt-obs-sst-v2",
+      "title": "Copernicus Marine Service (CMEMS) WMS",
       "type": "wms",
-      "status": "active",
-      "requiresKey": true,
-      "webmapxConfig": {
-        "source": {
-          "type": "raster",
-          "tiles": [
-            "https://nrt.cmems-du.eu/thredds/wms/METOFFICE-GLO-SST-L4-NRT-OBS-SST-V2?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&LAYERS=analysed_sst&STYLES=boxfill/rainbow&COLORSCALERANGE=271,305&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
-          ],
-          "tileSize": 256,
-          "maxzoom": 7,
-          "attribution": "<a href='https://marine.copernicus.eu'>Copernicus Marine Service</a>"
-        },
-        "layer": {
+      "endpoint": "https://nrt.cmems-du.eu/thredds/wms/METOFFICE-GLO-SST-L4-NRT-OBS-SST-V2",
+      "availability": "up",
+      "layers": [
+        {
           "id": "cmems-sst-global",
-          "type": "raster",
-          "metadata": {
-            "title": "CMEMS Sea Surface Temperature",
-            "abstract": "Daily global SST (Kelvin scale 271-305K). Source: Copernicus Marine / Met Office.",
-            "legendRole": "overlay",
-            "previewCenter": [
-              0,
-              20
-            ],
-            "previewZoom": 2
-          }
+          "title": "Sea Surface Temperature (SST)",
+          "abstract": "Daily global sea surface temperature analysis from the CMEMS Global Ocean Physics Analysis product.",
+          "type": "wms",
+          "status": "active",
+          "requiresKey": true,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://nrt.cmems-du.eu/thredds/wms/METOFFICE-GLO-SST-L4-NRT-OBS-SST-V2?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&LAYERS=analysed_sst&STYLES=boxfill/rainbow&COLORSCALERANGE=271,305&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
+              ],
+              "tileSize": 256,
+              "maxzoom": 7,
+              "attribution": "<a href='https://marine.copernicus.eu'>Copernicus Marine Service</a>"
+            },
+            "layer": {
+              "id": "cmems-sst-global",
+              "type": "raster",
+              "metadata": {
+                "title": "CMEMS Sea Surface Temperature",
+                "abstract": "Daily global SST (Kelvin scale 271-305K). Source: Copernicus Marine / Met Office.",
+                "legendRole": "overlay",
+                "previewCenter": [
+                  0,
+                  20
+                ],
+                "previewZoom": 2
+              }
+            }
+          },
+          "availability": "up",
+          "lastChecked": "2026-09-05"
         }
-      },
-      "availability": "up",
-      "lastChecked": "2026-09-05"
+      ]
     },
     {
-      "id": "cmems-salinity-global",
-      "title": "Ocean Salinity",
-      "abstract": "Global ocean surface salinity from the CMEMS Global Ocean Physics Reanalysis.",
+      "id": "thredds-wms-global-analysis-forecast-phy-001-024",
+      "title": "Copernicus Marine Service (CMEMS) WMS",
       "type": "wms",
-      "status": "active",
-      "requiresKey": true,
-      "webmapxConfig": {
-        "source": {
-          "type": "raster",
-          "tiles": [
-            "https://nrt.cmems-du.eu/thredds/wms/global-analysis-forecast-phy-001-024?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&LAYERS=so&STYLES=boxfill/rainbow&COLORSCALERANGE=30,40&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
-          ],
-          "tileSize": 256,
-          "maxzoom": 7,
-          "attribution": "<a href='https://marine.copernicus.eu'>Copernicus Marine Service</a>"
-        },
-        "layer": {
+      "endpoint": "https://nrt.cmems-du.eu/thredds/wms/global-analysis-forecast-phy-001-024",
+      "availability": "up",
+      "layers": [
+        {
           "id": "cmems-salinity-global",
-          "type": "raster",
-          "metadata": {
-            "title": "CMEMS Ocean Salinity",
-            "abstract": "Surface salinity (PSU 30-40). Source: Copernicus Marine Service.",
-            "legendRole": "overlay",
-            "previewCenter": [
-              0,
-              20
-            ],
-            "previewZoom": 2
-          }
+          "title": "Ocean Salinity",
+          "abstract": "Global ocean surface salinity from the CMEMS Global Ocean Physics Reanalysis.",
+          "type": "wms",
+          "status": "active",
+          "requiresKey": true,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://nrt.cmems-du.eu/thredds/wms/global-analysis-forecast-phy-001-024?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&LAYERS=so&STYLES=boxfill/rainbow&COLORSCALERANGE=30,40&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
+              ],
+              "tileSize": 256,
+              "maxzoom": 7,
+              "attribution": "<a href='https://marine.copernicus.eu'>Copernicus Marine Service</a>"
+            },
+            "layer": {
+              "id": "cmems-salinity-global",
+              "type": "raster",
+              "metadata": {
+                "title": "CMEMS Ocean Salinity",
+                "abstract": "Surface salinity (PSU 30-40). Source: Copernicus Marine Service.",
+                "legendRole": "overlay",
+                "previewCenter": [
+                  0,
+                  20
+                ],
+                "previewZoom": 2
+              }
+            }
+          },
+          "availability": "up",
+          "lastChecked": "2026-09-05"
         }
-      },
-      "availability": "up",
-      "lastChecked": "2026-09-05"
+      ]
     },
     {
-      "id": "cmems-sea-level-anomaly",
-      "title": "Sea Level Anomaly",
-      "abstract": "Global sea level anomaly (deviation from mean sea level) from satellite altimetry.",
+      "id": "thredds-wms-dataset-duacs-nrt-global-merged-allsat-phy-l4",
+      "title": "Copernicus Marine Service (CMEMS) WMS",
       "type": "wms",
-      "status": "active",
-      "requiresKey": true,
-      "webmapxConfig": {
-        "source": {
-          "type": "raster",
-          "tiles": [
-            "https://nrt.cmems-du.eu/thredds/wms/dataset-duacs-nrt-global-merged-allsat-phy-l4?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&LAYERS=sla&STYLES=boxfill/redblue&COLORSCALERANGE=-0.5,0.5&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
-          ],
-          "tileSize": 256,
-          "maxzoom": 7,
-          "attribution": "<a href='https://marine.copernicus.eu'>Copernicus Marine Service</a>"
-        },
-        "layer": {
-          "id": "cmems-sea-level-anomaly",
-          "type": "raster",
-          "metadata": {
-            "title": "CMEMS Sea Level Anomaly",
-            "abstract": "Sea level deviation from mean (±0.5m). Source: Copernicus Marine / DUACS.",
-            "legendRole": "overlay",
-            "previewCenter": [
-              0,
-              20
-            ],
-            "previewZoom": 2
-          }
-        }
-      },
+      "endpoint": "https://nrt.cmems-du.eu/thredds/wms/dataset-duacs-nrt-global-merged-allsat-phy-l4",
       "availability": "up",
-      "lastChecked": "2026-09-05"
+      "layers": [
+        {
+          "id": "cmems-sea-level-anomaly",
+          "title": "Sea Level Anomaly",
+          "abstract": "Global sea level anomaly (deviation from mean sea level) from satellite altimetry.",
+          "type": "wms",
+          "status": "active",
+          "requiresKey": true,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://nrt.cmems-du.eu/thredds/wms/dataset-duacs-nrt-global-merged-allsat-phy-l4?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&LAYERS=sla&STYLES=boxfill/redblue&COLORSCALERANGE=-0.5,0.5&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
+              ],
+              "tileSize": 256,
+              "maxzoom": 7,
+              "attribution": "<a href='https://marine.copernicus.eu'>Copernicus Marine Service</a>"
+            },
+            "layer": {
+              "id": "cmems-sea-level-anomaly",
+              "type": "raster",
+              "metadata": {
+                "title": "CMEMS Sea Level Anomaly",
+                "abstract": "Sea level deviation from mean (±0.5m). Source: Copernicus Marine / DUACS.",
+                "legendRole": "overlay",
+                "previewCenter": [
+                  0,
+                  20
+                ],
+                "previewZoom": 2
+              }
+            }
+          },
+          "availability": "up",
+          "lastChecked": "2026-09-05"
+        }
+      ]
     }
   ]
 }

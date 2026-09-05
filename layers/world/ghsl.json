@@ -17,114 +17,123 @@
     "lifecycle": "retired",
     "note": "The GHSL GeoServer WMS was withdrawn. The programme now distributes GHS-POP/BUILT/SMOD as downloadable rasters only; no tile service is published."
   },
-  "layers": [
+  "services": [
     {
-      "id": "ghsl-population-2020",
-      "title": "Population Grid 2020 (100m)",
-      "abstract": "Estimated population per 100m grid cell for 2020. Global Human Settlement Population Grid R2023A. RETIRED: the JRC GHSL GeoServer was withdrawn; ghsl.jrc.ec.europa.eu now redirects to human-settlement.emergency.copernicus.eu, which publishes no WMS.",
+      "id": "geoserver-ghsl-wms",
+      "title": "GHSL (EU JRC) WMS",
       "type": "wms",
-      "status": "unknown",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "source": {
-          "type": "raster",
-          "tiles": [
-            "https://ghsl.jrc.ec.europa.eu/geoserver/GHSL/wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&LAYERS=GHSL:GHS_POP_E2020_GLOBE_R2023A_54009_100_V1_0&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
-          ],
-          "tileSize": 256,
-          "maxzoom": 12,
-          "attribution": "<a href='https://ghsl.jrc.ec.europa.eu'>EU JRC GHSL</a>"
-        },
-        "layer": {
+      "endpoint": "https://ghsl.jrc.ec.europa.eu/geoserver/GHSL/wms",
+      "availability": "down",
+      "layers": [
+        {
           "id": "ghsl-population-2020",
-          "type": "raster",
-          "metadata": {
-            "title": "GHSL Population 2020",
-            "abstract": "Population per 100m cell, 2020. Source: EU JRC GHSL R2023A.",
-            "legendRole": "overlay",
-            "previewCenter": [
-              10,
-              48
-            ],
-            "previewZoom": 4
-          }
-        }
-      },
-      "availability": "down",
-      "lastChecked": "2026-09-05",
-      "lifecycle": "retired"
-    },
-    {
-      "id": "ghsl-built-up-2020",
-      "title": "Built-up Area 2020",
-      "abstract": "Built-up surface fraction per 100m grid cell for 2020. Shows urbanization extent worldwide. RETIRED: the JRC GHSL GeoServer was withdrawn; ghsl.jrc.ec.europa.eu now redirects to human-settlement.emergency.copernicus.eu, which publishes no WMS.",
-      "type": "wms",
-      "status": "unknown",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "source": {
-          "type": "raster",
-          "tiles": [
-            "https://ghsl.jrc.ec.europa.eu/geoserver/GHSL/wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&LAYERS=GHSL:GHS_BUILT_S_E2020_GLOBE_R2023A_54009_100_V1_0&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
-          ],
-          "tileSize": 256,
-          "maxzoom": 12,
-          "attribution": "<a href='https://ghsl.jrc.ec.europa.eu'>EU JRC GHSL</a>"
+          "title": "Population Grid 2020 (100m)",
+          "abstract": "Estimated population per 100m grid cell for 2020. Global Human Settlement Population Grid R2023A. RETIRED: the JRC GHSL GeoServer was withdrawn; ghsl.jrc.ec.europa.eu now redirects to human-settlement.emergency.copernicus.eu, which publishes no WMS.",
+          "type": "wms",
+          "status": "unknown",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://ghsl.jrc.ec.europa.eu/geoserver/GHSL/wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&LAYERS=GHSL:GHS_POP_E2020_GLOBE_R2023A_54009_100_V1_0&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
+              ],
+              "tileSize": 256,
+              "maxzoom": 12,
+              "attribution": "<a href='https://ghsl.jrc.ec.europa.eu'>EU JRC GHSL</a>"
+            },
+            "layer": {
+              "id": "ghsl-population-2020",
+              "type": "raster",
+              "metadata": {
+                "title": "GHSL Population 2020",
+                "abstract": "Population per 100m cell, 2020. Source: EU JRC GHSL R2023A.",
+                "legendRole": "overlay",
+                "previewCenter": [
+                  10,
+                  48
+                ],
+                "previewZoom": 4
+              }
+            }
+          },
+          "availability": "down",
+          "lastChecked": "2026-09-05",
+          "lifecycle": "retired"
         },
-        "layer": {
+        {
           "id": "ghsl-built-up-2020",
-          "type": "raster",
-          "metadata": {
-            "title": "GHSL Built-up Area 2020",
-            "abstract": "Built-up surface fraction per 100m cell, 2020. Source: EU JRC GHSL R2023A.",
-            "legendRole": "overlay",
-            "previewCenter": [
-              10,
-              48
-            ],
-            "previewZoom": 4
-          }
-        }
-      },
-      "availability": "down",
-      "lastChecked": "2026-09-05",
-      "lifecycle": "retired"
-    },
-    {
-      "id": "ghsl-settlement-model-2020",
-      "title": "Degree of Urbanisation 2020",
-      "abstract": "Settlement classification: urban centres, urban clusters, rural areas (DEGURBA). Based on GHS-SMOD R2023A. RETIRED: the JRC GHSL GeoServer was withdrawn; ghsl.jrc.ec.europa.eu now redirects to human-settlement.emergency.copernicus.eu, which publishes no WMS.",
-      "type": "wms",
-      "status": "unknown",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "source": {
-          "type": "raster",
-          "tiles": [
-            "https://ghsl.jrc.ec.europa.eu/geoserver/GHSL/wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&LAYERS=GHSL:GHS_SMOD_E2020_GLOBE_R2023A_54009_1000_V1_0&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
-          ],
-          "tileSize": 256,
-          "maxzoom": 10,
-          "attribution": "<a href='https://ghsl.jrc.ec.europa.eu'>EU JRC GHSL</a>"
+          "title": "Built-up Area 2020",
+          "abstract": "Built-up surface fraction per 100m grid cell for 2020. Shows urbanization extent worldwide. RETIRED: the JRC GHSL GeoServer was withdrawn; ghsl.jrc.ec.europa.eu now redirects to human-settlement.emergency.copernicus.eu, which publishes no WMS.",
+          "type": "wms",
+          "status": "unknown",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://ghsl.jrc.ec.europa.eu/geoserver/GHSL/wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&LAYERS=GHSL:GHS_BUILT_S_E2020_GLOBE_R2023A_54009_100_V1_0&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
+              ],
+              "tileSize": 256,
+              "maxzoom": 12,
+              "attribution": "<a href='https://ghsl.jrc.ec.europa.eu'>EU JRC GHSL</a>"
+            },
+            "layer": {
+              "id": "ghsl-built-up-2020",
+              "type": "raster",
+              "metadata": {
+                "title": "GHSL Built-up Area 2020",
+                "abstract": "Built-up surface fraction per 100m cell, 2020. Source: EU JRC GHSL R2023A.",
+                "legendRole": "overlay",
+                "previewCenter": [
+                  10,
+                  48
+                ],
+                "previewZoom": 4
+              }
+            }
+          },
+          "availability": "down",
+          "lastChecked": "2026-09-05",
+          "lifecycle": "retired"
         },
-        "layer": {
+        {
           "id": "ghsl-settlement-model-2020",
-          "type": "raster",
-          "metadata": {
-            "title": "GHSL Degree of Urbanisation 2020",
-            "abstract": "Urban centre / cluster / rural classification. Source: EU JRC GHSL GHS-SMOD R2023A.",
-            "legendRole": "overlay",
-            "previewCenter": [
-              10,
-              48
-            ],
-            "previewZoom": 4
-          }
+          "title": "Degree of Urbanisation 2020",
+          "abstract": "Settlement classification: urban centres, urban clusters, rural areas (DEGURBA). Based on GHS-SMOD R2023A. RETIRED: the JRC GHSL GeoServer was withdrawn; ghsl.jrc.ec.europa.eu now redirects to human-settlement.emergency.copernicus.eu, which publishes no WMS.",
+          "type": "wms",
+          "status": "unknown",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://ghsl.jrc.ec.europa.eu/geoserver/GHSL/wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&LAYERS=GHSL:GHS_SMOD_E2020_GLOBE_R2023A_54009_1000_V1_0&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
+              ],
+              "tileSize": 256,
+              "maxzoom": 10,
+              "attribution": "<a href='https://ghsl.jrc.ec.europa.eu'>EU JRC GHSL</a>"
+            },
+            "layer": {
+              "id": "ghsl-settlement-model-2020",
+              "type": "raster",
+              "metadata": {
+                "title": "GHSL Degree of Urbanisation 2020",
+                "abstract": "Urban centre / cluster / rural classification. Source: EU JRC GHSL GHS-SMOD R2023A.",
+                "legendRole": "overlay",
+                "previewCenter": [
+                  10,
+                  48
+                ],
+                "previewZoom": 4
+              }
+            }
+          },
+          "availability": "down",
+          "lastChecked": "2026-09-05",
+          "lifecycle": "retired"
         }
-      },
-      "availability": "down",
-      "lastChecked": "2026-09-05",
-      "lifecycle": "retired"
+      ]
     }
   ]
 }

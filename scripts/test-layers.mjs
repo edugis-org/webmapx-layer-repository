@@ -25,6 +25,7 @@ import { readFileSync, writeFileSync, readdirSync, statSync, existsSync, mkdirSy
 import { join, resolve, dirname, relative } from 'path';
 import { fileURLToPath } from 'url';
 import { resolveTimeTokens, hasTimeToken } from '../lib/time.mjs';
+import { services, layerEntries } from '../lib/catalog.mjs';
 
 const ROOT = resolve(fileURLToPath(import.meta.url), '../../');
 const LAYERS_DIR = join(ROOT, 'layers');
@@ -287,7 +288,7 @@ for (const file of files) {
     console.log(`\n📂 ${relative(ROOT, file)}`);
     console.log(`   Provider: ${data.provider.name}`);
 
-    for (const layer of data.layers ?? []) {
+    for (const { layer, service } of layerEntries(data)) {
         tally.total++;
         const check = await testLayer(layer);
         tally[check.availability]++;
@@ -305,6 +306,17 @@ for (const file of files) {
             layer.lastChecked = today;
             layersChanged = true;
         }
+        // A service is up if anything it serves is: one dead layer does not
+        // condemn the endpoint, but a wholly dead endpoint should be visible.
+        service._seen = (service._seen ?? []).concat(check.availability);
+    }
+
+    for (const s of services(data)) {
+        if (!s._seen) continue;
+        const rolled = s._seen.includes('up') ? 'up'
+            : (s._seen.find(a => a !== 'unknown') ?? 'unknown');
+        if (s.availability !== rolled) { s.availability = rolled; layersChanged = true; }
+        delete s._seen;
     }
 
     if (!dryRun) {

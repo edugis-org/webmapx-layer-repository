@@ -16,70 +16,88 @@
     ],
     "status": "active"
   },
-  "layers": [
+  "services": [
     {
-      "id": "osm-standard",
-      "title": "OSM Standard",
-      "abstract": "The standard OpenStreetMap tile layer rendered by the OSM tile server.",
-      "type": "raster",
-      "status": "active",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "source": {
-          "type": "raster",
-          "tiles": [
-            "https://a.tile.openstreetmap.org/{z}/{x}/{y}.png",
-            "https://b.tile.openstreetmap.org/{z}/{x}/{y}.png",
-            "https://c.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          ],
-          "tileSize": 256,
-          "maxzoom": 19,
-          "attribution": "© <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap contributors</a>"
-        },
-        "layer": {
+      "id": "a-tile-openstreetmap-org",
+      "title": "OpenStreetMap XYZ",
+      "type": "xyz",
+      "endpoint": "https://a.tile.openstreetmap.org",
+      "availability": "up",
+      "layers": [
+        {
           "id": "osm-standard",
+          "title": "OSM Standard",
+          "abstract": "The standard OpenStreetMap tile layer rendered by the OSM tile server.",
           "type": "raster",
-          "metadata": {
-            "title": "OpenStreetMap Standard",
-            "abstract": "OpenStreetMap standard tiles. © OpenStreetMap contributors (ODbL).",
-            "legendRole": "background"
-          }
+          "status": "active",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://a.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                "https://b.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                "https://c.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              ],
+              "tileSize": 256,
+              "maxzoom": 19,
+              "attribution": "© <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap contributors</a>"
+            },
+            "layer": {
+              "id": "osm-standard",
+              "type": "raster",
+              "metadata": {
+                "title": "OpenStreetMap Standard",
+                "abstract": "OpenStreetMap standard tiles. © OpenStreetMap contributors (ODbL).",
+                "legendRole": "background"
+              }
+            }
+          },
+          "lastChecked": "2026-09-05",
+          "availability": "up"
         }
-      },
-      "lastChecked": "2026-09-05",
-      "availability": "up"
+      ]
     },
     {
-      "id": "osm-humanitarian",
-      "title": "OSM Humanitarian",
-      "abstract": "Humanitarian Data Model rendering, emphasising health, water, and crisis-relevant features.",
-      "type": "raster",
-      "status": "active",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "source": {
-          "type": "raster",
-          "tiles": [
-            "https://tile-a.openstreetmap.fr/hot/{z}/{x}/{y}.png",
-            "https://tile-b.openstreetmap.fr/hot/{z}/{x}/{y}.png",
-            "https://tile-c.openstreetmap.fr/hot/{z}/{x}/{y}.png"
-          ],
-          "tileSize": 256,
-          "maxzoom": 19,
-          "attribution": "© <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap contributors</a>, tiles by <a href='https://hot.openstreetmap.org/'>HOT</a>"
-        },
-        "layer": {
+      "id": "tile-a-openstreetmap-fr",
+      "title": "OpenStreetMap XYZ",
+      "type": "xyz",
+      "endpoint": "https://tile-a.openstreetmap.fr",
+      "availability": "up",
+      "layers": [
+        {
           "id": "osm-humanitarian",
+          "title": "OSM Humanitarian",
+          "abstract": "Humanitarian Data Model rendering, emphasising health, water, and crisis-relevant features.",
           "type": "raster",
-          "metadata": {
-            "title": "OSM Humanitarian",
-            "abstract": "Humanitarian Data Model tile layer. © OpenStreetMap contributors (ODbL).",
-            "legendRole": "background"
-          }
+          "status": "active",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://tile-a.openstreetmap.fr/hot/{z}/{x}/{y}.png",
+                "https://tile-b.openstreetmap.fr/hot/{z}/{x}/{y}.png",
+                "https://tile-c.openstreetmap.fr/hot/{z}/{x}/{y}.png"
+              ],
+              "tileSize": 256,
+              "maxzoom": 19,
+              "attribution": "© <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap contributors</a>, tiles by <a href='https://hot.openstreetmap.org/'>HOT</a>"
+            },
+            "layer": {
+              "id": "osm-humanitarian",
+              "type": "raster",
+              "metadata": {
+                "title": "OSM Humanitarian",
+                "abstract": "Humanitarian Data Model tile layer. © OpenStreetMap contributors (ODbL).",
+                "legendRole": "background"
+              }
+            }
+          },
+          "lastChecked": "2026-09-05",
+          "availability": "up"
         }
-      },
-      "lastChecked": "2026-09-05",
-      "availability": "up"
+      ]
     }
   ]
 }

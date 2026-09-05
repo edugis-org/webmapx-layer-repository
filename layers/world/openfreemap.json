@@ -16,207 +16,225 @@
     ],
     "status": "active"
   },
-  "layers": [
+  "services": [
     {
-      "id": "ofm-liberty",
-      "title": "Liberty (full style)",
-      "abstract": "Complete OpenFreeMap basemap in Liberty style — streets, labels, landuse, water, buildings.",
-      "type": "vector",
-      "status": "active",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "id": "ofm-liberty",
-        "type": "style",
-        "url": "https://tiles.openfreemap.org/styles/liberty",
-        "title": "OpenFreeMap Liberty",
-        "attribution": "© <a href='https://openfreemap.org'>OpenFreeMap</a> © <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap contributors</a>",
-        "metadata": {
-          "title": "OpenFreeMap Liberty",
-          "abstract": "Full Liberty basemap style. Source: OpenFreeMap / OpenStreetMap.",
-          "legendRole": "background"
-        }
-      },
+      "id": "tiles-openfreemap-org",
+      "title": "OpenFreeMap STYLE",
+      "type": "style",
+      "endpoint": "https://tiles.openfreemap.org",
       "availability": "up",
-      "lastChecked": "2026-09-05"
-    },
-    {
-      "id": "ofm-bright",
-      "title": "Bright (full style)",
-      "abstract": "Complete OpenFreeMap basemap in Bright style — clean, high-contrast colours.",
-      "type": "vector",
-      "status": "active",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "id": "ofm-bright",
-        "type": "style",
-        "url": "https://tiles.openfreemap.org/styles/bright",
-        "title": "OpenFreeMap Bright",
-        "attribution": "© <a href='https://openfreemap.org'>OpenFreeMap</a> © <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap contributors</a>",
-        "metadata": {
-          "title": "OpenFreeMap Bright",
-          "abstract": "Full Bright basemap style. Source: OpenFreeMap / OpenStreetMap.",
-          "legendRole": "background"
-        }
-      },
-      "availability": "up",
-      "lastChecked": "2026-09-05"
-    },
-    {
-      "id": "ofm-positron",
-      "title": "Positron (full style)",
-      "abstract": "Complete OpenFreeMap basemap in Positron style — light, minimal, good for data overlays.",
-      "type": "vector",
-      "status": "active",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "id": "ofm-positron",
-        "type": "style",
-        "url": "https://tiles.openfreemap.org/styles/positron",
-        "title": "OpenFreeMap Positron",
-        "attribution": "© <a href='https://openfreemap.org'>OpenFreeMap</a> © <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap contributors</a>",
-        "metadata": {
-          "title": "OpenFreeMap Positron",
-          "abstract": "Full Positron basemap style. Source: OpenFreeMap / OpenStreetMap.",
-          "legendRole": "background"
-        }
-      },
-      "availability": "up",
-      "lastChecked": "2026-09-05"
-    },
-    {
-      "id": "ofm-roads",
-      "title": "Roads",
-      "abstract": "Road network from OpenFreeMap vector tiles.",
-      "type": "vector",
-      "status": "active",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "source": {
+      "layers": [
+        {
+          "id": "ofm-liberty",
+          "title": "Liberty (full style)",
+          "abstract": "Complete OpenFreeMap basemap in Liberty style — streets, labels, landuse, water, buildings.",
           "type": "vector",
-          "url": "https://tiles.openfreemap.org/planet",
-          "attribution": "<a href='https://openfreemap.org'>OpenFreeMap</a> &copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap contributors</a>"
+          "status": "active",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "id": "ofm-liberty",
+            "type": "style",
+            "url": "https://tiles.openfreemap.org/styles/liberty",
+            "title": "OpenFreeMap Liberty",
+            "attribution": "© <a href='https://openfreemap.org'>OpenFreeMap</a> © <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap contributors</a>",
+            "metadata": {
+              "title": "OpenFreeMap Liberty",
+              "abstract": "Full Liberty basemap style. Source: OpenFreeMap / OpenStreetMap.",
+              "legendRole": "background"
+            }
+          },
+          "availability": "up",
+          "lastChecked": "2026-09-05"
         },
-        "layer": {
+        {
+          "id": "ofm-bright",
+          "title": "Bright (full style)",
+          "abstract": "Complete OpenFreeMap basemap in Bright style — clean, high-contrast colours.",
+          "type": "vector",
+          "status": "active",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "id": "ofm-bright",
+            "type": "style",
+            "url": "https://tiles.openfreemap.org/styles/bright",
+            "title": "OpenFreeMap Bright",
+            "attribution": "© <a href='https://openfreemap.org'>OpenFreeMap</a> © <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap contributors</a>",
+            "metadata": {
+              "title": "OpenFreeMap Bright",
+              "abstract": "Full Bright basemap style. Source: OpenFreeMap / OpenStreetMap.",
+              "legendRole": "background"
+            }
+          },
+          "availability": "up",
+          "lastChecked": "2026-09-05"
+        },
+        {
+          "id": "ofm-positron",
+          "title": "Positron (full style)",
+          "abstract": "Complete OpenFreeMap basemap in Positron style — light, minimal, good for data overlays.",
+          "type": "vector",
+          "status": "active",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "id": "ofm-positron",
+            "type": "style",
+            "url": "https://tiles.openfreemap.org/styles/positron",
+            "title": "OpenFreeMap Positron",
+            "attribution": "© <a href='https://openfreemap.org'>OpenFreeMap</a> © <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap contributors</a>",
+            "metadata": {
+              "title": "OpenFreeMap Positron",
+              "abstract": "Full Positron basemap style. Source: OpenFreeMap / OpenStreetMap.",
+              "legendRole": "background"
+            }
+          },
+          "availability": "up",
+          "lastChecked": "2026-09-05"
+        }
+      ]
+    },
+    {
+      "id": "tiles-openfreemap-org-2",
+      "title": "OpenFreeMap VECTOR-TILES",
+      "type": "vector-tiles",
+      "endpoint": "https://tiles.openfreemap.org",
+      "availability": "up",
+      "layers": [
+        {
           "id": "ofm-roads",
-          "type": "line",
-          "source-layer": "transportation",
-          "paint": {
-            "line-color": "#888",
-            "line-width": 1.5
-          },
-          "metadata": {
-            "title": "Roads (OpenFreeMap)",
-            "abstract": "Road network. Source: OpenFreeMap / OpenStreetMap.",
-            "legendRole": "overlay"
-          }
-        }
-      },
-      "lastChecked": "2026-09-05",
-      "availability": "up"
-    },
-    {
-      "id": "ofm-water",
-      "title": "Water",
-      "abstract": "Water bodies from OpenFreeMap vector tiles.",
-      "type": "vector",
-      "status": "active",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "source": {
+          "title": "Roads",
+          "abstract": "Road network from OpenFreeMap vector tiles.",
           "type": "vector",
-          "url": "https://tiles.openfreemap.org/planet",
-          "attribution": "<a href='https://openfreemap.org'>OpenFreeMap</a> &copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap contributors</a>"
+          "status": "active",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "vector",
+              "url": "https://tiles.openfreemap.org/planet",
+              "attribution": "<a href='https://openfreemap.org'>OpenFreeMap</a> &copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap contributors</a>"
+            },
+            "layer": {
+              "id": "ofm-roads",
+              "type": "line",
+              "source-layer": "transportation",
+              "paint": {
+                "line-color": "#888",
+                "line-width": 1.5
+              },
+              "metadata": {
+                "title": "Roads (OpenFreeMap)",
+                "abstract": "Road network. Source: OpenFreeMap / OpenStreetMap.",
+                "legendRole": "overlay"
+              }
+            }
+          },
+          "lastChecked": "2026-09-05",
+          "availability": "up"
         },
-        "layer": {
+        {
           "id": "ofm-water",
-          "type": "fill",
-          "source-layer": "water",
-          "paint": {
-            "fill-color": "#a0c8f0",
-            "fill-opacity": 0.8
-          },
-          "metadata": {
-            "title": "Water (OpenFreeMap)",
-            "abstract": "Water bodies. Source: OpenFreeMap / OpenStreetMap.",
-            "legendRole": "overlay"
-          }
-        }
-      },
-      "lastChecked": "2026-09-05",
-      "availability": "up"
-    },
-    {
-      "id": "ofm-boundaries",
-      "title": "Country Boundaries",
-      "abstract": "Administrative boundaries (country level) from OpenFreeMap vector tiles.",
-      "type": "vector",
-      "status": "active",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "source": {
+          "title": "Water",
+          "abstract": "Water bodies from OpenFreeMap vector tiles.",
           "type": "vector",
-          "url": "https://tiles.openfreemap.org/planet",
-          "attribution": "<a href='https://openfreemap.org'>OpenFreeMap</a> &copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap contributors</a>"
+          "status": "active",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "vector",
+              "url": "https://tiles.openfreemap.org/planet",
+              "attribution": "<a href='https://openfreemap.org'>OpenFreeMap</a> &copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap contributors</a>"
+            },
+            "layer": {
+              "id": "ofm-water",
+              "type": "fill",
+              "source-layer": "water",
+              "paint": {
+                "fill-color": "#a0c8f0",
+                "fill-opacity": 0.8
+              },
+              "metadata": {
+                "title": "Water (OpenFreeMap)",
+                "abstract": "Water bodies. Source: OpenFreeMap / OpenStreetMap.",
+                "legendRole": "overlay"
+              }
+            }
+          },
+          "lastChecked": "2026-09-05",
+          "availability": "up"
         },
-        "layer": {
+        {
           "id": "ofm-boundaries",
-          "type": "line",
-          "source-layer": "boundary",
-          "filter": [
-            "==",
-            "admin_level",
-            2
-          ],
-          "paint": {
-            "line-color": "#666",
-            "line-width": 1,
-            "line-dasharray": [
-              3,
-              2
-            ]
-          },
-          "metadata": {
-            "title": "Country Boundaries (OpenFreeMap)",
-            "abstract": "Country-level administrative boundaries. Source: OpenFreeMap / OpenStreetMap.",
-            "legendRole": "overlay"
-          }
-        }
-      },
-      "lastChecked": "2026-09-05",
-      "availability": "up"
-    },
-    {
-      "id": "ofm-buildings",
-      "title": "Buildings",
-      "abstract": "Building footprints from OpenFreeMap vector tiles.",
-      "type": "vector",
-      "status": "active",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "source": {
+          "title": "Country Boundaries",
+          "abstract": "Administrative boundaries (country level) from OpenFreeMap vector tiles.",
           "type": "vector",
-          "url": "https://tiles.openfreemap.org/planet",
-          "attribution": "<a href='https://openfreemap.org'>OpenFreeMap</a> &copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap contributors</a>"
-        },
-        "layer": {
-          "id": "ofm-buildings",
-          "type": "fill",
-          "source-layer": "building",
-          "minzoom": 13,
-          "paint": {
-            "fill-color": "#d6c9b4",
-            "fill-opacity": 0.8,
-            "fill-outline-color": "#bbb"
+          "status": "active",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "vector",
+              "url": "https://tiles.openfreemap.org/planet",
+              "attribution": "<a href='https://openfreemap.org'>OpenFreeMap</a> &copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap contributors</a>"
+            },
+            "layer": {
+              "id": "ofm-boundaries",
+              "type": "line",
+              "source-layer": "boundary",
+              "filter": [
+                "==",
+                "admin_level",
+                2
+              ],
+              "paint": {
+                "line-color": "#666",
+                "line-width": 1,
+                "line-dasharray": [
+                  3,
+                  2
+                ]
+              },
+              "metadata": {
+                "title": "Country Boundaries (OpenFreeMap)",
+                "abstract": "Country-level administrative boundaries. Source: OpenFreeMap / OpenStreetMap.",
+                "legendRole": "overlay"
+              }
+            }
           },
-          "metadata": {
-            "title": "Buildings (OpenFreeMap)",
-            "abstract": "Building footprints visible from zoom 13. Source: OpenFreeMap / OpenStreetMap.",
-            "legendRole": "overlay"
-          }
+          "lastChecked": "2026-09-05",
+          "availability": "up"
+        },
+        {
+          "id": "ofm-buildings",
+          "title": "Buildings",
+          "abstract": "Building footprints from OpenFreeMap vector tiles.",
+          "type": "vector",
+          "status": "active",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "vector",
+              "url": "https://tiles.openfreemap.org/planet",
+              "attribution": "<a href='https://openfreemap.org'>OpenFreeMap</a> &copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap contributors</a>"
+            },
+            "layer": {
+              "id": "ofm-buildings",
+              "type": "fill",
+              "source-layer": "building",
+              "minzoom": 13,
+              "paint": {
+                "fill-color": "#d6c9b4",
+                "fill-opacity": 0.8,
+                "fill-outline-color": "#bbb"
+              },
+              "metadata": {
+                "title": "Buildings (OpenFreeMap)",
+                "abstract": "Building footprints visible from zoom 13. Source: OpenFreeMap / OpenStreetMap.",
+                "legendRole": "overlay"
+              }
+            }
+          },
+          "lastChecked": "2026-09-05",
+          "availability": "up"
         }
-      },
-      "lastChecked": "2026-09-05",
-      "availability": "up"
+      ]
     }
   ]
 }

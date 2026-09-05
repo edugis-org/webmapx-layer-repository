@@ -22,120 +22,129 @@
     },
     "lifecycle": "stable"
   },
-  "layers": [
+  "services": [
     {
-      "id": "seismology-be-seismische-zones",
-      "title": "Seismische zones",
+      "id": "geoserver-inspire-wms",
+      "title": "Koninklijke Sterrenwacht van België — Seismologie WMS",
       "type": "wms",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "source": {
-          "type": "raster",
-          "tiles": [
-            "https://inspire.seismology.be/geoserver/inspire/wms?layers=inspire:seis_EC8_2011&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
-          ],
-          "tileSize": 256,
-          "attribution": "Bron: ngi.be"
-        },
-        "layer": {
+      "endpoint": "https://inspire.seismology.be/geoserver/inspire/wms",
+      "availability": "up",
+      "layers": [
+        {
           "id": "seismology-be-seismische-zones",
-          "type": "raster",
-          "metadata": {
-            "title": "Seismische zones",
-            "legendRole": "overlay"
-          }
-        }
-      },
-      "availability": "up",
-      "status": "active",
-      "lastChecked": "2026-09-05"
-    },
-    {
-      "id": "seismology-be-seismische-meetstations",
-      "title": "Seismische meetstations",
-      "type": "wms",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "source": {
-          "type": "raster",
-          "tiles": [
-            "https://inspire.seismology.be/geoserver/inspire/wms?layers=inspire:seis_stations&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
-          ],
-          "tileSize": 256,
-          "attribution": "Bron: ngi.be"
+          "title": "Seismische zones",
+          "type": "wms",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://inspire.seismology.be/geoserver/inspire/wms?layers=inspire:seis_EC8_2011&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
+              ],
+              "tileSize": 256,
+              "attribution": "Bron: ngi.be"
+            },
+            "layer": {
+              "id": "seismology-be-seismische-zones",
+              "type": "raster",
+              "metadata": {
+                "title": "Seismische zones",
+                "legendRole": "overlay"
+              }
+            }
+          },
+          "availability": "up",
+          "status": "active",
+          "lastChecked": "2026-09-05"
         },
-        "layer": {
+        {
           "id": "seismology-be-seismische-meetstations",
-          "type": "raster",
-          "metadata": {
-            "title": "Seismische meetstations",
-            "legendRole": "overlay"
-          }
-        }
-      },
-      "availability": "up",
-      "status": "active",
-      "lastChecked": "2026-09-05"
-    },
-    {
-      "id": "seismology-be-aardbevingen",
-      "title": "Aardbevingen",
-      "type": "wms",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "source": {
-          "type": "raster",
-          "tiles": [
-            "https://inspire.seismology.be/geoserver/inspire/wms?layers=inspire:seis_earthquakes&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
-          ],
-          "tileSize": 256,
-          "attribution": "Bron: ngi.be"
+          "title": "Seismische meetstations",
+          "type": "wms",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://inspire.seismology.be/geoserver/inspire/wms?layers=inspire:seis_stations&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
+              ],
+              "tileSize": 256,
+              "attribution": "Bron: ngi.be"
+            },
+            "layer": {
+              "id": "seismology-be-seismische-meetstations",
+              "type": "raster",
+              "metadata": {
+                "title": "Seismische meetstations",
+                "legendRole": "overlay"
+              }
+            }
+          },
+          "availability": "up",
+          "status": "active",
+          "lastChecked": "2026-09-05"
         },
-        "layer": {
+        {
           "id": "seismology-be-aardbevingen",
-          "type": "raster",
-          "metadata": {
-            "title": "Aardbevingen",
-            "legendRole": "overlay"
-          }
-        }
-      },
-      "availability": "up",
-      "status": "active",
-      "lastChecked": "2026-09-05"
-    },
-    {
-      "id": "seismology-be-gnss-meetstations",
-      "title": "GNSS meetstations",
-      "type": "wms",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "source": {
-          "type": "raster",
-          "tiles": [
-            "https://inspire.seismology.be/geoserver/inspire/wms?REQUEST=GETMAP&SERVICE=WMS&VERSION=1.1.1&TRANSPARENT=true&LAYERS=inspire%3AROB_GNSS_Stations&FORMAT=image%2Fpng&STYLES=&SRS=EPSG%3A3857&BBOX={bbox-epsg-3857}&WIDTH=512&HEIGHT=512"
-          ],
-          "tileSize": 256,
-          "attribution": "Koninklijke Sterrenwacht van België — Seismologie",
-          "bounds": [
-            3.3997,
-            50.0949,
-            5.2453,
-            50.9337
-          ]
+          "title": "Aardbevingen",
+          "type": "wms",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://inspire.seismology.be/geoserver/inspire/wms?layers=inspire:seis_earthquakes&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
+              ],
+              "tileSize": 256,
+              "attribution": "Bron: ngi.be"
+            },
+            "layer": {
+              "id": "seismology-be-aardbevingen",
+              "type": "raster",
+              "metadata": {
+                "title": "Aardbevingen",
+                "legendRole": "overlay"
+              }
+            }
+          },
+          "availability": "up",
+          "status": "active",
+          "lastChecked": "2026-09-05"
         },
-        "layer": {
+        {
           "id": "seismology-be-gnss-meetstations",
-          "type": "raster",
-          "metadata": {
-            "title": "GNSS meetstations",
-            "legendRole": "overlay"
-          }
+          "title": "GNSS meetstations",
+          "type": "wms",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://inspire.seismology.be/geoserver/inspire/wms?REQUEST=GETMAP&SERVICE=WMS&VERSION=1.1.1&TRANSPARENT=true&LAYERS=inspire%3AROB_GNSS_Stations&FORMAT=image%2Fpng&STYLES=&SRS=EPSG%3A3857&BBOX={bbox-epsg-3857}&WIDTH=512&HEIGHT=512"
+              ],
+              "tileSize": 256,
+              "attribution": "Koninklijke Sterrenwacht van België — Seismologie",
+              "bounds": [
+                3.3997,
+                50.0949,
+                5.2453,
+                50.9337
+              ]
+            },
+            "layer": {
+              "id": "seismology-be-gnss-meetstations",
+              "type": "raster",
+              "metadata": {
+                "title": "GNSS meetstations",
+                "legendRole": "overlay"
+              }
+            }
+          },
+          "availability": "up",
+          "status": "active",
+          "lastChecked": "2026-09-05"
         }
-      },
-      "availability": "up",
-      "status": "active",
-      "lastChecked": "2026-09-05"
+      ]
     }
   ]
 }

@@ -10,6 +10,7 @@
       "street-maps"
     ],
     "layerCount": 5,
+    "serviceCount": 1,
     "requiresKey": false
   },
   {
@@ -24,6 +25,7 @@
       "hydrology"
     ],
     "layerCount": 3,
+    "serviceCount": 3,
     "requiresKey": true
   },
   {
@@ -39,6 +41,7 @@
       "terrain"
     ],
     "layerCount": 14,
+    "serviceCount": 1,
     "requiresKey": false
   },
   {
@@ -53,6 +56,7 @@
       "hydrology"
     ],
     "layerCount": 4,
+    "serviceCount": 1,
     "requiresKey": false
   },
   {
@@ -66,6 +70,7 @@
       "tectonic"
     ],
     "layerCount": 4,
+    "serviceCount": 1,
     "requiresKey": false
   },
   {
@@ -79,6 +84,7 @@
       "land-use"
     ],
     "layerCount": 2,
+    "serviceCount": 1,
     "requiresKey": false,
     "linkedFrom": "world/europe/eu/netherlands.json"
   },
@@ -92,6 +98,7 @@
       "general-purpose"
     ],
     "layerCount": 1,
+    "serviceCount": 1,
     "requiresKey": false,
     "linkedFrom": "world/europe/eu/netherlands.json"
   },
@@ -108,6 +115,7 @@
       "terrain"
     ],
     "layerCount": 27,
+    "serviceCount": 8,
     "requiresKey": false,
     "linkedFrom": "world/europe/eu/netherlands.json"
   },
@@ -122,6 +130,7 @@
       "boundaries"
     ],
     "layerCount": 2,
+    "serviceCount": 1,
     "requiresKey": false,
     "linkedFrom": "world/europe/eu/netherlands.json"
   },
@@ -137,6 +146,7 @@
       "realtime"
     ],
     "layerCount": 15,
+    "serviceCount": 5,
     "requiresKey": false,
     "linkedFrom": "world/europe/eu/netherlands.json"
   },
@@ -151,6 +161,7 @@
       "land-use"
     ],
     "layerCount": 2,
+    "serviceCount": 1,
     "requiresKey": false
   },
   {
@@ -163,6 +174,7 @@
       "general-purpose"
     ],
     "layerCount": 1,
+    "serviceCount": 1,
     "requiresKey": false
   },
   {
@@ -178,6 +190,7 @@
       "terrain"
     ],
     "layerCount": 27,
+    "serviceCount": 8,
     "requiresKey": false
   },
   {
@@ -191,6 +204,7 @@
       "boundaries"
     ],
     "layerCount": 2,
+    "serviceCount": 1,
     "requiresKey": false
   },
   {
@@ -205,6 +219,7 @@
       "realtime"
     ],
     "layerCount": 15,
+    "serviceCount": 5,
     "requiresKey": false
   },
   {
@@ -217,6 +232,7 @@
       "environment"
     ],
     "layerCount": 3,
+    "serviceCount": 1,
     "requiresKey": false
   },
   {
@@ -230,6 +246,7 @@
       "land-use"
     ],
     "layerCount": 3,
+    "serviceCount": 1,
     "requiresKey": false
   },
   {
@@ -244,6 +261,7 @@
       "satellite"
     ],
     "layerCount": 3,
+    "serviceCount": 1,
     "requiresKey": false
   },
   {
@@ -257,6 +275,7 @@
       "realtime"
     ],
     "layerCount": 1,
+    "serviceCount": 1,
     "requiresKey": false
   },
   {
@@ -272,6 +291,7 @@
       "terrain"
     ],
     "layerCount": 6,
+    "serviceCount": 1,
     "requiresKey": true
   },
   {
@@ -287,6 +307,7 @@
       "terrain"
     ],
     "layerCount": 8,
+    "serviceCount": 2,
     "requiresKey": true
   },
   {
@@ -301,6 +322,7 @@
       "satellite"
     ],
     "layerCount": 3,
+    "serviceCount": 1,
     "requiresKey": false
   },
   {
@@ -316,6 +338,7 @@
       "environment"
     ],
     "layerCount": 6,
+    "serviceCount": 1,
     "requiresKey": false
   },
   {
@@ -329,6 +352,7 @@
       "elevation"
     ],
     "layerCount": 7,
+    "serviceCount": 7,
     "requiresKey": false
   },
   {
@@ -342,6 +366,7 @@
       "transport"
     ],
     "layerCount": 1,
+    "serviceCount": 1,
     "requiresKey": true
   },
   {
@@ -356,6 +381,7 @@
       "transport"
     ],
     "layerCount": 7,
+    "serviceCount": 2,
     "requiresKey": false
   },
   {
@@ -368,6 +394,7 @@
       "transport"
     ],
     "layerCount": 4,
+    "serviceCount": 1,
     "requiresKey": false
   },
   {
@@ -381,6 +408,7 @@
       "transport"
     ],
     "layerCount": 1,
+    "serviceCount": 1,
     "requiresKey": false
   },
   {
@@ -393,6 +421,7 @@
       "street-maps"
     ],
     "layerCount": 1,
+    "serviceCount": 1,
     "requiresKey": false
   },
   {
@@ -407,6 +436,7 @@
       "transport"
     ],
     "layerCount": 2,
+    "serviceCount": 2,
     "requiresKey": false
   },
   {
@@ -420,6 +450,7 @@
       "general-purpose"
     ],
     "layerCount": 1,
+    "serviceCount": 1,
     "requiresKey": false
   },
   {
@@ -433,6 +464,7 @@
       "realtime"
     ],
     "layerCount": 3,
+    "serviceCount": 1,
     "requiresKey": true
   },
   {
@@ -446,6 +478,7 @@
       "environment"
     ],
     "layerCount": 3,
+    "serviceCount": 2,
     "requiresKey": false
   },
   {
@@ -460,6 +493,7 @@
       "terrain"
     ],
     "layerCount": 6,
+    "serviceCount": 1,
     "requiresKey": false
   },
   {
@@ -474,6 +508,7 @@
       "satellite"
     ],
     "layerCount": 3,
+    "serviceCount": 1,
     "requiresKey": true
   },
   {
@@ -489,6 +524,7 @@
       "environment"
     ],
     "layerCount": 7,
+    "serviceCount": 1,
     "requiresKey": false,
     "layerStyles": {
       "usgs-earthquakes-day": "world/styles/usgs-earthquakes-day.json",

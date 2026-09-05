@@ -16,96 +16,105 @@
     ],
     "status": "active"
   },
-  "layers": [
+  "services": [
     {
-      "id": "owm-precipitation",
-      "title": "Precipitation",
-      "abstract": "Current precipitation intensity as a tile overlay.",
-      "type": "raster",
-      "status": "active",
-      "requiresKey": true,
-      "webmapxConfig": {
-        "source": {
-          "type": "raster",
-          "tiles": [
-            "https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid={key-openweathermap}"
-          ],
-          "tileSize": 256,
-          "maxzoom": 18,
-          "attribution": "<a href='https://openweathermap.org'>OpenWeatherMap</a>"
-        },
-        "layer": {
+      "id": "tile-openweathermap-org",
+      "title": "OpenWeatherMap XYZ",
+      "type": "xyz",
+      "endpoint": "https://tile.openweathermap.org",
+      "availability": "up",
+      "layers": [
+        {
           "id": "owm-precipitation",
+          "title": "Precipitation",
+          "abstract": "Current precipitation intensity as a tile overlay.",
           "type": "raster",
-          "metadata": {
-            "title": "Precipitation",
-            "abstract": "Current precipitation. Source: OpenWeatherMap.",
-            "legendRole": "overlay"
-          }
-        }
-      },
-      "availability": "up",
-      "lastChecked": "2026-09-05"
-    },
-    {
-      "id": "owm-wind",
-      "title": "Wind Speed",
-      "abstract": "Current wind speed and direction overlay.",
-      "type": "raster",
-      "status": "active",
-      "requiresKey": true,
-      "webmapxConfig": {
-        "source": {
-          "type": "raster",
-          "tiles": [
-            "https://tile.openweathermap.org/map/wind_new/{z}/{x}/{y}.png?appid={key-openweathermap}"
-          ],
-          "tileSize": 256,
-          "maxzoom": 18,
-          "attribution": "<a href='https://openweathermap.org'>OpenWeatherMap</a>"
+          "status": "active",
+          "requiresKey": true,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid={key-openweathermap}"
+              ],
+              "tileSize": 256,
+              "maxzoom": 18,
+              "attribution": "<a href='https://openweathermap.org'>OpenWeatherMap</a>"
+            },
+            "layer": {
+              "id": "owm-precipitation",
+              "type": "raster",
+              "metadata": {
+                "title": "Precipitation",
+                "abstract": "Current precipitation. Source: OpenWeatherMap.",
+                "legendRole": "overlay"
+              }
+            }
+          },
+          "availability": "up",
+          "lastChecked": "2026-09-05"
         },
-        "layer": {
+        {
           "id": "owm-wind",
+          "title": "Wind Speed",
+          "abstract": "Current wind speed and direction overlay.",
           "type": "raster",
-          "metadata": {
-            "title": "Wind Speed",
-            "abstract": "Current wind speed. Source: OpenWeatherMap.",
-            "legendRole": "overlay"
-          }
-        }
-      },
-      "availability": "up",
-      "lastChecked": "2026-09-05"
-    },
-    {
-      "id": "owm-temperature",
-      "title": "Temperature",
-      "abstract": "Current surface temperature overlay.",
-      "type": "raster",
-      "status": "active",
-      "requiresKey": true,
-      "webmapxConfig": {
-        "source": {
-          "type": "raster",
-          "tiles": [
-            "https://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid={key-openweathermap}"
-          ],
-          "tileSize": 256,
-          "maxzoom": 18,
-          "attribution": "<a href='https://openweathermap.org'>OpenWeatherMap</a>"
+          "status": "active",
+          "requiresKey": true,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://tile.openweathermap.org/map/wind_new/{z}/{x}/{y}.png?appid={key-openweathermap}"
+              ],
+              "tileSize": 256,
+              "maxzoom": 18,
+              "attribution": "<a href='https://openweathermap.org'>OpenWeatherMap</a>"
+            },
+            "layer": {
+              "id": "owm-wind",
+              "type": "raster",
+              "metadata": {
+                "title": "Wind Speed",
+                "abstract": "Current wind speed. Source: OpenWeatherMap.",
+                "legendRole": "overlay"
+              }
+            }
+          },
+          "availability": "up",
+          "lastChecked": "2026-09-05"
         },
-        "layer": {
+        {
           "id": "owm-temperature",
+          "title": "Temperature",
+          "abstract": "Current surface temperature overlay.",
           "type": "raster",
-          "metadata": {
-            "title": "Temperature",
-            "abstract": "Current surface temperature. Source: OpenWeatherMap.",
-            "legendRole": "overlay"
-          }
+          "status": "active",
+          "requiresKey": true,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid={key-openweathermap}"
+              ],
+              "tileSize": 256,
+              "maxzoom": 18,
+              "attribution": "<a href='https://openweathermap.org'>OpenWeatherMap</a>"
+            },
+            "layer": {
+              "id": "owm-temperature",
+              "type": "raster",
+              "metadata": {
+                "title": "Temperature",
+                "abstract": "Current surface temperature. Source: OpenWeatherMap.",
+                "legendRole": "overlay"
+              }
+            }
+          },
+          "availability": "up",
+          "lastChecked": "2026-09-05"
         }
-      },
-      "availability": "up",
-      "lastChecked": "2026-09-05"
+      ]
     }
   ]
 }

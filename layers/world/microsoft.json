@@ -16,105 +16,114 @@
     ],
     "status": "active"
   },
-  "layers": [
+  "services": [
     {
-      "id": "bing-satellite",
-      "title": "Bing Aerial",
-      "abstract": "Microsoft Bing satellite/aerial imagery.",
-      "type": "raster",
-      "status": "active",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "source": {
-          "type": "raster",
-          "tiles": [
-            "https://ecn.t0.tiles.virtualearth.net/tiles/a{quadkey}.jpeg?g=12327",
-            "https://ecn.t1.tiles.virtualearth.net/tiles/a{quadkey}.jpeg?g=12327",
-            "https://ecn.t2.tiles.virtualearth.net/tiles/a{quadkey}.jpeg?g=12327",
-            "https://ecn.t3.tiles.virtualearth.net/tiles/a{quadkey}.jpeg?g=12327"
-          ],
-          "tileSize": 256,
-          "maxzoom": 18,
-          "attribution": "&copy; 2024 Microsoft Corporation, &copy; Maxar, Earthstar Geographics"
-        },
-        "layer": {
+      "id": "ecn-t0-tiles-virtualearth-net",
+      "title": "Microsoft Bing Maps XYZ",
+      "type": "xyz",
+      "endpoint": "https://ecn.t0.tiles.virtualearth.net",
+      "availability": "up",
+      "layers": [
+        {
           "id": "bing-satellite",
+          "title": "Bing Aerial",
+          "abstract": "Microsoft Bing satellite/aerial imagery.",
           "type": "raster",
-          "metadata": {
-            "title": "Bing Aerial",
-            "abstract": "Bing satellite imagery. Source: Microsoft / Maxar.",
-            "legendRole": "background"
-          }
-        }
-      },
-      "availability": "up",
-      "lastChecked": "2026-09-05"
-    },
-    {
-      "id": "bing-hybrid",
-      "title": "Bing Hybrid (aerial + labels)",
-      "abstract": "Microsoft Bing aerial imagery with road and label overlay.",
-      "type": "raster",
-      "status": "active",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "source": {
-          "type": "raster",
-          "tiles": [
-            "https://ecn.t0.tiles.virtualearth.net/tiles/h{quadkey}.jpeg?g=12327",
-            "https://ecn.t1.tiles.virtualearth.net/tiles/h{quadkey}.jpeg?g=12327",
-            "https://ecn.t2.tiles.virtualearth.net/tiles/h{quadkey}.jpeg?g=12327",
-            "https://ecn.t3.tiles.virtualearth.net/tiles/h{quadkey}.jpeg?g=12327"
-          ],
-          "tileSize": 256,
-          "maxzoom": 18,
-          "attribution": "&copy; 2024 Microsoft Corporation, &copy; Maxar"
+          "status": "active",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://ecn.t0.tiles.virtualearth.net/tiles/a{quadkey}.jpeg?g=12327",
+                "https://ecn.t1.tiles.virtualearth.net/tiles/a{quadkey}.jpeg?g=12327",
+                "https://ecn.t2.tiles.virtualearth.net/tiles/a{quadkey}.jpeg?g=12327",
+                "https://ecn.t3.tiles.virtualearth.net/tiles/a{quadkey}.jpeg?g=12327"
+              ],
+              "tileSize": 256,
+              "maxzoom": 18,
+              "attribution": "&copy; 2024 Microsoft Corporation, &copy; Maxar, Earthstar Geographics"
+            },
+            "layer": {
+              "id": "bing-satellite",
+              "type": "raster",
+              "metadata": {
+                "title": "Bing Aerial",
+                "abstract": "Bing satellite imagery. Source: Microsoft / Maxar.",
+                "legendRole": "background"
+              }
+            }
+          },
+          "availability": "up",
+          "lastChecked": "2026-09-05"
         },
-        "layer": {
+        {
           "id": "bing-hybrid",
+          "title": "Bing Hybrid (aerial + labels)",
+          "abstract": "Microsoft Bing aerial imagery with road and label overlay.",
           "type": "raster",
-          "metadata": {
-            "title": "Bing Hybrid",
-            "abstract": "Bing aerial with labels. Source: Microsoft.",
-            "legendRole": "background"
-          }
-        }
-      },
-      "availability": "up",
-      "lastChecked": "2026-09-05"
-    },
-    {
-      "id": "bing-streets",
-      "title": "Bing Streets",
-      "abstract": "Microsoft Bing road/street map.",
-      "type": "raster",
-      "status": "active",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "source": {
-          "type": "raster",
-          "tiles": [
-            "https://ecn.t0.tiles.virtualearth.net/tiles/r{quadkey}.jpeg?g=12327&shading=hill",
-            "https://ecn.t1.tiles.virtualearth.net/tiles/r{quadkey}.jpeg?g=12327&shading=hill",
-            "https://ecn.t2.tiles.virtualearth.net/tiles/r{quadkey}.jpeg?g=12327&shading=hill",
-            "https://ecn.t3.tiles.virtualearth.net/tiles/r{quadkey}.jpeg?g=12327&shading=hill"
-          ],
-          "tileSize": 256,
-          "maxzoom": 19,
-          "attribution": "&copy; 2024 Microsoft Corporation, &copy; TomTom"
+          "status": "active",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://ecn.t0.tiles.virtualearth.net/tiles/h{quadkey}.jpeg?g=12327",
+                "https://ecn.t1.tiles.virtualearth.net/tiles/h{quadkey}.jpeg?g=12327",
+                "https://ecn.t2.tiles.virtualearth.net/tiles/h{quadkey}.jpeg?g=12327",
+                "https://ecn.t3.tiles.virtualearth.net/tiles/h{quadkey}.jpeg?g=12327"
+              ],
+              "tileSize": 256,
+              "maxzoom": 18,
+              "attribution": "&copy; 2024 Microsoft Corporation, &copy; Maxar"
+            },
+            "layer": {
+              "id": "bing-hybrid",
+              "type": "raster",
+              "metadata": {
+                "title": "Bing Hybrid",
+                "abstract": "Bing aerial with labels. Source: Microsoft.",
+                "legendRole": "background"
+              }
+            }
+          },
+          "availability": "up",
+          "lastChecked": "2026-09-05"
         },
-        "layer": {
+        {
           "id": "bing-streets",
+          "title": "Bing Streets",
+          "abstract": "Microsoft Bing road/street map.",
           "type": "raster",
-          "metadata": {
-            "title": "Bing Streets",
-            "abstract": "Bing road map with hill shading. Source: Microsoft / TomTom.",
-            "legendRole": "background"
-          }
+          "status": "active",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://ecn.t0.tiles.virtualearth.net/tiles/r{quadkey}.jpeg?g=12327&shading=hill",
+                "https://ecn.t1.tiles.virtualearth.net/tiles/r{quadkey}.jpeg?g=12327&shading=hill",
+                "https://ecn.t2.tiles.virtualearth.net/tiles/r{quadkey}.jpeg?g=12327&shading=hill",
+                "https://ecn.t3.tiles.virtualearth.net/tiles/r{quadkey}.jpeg?g=12327&shading=hill"
+              ],
+              "tileSize": 256,
+              "maxzoom": 19,
+              "attribution": "&copy; 2024 Microsoft Corporation, &copy; TomTom"
+            },
+            "layer": {
+              "id": "bing-streets",
+              "type": "raster",
+              "metadata": {
+                "title": "Bing Streets",
+                "abstract": "Bing road map with hill shading. Source: Microsoft / TomTom.",
+                "legendRole": "background"
+              }
+            }
+          },
+          "availability": "up",
+          "lastChecked": "2026-09-05"
         }
-      },
-      "availability": "up",
-      "lastChecked": "2026-09-05"
+      ]
     }
   ]
 }

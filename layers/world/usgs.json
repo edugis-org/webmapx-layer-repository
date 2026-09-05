@@ -17,197 +17,206 @@
     ],
     "status": "active"
   },
-  "layers": [
+  "services": [
     {
-      "id": "usgs-earthquakes-day",
-      "title": "Earthquakes (past 24h, all)",
-      "abstract": "All earthquakes from the past 24 hours. Real-time GeoJSON feed from USGS.",
+      "id": "earthquake-usgs-gov",
+      "title": "USGS GEOJSON",
       "type": "geojson",
-      "status": "active",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "source": {
-          "type": "geojson",
-          "data": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson",
-          "attribution": "<a href='https://earthquake.usgs.gov'>USGS Earthquake Hazards Program</a>"
-        },
-        "layer": {
+      "endpoint": "https://earthquake.usgs.gov",
+      "availability": "up",
+      "layers": [
+        {
           "id": "usgs-earthquakes-day",
-          "type": "circle",
-          "paint": {
-            "circle-radius": 5,
-            "circle-color": "#3388ff",
-            "circle-opacity": 0.8,
-            "circle-stroke-width": 1,
-            "circle-stroke-color": "#fff"
-          },
-          "metadata": {
-            "title": "Earthquakes (past 24h)",
-            "abstract": "All earthquakes past 24 hours. Size and colour by magnitude. Source: USGS.",
-            "legendRole": "overlay"
-          }
-        }
-      },
-      "availability": "up",
-      "lastChecked": "2026-09-05"
-    },
-    {
-      "id": "usgs-earthquakes-week-significant",
-      "title": "Earthquakes (past week, significant)",
-      "abstract": "Significant earthquakes from the past 7 days. Real-time GeoJSON feed from USGS.",
-      "type": "geojson",
-      "status": "active",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "source": {
+          "title": "Earthquakes (past 24h, all)",
+          "abstract": "All earthquakes from the past 24 hours. Real-time GeoJSON feed from USGS.",
           "type": "geojson",
-          "data": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_week.geojson",
-          "attribution": "<a href='https://earthquake.usgs.gov'>USGS Earthquake Hazards Program</a>"
+          "status": "active",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "geojson",
+              "data": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson",
+              "attribution": "<a href='https://earthquake.usgs.gov'>USGS Earthquake Hazards Program</a>"
+            },
+            "layer": {
+              "id": "usgs-earthquakes-day",
+              "type": "circle",
+              "paint": {
+                "circle-radius": 5,
+                "circle-color": "#3388ff",
+                "circle-opacity": 0.8,
+                "circle-stroke-width": 1,
+                "circle-stroke-color": "#fff"
+              },
+              "metadata": {
+                "title": "Earthquakes (past 24h)",
+                "abstract": "All earthquakes past 24 hours. Size and colour by magnitude. Source: USGS.",
+                "legendRole": "overlay"
+              }
+            }
+          },
+          "availability": "up",
+          "lastChecked": "2026-09-05"
         },
-        "layer": {
+        {
           "id": "usgs-earthquakes-week-significant",
-          "type": "circle",
-          "paint": {
-            "circle-radius": 6,
-            "circle-color": "#3388ff",
-            "circle-opacity": 0.8,
-            "circle-stroke-width": 1,
-            "circle-stroke-color": "#fff"
-          },
-          "metadata": {
-            "title": "Significant Earthquakes (past week)",
-            "abstract": "Significant earthquakes past 7 days. Source: USGS.",
-            "legendRole": "overlay"
-          }
-        }
-      },
-      "availability": "up",
-      "lastChecked": "2026-09-05"
-    },
-    {
-      "id": "usgs-earthquakes-month-m45",
-      "title": "Earthquakes M4.5+ (past 30 days)",
-      "abstract": "Earthquakes magnitude 4.5 and above from the past 30 days.",
-      "type": "geojson",
-      "status": "active",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "source": {
+          "title": "Earthquakes (past week, significant)",
+          "abstract": "Significant earthquakes from the past 7 days. Real-time GeoJSON feed from USGS.",
           "type": "geojson",
-          "data": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_month.geojson",
-          "attribution": "<a href='https://earthquake.usgs.gov'>USGS Earthquake Hazards Program</a>"
+          "status": "active",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "geojson",
+              "data": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_week.geojson",
+              "attribution": "<a href='https://earthquake.usgs.gov'>USGS Earthquake Hazards Program</a>"
+            },
+            "layer": {
+              "id": "usgs-earthquakes-week-significant",
+              "type": "circle",
+              "paint": {
+                "circle-radius": 6,
+                "circle-color": "#3388ff",
+                "circle-opacity": 0.8,
+                "circle-stroke-width": 1,
+                "circle-stroke-color": "#fff"
+              },
+              "metadata": {
+                "title": "Significant Earthquakes (past week)",
+                "abstract": "Significant earthquakes past 7 days. Source: USGS.",
+                "legendRole": "overlay"
+              }
+            }
+          },
+          "availability": "up",
+          "lastChecked": "2026-09-05"
         },
-        "layer": {
+        {
           "id": "usgs-earthquakes-month-m45",
-          "type": "circle",
-          "paint": {
-            "circle-radius": 6,
-            "circle-color": "#3388ff",
-            "circle-opacity": 0.8,
-            "circle-stroke-width": 1,
-            "circle-stroke-color": "#fff"
+          "title": "Earthquakes M4.5+ (past 30 days)",
+          "abstract": "Earthquakes magnitude 4.5 and above from the past 30 days.",
+          "type": "geojson",
+          "status": "active",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "geojson",
+              "data": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_month.geojson",
+              "attribution": "<a href='https://earthquake.usgs.gov'>USGS Earthquake Hazards Program</a>"
+            },
+            "layer": {
+              "id": "usgs-earthquakes-month-m45",
+              "type": "circle",
+              "paint": {
+                "circle-radius": 6,
+                "circle-color": "#3388ff",
+                "circle-opacity": 0.8,
+                "circle-stroke-width": 1,
+                "circle-stroke-color": "#fff"
+              },
+              "metadata": {
+                "title": "Earthquakes M4.5+ (30 days)",
+                "abstract": "Earthquakes M4.5+ past 30 days. Source: USGS.",
+                "legendRole": "overlay"
+              }
+            }
           },
-          "metadata": {
-            "title": "Earthquakes M4.5+ (30 days)",
-            "abstract": "Earthquakes M4.5+ past 30 days. Source: USGS.",
-            "legendRole": "overlay"
-          }
-        }
-      },
-      "availability": "up",
-      "lastChecked": "2026-09-05"
-    },
-    {
-      "id": "usgs-aardbevingen-dit-uur",
-      "title": "Aardbevingen dit uur",
-      "type": "geojson",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "source": {
-          "type": "geojson",
-          "data": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson"
+          "availability": "up",
+          "lastChecked": "2026-09-05"
         },
-        "layer": {
+        {
           "id": "usgs-aardbevingen-dit-uur",
-          "type": "circle",
-          "metadata": {
-            "title": "Aardbevingen dit uur",
-            "legendRole": "overlay"
-          }
-        }
-      },
-      "availability": "up",
-      "status": "active",
-      "lastChecked": "2026-09-05"
-    },
-    {
-      "id": "usgs-aardbevingen-vandaag-2-5",
-      "title": "Aardbevingen vandaag > 2.5",
-      "type": "geojson",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "source": {
+          "title": "Aardbevingen dit uur",
           "type": "geojson",
-          "data": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_day.geojson"
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "geojson",
+              "data": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson"
+            },
+            "layer": {
+              "id": "usgs-aardbevingen-dit-uur",
+              "type": "circle",
+              "metadata": {
+                "title": "Aardbevingen dit uur",
+                "legendRole": "overlay"
+              }
+            }
+          },
+          "availability": "up",
+          "status": "active",
+          "lastChecked": "2026-09-05"
         },
-        "layer": {
+        {
           "id": "usgs-aardbevingen-vandaag-2-5",
-          "type": "circle",
-          "metadata": {
-            "title": "Aardbevingen vandaag > 2.5",
-            "legendRole": "overlay"
-          }
-        }
-      },
-      "availability": "up",
-      "status": "active",
-      "lastChecked": "2026-09-05"
-    },
-    {
-      "id": "usgs-aardbevingen-deze-week-2-5",
-      "title": "Aardbevingen deze week > 2.5",
-      "type": "geojson",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "source": {
+          "title": "Aardbevingen vandaag > 2.5",
           "type": "geojson",
-          "data": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojson"
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "geojson",
+              "data": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_day.geojson"
+            },
+            "layer": {
+              "id": "usgs-aardbevingen-vandaag-2-5",
+              "type": "circle",
+              "metadata": {
+                "title": "Aardbevingen vandaag > 2.5",
+                "legendRole": "overlay"
+              }
+            }
+          },
+          "availability": "up",
+          "status": "active",
+          "lastChecked": "2026-09-05"
         },
-        "layer": {
+        {
           "id": "usgs-aardbevingen-deze-week-2-5",
-          "type": "circle",
-          "metadata": {
-            "title": "Aardbevingen deze week > 2.5",
-            "legendRole": "overlay"
-          }
-        }
-      },
-      "availability": "up",
-      "status": "active",
-      "lastChecked": "2026-09-05"
-    },
-    {
-      "id": "usgs-aardbevingen-deze-maand-2-5",
-      "title": "Aardbevingen deze maand > 2.5",
-      "type": "geojson",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "source": {
+          "title": "Aardbevingen deze week > 2.5",
           "type": "geojson",
-          "data": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_month.geojson"
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "geojson",
+              "data": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojson"
+            },
+            "layer": {
+              "id": "usgs-aardbevingen-deze-week-2-5",
+              "type": "circle",
+              "metadata": {
+                "title": "Aardbevingen deze week > 2.5",
+                "legendRole": "overlay"
+              }
+            }
+          },
+          "availability": "up",
+          "status": "active",
+          "lastChecked": "2026-09-05"
         },
-        "layer": {
+        {
           "id": "usgs-aardbevingen-deze-maand-2-5",
-          "type": "circle",
-          "metadata": {
-            "title": "Aardbevingen deze maand > 2.5",
-            "legendRole": "overlay"
-          }
+          "title": "Aardbevingen deze maand > 2.5",
+          "type": "geojson",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "geojson",
+              "data": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_month.geojson"
+            },
+            "layer": {
+              "id": "usgs-aardbevingen-deze-maand-2-5",
+              "type": "circle",
+              "metadata": {
+                "title": "Aardbevingen deze maand > 2.5",
+                "legendRole": "overlay"
+              }
+            }
+          },
+          "availability": "up",
+          "status": "active",
+          "lastChecked": "2026-09-05"
         }
-      },
-      "availability": "up",
-      "status": "active",
-      "lastChecked": "2026-09-05"
+      ]
     }
   ]
 }

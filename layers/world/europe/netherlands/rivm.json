@@ -24,501 +24,546 @@
     },
     "lifecycle": "stable"
   },
-  "layers": [
+  "services": [
     {
-      "id": "rivm-lichtvervuiling",
-      "title": "Lichtvervuiling",
+      "id": "geo-dmg-wms",
+      "title": "RIVM WMS",
       "type": "wms",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "source": {
-          "type": "raster",
-          "tiles": [
-            "https://data.rivm.nl/geo/dmg/wms?layers=licht_20150315_gm_hhavondbew&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
-          ],
-          "tileSize": 256,
-          "attribution": "RIVM",
-          "bounds": [
-            3.20009,
-            50.7167,
-            7.27283,
-            53.5571
-          ]
-        },
-        "layer": {
+      "endpoint": "https://data.rivm.nl/geo/dmg/wms",
+      "availability": "up",
+      "layers": [
+        {
           "id": "rivm-lichtvervuiling",
-          "type": "raster",
-          "metadata": {
-            "title": "Lichtvervuiling",
-            "legendRole": "overlay"
-          }
-        }
-      },
-      "availability": "up",
-      "status": "active",
-      "lastChecked": "2026-09-05"
-    },
-    {
-      "id": "rivm-hemelhelderheid-in-de-nacht-met-bewolking",
-      "title": "Hemelhelderheid in de nacht met bewolking",
-      "type": "wms",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "source": {
-          "type": "raster",
-          "tiles": [
-            "https://data.rivm.nl/geo/dmg/wms?layers=licht_20150315_gm_hhnachtbew&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
-          ],
-          "tileSize": 256,
-          "attribution": "RIVM",
-          "bounds": [
-            3.20009,
-            50.7167,
-            7.27283,
-            53.5571
-          ]
+          "title": "Lichtvervuiling",
+          "type": "wms",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://data.rivm.nl/geo/dmg/wms?layers=licht_20150315_gm_hhavondbew&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
+              ],
+              "tileSize": 256,
+              "attribution": "RIVM",
+              "bounds": [
+                3.20009,
+                50.7167,
+                7.27283,
+                53.5571
+              ]
+            },
+            "layer": {
+              "id": "rivm-lichtvervuiling",
+              "type": "raster",
+              "metadata": {
+                "title": "Lichtvervuiling",
+                "legendRole": "overlay"
+              }
+            }
+          },
+          "availability": "up",
+          "status": "active",
+          "lastChecked": "2026-09-05"
         },
-        "layer": {
+        {
           "id": "rivm-hemelhelderheid-in-de-nacht-met-bewolking",
-          "type": "raster",
-          "metadata": {
-            "title": "Hemelhelderheid in de nacht met bewolking",
-            "legendRole": "overlay"
-          }
-        }
-      },
-      "availability": "up",
-      "status": "active",
-      "lastChecked": "2026-09-05"
-    },
-    {
-      "id": "rivm-hemelhelderheid-in-de-nacht-zonder-bewolking",
-      "title": "Hemelhelderheid in de nacht zonder bewolking",
-      "type": "wms",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "source": {
-          "type": "raster",
-          "tiles": [
-            "https://data.rivm.nl/geo/dmg/wms?layers=licht_20150315_gm_hhnachtonbew&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
-          ],
-          "tileSize": 256,
-          "attribution": "RIVM",
-          "bounds": [
-            3.20009,
-            50.7167,
-            7.27283,
-            53.5571
-          ]
+          "title": "Hemelhelderheid in de nacht met bewolking",
+          "type": "wms",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://data.rivm.nl/geo/dmg/wms?layers=licht_20150315_gm_hhnachtbew&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
+              ],
+              "tileSize": 256,
+              "attribution": "RIVM",
+              "bounds": [
+                3.20009,
+                50.7167,
+                7.27283,
+                53.5571
+              ]
+            },
+            "layer": {
+              "id": "rivm-hemelhelderheid-in-de-nacht-met-bewolking",
+              "type": "raster",
+              "metadata": {
+                "title": "Hemelhelderheid in de nacht met bewolking",
+                "legendRole": "overlay"
+              }
+            }
+          },
+          "availability": "up",
+          "status": "active",
+          "lastChecked": "2026-09-05"
         },
-        "layer": {
+        {
           "id": "rivm-hemelhelderheid-in-de-nacht-zonder-bewolking",
-          "type": "raster",
-          "metadata": {
-            "title": "Hemelhelderheid in de nacht zonder bewolking",
-            "legendRole": "overlay"
-          }
-        }
-      },
-      "availability": "up",
-      "status": "active",
-      "lastChecked": "2026-09-05"
-    },
-    {
-      "id": "rivm-lichtemissie-nederland-foto-van-iss-2012",
-      "title": "Lichtemissie Nederland, foto van ISS (2012)",
-      "type": "wms",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "source": {
-          "type": "raster",
-          "tiles": [
-            "https://data.rivm.nl/geo/dmg/wms?layers=licht_emissie_iss_nl_2012&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
-          ],
-          "tileSize": 256,
-          "attribution": "RIVM",
-          "bounds": [
-            3.20009,
-            50.7167,
-            7.27283,
-            53.5571
-          ]
+          "title": "Hemelhelderheid in de nacht zonder bewolking",
+          "type": "wms",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://data.rivm.nl/geo/dmg/wms?layers=licht_20150315_gm_hhnachtonbew&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
+              ],
+              "tileSize": 256,
+              "attribution": "RIVM",
+              "bounds": [
+                3.20009,
+                50.7167,
+                7.27283,
+                53.5571
+              ]
+            },
+            "layer": {
+              "id": "rivm-hemelhelderheid-in-de-nacht-zonder-bewolking",
+              "type": "raster",
+              "metadata": {
+                "title": "Hemelhelderheid in de nacht zonder bewolking",
+                "legendRole": "overlay"
+              }
+            }
+          },
+          "availability": "up",
+          "status": "active",
+          "lastChecked": "2026-09-05"
         },
-        "layer": {
+        {
           "id": "rivm-lichtemissie-nederland-foto-van-iss-2012",
-          "type": "raster",
-          "metadata": {
-            "title": "Lichtemissie Nederland, foto van ISS (2012)",
-            "legendRole": "overlay"
-          }
-        }
-      },
-      "availability": "up",
-      "status": "active",
-      "lastChecked": "2026-09-05"
-    },
-    {
-      "id": "rivm-lichtemissie-nederland-2012",
-      "title": "Lichtemissie Nederland (2012)",
-      "type": "wms",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "source": {
-          "type": "raster",
-          "tiles": [
-            "https://data.rivm.nl/geo/dmg/wms?layers=licht_lichtemissie_2012&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
-          ],
-          "tileSize": 256,
-          "attribution": "RIVM",
-          "bounds": [
-            3.20009,
-            50.7167,
-            7.27283,
-            53.5571
-          ]
+          "title": "Lichtemissie Nederland, foto van ISS (2012)",
+          "type": "wms",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://data.rivm.nl/geo/dmg/wms?layers=licht_emissie_iss_nl_2012&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
+              ],
+              "tileSize": 256,
+              "attribution": "RIVM",
+              "bounds": [
+                3.20009,
+                50.7167,
+                7.27283,
+                53.5571
+              ]
+            },
+            "layer": {
+              "id": "rivm-lichtemissie-nederland-foto-van-iss-2012",
+              "type": "raster",
+              "metadata": {
+                "title": "Lichtemissie Nederland, foto van ISS (2012)",
+                "legendRole": "overlay"
+              }
+            }
+          },
+          "availability": "up",
+          "status": "active",
+          "lastChecked": "2026-09-05"
         },
-        "layer": {
+        {
           "id": "rivm-lichtemissie-nederland-2012",
-          "type": "raster",
-          "metadata": {
-            "title": "Lichtemissie Nederland (2012)",
-            "legendRole": "overlay"
-          }
+          "title": "Lichtemissie Nederland (2012)",
+          "type": "wms",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://data.rivm.nl/geo/dmg/wms?layers=licht_lichtemissie_2012&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
+              ],
+              "tileSize": 256,
+              "attribution": "RIVM",
+              "bounds": [
+                3.20009,
+                50.7167,
+                7.27283,
+                53.5571
+              ]
+            },
+            "layer": {
+              "id": "rivm-lichtemissie-nederland-2012",
+              "type": "raster",
+              "metadata": {
+                "title": "Lichtemissie Nederland (2012)",
+                "legendRole": "overlay"
+              }
+            }
+          },
+          "availability": "up",
+          "status": "active",
+          "lastChecked": "2026-09-05"
         }
-      },
-      "availability": "up",
-      "status": "active",
-      "lastChecked": "2026-09-05"
+      ]
     },
     {
-      "id": "rivm-luchtkwaliteitsindex-actueel",
-      "title": "Luchtkwaliteitsindex (actueel)",
+      "id": "geo-lucht-wms",
+      "title": "RIVM WMS",
       "type": "wms",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "source": {
-          "type": "raster",
-          "tiles": [
-            "https://data.rivm.nl/geo/lucht/wms?layers=actueel_lki&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
-          ],
-          "tileSize": 256,
-          "attribution": "RIVM",
-          "bounds": [
-            3.20009,
-            50.7167,
-            7.27283,
-            53.5571
-          ]
-        },
-        "layer": {
+      "endpoint": "https://data.rivm.nl/geo/lucht/wms",
+      "availability": "up",
+      "layers": [
+        {
           "id": "rivm-luchtkwaliteitsindex-actueel",
-          "type": "raster",
-          "metadata": {
-            "title": "Luchtkwaliteitsindex (actueel)",
-            "legendRole": "overlay"
-          }
-        }
-      },
-      "availability": "up",
-      "status": "active",
-      "lastChecked": "2026-09-05"
-    },
-    {
-      "id": "rivm-fijnstof-pm10-actueel",
-      "title": "Fijnstof pm10 (actueel)",
-      "type": "wms",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "source": {
-          "type": "raster",
-          "tiles": [
-            "https://data.rivm.nl/geo/lucht/wms?layers=actueel_pm10&STYLES=lucht_pm10&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
-          ],
-          "tileSize": 256,
-          "attribution": "RIVM",
-          "bounds": [
-            3.20009,
-            50.7167,
-            7.27283,
-            53.5571
-          ]
+          "title": "Luchtkwaliteitsindex (actueel)",
+          "type": "wms",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://data.rivm.nl/geo/lucht/wms?layers=actueel_lki&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
+              ],
+              "tileSize": 256,
+              "attribution": "RIVM",
+              "bounds": [
+                3.20009,
+                50.7167,
+                7.27283,
+                53.5571
+              ]
+            },
+            "layer": {
+              "id": "rivm-luchtkwaliteitsindex-actueel",
+              "type": "raster",
+              "metadata": {
+                "title": "Luchtkwaliteitsindex (actueel)",
+                "legendRole": "overlay"
+              }
+            }
+          },
+          "availability": "up",
+          "status": "active",
+          "lastChecked": "2026-09-05"
         },
-        "layer": {
+        {
           "id": "rivm-fijnstof-pm10-actueel",
-          "type": "raster",
-          "metadata": {
-            "title": "Fijnstof pm10 (actueel)",
-            "legendRole": "overlay"
-          }
-        }
-      },
-      "availability": "up",
-      "status": "active",
-      "lastChecked": "2026-09-05"
-    },
-    {
-      "id": "rivm-stikstofoxide-no2-actueel",
-      "title": "Stikstofoxide NO2 (actueel)",
-      "type": "wms",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "source": {
-          "type": "raster",
-          "tiles": [
-            "https://data.rivm.nl/geo/lucht/wms?layers=actueel_no2&STYLES=lucht_no2&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
-          ],
-          "tileSize": 256,
-          "attribution": "RIVM",
-          "bounds": [
-            3.20009,
-            50.7167,
-            7.27283,
-            53.5571
-          ]
+          "title": "Fijnstof pm10 (actueel)",
+          "type": "wms",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://data.rivm.nl/geo/lucht/wms?layers=actueel_pm10&STYLES=lucht_pm10&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
+              ],
+              "tileSize": 256,
+              "attribution": "RIVM",
+              "bounds": [
+                3.20009,
+                50.7167,
+                7.27283,
+                53.5571
+              ]
+            },
+            "layer": {
+              "id": "rivm-fijnstof-pm10-actueel",
+              "type": "raster",
+              "metadata": {
+                "title": "Fijnstof pm10 (actueel)",
+                "legendRole": "overlay"
+              }
+            }
+          },
+          "availability": "up",
+          "status": "active",
+          "lastChecked": "2026-09-05"
         },
-        "layer": {
+        {
           "id": "rivm-stikstofoxide-no2-actueel",
-          "type": "raster",
-          "metadata": {
-            "title": "Stikstofoxide NO2 (actueel)",
-            "legendRole": "overlay"
-          }
-        }
-      },
-      "availability": "up",
-      "status": "active",
-      "lastChecked": "2026-09-05"
-    },
-    {
-      "id": "rivm-ozon-actueel",
-      "title": "Ozon (actueel)",
-      "type": "wms",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "source": {
-          "type": "raster",
-          "tiles": [
-            "https://data.rivm.nl/geo/lucht/wms?layers=actueel_o3&STYLES=lucht_o3&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
-          ],
-          "tileSize": 256,
-          "attribution": "RIVM",
-          "bounds": [
-            3.20009,
-            50.7167,
-            7.27283,
-            53.5571
-          ]
+          "title": "Stikstofoxide NO2 (actueel)",
+          "type": "wms",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://data.rivm.nl/geo/lucht/wms?layers=actueel_no2&STYLES=lucht_no2&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
+              ],
+              "tileSize": 256,
+              "attribution": "RIVM",
+              "bounds": [
+                3.20009,
+                50.7167,
+                7.27283,
+                53.5571
+              ]
+            },
+            "layer": {
+              "id": "rivm-stikstofoxide-no2-actueel",
+              "type": "raster",
+              "metadata": {
+                "title": "Stikstofoxide NO2 (actueel)",
+                "legendRole": "overlay"
+              }
+            }
+          },
+          "availability": "up",
+          "status": "active",
+          "lastChecked": "2026-09-05"
         },
-        "layer": {
+        {
           "id": "rivm-ozon-actueel",
-          "type": "raster",
-          "metadata": {
-            "title": "Ozon (actueel)",
-            "legendRole": "overlay"
-          }
+          "title": "Ozon (actueel)",
+          "type": "wms",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://data.rivm.nl/geo/lucht/wms?layers=actueel_o3&STYLES=lucht_o3&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
+              ],
+              "tileSize": 256,
+              "attribution": "RIVM",
+              "bounds": [
+                3.20009,
+                50.7167,
+                7.27283,
+                53.5571
+              ]
+            },
+            "layer": {
+              "id": "rivm-ozon-actueel",
+              "type": "raster",
+              "metadata": {
+                "title": "Ozon (actueel)",
+                "legendRole": "overlay"
+              }
+            }
+          },
+          "availability": "up",
+          "status": "active",
+          "lastChecked": "2026-09-05"
         }
-      },
-      "availability": "up",
-      "status": "active",
-      "lastChecked": "2026-09-05"
+      ]
     },
     {
-      "id": "rivm-fijnstof-2016",
-      "title": "Fijnstof (2016)",
+      "id": "geo-alo-wms",
+      "title": "RIVM WMS",
       "type": "wms",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "source": {
-          "type": "raster",
-          "tiles": [
-            "https://data.rivm.nl/geo/alo/wms?layers=rivm_nsl_20180324_gm_pm102016&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
-          ],
-          "tileSize": 256,
-          "attribution": "RIVM",
-          "bounds": [
-            3.20009,
-            50.7167,
-            7.27283,
-            53.5571
-          ]
-        },
-        "layer": {
+      "endpoint": "https://data.rivm.nl/geo/alo/wms",
+      "availability": "up",
+      "layers": [
+        {
           "id": "rivm-fijnstof-2016",
-          "type": "raster",
-          "metadata": {
-            "title": "Fijnstof (2016)",
-            "legendRole": "overlay"
-          }
-        }
-      },
-      "availability": "up",
-      "status": "active",
-      "lastChecked": "2026-09-05"
-    },
-    {
-      "id": "rivm-stikstofdepositie-2015",
-      "title": "Stikstofdepositie (2015)",
-      "type": "wms",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "source": {
-          "type": "raster",
-          "tiles": [
-            "https://data.rivm.nl/geo/ank/wms?layers=rivm_r19_gm_n-depositie&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
-          ],
-          "tileSize": 256,
-          "attribution": "RIVM",
-          "bounds": [
-            3.20009,
-            50.7167,
-            7.27283,
-            53.5571
-          ]
+          "title": "Fijnstof (2016)",
+          "type": "wms",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://data.rivm.nl/geo/alo/wms?layers=rivm_nsl_20180324_gm_pm102016&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
+              ],
+              "tileSize": 256,
+              "attribution": "RIVM",
+              "bounds": [
+                3.20009,
+                50.7167,
+                7.27283,
+                53.5571
+              ]
+            },
+            "layer": {
+              "id": "rivm-fijnstof-2016",
+              "type": "raster",
+              "metadata": {
+                "title": "Fijnstof (2016)",
+                "legendRole": "overlay"
+              }
+            }
+          },
+          "availability": "up",
+          "status": "active",
+          "lastChecked": "2026-09-05"
         },
-        "layer": {
-          "id": "rivm-stikstofdepositie-2015",
-          "type": "raster",
-          "metadata": {
-            "title": "Stikstofdepositie (2015)",
-            "legendRole": "overlay"
-          }
-        }
-      },
-      "availability": "up",
-      "status": "active",
-      "lastChecked": "2026-09-05"
-    },
-    {
-      "id": "rivm-stikstofdioxide-concentratie-2016",
-      "title": "Stikstofdioxide concentratie (2016)",
-      "type": "wms",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "source": {
-          "type": "raster",
-          "tiles": [
-            "https://data.rivm.nl/geo/alo/wms?layers=rivm_nsl_20180324_gm_NO22016&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
-          ],
-          "tileSize": 256,
-          "attribution": "RIVM",
-          "bounds": [
-            3.20009,
-            50.7167,
-            7.27283,
-            53.5571
-          ]
-        },
-        "layer": {
+        {
           "id": "rivm-stikstofdioxide-concentratie-2016",
-          "type": "raster",
-          "metadata": {
-            "title": "Stikstofdioxide concentratie (2016)",
-            "legendRole": "overlay"
-          }
-        }
-      },
-      "availability": "up",
-      "status": "active",
-      "lastChecked": "2026-09-05"
-    },
-    {
-      "id": "rivm-roet-2016",
-      "title": "Roet (2016)",
-      "type": "wms",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "source": {
-          "type": "raster",
-          "tiles": [
-            "https://data.rivm.nl/geo/alo/wms?layers=rivm_nsl_20180324_gm_ec2016&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
-          ],
-          "tileSize": 256,
-          "attribution": "RIVM",
-          "bounds": [
-            3.20009,
-            50.7167,
-            7.27283,
-            53.5571
-          ]
+          "title": "Stikstofdioxide concentratie (2016)",
+          "type": "wms",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://data.rivm.nl/geo/alo/wms?layers=rivm_nsl_20180324_gm_NO22016&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
+              ],
+              "tileSize": 256,
+              "attribution": "RIVM",
+              "bounds": [
+                3.20009,
+                50.7167,
+                7.27283,
+                53.5571
+              ]
+            },
+            "layer": {
+              "id": "rivm-stikstofdioxide-concentratie-2016",
+              "type": "raster",
+              "metadata": {
+                "title": "Stikstofdioxide concentratie (2016)",
+                "legendRole": "overlay"
+              }
+            }
+          },
+          "availability": "up",
+          "status": "active",
+          "lastChecked": "2026-09-05"
         },
-        "layer": {
+        {
           "id": "rivm-roet-2016",
-          "type": "raster",
-          "metadata": {
-            "title": "Roet (2016)",
-            "legendRole": "overlay"
-          }
-        }
-      },
-      "availability": "up",
-      "status": "active",
-      "lastChecked": "2026-09-05"
-    },
-    {
-      "id": "rivm-stedelijk-hitte-eiland-effect-uhi-in-nederland",
-      "title": "Stedelijk hitte-eiland effect (UHI) in Nederland",
-      "type": "wms",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "source": {
-          "type": "raster",
-          "tiles": [
-            "https://data.rivm.nl/geo/ank/ows?layers=Stedelijk_hitte_eiland_effect_01062022_v2&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
-          ],
-          "tileSize": 256,
-          "attribution": "RIVM",
-          "bounds": [
-            3.20009,
-            50.7167,
-            7.27283,
-            53.5571
-          ]
+          "title": "Roet (2016)",
+          "type": "wms",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://data.rivm.nl/geo/alo/wms?layers=rivm_nsl_20180324_gm_ec2016&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
+              ],
+              "tileSize": 256,
+              "attribution": "RIVM",
+              "bounds": [
+                3.20009,
+                50.7167,
+                7.27283,
+                53.5571
+              ]
+            },
+            "layer": {
+              "id": "rivm-roet-2016",
+              "type": "raster",
+              "metadata": {
+                "title": "Roet (2016)",
+                "legendRole": "overlay"
+              }
+            }
+          },
+          "availability": "up",
+          "status": "active",
+          "lastChecked": "2026-09-05"
         },
-        "layer": {
-          "id": "rivm-stedelijk-hitte-eiland-effect-uhi-in-nederland",
-          "type": "raster",
-          "metadata": {
-            "title": "Stedelijk hitte-eiland effect (UHI) in Nederland",
-            "legendRole": "overlay"
-          }
-        }
-      },
-      "availability": "up",
-      "status": "active",
-      "lastChecked": "2026-09-05"
-    },
-    {
-      "id": "rivm-zonpotentie-velden",
-      "title": "Zonpotentie velden",
-      "type": "wms",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "source": {
-          "type": "raster",
-          "tiles": [
-            "https://data.rivm.nl/geo/alo/wms?layers=Greenspread_20181101_v_zonnevelden&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
-          ],
-          "tileSize": 256,
-          "attribution": "RIVM",
-          "bounds": [
-            3.20009,
-            50.7167,
-            7.27283,
-            53.5571
-          ]
-        },
-        "layer": {
+        {
           "id": "rivm-zonpotentie-velden",
-          "type": "raster",
-          "metadata": {
-            "title": "Zonpotentie velden",
-            "legendRole": "overlay"
-          }
+          "title": "Zonpotentie velden",
+          "type": "wms",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://data.rivm.nl/geo/alo/wms?layers=Greenspread_20181101_v_zonnevelden&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
+              ],
+              "tileSize": 256,
+              "attribution": "RIVM",
+              "bounds": [
+                3.20009,
+                50.7167,
+                7.27283,
+                53.5571
+              ]
+            },
+            "layer": {
+              "id": "rivm-zonpotentie-velden",
+              "type": "raster",
+              "metadata": {
+                "title": "Zonpotentie velden",
+                "legendRole": "overlay"
+              }
+            }
+          },
+          "availability": "up",
+          "status": "active",
+          "lastChecked": "2026-09-05"
         }
-      },
+      ]
+    },
+    {
+      "id": "geo-ank-wms",
+      "title": "RIVM WMS",
+      "type": "wms",
+      "endpoint": "https://data.rivm.nl/geo/ank/wms",
       "availability": "up",
-      "status": "active",
-      "lastChecked": "2026-09-05"
+      "layers": [
+        {
+          "id": "rivm-stikstofdepositie-2015",
+          "title": "Stikstofdepositie (2015)",
+          "type": "wms",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://data.rivm.nl/geo/ank/wms?layers=rivm_r19_gm_n-depositie&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
+              ],
+              "tileSize": 256,
+              "attribution": "RIVM",
+              "bounds": [
+                3.20009,
+                50.7167,
+                7.27283,
+                53.5571
+              ]
+            },
+            "layer": {
+              "id": "rivm-stikstofdepositie-2015",
+              "type": "raster",
+              "metadata": {
+                "title": "Stikstofdepositie (2015)",
+                "legendRole": "overlay"
+              }
+            }
+          },
+          "availability": "up",
+          "status": "active",
+          "lastChecked": "2026-09-05"
+        }
+      ]
+    },
+    {
+      "id": "geo-ank-ows",
+      "title": "RIVM WMS",
+      "type": "wms",
+      "endpoint": "https://data.rivm.nl/geo/ank/ows",
+      "availability": "up",
+      "layers": [
+        {
+          "id": "rivm-stedelijk-hitte-eiland-effect-uhi-in-nederland",
+          "title": "Stedelijk hitte-eiland effect (UHI) in Nederland",
+          "type": "wms",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://data.rivm.nl/geo/ank/ows?layers=Stedelijk_hitte_eiland_effect_01062022_v2&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
+              ],
+              "tileSize": 256,
+              "attribution": "RIVM",
+              "bounds": [
+                3.20009,
+                50.7167,
+                7.27283,
+                53.5571
+              ]
+            },
+            "layer": {
+              "id": "rivm-stedelijk-hitte-eiland-effect-uhi-in-nederland",
+              "type": "raster",
+              "metadata": {
+                "title": "Stedelijk hitte-eiland effect (UHI) in Nederland",
+                "legendRole": "overlay"
+              }
+            }
+          },
+          "availability": "up",
+          "status": "active",
+          "lastChecked": "2026-09-05"
+        }
+      ]
     }
   ]
 }

@@ -23,33 +23,42 @@
     },
     "lifecycle": "stable"
   },
-  "layers": [
+  "services": [
     {
-      "id": "amsterdam-parkeervakken-amsterdam",
-      "title": "Parkeervakken Amsterdam",
+      "id": "maps-parkeervakken",
+      "title": "Gemeente Amsterdam WMS",
       "type": "wms",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "source": {
-          "type": "raster",
-          "tiles": [
-            "https://map.data.amsterdam.nl/maps/parkeervakken?transparent=true&LAYERS=parkeervakken&FORMAT=image%2Fpng&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&STYLES=&SRS=EPSG%3A3857&BBOX={bbox-epsg-3857}&WIDTH=512&HEIGHT=512"
-          ],
-          "tileSize": 256,
-          "attribution": "Pico"
-        },
-        "layer": {
-          "id": "amsterdam-parkeervakken-amsterdam",
-          "type": "raster",
-          "metadata": {
-            "title": "Parkeervakken Amsterdam",
-            "legendRole": "overlay"
-          }
-        }
-      },
+      "endpoint": "https://map.data.amsterdam.nl/maps/parkeervakken",
       "availability": "down",
-      "status": "unknown",
-      "lastChecked": "2026-09-05"
+      "layers": [
+        {
+          "id": "amsterdam-parkeervakken-amsterdam",
+          "title": "Parkeervakken Amsterdam",
+          "type": "wms",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://map.data.amsterdam.nl/maps/parkeervakken?transparent=true&LAYERS=parkeervakken&FORMAT=image%2Fpng&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&STYLES=&SRS=EPSG%3A3857&BBOX={bbox-epsg-3857}&WIDTH=512&HEIGHT=512"
+              ],
+              "tileSize": 256,
+              "attribution": "Pico"
+            },
+            "layer": {
+              "id": "amsterdam-parkeervakken-amsterdam",
+              "type": "raster",
+              "metadata": {
+                "title": "Parkeervakken Amsterdam",
+                "legendRole": "overlay"
+              }
+            }
+          },
+          "availability": "down",
+          "status": "unknown",
+          "lastChecked": "2026-09-05"
+        }
+      ]
     }
   ]
 }

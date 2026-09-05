@@ -17,272 +17,281 @@
     ],
     "status": "active"
   },
-  "layers": [
+  "services": [
     {
-      "id": "modis-terra-truecolor",
-      "title": "MODIS Terra True Color (daily)",
-      "abstract": "Daily true-color satellite imagery from the MODIS Terra instrument at 250m resolution.",
+      "id": "wmts-epsg3857-best",
+      "title": "NASA Earthdata / GIBS WMTS",
       "type": "wmts",
-      "status": "active",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "source": {
-          "type": "raster",
-          "tiles": [
-            "https://gitc.earthdata.nasa.gov/wmts/epsg3857/best/MODIS_Terra_CorrectedReflectance_TrueColor/default/{time}/GoogleMapsCompatible_Level9/{z}/{y}/{x}.jpg"
-          ],
-          "tileSize": 256,
-          "maxzoom": 9,
-          "attribution": "Imagery courtesy <a href='https://earthdata.nasa.gov'>NASA GIBS</a>"
-        },
-        "layer": {
+      "endpoint": "https://gitc.earthdata.nasa.gov/wmts/epsg3857/best",
+      "availability": "up",
+      "layers": [
+        {
           "id": "modis-terra-truecolor",
-          "type": "raster",
-          "metadata": {
-            "title": "MODIS Terra True Color",
-            "abstract": "Daily true-color imagery from NASA MODIS Terra. Source: NASA GIBS."
+          "title": "MODIS Terra True Color (daily)",
+          "abstract": "Daily true-color satellite imagery from the MODIS Terra instrument at 250m resolution.",
+          "type": "wmts",
+          "status": "active",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://gitc.earthdata.nasa.gov/wmts/epsg3857/best/MODIS_Terra_CorrectedReflectance_TrueColor/default/{time}/GoogleMapsCompatible_Level9/{z}/{y}/{x}.jpg"
+              ],
+              "tileSize": 256,
+              "maxzoom": 9,
+              "attribution": "Imagery courtesy <a href='https://earthdata.nasa.gov'>NASA GIBS</a>"
+            },
+            "layer": {
+              "id": "modis-terra-truecolor",
+              "type": "raster",
+              "metadata": {
+                "title": "MODIS Terra True Color",
+                "abstract": "Daily true-color imagery from NASA MODIS Terra. Source: NASA GIBS."
+              }
+            }
+          },
+          "lastChecked": "2026-09-05",
+          "availability": "up",
+          "time": {
+            "identifier": "Time",
+            "default": "latest",
+            "precision": "day",
+            "period": "P1D",
+            "lag": "P1D",
+            "coverage": "global",
+            "extent": [
+              "2000-02-24/latest/P1D"
+            ]
           }
-        }
-      },
-      "lastChecked": "2026-09-05",
-      "availability": "up",
-      "time": {
-        "identifier": "Time",
-        "default": "latest",
-        "precision": "day",
-        "period": "P1D",
-        "lag": "P1D",
-        "coverage": "global",
-        "extent": [
-          "2000-02-24/latest/P1D"
-        ]
-      }
-    },
-    {
-      "id": "viirs-nighttime-lights",
-      "title": "VIIRS Night Lights",
-      "abstract": "Nighttime lights from the VIIRS Day/Night Band (ENCC). The product ended on 2023-07-07; that date is pinned as the default, as GIBS serves nothing newer.",
-      "type": "wmts",
-      "status": "active",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "source": {
-          "type": "raster",
-          "tiles": [
-            "https://gitc.earthdata.nasa.gov/wmts/epsg3857/best/VIIRS_SNPP_DayNightBand_ENCC/default/{time}/GoogleMapsCompatible_Level8/{z}/{y}/{x}.jpg"
-          ],
-          "tileSize": 256,
-          "maxzoom": 8,
-          "attribution": "Imagery courtesy <a href='https://earthdata.nasa.gov'>NASA GIBS</a>"
         },
-        "layer": {
+        {
           "id": "viirs-nighttime-lights",
-          "type": "raster",
-          "metadata": {
-            "title": "VIIRS Night Lights",
-            "abstract": "Nighttime lights from the VIIRS Day/Night Band. Source: NASA GIBS."
-          }
-        }
-      },
-      "lastChecked": "2026-09-05",
-      "availability": "up",
-      "time": {
-        "identifier": "Time",
-        "default": "2023-07-07",
-        "precision": "day",
-        "period": "P1D",
-        "coverage": "global",
-        "extent": [
-          "2012-01-19/2023-07-07/P1D"
-        ]
-      },
-      "lifecycle": "deprecated"
-    },
-    {
-      "id": "ghrsst-sea-surface-temperature",
-      "title": "Sea Surface Temperature (daily)",
-      "abstract": "Daily global sea surface temperature from the GHRSST L4 MUR product at 1km resolution.",
-      "type": "wmts",
-      "status": "active",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "source": {
-          "type": "raster",
-          "tiles": [
-            "https://gitc.earthdata.nasa.gov/wmts/epsg3857/best/GHRSST_L4_MUR_Sea_Surface_Temperature/default/{time}/GoogleMapsCompatible_Level7/{z}/{y}/{x}.png"
-          ],
-          "tileSize": 256,
-          "maxzoom": 7,
-          "attribution": "Imagery courtesy <a href='https://earthdata.nasa.gov'>NASA GIBS</a> / GHRSST"
+          "title": "VIIRS Night Lights",
+          "abstract": "Nighttime lights from the VIIRS Day/Night Band (ENCC). The product ended on 2023-07-07; that date is pinned as the default, as GIBS serves nothing newer.",
+          "type": "wmts",
+          "status": "active",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://gitc.earthdata.nasa.gov/wmts/epsg3857/best/VIIRS_SNPP_DayNightBand_ENCC/default/{time}/GoogleMapsCompatible_Level8/{z}/{y}/{x}.jpg"
+              ],
+              "tileSize": 256,
+              "maxzoom": 8,
+              "attribution": "Imagery courtesy <a href='https://earthdata.nasa.gov'>NASA GIBS</a>"
+            },
+            "layer": {
+              "id": "viirs-nighttime-lights",
+              "type": "raster",
+              "metadata": {
+                "title": "VIIRS Night Lights",
+                "abstract": "Nighttime lights from the VIIRS Day/Night Band. Source: NASA GIBS."
+              }
+            }
+          },
+          "lastChecked": "2026-09-05",
+          "availability": "up",
+          "time": {
+            "identifier": "Time",
+            "default": "2023-07-07",
+            "precision": "day",
+            "period": "P1D",
+            "coverage": "global",
+            "extent": [
+              "2012-01-19/2023-07-07/P1D"
+            ]
+          },
+          "lifecycle": "deprecated"
         },
-        "layer": {
+        {
           "id": "ghrsst-sea-surface-temperature",
-          "type": "raster",
-          "metadata": {
-            "title": "Sea Surface Temperature",
-            "abstract": "Daily global SST. Cold = blue/purple, warm = red/yellow. Source: NASA GIBS / GHRSST.",
-            "legendRole": "overlay",
-            "previewCenter": [
-              0,
-              20
-            ],
-            "previewZoom": 2
+          "title": "Sea Surface Temperature (daily)",
+          "abstract": "Daily global sea surface temperature from the GHRSST L4 MUR product at 1km resolution.",
+          "type": "wmts",
+          "status": "active",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://gitc.earthdata.nasa.gov/wmts/epsg3857/best/GHRSST_L4_MUR_Sea_Surface_Temperature/default/{time}/GoogleMapsCompatible_Level7/{z}/{y}/{x}.png"
+              ],
+              "tileSize": 256,
+              "maxzoom": 7,
+              "attribution": "Imagery courtesy <a href='https://earthdata.nasa.gov'>NASA GIBS</a> / GHRSST"
+            },
+            "layer": {
+              "id": "ghrsst-sea-surface-temperature",
+              "type": "raster",
+              "metadata": {
+                "title": "Sea Surface Temperature",
+                "abstract": "Daily global SST. Cold = blue/purple, warm = red/yellow. Source: NASA GIBS / GHRSST.",
+                "legendRole": "overlay",
+                "previewCenter": [
+                  0,
+                  20
+                ],
+                "previewZoom": 2
+              }
+            }
+          },
+          "availability": "up",
+          "lastChecked": "2026-09-05",
+          "time": {
+            "identifier": "Time",
+            "default": "latest",
+            "precision": "day",
+            "period": "P1D",
+            "lag": "P2D",
+            "coverage": "global",
+            "extent": [
+              "2002-06-01/latest/P1D"
+            ]
           }
-        }
-      },
-      "availability": "up",
-      "lastChecked": "2026-09-05",
-      "time": {
-        "identifier": "Time",
-        "default": "latest",
-        "precision": "day",
-        "period": "P1D",
-        "lag": "P2D",
-        "coverage": "global",
-        "extent": [
-          "2002-06-01/latest/P1D"
-        ]
-      }
-    },
-    {
-      "id": "modis-terra-ndvi",
-      "title": "NDVI Vegetation Index (8-day)",
-      "abstract": "8-day composite Normalized Difference Vegetation Index from MODIS Terra. Green = dense vegetation, brown = bare soil.",
-      "type": "wmts",
-      "status": "active",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "source": {
-          "type": "raster",
-          "tiles": [
-            "https://gitc.earthdata.nasa.gov/wmts/epsg3857/best/MODIS_Terra_NDVI_8Day/default/{time}/GoogleMapsCompatible_Level9/{z}/{y}/{x}.png"
-          ],
-          "tileSize": 256,
-          "maxzoom": 9,
-          "attribution": "Imagery courtesy <a href='https://earthdata.nasa.gov'>NASA GIBS</a>"
         },
-        "layer": {
+        {
           "id": "modis-terra-ndvi",
-          "type": "raster",
-          "metadata": {
-            "title": "MODIS NDVI",
-            "abstract": "8-day vegetation index. Source: NASA GIBS / MODIS Terra.",
-            "legendRole": "overlay",
-            "previewCenter": [
-              0,
-              20
-            ],
-            "previewZoom": 2
+          "title": "NDVI Vegetation Index (8-day)",
+          "abstract": "8-day composite Normalized Difference Vegetation Index from MODIS Terra. Green = dense vegetation, brown = bare soil.",
+          "type": "wmts",
+          "status": "active",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://gitc.earthdata.nasa.gov/wmts/epsg3857/best/MODIS_Terra_NDVI_8Day/default/{time}/GoogleMapsCompatible_Level9/{z}/{y}/{x}.png"
+              ],
+              "tileSize": 256,
+              "maxzoom": 9,
+              "attribution": "Imagery courtesy <a href='https://earthdata.nasa.gov'>NASA GIBS</a>"
+            },
+            "layer": {
+              "id": "modis-terra-ndvi",
+              "type": "raster",
+              "metadata": {
+                "title": "MODIS NDVI",
+                "abstract": "8-day vegetation index. Source: NASA GIBS / MODIS Terra.",
+                "legendRole": "overlay",
+                "previewCenter": [
+                  0,
+                  20
+                ],
+                "previewZoom": 2
+              }
+            }
+          },
+          "availability": "up",
+          "lastChecked": "2026-09-05",
+          "time": {
+            "identifier": "Time",
+            "default": "latest",
+            "precision": "day",
+            "period": "P1D",
+            "lag": "P3D",
+            "coverage": "global",
+            "compositedOver": "P8D",
+            "extent": [
+              "2000-02-24/latest/P1D"
+            ]
           }
-        }
-      },
-      "availability": "up",
-      "lastChecked": "2026-09-05",
-      "time": {
-        "identifier": "Time",
-        "default": "latest",
-        "precision": "day",
-        "period": "P1D",
-        "lag": "P3D",
-        "coverage": "global",
-        "compositedOver": "P8D",
-        "extent": [
-          "2000-02-24/latest/P1D"
-        ]
-      }
-    },
-    {
-      "id": "modis-aqua-chlorophyll-l2",
-      "title": "Ocean Chlorophyll-a (L2, daily swaths)",
-      "abstract": "Chlorophyll-a concentration from MODIS Aqua, Level 2. One date is that day’s satellite swaths, so coverage is partial and cloud-dependent — no choice of date yields a full global field. GIBS publishes no composited L3 equivalent.",
-      "type": "wmts",
-      "status": "active",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "source": {
-          "type": "raster",
-          "tiles": [
-            "https://gitc.earthdata.nasa.gov/wmts/epsg3857/best/MODIS_Aqua_L2_Chlorophyll_A/default/{time}/GoogleMapsCompatible_Level7/{z}/{y}/{x}.png"
-          ],
-          "tileSize": 256,
-          "maxzoom": 7,
-          "attribution": "Imagery courtesy <a href='https://earthdata.nasa.gov'>NASA GIBS</a>"
         },
-        "layer": {
+        {
           "id": "modis-aqua-chlorophyll-l2",
-          "type": "raster",
-          "metadata": {
-            "title": "MODIS Aqua Chlorophyll-a (L2 swaths)",
-            "abstract": "Monthly phytoplankton / ocean productivity. Source: NASA GIBS / MODIS Aqua.",
-            "legendRole": "overlay",
-            "previewCenter": [
-              0,
-              20
-            ],
-            "previewZoom": 2
+          "title": "Ocean Chlorophyll-a (L2, daily swaths)",
+          "abstract": "Chlorophyll-a concentration from MODIS Aqua, Level 2. One date is that day’s satellite swaths, so coverage is partial and cloud-dependent — no choice of date yields a full global field. GIBS publishes no composited L3 equivalent.",
+          "type": "wmts",
+          "status": "active",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://gitc.earthdata.nasa.gov/wmts/epsg3857/best/MODIS_Aqua_L2_Chlorophyll_A/default/{time}/GoogleMapsCompatible_Level7/{z}/{y}/{x}.png"
+              ],
+              "tileSize": 256,
+              "maxzoom": 7,
+              "attribution": "Imagery courtesy <a href='https://earthdata.nasa.gov'>NASA GIBS</a>"
+            },
+            "layer": {
+              "id": "modis-aqua-chlorophyll-l2",
+              "type": "raster",
+              "metadata": {
+                "title": "MODIS Aqua Chlorophyll-a (L2 swaths)",
+                "abstract": "Monthly phytoplankton / ocean productivity. Source: NASA GIBS / MODIS Aqua.",
+                "legendRole": "overlay",
+                "previewCenter": [
+                  0,
+                  20
+                ],
+                "previewZoom": 2
+              }
+            }
+          },
+          "availability": "up",
+          "lastChecked": "2026-09-05",
+          "time": {
+            "identifier": "Time",
+            "default": "latest",
+            "precision": "day",
+            "period": "P1D",
+            "lag": "P1D",
+            "coverage": "partial",
+            "extent": [
+              "2002-07-04/latest/P1D"
+            ]
           }
-        }
-      },
-      "availability": "up",
-      "lastChecked": "2026-09-05",
-      "time": {
-        "identifier": "Time",
-        "default": "latest",
-        "precision": "day",
-        "period": "P1D",
-        "lag": "P1D",
-        "coverage": "partial",
-        "extent": [
-          "2002-07-04/latest/P1D"
-        ]
-      }
-    },
-    {
-      "id": "modis-terra-snow-cover-monthly",
-      "title": "Snow Cover (monthly average %)",
-      "abstract": "Monthly average snow-cover percentage from MODIS Terra (MOD10). Replaces the daily product, which is only addressable with an explicit date.",
-      "type": "wmts",
-      "status": "active",
-      "requiresKey": false,
-      "webmapxConfig": {
-        "source": {
-          "type": "raster",
-          "tiles": [
-            "https://gitc.earthdata.nasa.gov/wmts/epsg3857/best/MODIS_Terra_L3_Snow_Cover_Monthly_Average_Pct/default/{time}/GoogleMapsCompatible_Level6/{z}/{y}/{x}.png"
-          ],
-          "tileSize": 256,
-          "maxzoom": 6,
-          "attribution": "Imagery courtesy <a href='https://earthdata.nasa.gov'>NASA GIBS</a>"
         },
-        "layer": {
+        {
           "id": "modis-terra-snow-cover-monthly",
-          "type": "raster",
-          "metadata": {
-            "title": "MODIS Terra Snow Cover (monthly avg)",
-            "abstract": "Daily snow cover extent. Source: NASA GIBS / MODIS Terra.",
-            "legendRole": "overlay",
-            "previewCenter": [
-              0,
-              55
-            ],
-            "previewZoom": 2
+          "title": "Snow Cover (monthly average %)",
+          "abstract": "Monthly average snow-cover percentage from MODIS Terra (MOD10). Replaces the daily product, which is only addressable with an explicit date.",
+          "type": "wmts",
+          "status": "active",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://gitc.earthdata.nasa.gov/wmts/epsg3857/best/MODIS_Terra_L3_Snow_Cover_Monthly_Average_Pct/default/{time}/GoogleMapsCompatible_Level6/{z}/{y}/{x}.png"
+              ],
+              "tileSize": 256,
+              "maxzoom": 6,
+              "attribution": "Imagery courtesy <a href='https://earthdata.nasa.gov'>NASA GIBS</a>"
+            },
+            "layer": {
+              "id": "modis-terra-snow-cover-monthly",
+              "type": "raster",
+              "metadata": {
+                "title": "MODIS Terra Snow Cover (monthly avg)",
+                "abstract": "Daily snow cover extent. Source: NASA GIBS / MODIS Terra.",
+                "legendRole": "overlay",
+                "previewCenter": [
+                  0,
+                  55
+                ],
+                "previewZoom": 2
+              }
+            }
+          },
+          "availability": "up",
+          "lastChecked": "2026-09-05",
+          "time": {
+            "identifier": "Time",
+            "default": "latest",
+            "precision": "day",
+            "period": "P1M",
+            "lag": "P1M",
+            "coverage": "global",
+            "compositedOver": "P1M",
+            "extent": [
+              "2000-03-01/latest/P1M"
+            ]
           }
         }
-      },
-      "availability": "up",
-      "lastChecked": "2026-09-05",
-      "time": {
-        "identifier": "Time",
-        "default": "latest",
-        "precision": "day",
-        "period": "P1M",
-        "lag": "P1M",
-        "coverage": "global",
-        "compositedOver": "P1M",
-        "extent": [
-          "2000-03-01/latest/P1M"
-        ]
-      }
+      ]
     }
   ]
 }
