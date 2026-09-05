@@ -6,7 +6,7 @@
     "abstract": "Stadia Maps hosts the classic Stamen Design tile styles: Watercolor, Toner, and Terrain. Free tier — authenticate by domain (no API key in URL needed).",
     "access": "free",
     "setupUrl": "https://client.stadiamaps.com/dashboard",
-    "note": "Register your domain as a 'Property' at https://client.stadiamaps.com/dashboard to use these tiles without an API key.",
+    "note": "Stadia authenticates on the request origin, not an API key: register the domain as a Property at https://client.stadiamaps.com/dashboard. Requests without a Referer return 401.",
     "license": "CC BY 3.0 (Stamen) / Stadia Maps Terms",
     "categories": [
       "general-purpose",
@@ -46,7 +46,7 @@
           }
         }
       },
-      "availability": "auth-required",
+      "availability": "up",
       "lastChecked": "2026-09-05"
     },
     {
@@ -76,7 +76,7 @@
           }
         }
       },
-      "availability": "auth-required",
+      "availability": "up",
       "lastChecked": "2026-09-05"
     },
     {
@@ -106,7 +106,7 @@
           }
         }
       },
-      "availability": "auth-required",
+      "availability": "up",
       "lastChecked": "2026-09-05"
     },
     {
@@ -136,7 +136,7 @@
           }
         }
       },
-      "availability": "auth-required",
+      "availability": "up",
       "lastChecked": "2026-09-05"
     },
     {
@@ -166,7 +166,7 @@
           }
         }
       },
-      "availability": "auth-required",
+      "availability": "up",
       "lastChecked": "2026-09-05"
     },
     {
@@ -196,7 +196,7 @@
           }
         }
       },
-      "availability": "auth-required",
+      "availability": "up",
       "lastChecked": "2026-09-05"
     }
   ]

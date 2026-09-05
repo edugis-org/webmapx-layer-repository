@@ -8,7 +8,7 @@
           "date": "2026-09-05",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 482
+          "ms": 360
         }
       ],
       "summary": {
@@ -29,7 +29,7 @@
           "date": "2026-09-05",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 323
+          "ms": 365
         }
       ],
       "summary": {
@@ -50,7 +50,7 @@
           "date": "2026-09-05",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 336
+          "ms": 342
         }
       ],
       "summary": {
@@ -71,7 +71,7 @@
           "date": "2026-09-05",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 331
+          "ms": 344
         }
       ],
       "summary": {
@@ -135,7 +135,7 @@
           "date": "2026-09-05",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 394
+          "ms": 477
         }
       ],
       "summary": {
@@ -156,7 +156,7 @@
           "date": "2026-09-05",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 389
+          "ms": 399
         }
       ],
       "summary": {

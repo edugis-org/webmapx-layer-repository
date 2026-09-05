@@ -34,6 +34,19 @@ const STATUS_DIR = join(ROOT, 'status');
 const HISTORY_LIMIT = 104;
 const TIMEOUT_MS = 8000;
 
+/**
+ * Sent with every probe, because a browser always sends one and some providers
+ * authenticate on it alone. Stadia registers domains as "Properties" and issues
+ * no API key at all; MapTiler locks its key to registered origins. Without this
+ * header, or with an unregistered one, those tiles return 401/403 and a healthy
+ * layer is recorded as broken.
+ *
+ * The default is a registered origin rather than the Pages URL, which is NOT
+ * registered with MapTiler and gets 403. Override with PROBE_REFERER in CI to
+ * match whatever origin that account has allowed.
+ */
+const REFERER = process.env.PROBE_REFERER ?? 'https://www.edugis.nl/';
+
 const args = process.argv.slice(2);
 const dryRun = args.includes('--dry-run');
 const fileArg = args.find(a => a.startsWith('--file=') || a === '--file');
@@ -137,6 +150,7 @@ async function testLayer(layer) {
     try {
         const res = await fetch(target.url, {
             method: target.method,
+            headers: { Referer: REFERER },
             signal: AbortSignal.timeout(TIMEOUT_MS),
         });
         const ms = Date.now() - started;

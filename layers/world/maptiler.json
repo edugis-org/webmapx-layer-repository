@@ -16,7 +16,9 @@
     "regions": [
       "world"
     ],
-    "status": "active"
+    "status": "active",
+    "note": "The API key is locked to registered origins: requests carry a Referer from an allowed domain or the tiles return 403. Register each site in the MapTiler Cloud dashboard. Note that the GitHub Pages URL of this catalog is not currently registered, so MapTiler previews fail there.",
+    "setupUrl": "https://cloud.maptiler.com/account/keys/"
   },
   "layers": [
     {
@@ -38,7 +40,7 @@
           "legendRole": "background"
         }
       },
-      "availability": "auth-required",
+      "availability": "up",
       "lastChecked": "2026-09-05"
     },
     {
@@ -60,7 +62,7 @@
           "legendRole": "background"
         }
       },
-      "availability": "auth-required",
+      "availability": "up",
       "lastChecked": "2026-09-05"
     },
     {
@@ -82,7 +84,7 @@
           "legendRole": "background"
         }
       },
-      "availability": "auth-required",
+      "availability": "up",
       "lastChecked": "2026-09-05"
     },
     {
@@ -104,7 +106,7 @@
           "legendRole": "background"
         }
       },
-      "availability": "auth-required",
+      "availability": "up",
       "lastChecked": "2026-09-05"
     },
     {
@@ -134,7 +136,7 @@
           }
         }
       },
-      "availability": "auth-required",
+      "availability": "up",
       "lastChecked": "2026-09-05"
     },
     {
@@ -164,7 +166,7 @@
           }
         }
       },
-      "availability": "auth-required",
+      "availability": "up",
       "lastChecked": "2026-09-05"
     },
     {
@@ -194,7 +196,7 @@
           }
         }
       },
-      "availability": "auth-required",
+      "availability": "up",
       "lastChecked": "2026-09-05"
     },
     {
@@ -224,7 +226,7 @@
           }
         }
       },
-      "availability": "auth-required",
+      "availability": "up",
       "lastChecked": "2026-09-05"
     }
   ]

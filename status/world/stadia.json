@@ -6,126 +6,126 @@
       "checks": [
         {
           "date": "2026-09-05",
-          "availability": "auth-required",
-          "httpStatus": 401,
-          "ms": 97,
-          "reason": "HTTP 401 (endpoint answered but rejected our credentials)"
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 95
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
         "lastChecked": "2026-09-05",
-        "current": "auth-required",
+        "current": "up",
         "checks": 1,
-        "up": 0,
-        "uptime": 0,
+        "up": 1,
+        "uptime": 1,
         "untested": 0,
-        "consecutiveFailures": 1
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-05"
       }
     },
     "stadia-toner": {
       "checks": [
         {
           "date": "2026-09-05",
-          "availability": "auth-required",
-          "httpStatus": 401,
-          "ms": 66,
-          "reason": "HTTP 401 (endpoint answered but rejected our credentials)"
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 77
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
         "lastChecked": "2026-09-05",
-        "current": "auth-required",
+        "current": "up",
         "checks": 1,
-        "up": 0,
-        "uptime": 0,
+        "up": 1,
+        "uptime": 1,
         "untested": 0,
-        "consecutiveFailures": 1
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-05"
       }
     },
     "stadia-toner-lite": {
       "checks": [
         {
           "date": "2026-09-05",
-          "availability": "auth-required",
-          "httpStatus": 401,
-          "ms": 68,
-          "reason": "HTTP 401 (endpoint answered but rejected our credentials)"
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 73
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
         "lastChecked": "2026-09-05",
-        "current": "auth-required",
+        "current": "up",
         "checks": 1,
-        "up": 0,
-        "uptime": 0,
+        "up": 1,
+        "uptime": 1,
         "untested": 0,
-        "consecutiveFailures": 1
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-05"
       }
     },
     "stadia-terrain": {
       "checks": [
         {
           "date": "2026-09-05",
-          "availability": "auth-required",
-          "httpStatus": 401,
-          "ms": 70,
-          "reason": "HTTP 401 (endpoint answered but rejected our credentials)"
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 76
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
         "lastChecked": "2026-09-05",
-        "current": "auth-required",
+        "current": "up",
         "checks": 1,
-        "up": 0,
-        "uptime": 0,
+        "up": 1,
+        "uptime": 1,
         "untested": 0,
-        "consecutiveFailures": 1
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-05"
       }
     },
     "stadia-alidade-smooth": {
       "checks": [
         {
           "date": "2026-09-05",
-          "availability": "auth-required",
-          "httpStatus": 401,
-          "ms": 69,
-          "reason": "HTTP 401 (endpoint answered but rejected our credentials)"
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 68
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
         "lastChecked": "2026-09-05",
-        "current": "auth-required",
+        "current": "up",
         "checks": 1,
-        "up": 0,
-        "uptime": 0,
+        "up": 1,
+        "uptime": 1,
         "untested": 0,
-        "consecutiveFailures": 1
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-05"
       }
     },
     "stadia-alidade-smooth-dark": {
       "checks": [
         {
           "date": "2026-09-05",
-          "availability": "auth-required",
-          "httpStatus": 401,
-          "ms": 67,
-          "reason": "HTTP 401 (endpoint answered but rejected our credentials)"
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 71
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
         "lastChecked": "2026-09-05",
-        "current": "auth-required",
+        "current": "up",
         "checks": 1,
-        "up": 0,
-        "uptime": 0,
+        "up": 1,
+        "uptime": 1,
         "untested": 0,
-        "consecutiveFailures": 1
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-05"
       }
     }
   }
