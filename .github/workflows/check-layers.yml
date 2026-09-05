@@ -29,6 +29,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # Checks that $ref links resolve. The index is a build artifact and is not
+      # committed: this job has no harvested/, so the index it builds is missing
+      # those entries and must never be written back over the real one.
       - name: Rebuild index
         run: node scripts/build-index.mjs
 
@@ -51,12 +54,16 @@ jobs:
           APIKEY_THUNDERFOREST:  ${{ secrets.APIKEY_THUNDERFOREST }}
           APIKEY_NEXTZEN:        ${{ secrets.APIKEY_NEXTZEN }}
           APIKEY_GEODANMAPS:     ${{ secrets.APIKEY_GEODANMAPS }}
+          # Stadia authenticates on the request origin and issues no key; MapTiler
+          # locks keys to registered origins. Without a registered origin here,
+          # both record as auth-required and the history learns the wrong thing.
+          PROBE_REFERER:         ${{ secrets.PROBE_REFERER }}
 
       - name: Commit status updates (scheduled runs only)
         if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add layers/
+          git add layers/ status/
           git diff --staged --quiet || git commit -m "chore: update layer status [skip ci]"
           git push
