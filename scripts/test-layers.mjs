@@ -34,18 +34,7 @@ const STATUS_DIR = join(ROOT, 'status');
 const HISTORY_LIMIT = 104;
 const TIMEOUT_MS = 8000;
 
-/**
- * Sent with every probe, because a browser always sends one and some providers
- * authenticate on it alone. Stadia registers domains as "Properties" and issues
- * no API key at all; MapTiler locks its key to registered origins. Without this
- * header, or with an unregistered one, those tiles return 401/403 and a healthy
- * layer is recorded as broken.
- *
- * The default is a registered origin rather than the Pages URL, which is NOT
- * registered with MapTiler and gets 403. Override with PROBE_REFERER in CI to
- * match whatever origin that account has allowed.
- */
-const REFERER = process.env.PROBE_REFERER ?? 'https://www.edugis.nl/';
+
 
 const args = process.argv.slice(2);
 const dryRun = args.includes('--dry-run');
@@ -66,6 +55,22 @@ for (const [k, v] of Object.entries(process.env)) {
         const name = k.slice(7).toLowerCase();
         if (!apiKeys[name]) apiKeys[name] = v;
     }
+}
+
+/**
+ * Origin to send as Referer. Some providers authenticate on it alone — Stadia
+ * issues no API key and registers domains as Properties; MapTiler locks its key
+ * to allowed origins — so probing without it records healthy layers as broken.
+ *
+ * Which origin is registered is an access credential of whoever runs this, like
+ * the keys themselves, so it lives in apikeys.json (gitignored) or the
+ * environment, never in this file.
+ */
+const REFERER = process.env.PROBE_REFERER ?? apiKeys.referer ?? null;
+delete apiKeys.referer;   // an origin, not a {key-…} substitution
+if (!REFERER) {
+    console.log('ℹ️  No referer configured (apikeys.json "referer" or PROBE_REFERER).\n' +
+                '   Origin-locked providers will be recorded as auth-required.');
 }
 
 function substituteKeys(url) {
@@ -150,7 +155,7 @@ async function testLayer(layer) {
     try {
         const res = await fetch(target.url, {
             method: target.method,
-            headers: { Referer: REFERER },
+            headers: REFERER ? { Referer: REFERER } : {},
             signal: AbortSignal.timeout(TIMEOUT_MS),
         });
         const ms = Date.now() - started;

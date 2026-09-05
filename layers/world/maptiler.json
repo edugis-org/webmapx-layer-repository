@@ -17,7 +17,7 @@
       "world"
     ],
     "status": "active",
-    "note": "The API key is locked to registered origins: requests carry a Referer from an allowed domain or the tiles return 403. Register each site in the MapTiler Cloud dashboard. Note that the GitHub Pages URL of this catalog is not currently registered, so MapTiler previews fail there.",
+    "note": "The API key is locked to origins registered in the MapTiler Cloud dashboard: requests from an unregistered origin return 403 even with a valid key. Register each site that will load these tiles.",
     "setupUrl": "https://cloud.maptiler.com/account/keys/"
   },
   "layers": [

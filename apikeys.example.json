@@ -1,4 +1,6 @@
 {
+  "_comment": "Copy to apikeys.json (gitignored) and fill in. 'referer' is the origin sent when probing: Stadia and MapTiler authenticate on it, so set it to a domain registered with those accounts.",
+  "referer": "https://your-registered-domain.example/",
   "openweathermap": "your-openweathermap-api-key",
   "mapbox": "pk.your-mapbox-public-token",
   "maptiler": "your-maptiler-api-key",

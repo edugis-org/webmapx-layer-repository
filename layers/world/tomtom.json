@@ -15,8 +15,7 @@
     "regions": [
       "world"
     ],
-    "status": "active",
-    "note": "The current key is refused with \"You are not allowed to access this endpoint\" (HTTP 403) regardless of origin, which points at the key or the Maps Tile API entitlement on the account rather than a domain restriction."
+    "status": "active"
   },
   "layers": [
     {
