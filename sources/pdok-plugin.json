@@ -11,12 +11,25 @@
     "url": "https://www.pdok.nl",
     "license": "CC-BY-4.0",
     "access": "free",
-    "operator": { "type": "government", "country": "NL" }
+    "operator": {
+      "type": "government",
+      "country": "NL"
+    }
   },
   "region": "world/europe/netherlands",
   "include": {
-    "serviceTypes": ["wms", "wmts", "api tiles"],
+    "serviceTypes": [
+      "wms",
+      "wmts",
+      "api tiles"
+    ],
     "crs": "EPSG:3857"
   },
-  "enabled": true
+  "enabled": true,
+  "bounds": [
+    3.2,
+    50.75,
+    7.22,
+    53.7
+  ]
 }

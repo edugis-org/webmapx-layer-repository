@@ -10,9 +10,20 @@
     "url": "https://www.rivm.nl",
     "license": "CC-BY-4.0",
     "access": "free",
-    "operator": { "type": "government", "country": "NL" }
+    "operator": {
+      "type": "government",
+      "country": "NL"
+    }
   },
   "region": "world/europe/netherlands",
-  "include": { "crs": "EPSG:3857" },
-  "enabled": true
+  "include": {
+    "crs": "EPSG:3857"
+  },
+  "enabled": true,
+  "bounds": [
+    3.2,
+    50.75,
+    7.22,
+    53.7
+  ]
 }

@@ -134,6 +134,29 @@
 import { resolveTimeDeep, hasTimeToken, resolveTimeValue } from './lib/time.mjs';
 import { layerEntries, allLayers, services } from './lib/catalog.mjs';
 const LAYERS_BASE = './layers';
+
+// Fallback extents, so a layer that declares none is still framed by where it
+// lives in the tree. Longest matching region path wins.
+const REGION_BOUNDS = {
+  'world':                                        [-170, -60, 190, 78],
+  'world/europe':                                 [-11, 35, 32, 60],
+  'world/europe/netherlands':                     [3.2, 50.75, 7.22, 53.7],
+  'world/europe/netherlands/flevoland':           [5.0, 52.2, 6.1, 52.8],
+  'world/europe/netherlands/noord-holland':       [4.4, 52.1, 5.4, 53.2],
+  'world/europe/netherlands/noord-holland/amsterdam': [4.72, 52.28, 5.07, 52.44],
+  'world/europe/belgium':                         [2.5, 49.4, 6.5, 51.55],
+  'world/north-america/caribbean-netherlands':    [-68.5, 12.0, -62.9, 17.7],
+};
+
+function regionBounds(region) {
+  let best = null;
+  for (const key of Object.keys(REGION_BOUNDS)) {
+    if (region === key || region?.startsWith(key + '/')) {
+      if (!best || key.length > best.length) best = key;
+    }
+  }
+  return best ? REGION_BOUNDS[best] : null;
+}
 let apiKeys = {};
 let activeConfig = null;
 let previewMap = null;
@@ -320,10 +343,11 @@ function renderProviderGrid(region, entries) {
     <div class="provider-grid">
       ${entries.map(e => `
         <div class="provider-card" onclick="selectProvider('${e.path}', '${e.providerId}')">
-          <h3>${e.providerName}</h3>
+          <h3>${e.providerName}${e.harvested ? ' <span class="chip" style="font-size:0.62rem;background:#e8f0fe;color:#0f62fe;vertical-align:middle">harvested</span>' : ''}</h3>
           <div class="card-meta">
             <span class="chip ${e.access}" style="font-size:0.7rem;padding:1px 7px">${e.access}</span>
             ${e.layerCount} layer${e.layerCount !== 1 ? 's' : ''}
+            ${e.serviceCount ? ` · ${e.serviceCount} service${e.serviceCount !== 1 ? 's' : ''}` : ''}
             ${e.requiresKey ? ' · 🔑' : ''}
           </div>
           <div class="card-desc">${(e.categories ?? []).join(', ')}</div>
@@ -505,7 +529,13 @@ function initPreviewMap(cfg) {
 
   const isGlobal = cfg.source?.type === 'geojson';
   const meta = cfg.layer?.metadata ?? cfg.metadata ?? {};
-  const center = meta.previewCenter ?? (isGlobal ? [10, 20] : [5.3, 52.1]);
+  // A regional layer shown at a fixed world-ish zoom reads as blank: at zoom 4
+  // the Netherlands is about 50 pixels wide. Frame from the layer's own extent
+  // when it declares one, and only fall back to a fixed view when it does not.
+  const bounds = cfg.source?.bounds ?? regionBounds(currentRegion);
+  const center = meta.previewCenter
+    ?? (bounds ? [(bounds[0] + bounds[2]) / 2, (bounds[1] + bounds[3]) / 2]
+               : (isGlobal ? [10, 20] : [5.3, 52.1]));
   const zoom = meta.previewZoom ?? (isGlobal ? 1 : 4);
   previewMap = new maplibregl.Map({
     container: 'map-preview',
@@ -513,6 +543,9 @@ function initPreviewMap(cfg) {
     center,
     zoom,
   });
+  if (bounds && !meta.previewCenter) {
+    previewMap.once('load', () => previewMap.fitBounds(bounds, { padding: 16, animate: false }));
+  }
 }
 
 document.getElementById('layer-dialog').addEventListener('close', () => {

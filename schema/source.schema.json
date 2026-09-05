@@ -28,6 +28,12 @@
       }
     },
     "region": { "type": "string", "description": "Path under layers/ the output belongs to, e.g. world/europe/netherlands" },
+    "bounds": {
+      "type": "array",
+      "minItems": 4, "maxItems": 4,
+      "items": { "type": "number" },
+      "description": "Geographic extent [west, south, east, north] of everything this source serves. Written onto every harvested layer, so a client can frame it: a national dataset shown at a world zoom reads as blank rather than as data. Capabilities documents carry per-layer bounding boxes, but third-party catalogues generally do not, so this is stated once here."
+    },
     "maintainer": { "type": "string", "description": "Who keeps the source itself current. That a list is maintained by a known person is a fact about the source, not about each layer in it." },
     "note": { "type": "string" },
     "include": {

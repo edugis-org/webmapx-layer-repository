@@ -28,10 +28,10 @@ const slug = s => String(s ?? '').toLowerCase().normalize('NFD').replace(/[̀-ͯ
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60);
 const arr = x => (x === undefined || x === null ? [] : Array.isArray(x) ? x : [x]);
 
-function mkLayer({ id, name, title, abstract, datasetId, url, kind, background }) {
+function mkLayer({ id, name, title, abstract, datasetId, url, kind, background, bounds }) {
     const src = kind === 'geojson'
         ? { type: 'geojson', data: url }
-        : { type: 'raster', tiles: [url], tileSize: 256 };
+        : { type: 'raster', tiles: [url], tileSize: 256, ...(bounds ? { bounds } : {}) };
     return {
         id, ...(name ? { name } : {}), title,
         ...(abstract ? { abstract: abstract.slice(0, 600) } : {}),
@@ -86,7 +86,8 @@ async function readPdokPluginList(source) {
 
         svc.layers.push(mkLayer({
             id, name: r.name, title: r.title, abstract: r.abstract, datasetId: r.dataset_md_id,
-            url, kind, background: /achtergrond|luchtfoto|ortho|topografi/i.test(r.title),
+            url, kind, bounds: source.bounds,
+            background: /achtergrond|luchtfoto|ortho|topografi/i.test(r.title),
         }));
         services.set(key, svc);
     }
@@ -122,6 +123,7 @@ async function readWmsCapabilities(source) {
                     out.push(mkLayer({
                         id, name, title, abstract: l.Abstract ? String(l.Abstract) : undefined,
                         url: `${endpoint}?LAYERS=${encodeURIComponent(name)}&${WMS_TAIL}`, kind: 'wms',
+                        bounds: source.bounds,
                     }));
                 }
             }
