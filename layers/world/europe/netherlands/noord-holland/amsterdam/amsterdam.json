@@ -29,7 +29,7 @@
       "title": "Gemeente Amsterdam WMS",
       "type": "wms",
       "endpoint": "https://map.data.amsterdam.nl/maps/parkeervakken",
-      "availability": "down",
+      "availability": "up",
       "layers": [
         {
           "id": "amsterdam-parkeervakken-amsterdam",
@@ -54,8 +54,8 @@
               }
             }
           },
-          "availability": "down",
-          "status": "unknown",
+          "availability": "up",
+          "status": "active",
           "lastChecked": "2026-09-05"
         }
       ]

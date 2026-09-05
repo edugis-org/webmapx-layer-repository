@@ -26,6 +26,7 @@ import { join, resolve, dirname, relative } from 'path';
 import { fileURLToPath } from 'url';
 import { resolveTimeTokens, hasTimeToken } from '../lib/time.mjs';
 import { services, layerEntries } from '../lib/catalog.mjs';
+import { regionBounds } from '../lib/regions.mjs';
 
 const ROOT = resolve(fileURLToPath(import.meta.url), '../../');
 const LAYERS_DIR = join(ROOT, 'layers');
@@ -79,6 +80,7 @@ function substituteKeys(url) {
 }
 
 const TEST_ZOOM = 2, TEST_X = 2, TEST_Y = 1;
+const DEFAULT_BBOX = '-20037508.34,-10018754.17,0,0';
 
 /** Bing-style quadkey for a tile, the same encoding MapLibre's {quadkey} produces. */
 function quadkey(z, x, y) {
@@ -93,7 +95,30 @@ function quadkey(z, x, y) {
     return key;
 }
 
-function sampleTileUrl(url) {
+/** Longitude/latitude to Web Mercator metres. */
+function toMercator([lng, lat]) {
+    const R = 6378137;
+    const y = Math.log(Math.tan(Math.PI / 4 + (Math.max(-85.05, Math.min(85.05, lat)) * Math.PI / 180) / 2)) * R;
+    return [lng * Math.PI / 180 * R, y];
+}
+
+/**
+ * BBOX for a WMS probe. Asking a municipal layer to render a quarter of the
+ * planet is slow enough to time out and says nothing about whether it works, so
+ * probe inside the layer's own extent when it declares one.
+ */
+function sampleBbox(bounds) {
+    if (!Array.isArray(bounds) || bounds.length !== 4) return DEFAULT_BBOX;
+    const [w, s, e, n] = bounds;
+    // A small box at the centre: enough to exercise the service, cheap to render.
+    const cx = (w + e) / 2, cy = (s + n) / 2;
+    const dx = Math.max((e - w) / 20, 0.01), dy = Math.max((n - s) / 20, 0.01);
+    const [x0, y0] = toMercator([cx - dx, cy - dy]);
+    const [x1, y1] = toMercator([cx + dx, cy + dy]);
+    return `${x0.toFixed(2)},${y0.toFixed(2)},${x1.toFixed(2)},${y1.toFixed(2)}`;
+}
+
+function sampleTileUrl(url, bounds) {
     return substituteKeys(url)
         .replace(/\{z\}/g, TEST_ZOOM)
         .replace(/\{x\}/g, TEST_X)
@@ -102,7 +127,7 @@ function sampleTileUrl(url) {
         .replace(/\{ratio\}/g, '')
         .replace(/\{prefix\}/g, ((TEST_X % 16).toString(16) + (TEST_Y % 16).toString(16)))
         .replace(/{s}/g, 'a')
-        .replace(/\{bbox-epsg-3857\}/g, '-20037508.34,-10018754.17,0,0');
+        .replace(/\{bbox-epsg-3857\}/g, sampleBbox(bounds));
 }
 
 /** Every {key-<name>} referenced anywhere in a layer's endpoints. */
@@ -120,7 +145,7 @@ function requiredKeys(layer) {
 }
 
 /** The single URL that stands in for the layer, or null if it has none. */
-function probeUrl(layer) {
+function probeUrl(layer, regionHint) {
     const cfg = layer.webmapxConfig;
     if (!cfg) return null;
     // {time} is resolved before the request, exactly as a consumer would.
@@ -129,7 +154,7 @@ function probeUrl(layer) {
     if (cfg.url) return { url: t(substituteKeys(cfg.url)), method: 'GET' };
     const tiles = cfg.source?.tiles;
     if (Array.isArray(tiles) && tiles.length > 0) {
-        return { url: t(sampleTileUrl(tiles[0])), method: 'HEAD' };
+        return { url: t(sampleTileUrl(tiles[0], cfg.source?.bounds ?? regionHint)), method: 'HEAD' };
     }
     if (cfg.source?.url) return { url: t(substituteKeys(cfg.source.url)), method: 'GET' };
     // GeoJSON sources carry the endpoint in source.data, as a URL or inline object.
@@ -143,8 +168,8 @@ function probeUrl(layer) {
  * One probe. Returns a check record matching status.schema.json:
  * { availability, httpStatus?, ms?, reason? }
  */
-async function testLayer(layer) {
-    const target = probeUrl(layer);
+async function testLayer(layer, regionHint) {
+    const target = probeUrl(layer, regionHint);
     if (!target) return { availability: 'unknown', reason: 'no testable endpoint in webmapxConfig' };
 
     const missing = [...requiredKeys(layer)].filter(k => !apiKeys[k]);
@@ -154,11 +179,17 @@ async function testLayer(layer) {
 
     const started = Date.now();
     try {
-        const res = await fetch(target.url, {
+        const headers = REFERER ? { Referer: REFERER } : {};
+        let res = await fetch(target.url, {
             method: target.method,
-            headers: REFERER ? { Referer: REFERER } : {},
+            headers,
             signal: AbortSignal.timeout(TIMEOUT_MS),
         });
+        // Some servers reject HEAD outright. That says nothing about whether the
+        // layer works, so retry once with GET before recording a failure.
+        if (res.status === 405 && target.method === 'HEAD') {
+            res = await fetch(target.url, { method: 'GET', headers, signal: AbortSignal.timeout(TIMEOUT_MS) });
+        }
         const ms = Date.now() - started;
         if (res.ok) return { availability: 'up', httpStatus: res.status, ms };
         if (res.status === 401 || res.status === 403) {
@@ -271,6 +302,9 @@ function allProviderFiles(dir) {
 
 const files = targetFile ? [resolve(ROOT, targetFile)] : allProviderFiles(LAYERS_DIR);
 
+/** Region path a provider file sits at, e.g. world/europe/netherlands */
+const regionOf = file => relative(LAYERS_DIR, file).split('/').slice(0, -1).join('/') || 'world';
+
 const today = new Date().toISOString().slice(0, 10);
 const tally = { total: 0, up: 0, down: 0, unreachable: 0, 'auth-required': 0, unknown: 0 };
 
@@ -290,7 +324,7 @@ for (const file of files) {
 
     for (const { layer, service } of layerEntries(data)) {
         tally.total++;
-        const check = await testLayer(layer);
+        const check = await testLayer(layer, regionBounds(regionOf(file)));
         tally[check.availability]++;
 
         const summary = recordCheck(history, layer.id, check, today);

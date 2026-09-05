@@ -8,7 +8,7 @@
           "date": "2026-09-05",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 363
+          "ms": 381
         }
       ],
       "summary": {
@@ -28,7 +28,7 @@
         {
           "date": "2026-09-05",
           "availability": "unreachable",
-          "ms": 8000,
+          "ms": 7999,
           "reason": "The operation was aborted due to timeout"
         }
       ],

@@ -54,6 +54,7 @@ jobs:
           APIKEY_THUNDERFOREST:  ${{ secrets.APIKEY_THUNDERFOREST }}
           APIKEY_NEXTZEN:        ${{ secrets.APIKEY_NEXTZEN }}
           APIKEY_GEODANMAPS:     ${{ secrets.APIKEY_GEODANMAPS }}
+          APIKEY_OPENAIP:        ${{ secrets.APIKEY_OPENAIP }}
           # Stadia authenticates on the request origin and issues no key; MapTiler
           # locks keys to registered origins. Without a registered origin here,
           # both record as auth-required and the history learns the wrong thing.
