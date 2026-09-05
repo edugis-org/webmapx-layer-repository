@@ -22,7 +22,7 @@
       "title": "Satellite",
       "abstract": "Google satellite imagery.",
       "type": "raster",
-      "status": "active",
+      "status": "unknown",
       "requiresKey": false,
       "webmapxConfig": {
         "source": {
@@ -47,7 +47,7 @@
           }
         }
       },
-      "availability": "up",
+      "availability": "unreachable",
       "lastChecked": "2026-09-05"
     },
     {

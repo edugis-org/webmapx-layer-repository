@@ -1,14 +1,14 @@
 {
-  "provider": "openaip",
-  "source": "world/openaip.json",
+  "provider": "iastate-mesonet",
+  "source": "world/iastate-mesonet.json",
   "layers": {
-    "openaip-map": {
+    "iastate-mesonet-neerslagradar-usa": {
       "checks": [
         {
           "date": "2026-09-05",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 152
+          "ms": 360
         }
       ],
       "summary": {

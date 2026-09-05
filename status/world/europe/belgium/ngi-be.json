@@ -1,14 +1,14 @@
 {
-  "provider": "openrailwaymap",
-  "source": "world/openrailwaymap.json",
+  "provider": "ngi-be",
+  "source": "world/europe/belgium/ngi-be.json",
   "layers": {
-    "openrailwaymap-standard": {
+    "ngi-be-waterwegen": {
       "checks": [
         {
           "date": "2026-09-05",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 125
+          "ms": 187
         }
       ],
       "summary": {
@@ -23,13 +23,13 @@
         "lastUp": "2026-09-05"
       }
     },
-    "openrailwaymap-maxspeed": {
+    "ngi-be-waterwegen-vlakken": {
       "checks": [
         {
           "date": "2026-09-05",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 86
+          "ms": 69
         }
       ],
       "summary": {
@@ -44,13 +44,13 @@
         "lastUp": "2026-09-05"
       }
     },
-    "openrailwaymap-signals": {
+    "ngi-be-waterlichamen-meren-plassen-havens": {
       "checks": [
         {
           "date": "2026-09-05",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 89
+          "ms": 65
         }
       ],
       "summary": {
@@ -65,13 +65,13 @@
         "lastUp": "2026-09-05"
       }
     },
-    "openrailwaymap-electrification": {
+    "ngi-be-spoorwegen": {
       "checks": [
         {
           "date": "2026-09-05",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 86
+          "ms": 1236
         }
       ],
       "summary": {

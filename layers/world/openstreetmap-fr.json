@@ -1,0 +1,51 @@
+{
+  "provider": {
+    "id": "openstreetmap-fr",
+    "name": "OpenStreetMap France",
+    "url": "https://www.openstreetmap.fr",
+    "abstract": "OpenStreetMap France map services, collected from the EduGIS atlas configurations.",
+    "access": "free",
+    "license": "ODbL",
+    "categories": [
+      "street-maps"
+    ],
+    "regions": [],
+    "operator": {
+      "type": "community",
+      "country": "FR"
+    },
+    "cost": {
+      "model": "free"
+    },
+    "lifecycle": "stable"
+  },
+  "layers": [
+    {
+      "id": "openstreetmap-fr-osm-frankrijk-wmts",
+      "title": "OSM frankrijk (wmts)",
+      "type": "raster",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": [
+            "https://tile-c.openstreetmap.fr/hot/{z}/{x}/{y}.png"
+          ],
+          "tileSize": 256,
+          "attribution": "&copy; <a href=\"https://www.openstreetmap.org/about\" target=\"attribution\">OpenStreetMap contributors</a>"
+        },
+        "layer": {
+          "id": "openstreetmap-fr-osm-frankrijk-wmts",
+          "type": "raster",
+          "metadata": {
+            "title": "OSM frankrijk (wmts)",
+            "legendRole": "overlay"
+          }
+        }
+      },
+      "availability": "up",
+      "status": "active",
+      "lastChecked": "2026-09-05"
+    }
+  ]
+}

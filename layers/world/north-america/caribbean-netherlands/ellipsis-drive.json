@@ -1,0 +1,258 @@
+{
+  "provider": {
+    "id": "ellipsis-drive",
+    "name": "Ellipsis Drive",
+    "url": "https://ellipsis-drive.com",
+    "abstract": "Ellipsis Drive map services, collected from the EduGIS atlas configurations.",
+    "access": "free",
+    "categories": [
+      "satellite",
+      "elevation"
+    ],
+    "regions": [
+      "north-america",
+      "caribbean-netherlands"
+    ],
+    "operator": {
+      "type": "commercial",
+      "country": "NL"
+    },
+    "cost": {
+      "model": "free"
+    },
+    "lifecycle": "stable"
+  },
+  "layers": [
+    {
+      "id": "ellipsis-drive-bonaire-luchtfoto-s",
+      "title": "Bonaire luchtfoto's",
+      "type": "raster",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": [
+            "https://api.ellipsis-drive.com/v3/ogc/wmts/7c562d01-08eb-46a5-87c9-af76a8b24f43?version=1.1.1,SERVICE=WMTS&REQUEST=GetTile&LAYER=c0dd2d03-3685-40b4-8f41-8041ebfaa7f0_44257e74-d797-46a5-bf06-31d95a95db14&STYLE=default&TILEMATRIXSET=urn:ogc:def:crs:EPSG::3857&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&FORMAT=image/png"
+          ],
+          "tileSize": 256,
+          "attribution": "in te vullen",
+          "bounds": [
+            -68.430214,
+            12.020439,
+            -68.18207,
+            12.318717
+          ]
+        },
+        "layer": {
+          "id": "ellipsis-drive-bonaire-luchtfoto-s",
+          "type": "raster",
+          "metadata": {
+            "title": "Bonaire luchtfoto's",
+            "legendRole": "background"
+          }
+        }
+      },
+      "availability": "up",
+      "status": "active",
+      "lastChecked": "2026-09-05"
+    },
+    {
+      "id": "ellipsis-drive-bonaire-infrarood-luchtfoto-s",
+      "title": "Bonaire Infrarood luchtfoto's",
+      "type": "raster",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": [
+            "https://api.ellipsis-drive.com/v3/ogc/wmts/44f02c3d-8d97-4c74-8bab-c06c08bb1d18?version=1.1.1,SERVICE=WMTS&REQUEST=GetTile&LAYER=5832b367-7753-49a4-a37c-125db0afc846_e34fd90e-1de3-4893-ad55-1f18fe829284&STYLE=default&TILEMATRIXSET=urn:ogc:def:crs:EPSG::3857&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&FORMAT=image/png"
+          ],
+          "tileSize": 256,
+          "attribution": "in te vullen",
+          "bounds": [
+            -68.430214,
+            12.020439,
+            -68.18207,
+            12.318717
+          ]
+        },
+        "layer": {
+          "id": "ellipsis-drive-bonaire-infrarood-luchtfoto-s",
+          "type": "raster",
+          "metadata": {
+            "title": "Bonaire Infrarood luchtfoto's",
+            "legendRole": "background"
+          }
+        }
+      },
+      "availability": "up",
+      "status": "active",
+      "lastChecked": "2026-09-05"
+    },
+    {
+      "id": "ellipsis-drive-sint-eustatius-luchtfoto-s",
+      "title": "Sint Eustatius luchtfoto's",
+      "type": "raster",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": [
+            "https://api.ellipsis-drive.com/v3/ogc/wmts/d80f2623-2ff6-49d5-827e-8c2f2f1fa48c?version=1.1.1,SERVICE=WMTS&REQUEST=GetTile&LAYER=32bec641-68f6-46aa-b862-d6438bd91912_f50ed922-dc88-464f-b127-0afe016c8e9c&STYLE=default&TILEMATRIXSET=urn:ogc:def:crs:EPSG::3857&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&FORMAT=image/png"
+          ],
+          "tileSize": 256,
+          "attribution": "in te vullen",
+          "bounds": [
+            -63.008835,
+            17.456535,
+            -62.942856,
+            17.528818
+          ]
+        },
+        "layer": {
+          "id": "ellipsis-drive-sint-eustatius-luchtfoto-s",
+          "type": "raster",
+          "metadata": {
+            "title": "Sint Eustatius luchtfoto's",
+            "legendRole": "background"
+          }
+        }
+      },
+      "availability": "up",
+      "status": "active",
+      "lastChecked": "2026-09-05"
+    },
+    {
+      "id": "ellipsis-drive-st-eustatius-infrarood-luchtfoto-s",
+      "title": "St Eustatius infrarood luchtfoto's",
+      "type": "raster",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": [
+            "https://api.ellipsis-drive.com/v3/ogc/wmts/ba853152-acd2-4dfb-b171-3170befd8438?version=1.1.1,SERVICE=WMTS&REQUEST=GetTile&LAYER=c63c8d5c-ebfb-4635-9abc-5a07b8d8bfc3_d4cc1639-fc10-4395-8106-0799b3ac7fed&STYLE=default&TILEMATRIXSET=urn:ogc:def:crs:EPSG::3857&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&FORMAT=image/png"
+          ],
+          "tileSize": 256,
+          "attribution": "in te vullen",
+          "bounds": [
+            -63.008835,
+            17.456535,
+            -62.942856,
+            17.528818
+          ]
+        },
+        "layer": {
+          "id": "ellipsis-drive-st-eustatius-infrarood-luchtfoto-s",
+          "type": "raster",
+          "metadata": {
+            "title": "St Eustatius infrarood luchtfoto's",
+            "legendRole": "background"
+          }
+        }
+      },
+      "availability": "up",
+      "status": "active",
+      "lastChecked": "2026-09-05"
+    },
+    {
+      "id": "ellipsis-drive-st-eustatius-hoogtekaart",
+      "title": "St Eustatius hoogtekaart",
+      "type": "raster",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": [
+            "https://api.ellipsis-drive.com/v3/ogc/wmts/c3773c58-2031-4ca1-a8aa-00a4c306e502?version=1.1.1,SERVICE=WMTS&REQUEST=GetTile&LAYER=4bcdf945-b148-41d6-a15f-ad0e2729ac4f_01212a78-b1e9-41ed-b11f-206b39fb66ec&STYLE=default&TILEMATRIXSET=urn:ogc:def:crs:EPSG::3857&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&FORMAT=image/png"
+          ],
+          "tileSize": 256,
+          "attribution": "in te vullen",
+          "bounds": [
+            -63.008835,
+            17.456535,
+            -62.942856,
+            17.528818
+          ]
+        },
+        "layer": {
+          "id": "ellipsis-drive-st-eustatius-hoogtekaart",
+          "type": "raster",
+          "metadata": {
+            "title": "St Eustatius hoogtekaart",
+            "legendRole": "overlay"
+          }
+        }
+      },
+      "availability": "up",
+      "status": "active",
+      "lastChecked": "2026-09-05"
+    },
+    {
+      "id": "ellipsis-drive-saba-luchtfoto-s",
+      "title": "Saba luchtfoto's",
+      "type": "raster",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": [
+            "https://api.ellipsis-drive.com/v3/ogc/wmts/111de913-5126-4ad9-9ad4-c02f21903417?version=1.1.1,SERVICE=WMTS&REQUEST=GetTile&LAYER=1713dd4d-b854-4065-b41f-14ad7231f14b_df1012e2-b3bd-44c3-86b4-68c6d732c48d&STYLE=default&TILEMATRIXSET=urn:ogc:def:crs:EPSG::3857&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&FORMAT=image/png"
+          ],
+          "tileSize": 256,
+          "attribution": "in te vullen",
+          "bounds": [
+            -63.263153,
+            17.609335,
+            -63.206505,
+            17.654688
+          ]
+        },
+        "layer": {
+          "id": "ellipsis-drive-saba-luchtfoto-s",
+          "type": "raster",
+          "metadata": {
+            "title": "Saba luchtfoto's",
+            "legendRole": "background"
+          }
+        }
+      },
+      "availability": "up",
+      "status": "active",
+      "lastChecked": "2026-09-05"
+    },
+    {
+      "id": "ellipsis-drive-saba-infrarood-luchtfoto-s",
+      "title": "Saba infrarood luchtfoto's",
+      "type": "raster",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": [
+            "https://api.ellipsis-drive.com/v3/ogc/wmts/b9393583-ecd0-40eb-8117-38dd48428fbc?version=1.1.1,SERVICE=WMTS&REQUEST=GetTile&LAYER=8da3bc4e-23b4-46ba-a06d-7895241df341_c0d14ee7-b34f-4317-a823-a54e4bf52003&STYLE=default&TILEMATRIXSET=urn:ogc:def:crs:EPSG::3857&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&FORMAT=image/png"
+          ],
+          "tileSize": 256,
+          "attribution": "in te vullen",
+          "bounds": [
+            -63.263153,
+            17.609335,
+            -63.206505,
+            17.654688
+          ]
+        },
+        "layer": {
+          "id": "ellipsis-drive-saba-infrarood-luchtfoto-s",
+          "type": "raster",
+          "metadata": {
+            "title": "Saba infrarood luchtfoto's",
+            "legendRole": "background"
+          }
+        }
+      },
+      "availability": "up",
+      "status": "active",
+      "lastChecked": "2026-09-05"
+    }
+  ]
+}

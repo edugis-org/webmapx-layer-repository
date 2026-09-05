@@ -116,6 +116,98 @@
       },
       "availability": "up",
       "lastChecked": "2026-09-05"
+    },
+    {
+      "id": "usgs-aardbevingen-dit-uur",
+      "title": "Aardbevingen dit uur",
+      "type": "geojson",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "geojson",
+          "data": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson"
+        },
+        "layer": {
+          "id": "usgs-aardbevingen-dit-uur",
+          "type": "circle",
+          "metadata": {
+            "title": "Aardbevingen dit uur",
+            "legendRole": "overlay"
+          }
+        }
+      },
+      "availability": "up",
+      "status": "active",
+      "lastChecked": "2026-09-05"
+    },
+    {
+      "id": "usgs-aardbevingen-vandaag-2-5",
+      "title": "Aardbevingen vandaag > 2.5",
+      "type": "geojson",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "geojson",
+          "data": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_day.geojson"
+        },
+        "layer": {
+          "id": "usgs-aardbevingen-vandaag-2-5",
+          "type": "circle",
+          "metadata": {
+            "title": "Aardbevingen vandaag > 2.5",
+            "legendRole": "overlay"
+          }
+        }
+      },
+      "availability": "up",
+      "status": "active",
+      "lastChecked": "2026-09-05"
+    },
+    {
+      "id": "usgs-aardbevingen-deze-week-2-5",
+      "title": "Aardbevingen deze week > 2.5",
+      "type": "geojson",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "geojson",
+          "data": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojson"
+        },
+        "layer": {
+          "id": "usgs-aardbevingen-deze-week-2-5",
+          "type": "circle",
+          "metadata": {
+            "title": "Aardbevingen deze week > 2.5",
+            "legendRole": "overlay"
+          }
+        }
+      },
+      "availability": "up",
+      "status": "active",
+      "lastChecked": "2026-09-05"
+    },
+    {
+      "id": "usgs-aardbevingen-deze-maand-2-5",
+      "title": "Aardbevingen deze maand > 2.5",
+      "type": "geojson",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "geojson",
+          "data": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_month.geojson"
+        },
+        "layer": {
+          "id": "usgs-aardbevingen-deze-maand-2-5",
+          "type": "circle",
+          "metadata": {
+            "title": "Aardbevingen deze maand > 2.5",
+            "legendRole": "overlay"
+          }
+        }
+      },
+      "availability": "up",
+      "status": "active",
+      "lastChecked": "2026-09-05"
     }
   ]
 }

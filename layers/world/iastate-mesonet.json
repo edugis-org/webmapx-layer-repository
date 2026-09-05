@@ -1,0 +1,57 @@
+{
+  "provider": {
+    "id": "iastate-mesonet",
+    "name": "Iowa Environmental Mesonet (Iowa State University)",
+    "url": "https://mesonet.agron.iastate.edu",
+    "abstract": "Iowa Environmental Mesonet (Iowa State University) map services, collected from the EduGIS atlas configurations.",
+    "access": "free",
+    "categories": [
+      "weather",
+      "realtime"
+    ],
+    "regions": [],
+    "operator": {
+      "type": "research",
+      "country": "US"
+    },
+    "cost": {
+      "model": "free"
+    },
+    "lifecycle": "stable"
+  },
+  "layers": [
+    {
+      "id": "iastate-mesonet-neerslagradar-usa",
+      "title": "Neerslagradar USA",
+      "type": "wms",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": [
+            "https://mesonet.agron.iastate.edu/cgi-bin/wms/nexrad/n0q.cgi?SERVICE=WMS&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=TRUE&STYLES=&VERSION=1.3.0&LAYERS=nexrad-n0q-900913-conus,nexrad-n0q-900913-ak,nexrad-n0q-900913-hi,nexrad-n0q-900913-pr,nexrad-n0q-900913-m05m-conus,nexrad-n0q-900913-m05m-hi,nexrad-n0q-900913-m05m-ak,nexrad-n0q-900913-m05m-pr,nexrad-n0q-900913-m10m-conus,nexrad-n0q-900913-m10m-ak&WIDTH=1024&HEIGHT=1024&CRS=EPSG:900913&BBOX={bbox-epsg-3857}"
+          ],
+          "tileSize": 256,
+          "attribution": "NEXRAD",
+          "bounds": [
+            -160,
+            14,
+            -60,
+            72
+          ]
+        },
+        "layer": {
+          "id": "iastate-mesonet-neerslagradar-usa",
+          "type": "raster",
+          "metadata": {
+            "title": "Neerslagradar USA",
+            "legendRole": "overlay"
+          }
+        }
+      },
+      "availability": "up",
+      "status": "active",
+      "lastChecked": "2026-09-05"
+    }
+  ]
+}

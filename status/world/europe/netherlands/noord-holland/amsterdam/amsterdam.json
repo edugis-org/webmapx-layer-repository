@@ -1,0 +1,28 @@
+{
+  "provider": "amsterdam",
+  "source": "world/europe/netherlands/noord-holland/amsterdam/amsterdam.json",
+  "layers": {
+    "amsterdam-parkeervakken-amsterdam": {
+      "checks": [
+        {
+          "date": "2026-09-05",
+          "availability": "down",
+          "httpStatus": 405,
+          "ms": 115,
+          "reason": "HTTP 405"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-05",
+        "lastChecked": "2026-09-05",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-05"
+      }
+    }
+  }
+}

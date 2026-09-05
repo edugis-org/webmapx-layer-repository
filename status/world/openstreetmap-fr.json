@@ -1,14 +1,14 @@
 {
-  "provider": "openaip",
-  "source": "world/openaip.json",
+  "provider": "openstreetmap-fr",
+  "source": "world/openstreetmap-fr.json",
   "layers": {
-    "openaip-map": {
+    "openstreetmap-fr-osm-frankrijk-wmts": {
       "checks": [
         {
           "date": "2026-09-05",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 152
+          "ms": 76
         }
       ],
       "summary": {

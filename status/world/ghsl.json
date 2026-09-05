@@ -8,7 +8,7 @@
           "date": "2026-09-05",
           "availability": "down",
           "httpStatus": 404,
-          "ms": 317,
+          "ms": 350,
           "reason": "HTTP 404"
         }
       ],
@@ -52,7 +52,7 @@
           "date": "2026-09-05",
           "availability": "down",
           "httpStatus": 404,
-          "ms": 282,
+          "ms": 272,
           "reason": "HTTP 404"
         }
       ],

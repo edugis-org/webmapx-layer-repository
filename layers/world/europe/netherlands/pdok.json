@@ -297,6 +297,635 @@
       },
       "availability": "up",
       "lastChecked": "2026-09-05"
+    },
+    {
+      "id": "pdok-2019",
+      "title": "2019",
+      "type": "raster",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": [
+            "https://service.pdok.nl/hwh/luchtfotorgb/wmts/v1_0/2019_ortho25/EPSG:3857/{z}/{x}/{y}.jpeg"
+          ],
+          "tileSize": 256,
+          "attribution": "PDOK",
+          "bounds": [
+            2.75,
+            50.5,
+            7.5,
+            53.6
+          ]
+        },
+        "layer": {
+          "id": "pdok-2019",
+          "type": "raster",
+          "metadata": {
+            "title": "2019",
+            "legendRole": "overlay"
+          }
+        }
+      },
+      "availability": "up",
+      "status": "active",
+      "lastChecked": "2026-09-05"
+    },
+    {
+      "id": "pdok-2020",
+      "title": "2020",
+      "type": "raster",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": [
+            "https://service.pdok.nl/hwh/luchtfotorgb/wmts/v1_0/2020_ortho25/EPSG:3857/{z}/{x}/{y}.jpeg"
+          ],
+          "tileSize": 256,
+          "attribution": "PDOK",
+          "bounds": [
+            2.75,
+            50.5,
+            7.5,
+            53.6
+          ]
+        },
+        "layer": {
+          "id": "pdok-2020",
+          "type": "raster",
+          "metadata": {
+            "title": "2020",
+            "legendRole": "overlay"
+          }
+        }
+      },
+      "availability": "up",
+      "status": "active",
+      "lastChecked": "2026-09-05"
+    },
+    {
+      "id": "pdok-luchtfoto-nederland-pdok",
+      "title": "Luchtfoto | Nederland | PDOK",
+      "type": "raster",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": [
+            "https://service.pdok.nl/hwh/luchtfotorgb/wmts/v1_0/Actueel_ortho25/EPSG:3857/{z}/{x}/{y}.jpeg"
+          ],
+          "tileSize": 256,
+          "attribution": "PDOK",
+          "bounds": [
+            2.75,
+            50.5,
+            7.5,
+            53.6
+          ]
+        },
+        "layer": {
+          "id": "pdok-luchtfoto-nederland-pdok",
+          "type": "raster",
+          "metadata": {
+            "title": "Luchtfoto | Nederland | PDOK",
+            "legendRole": "background"
+          }
+        }
+      },
+      "availability": "up",
+      "status": "active",
+      "lastChecked": "2026-09-05"
+    },
+    {
+      "id": "pdok-nederland-2016-pdok",
+      "title": "Nederland-2016 (PDOK)",
+      "type": "raster",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": [
+            "https://service.pdok.nl/hwh/luchtfotorgb/wmts/v1_0/2016_ortho25/EPSG:3857/{z}/{x}/{y}.jpeg"
+          ],
+          "tileSize": 256,
+          "attribution": "PDOK",
+          "bounds": [
+            2.75,
+            50.5,
+            7.5,
+            53.6
+          ]
+        },
+        "layer": {
+          "id": "pdok-nederland-2016-pdok",
+          "type": "raster",
+          "metadata": {
+            "title": "Nederland-2016 (PDOK)",
+            "legendRole": "overlay"
+          }
+        }
+      },
+      "availability": "up",
+      "status": "active",
+      "lastChecked": "2026-09-05"
+    },
+    {
+      "id": "pdok-topografie-1-1000-000",
+      "title": "topografie: 1:1000.000",
+      "type": "wms",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": [
+            "https://service.pdok.nl/brt/topraster/wms/v1_0?layers=top1000raster&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
+          ],
+          "tileSize": 256,
+          "attribution": "Kadaster",
+          "bounds": [
+            3.20009,
+            50.7167,
+            7.27283,
+            53.5571
+          ]
+        },
+        "layer": {
+          "id": "pdok-topografie-1-1000-000",
+          "type": "raster",
+          "metadata": {
+            "title": "topografie: 1:1000.000",
+            "legendRole": "background"
+          }
+        }
+      },
+      "availability": "up",
+      "status": "active",
+      "lastChecked": "2026-09-05"
+    },
+    {
+      "id": "pdok-topografie-1-250-000",
+      "title": "topografie: 1:250.000",
+      "type": "wms",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": [
+            "https://service.pdok.nl/brt/topraster/wms/v1_0?layers=top250raster&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
+          ],
+          "tileSize": 256,
+          "attribution": "Kadaster",
+          "bounds": [
+            3.20009,
+            50.7167,
+            7.27283,
+            53.5571
+          ]
+        },
+        "layer": {
+          "id": "pdok-topografie-1-250-000",
+          "type": "raster",
+          "metadata": {
+            "title": "topografie: 1:250.000",
+            "legendRole": "background"
+          }
+        }
+      },
+      "availability": "up",
+      "status": "active",
+      "lastChecked": "2026-09-05"
+    },
+    {
+      "id": "pdok-topografie-1-50-000",
+      "title": "topografie: 1:50.000",
+      "type": "wms",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": [
+            "https://service.pdok.nl/brt/topraster/wms/v1_0?layers=top50raster&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
+          ],
+          "tileSize": 256,
+          "attribution": "Kadaster",
+          "bounds": [
+            3.20009,
+            50.7167,
+            7.27283,
+            53.5571
+          ]
+        },
+        "layer": {
+          "id": "pdok-topografie-1-50-000",
+          "type": "raster",
+          "metadata": {
+            "title": "topografie: 1:50.000",
+            "legendRole": "background"
+          }
+        }
+      },
+      "availability": "up",
+      "status": "active",
+      "lastChecked": "2026-09-05"
+    },
+    {
+      "id": "pdok-topografie-1-25-000",
+      "title": "topografie: 1:25.000",
+      "type": "wms",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": [
+            "https://service.pdok.nl/brt/topraster/wms/v1_0?layers=top25raster&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
+          ],
+          "tileSize": 256,
+          "attribution": "Kadaster",
+          "bounds": [
+            3.20009,
+            50.7167,
+            7.27283,
+            53.5571
+          ]
+        },
+        "layer": {
+          "id": "pdok-topografie-1-25-000",
+          "type": "raster",
+          "metadata": {
+            "title": "topografie: 1:25.000",
+            "legendRole": "background"
+          }
+        }
+      },
+      "availability": "up",
+      "status": "active",
+      "lastChecked": "2026-09-05"
+    },
+    {
+      "id": "pdok-topografie-1-10-000",
+      "title": "topografie: 1:10.000",
+      "type": "wms",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": [
+            "https://service.pdok.nl/brt/top10nl/wms/v1_0?layers=top10nl&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
+          ],
+          "tileSize": 256,
+          "attribution": "Kadaster",
+          "bounds": [
+            3.20009,
+            50.7167,
+            7.27283,
+            53.5571
+          ]
+        },
+        "layer": {
+          "id": "pdok-topografie-1-10-000",
+          "type": "raster",
+          "metadata": {
+            "title": "topografie: 1:10.000",
+            "legendRole": "background"
+          }
+        }
+      },
+      "availability": "up",
+      "status": "active",
+      "lastChecked": "2026-09-05"
+    },
+    {
+      "id": "pdok-bodemkaart",
+      "title": "Bodemkaart",
+      "type": "wms",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": [
+            "https://service.pdok.nl/bzk/bro-bodemkaart/wms/v1_0?layers=soilarea&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
+          ],
+          "tileSize": 256,
+          "attribution": "PDOK",
+          "bounds": [
+            3.20009,
+            50.7167,
+            7.27283,
+            53.5571
+          ]
+        },
+        "layer": {
+          "id": "pdok-bodemkaart",
+          "type": "raster",
+          "metadata": {
+            "title": "Bodemkaart",
+            "legendRole": "overlay"
+          }
+        }
+      },
+      "availability": "up",
+      "status": "active",
+      "lastChecked": "2026-09-05"
+    },
+    {
+      "id": "pdok-fysisch-geografische-regio-s",
+      "title": "Fysisch Geografische Regio's",
+      "type": "wms",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": [
+            "https://service.pdok.nl/ez/fysischgeografischeregios/wms/v1_0?layers=fysischgeografischeregios&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
+          ],
+          "tileSize": 256,
+          "attribution": "PDOK"
+        },
+        "layer": {
+          "id": "pdok-fysisch-geografische-regio-s",
+          "type": "raster",
+          "metadata": {
+            "title": "Fysisch Geografische Regio's",
+            "legendRole": "overlay"
+          }
+        }
+      },
+      "availability": "up",
+      "status": "active",
+      "lastChecked": "2026-09-05"
+    },
+    {
+      "id": "pdok-pdok-luchtfoto-s-2017-wmts",
+      "title": "PDOK luchtfoto's 2017 (WMTS)",
+      "type": "raster",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": [
+            "https://service.pdok.nl/hwh/luchtfotorgb/wmts/v1_0/2017_ortho25/EPSG:3857/{z}/{x}/{y}.jpeg"
+          ],
+          "tileSize": 256,
+          "attribution": "PDOK"
+        },
+        "layer": {
+          "id": "pdok-pdok-luchtfoto-s-2017-wmts",
+          "type": "raster",
+          "metadata": {
+            "title": "PDOK luchtfoto's 2017 (WMTS)",
+            "legendRole": "background"
+          }
+        }
+      },
+      "availability": "up",
+      "status": "active",
+      "lastChecked": "2026-09-05"
+    },
+    {
+      "id": "pdok-top25raster",
+      "title": "Topografie 1:25000",
+      "abstract": "BRT TOP25raster topographic map of the Netherlands.",
+      "type": "wms",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": [
+            "https://service.pdok.nl/brt/topraster/wms/v1_0?LAYERS=top25raster&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
+          ],
+          "tileSize": 256,
+          "attribution": "Kadaster / PDOK",
+          "bounds": [
+            3.20009,
+            50.7167,
+            7.27283,
+            53.5571
+          ]
+        },
+        "layer": {
+          "id": "pdok-top25raster",
+          "type": "raster",
+          "metadata": {
+            "title": "Topografie 1:25000",
+            "abstract": "BRT TOP25raster topographic map of the Netherlands.",
+            "legendRole": "background"
+          }
+        }
+      },
+      "availability": "up",
+      "status": "active",
+      "lastChecked": "2026-09-05"
+    },
+    {
+      "id": "pdok-top50raster",
+      "title": "Topografie 1:50000",
+      "abstract": "BRT TOP50raster topographic map of the Netherlands.",
+      "type": "wms",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": [
+            "https://service.pdok.nl/brt/topraster/wms/v1_0?LAYERS=top50raster&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
+          ],
+          "tileSize": 256,
+          "attribution": "Kadaster / PDOK",
+          "bounds": [
+            3.20009,
+            50.7167,
+            7.27283,
+            53.5571
+          ]
+        },
+        "layer": {
+          "id": "pdok-top50raster",
+          "type": "raster",
+          "metadata": {
+            "title": "Topografie 1:50000",
+            "abstract": "BRT TOP50raster topographic map of the Netherlands.",
+            "legendRole": "background"
+          }
+        }
+      },
+      "availability": "up",
+      "status": "active",
+      "lastChecked": "2026-09-05"
+    },
+    {
+      "id": "pdok-top100raster",
+      "title": "Topografie 1:100000",
+      "abstract": "BRT TOP100raster topographic map of the Netherlands.",
+      "type": "wms",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": [
+            "https://service.pdok.nl/brt/topraster/wms/v1_0?LAYERS=top100raster&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
+          ],
+          "tileSize": 256,
+          "attribution": "Kadaster / PDOK",
+          "bounds": [
+            3.20009,
+            50.7167,
+            7.27283,
+            53.5571
+          ]
+        },
+        "layer": {
+          "id": "pdok-top100raster",
+          "type": "raster",
+          "metadata": {
+            "title": "Topografie 1:100000",
+            "abstract": "BRT TOP100raster topographic map of the Netherlands.",
+            "legendRole": "background"
+          }
+        }
+      },
+      "availability": "up",
+      "status": "active",
+      "lastChecked": "2026-09-05"
+    },
+    {
+      "id": "pdok-top250raster",
+      "title": "Topografie 1:250000",
+      "abstract": "BRT TOP250raster topographic map of the Netherlands.",
+      "type": "wms",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": [
+            "https://service.pdok.nl/brt/topraster/wms/v1_0?LAYERS=top250raster&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
+          ],
+          "tileSize": 256,
+          "attribution": "Kadaster / PDOK",
+          "bounds": [
+            3.20009,
+            50.7167,
+            7.27283,
+            53.5571
+          ]
+        },
+        "layer": {
+          "id": "pdok-top250raster",
+          "type": "raster",
+          "metadata": {
+            "title": "Topografie 1:250000",
+            "abstract": "BRT TOP250raster topographic map of the Netherlands.",
+            "legendRole": "background"
+          }
+        }
+      },
+      "availability": "up",
+      "status": "active",
+      "lastChecked": "2026-09-05"
+    },
+    {
+      "id": "pdok-top500raster",
+      "title": "Topografie 1:500000",
+      "abstract": "BRT TOP500raster topographic map of the Netherlands.",
+      "type": "wms",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": [
+            "https://service.pdok.nl/brt/topraster/wms/v1_0?LAYERS=top500raster&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
+          ],
+          "tileSize": 256,
+          "attribution": "Kadaster / PDOK",
+          "bounds": [
+            3.20009,
+            50.7167,
+            7.27283,
+            53.5571
+          ]
+        },
+        "layer": {
+          "id": "pdok-top500raster",
+          "type": "raster",
+          "metadata": {
+            "title": "Topografie 1:500000",
+            "abstract": "BRT TOP500raster topographic map of the Netherlands.",
+            "legendRole": "background"
+          }
+        }
+      },
+      "availability": "up",
+      "status": "active",
+      "lastChecked": "2026-09-05"
+    },
+    {
+      "id": "pdok-top1000raster",
+      "title": "Topografie 1:1000000",
+      "abstract": "BRT TOP1000raster topographic map of the Netherlands.",
+      "type": "wms",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": [
+            "https://service.pdok.nl/brt/topraster/wms/v1_0?LAYERS=top1000raster&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
+          ],
+          "tileSize": 256,
+          "attribution": "Kadaster / PDOK",
+          "bounds": [
+            3.20009,
+            50.7167,
+            7.27283,
+            53.5571
+          ]
+        },
+        "layer": {
+          "id": "pdok-top1000raster",
+          "type": "raster",
+          "metadata": {
+            "title": "Topografie 1:1000000",
+            "abstract": "BRT TOP1000raster topographic map of the Netherlands.",
+            "legendRole": "background"
+          }
+        }
+      },
+      "availability": "up",
+      "status": "active",
+      "lastChecked": "2026-09-05"
+    },
+    {
+      "id": "pdok-kadastralekaart",
+      "title": "Kadastrale kaart (percelen)",
+      "abstract": "Cadastral parcels from the Kadaster, via PDOK.",
+      "type": "wms",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": [
+            "https://service.pdok.nl/kadaster/kadastralekaart/wms/v5_0?LAYERS=Perceel&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
+          ],
+          "tileSize": 256,
+          "attribution": "Kadaster / PDOK",
+          "bounds": [
+            3.20009,
+            50.7167,
+            7.27283,
+            53.5571
+          ]
+        },
+        "layer": {
+          "id": "pdok-kadastralekaart",
+          "type": "raster",
+          "metadata": {
+            "title": "Kadastrale kaart (percelen)",
+            "abstract": "Cadastral parcels from the Kadaster, via PDOK.",
+            "legendRole": "overlay"
+          }
+        }
+      },
+      "availability": "up",
+      "status": "active",
+      "lastChecked": "2026-09-05"
     }
   ]
 }

@@ -1,0 +1,55 @@
+{
+  "provider": {
+    "id": "amsterdam",
+    "name": "Gemeente Amsterdam",
+    "url": "https://data.amsterdam.nl",
+    "abstract": "Gemeente Amsterdam map services, collected from the EduGIS atlas configurations.",
+    "access": "free",
+    "categories": [
+      "general-purpose"
+    ],
+    "regions": [
+      "europe",
+      "netherlands",
+      "noord-holland",
+      "amsterdam"
+    ],
+    "operator": {
+      "type": "government",
+      "country": "NL"
+    },
+    "cost": {
+      "model": "free"
+    },
+    "lifecycle": "stable"
+  },
+  "layers": [
+    {
+      "id": "amsterdam-parkeervakken-amsterdam",
+      "title": "Parkeervakken Amsterdam",
+      "type": "wms",
+      "requiresKey": false,
+      "webmapxConfig": {
+        "source": {
+          "type": "raster",
+          "tiles": [
+            "https://map.data.amsterdam.nl/maps/parkeervakken?transparent=true&LAYERS=parkeervakken&FORMAT=image%2Fpng&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&STYLES=&SRS=EPSG%3A3857&BBOX={bbox-epsg-3857}&WIDTH=512&HEIGHT=512"
+          ],
+          "tileSize": 256,
+          "attribution": "Pico"
+        },
+        "layer": {
+          "id": "amsterdam-parkeervakken-amsterdam",
+          "type": "raster",
+          "metadata": {
+            "title": "Parkeervakken Amsterdam",
+            "legendRole": "overlay"
+          }
+        }
+      },
+      "availability": "down",
+      "status": "unknown",
+      "lastChecked": "2026-09-05"
+    }
+  ]
+}

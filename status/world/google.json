@@ -6,21 +6,21 @@
       "checks": [
         {
           "date": "2026-09-05",
-          "availability": "up",
-          "httpStatus": 200,
-          "ms": 56
+          "availability": "unreachable",
+          "ms": 269,
+          "reason": "fetch failed"
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
         "lastChecked": "2026-09-05",
-        "current": "up",
+        "current": "unreachable",
         "checks": 1,
-        "up": 1,
-        "uptime": 1,
+        "up": 0,
+        "uptime": 0,
         "untested": 0,
-        "consecutiveFailures": 0,
-        "lastUp": "2026-09-05"
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-05"
       }
     },
     "google-hybrid": {
@@ -29,7 +29,7 @@
           "date": "2026-09-05",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 76
+          "ms": 47
         }
       ],
       "summary": {
@@ -50,7 +50,7 @@
           "date": "2026-09-05",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 79
+          "ms": 77
         }
       ],
       "summary": {

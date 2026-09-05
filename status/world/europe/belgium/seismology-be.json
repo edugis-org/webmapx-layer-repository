@@ -1,14 +1,14 @@
 {
-  "provider": "openrailwaymap",
-  "source": "world/openrailwaymap.json",
+  "provider": "seismology-be",
+  "source": "world/europe/belgium/seismology-be.json",
   "layers": {
-    "openrailwaymap-standard": {
+    "seismology-be-seismische-zones": {
       "checks": [
         {
           "date": "2026-09-05",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 125
+          "ms": 91
         }
       ],
       "summary": {
@@ -23,13 +23,13 @@
         "lastUp": "2026-09-05"
       }
     },
-    "openrailwaymap-maxspeed": {
+    "seismology-be-seismische-meetstations": {
       "checks": [
         {
           "date": "2026-09-05",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 86
+          "ms": 77
         }
       ],
       "summary": {
@@ -44,13 +44,13 @@
         "lastUp": "2026-09-05"
       }
     },
-    "openrailwaymap-signals": {
+    "seismology-be-aardbevingen": {
       "checks": [
         {
           "date": "2026-09-05",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 89
+          "ms": 76
         }
       ],
       "summary": {
@@ -65,13 +65,13 @@
         "lastUp": "2026-09-05"
       }
     },
-    "openrailwaymap-electrification": {
+    "seismology-be-gnss-meetstations": {
       "checks": [
         {
           "date": "2026-09-05",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 86
+          "ms": 73
         }
       ],
       "summary": {

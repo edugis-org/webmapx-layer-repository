@@ -1,14 +1,14 @@
 {
-  "provider": "usgs",
-  "source": "world/usgs.json",
+  "provider": "ellipsis-drive",
+  "source": "world/north-america/caribbean-netherlands/ellipsis-drive.json",
   "layers": {
-    "usgs-earthquakes-day": {
+    "ellipsis-drive-bonaire-luchtfoto-s": {
       "checks": [
         {
           "date": "2026-09-05",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 72
+          "ms": 190
         }
       ],
       "summary": {
@@ -23,13 +23,13 @@
         "lastUp": "2026-09-05"
       }
     },
-    "usgs-earthquakes-week-significant": {
+    "ellipsis-drive-bonaire-infrarood-luchtfoto-s": {
       "checks": [
         {
           "date": "2026-09-05",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 47
+          "ms": 114
         }
       ],
       "summary": {
@@ -44,13 +44,13 @@
         "lastUp": "2026-09-05"
       }
     },
-    "usgs-earthquakes-month-m45": {
+    "ellipsis-drive-sint-eustatius-luchtfoto-s": {
       "checks": [
         {
           "date": "2026-09-05",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 23
+          "ms": 129
         }
       ],
       "summary": {
@@ -65,13 +65,13 @@
         "lastUp": "2026-09-05"
       }
     },
-    "usgs-aardbevingen-dit-uur": {
+    "ellipsis-drive-st-eustatius-infrarood-luchtfoto-s": {
       "checks": [
         {
           "date": "2026-09-05",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 15
+          "ms": 91
         }
       ],
       "summary": {
@@ -86,13 +86,13 @@
         "lastUp": "2026-09-05"
       }
     },
-    "usgs-aardbevingen-vandaag-2-5": {
+    "ellipsis-drive-st-eustatius-hoogtekaart": {
       "checks": [
         {
           "date": "2026-09-05",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 58
+          "ms": 85
         }
       ],
       "summary": {
@@ -107,13 +107,13 @@
         "lastUp": "2026-09-05"
       }
     },
-    "usgs-aardbevingen-deze-week-2-5": {
+    "ellipsis-drive-saba-luchtfoto-s": {
       "checks": [
         {
           "date": "2026-09-05",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 18
+          "ms": 148
         }
       ],
       "summary": {
@@ -128,13 +128,13 @@
         "lastUp": "2026-09-05"
       }
     },
-    "usgs-aardbevingen-deze-maand-2-5": {
+    "ellipsis-drive-saba-infrarood-luchtfoto-s": {
       "checks": [
         {
           "date": "2026-09-05",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 33
+          "ms": 85
         }
       ],
       "summary": {
