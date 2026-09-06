@@ -1,0 +1,33 @@
+{
+  "id": "ngi-be-inspire",
+  "title": "NGI Belgium INSPIRE Annex I WMS",
+  "type": "wms-capabilities",
+  "url": "https://data.geo.be/ws/inspire_annex1/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities",
+  "note": "INSPIRE Annex I themes for Belgium — administrative units, hydrography, transport networks. Replaces the four hand-written NGI layers imported from the EduGIS atlas.",
+  "provider": {
+    "id": "ngi-be",
+    "name": "Nationaal Geografisch Instituut (NGI)",
+    "url": "https://www.ngi.be",
+    "access": "free",
+    "operator": {
+      "type": "government",
+      "country": "BE"
+    },
+    "categories": [
+      "boundaries",
+      "transport",
+      "hydrology"
+    ]
+  },
+  "region": "world/europe/belgium",
+  "include": {
+    "crs": "EPSG:3857"
+  },
+  "enabled": true,
+  "bounds": [
+    2.5,
+    49.4,
+    6.5,
+    51.6
+  ]
+}

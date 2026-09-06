@@ -1,0 +1,33 @@
+{
+  "id": "rce-ows",
+  "title": "Rijksdienst voor het Cultureel Erfgoed WMS",
+  "type": "wms-capabilities",
+  "url": "https://services.rce.geovoorziening.nl/rce/ows?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities",
+  "note": "Cultural-heritage maps — archaeological and historical-landscape themes.",
+  "provider": {
+    "id": "rce",
+    "name": "Rijksdienst voor het Cultureel Erfgoed",
+    "url": "https://www.cultureelerfgoed.nl",
+    "license": "CC-BY-4.0",
+    "access": "free",
+    "operator": {
+      "type": "government",
+      "country": "NL"
+    },
+    "categories": [
+      "historical",
+      "boundaries"
+    ]
+  },
+  "region": "world/europe/netherlands",
+  "include": {
+    "crs": "EPSG:3857"
+  },
+  "enabled": true,
+  "bounds": [
+    3.2,
+    50.75,
+    7.22,
+    53.7
+  ]
+}

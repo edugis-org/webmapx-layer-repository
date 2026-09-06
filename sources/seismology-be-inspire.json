@@ -1,0 +1,32 @@
+{
+  "id": "seismology-be-inspire",
+  "title": "Royal Observatory of Belgium seismology WMS",
+  "type": "wms-capabilities",
+  "url": "https://inspire.seismology.be/geoserver/inspire/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities",
+  "note": "Seismic hazard and observed earthquakes, published as INSPIRE natural-risk-zone themes.",
+  "provider": {
+    "id": "seismology-be",
+    "name": "Koninklijke Sterrenwacht van België — Seismologie",
+    "url": "https://www.seismologie.be",
+    "access": "free",
+    "operator": {
+      "type": "government",
+      "country": "BE"
+    },
+    "categories": [
+      "geology",
+      "tectonic"
+    ]
+  },
+  "region": "world/europe/belgium",
+  "include": {
+    "crs": "EPSG:3857"
+  },
+  "enabled": true,
+  "bounds": [
+    2.5,
+    49.4,
+    6.5,
+    51.6
+  ]
+}

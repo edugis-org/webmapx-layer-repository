@@ -13,7 +13,12 @@
     "operator": {
       "type": "government",
       "country": "NL"
-    }
+    },
+    "categories": [
+      "environment",
+      "climate",
+      "realtime"
+    ]
   },
   "region": "world/europe/netherlands",
   "include": {

@@ -14,7 +14,13 @@
     "operator": {
       "type": "government",
       "country": "NL"
-    }
+    },
+    "categories": [
+      "general-purpose",
+      "satellite",
+      "elevation",
+      "terrain"
+    ]
   },
   "region": "world/europe/netherlands",
   "include": {

@@ -275,7 +275,8 @@ for (const source of sources) {
         provider: {
             ...source.provider,
             abstract: source.title,
-            categories: [], regions: (source.region ?? 'world').split('/').slice(1),
+            categories: source.provider.categories ?? [],
+            regions: (source.region ?? 'world').split('/').slice(1),
             cost: { model: source.provider.access === 'free' ? 'free' : 'freemium' },
             lifecycle: 'stable',
         },
