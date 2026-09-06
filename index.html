@@ -557,6 +557,78 @@ async function fetchAttributes(service, typeName) {
   return attrs;
 }
 
+/**
+ * Legends, fetched when a layer is opened and none was harvested.
+ *
+ * A service reached through a catalogue rather than its own capabilities — the
+ * PDOK plugin list — arrives without legend URLs, because nobody read the
+ * document that holds them. The client can: the capabilities are 20-70 KB per
+ * service and answer with Access-Control-Allow-Origin: *. One fetch per service
+ * per session, shared by every layer of it.
+ */
+const capsCache = new Map();
+
+/** Direct child elements with this local name, namespace-agnostic. */
+function kids(el, localName) {
+  return [...el.children].filter(c => c.localName === localName);
+}
+
+function firstText(el, localName) {
+  return kids(el, localName)[0]?.textContent?.trim();
+}
+
+async function serviceLegends(service) {
+  if (!service?.capabilitiesUrl) return null;
+  if (!capsCache.has(service.capabilitiesUrl)) {
+    capsCache.set(service.capabilitiesUrl, (async () => {
+      const text = await (await fetch(service.capabilitiesUrl)).text();
+      const doc = new DOMParser().parseFromString(text, 'application/xml');
+      // Walked by hand rather than with selectors: WMS 1.3.0 puts everything in
+      // a default namespace and 1.1.1 in none, and Layer nests inside Layer, so
+      // a descendant query would attribute a child's styles to its parent.
+      const byLayer = new Map();
+      (function walk(node) {
+        for (const layer of kids(node, 'Layer')) {
+          const name = firstText(layer, 'Name');
+          if (name) {
+            const styles = new Map();
+            for (const st of kids(layer, 'Style')) {
+              const online = kids(st, 'LegendURL')[0] && kids(kids(st, 'LegendURL')[0], 'OnlineResource')[0];
+              const href = online?.getAttributeNS('http://www.w3.org/1999/xlink', 'href')
+                        ?? online?.getAttribute('xlink:href');
+              if (!href) continue;
+              styles.set(firstText(st, 'Name') ?? '', href);
+              if (!styles.has('')) styles.set('', href);   // the service default
+            }
+            if (styles.size) byLayer.set(name, styles);
+          }
+          walk(layer);
+        }
+      })(doc.documentElement.getElementsByTagName('*').length
+          ? [...doc.documentElement.children].find(c => c.localName === 'Capability') ?? doc.documentElement
+          : doc.documentElement);
+      return byLayer;
+    })());
+  }
+  return capsCache.get(service.capabilitiesUrl);
+}
+
+/** Show a legend the harvest did not record, if the service publishes one. */
+async function loadLegend(layer, service) {
+  const slot = document.getElementById('layer-legend');
+  if (!slot) return;
+  try {
+    const byLayer = await serviceLegends(service);
+    const href = byLayer?.get(layer.name)?.get(layer.styleName ?? '')
+              ?? byLayer?.get(layer.name)?.get('');
+    slot.innerHTML = href
+      ? `<h4>Legend</h4><img src="${href}" alt="Legend for ${layer.title}" loading="lazy">`
+      : '';
+  } catch {
+    slot.innerHTML = '';
+  }
+}
+
 /** Fill in the fields section once its schema arrives, leaving the rest as drawn. */
 async function loadAttributes(layer, service) {
   const typeName = service?.featureTypes?.[layer.name];
@@ -598,6 +670,9 @@ function renderInfo(layer, service) {
           layer.legendFrom ? ` <a href="${layer.legendFrom}" target="_blank">Source</a>` : ''}</p>`
       : '';
     parts.push(`<h4>Legend</h4><img src="${localAsset(layer.legendUrl)}" alt="Legend for ${layer.title}" loading="lazy">${note}`);
+  } else if (service?.capabilitiesUrl) {
+    // Filled in by loadLegend if the service publishes one for this layer.
+    parts.push('<div id="layer-legend"></div>');
   }
   if (attrs.length) parts.push(fieldsHtml(attrs, layer.attributesFrom));
   // Filled in by loadAttributes once the WFS answers.
@@ -626,6 +701,7 @@ function showConfig(index) {
   document.getElementById('dialog-code').textContent = JSON.stringify(activeConfig, null, 2);
   renderInfo(layer, entry.service);
   loadAttributes(layer, entry.service);
+  loadLegend(layer, entry.service);
   switchTab('config');
   openDialog();
 }
@@ -640,6 +716,7 @@ async function showPreview(index) {
   document.getElementById('dialog-code').textContent = JSON.stringify(activeConfig, null, 2);
   renderInfo(layer, entry.service);
   loadAttributes(layer, entry.service);
+  loadLegend(layer, entry.service);
   switchTab('preview');
   openDialog();
 

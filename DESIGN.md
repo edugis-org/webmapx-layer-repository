@@ -124,6 +124,13 @@ its terms, and the consumer cannot know that from the config alone. Sources give
 the exact wording when the licensor dictates one (`{year}` resolves at harvest);
 otherwise it is built from the provider's name, site and licence.
 
+**A layer opened in the previewer can fill its own gaps.** PDOK arrives through
+a catalogue list, so nothing read its capabilities and no legend URL was
+recorded. The client fetches that document on click — 20-70 KB per service,
+CORS-open, cached for the session — and picks the `LegendURL` of the layer's own
+style. So a legend appears whether or not `--enrich` has ever run, and a service
+that adds one is reflected without a re-harvest.
+
 **Legends come from `LegendURL` in the capabilities document**, not a constructed
 `GetLegendGraphic` call — PDOK answers that with `OperationNotSupported` while
 publishing legend images perfectly well.
