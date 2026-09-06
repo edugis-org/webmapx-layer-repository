@@ -123,6 +123,29 @@ constructed `GetLegendGraphic` call — PDOK answers that one with
 `--enrich` collects both. On PDOK it finds 1649 legends and 1373 field schemas
 across 1822 layers.
 
+### Curated legends
+
+A service that publishes no legend at all can still have one here. `assets/legends/`
+holds legends drawn for this repository; the layer points at the published copy
+so a consumer's link works from anywhere:
+
+```json
+"legendUrl":  "https://edugis-org.github.io/webmapx-layer-repository/assets/legends/openaip-map.svg",
+"legendFrom": "https://github.com/openAIP/mapstyles",
+"legendNote": "openAIP publishes no legend image. This one is curated here …"
+```
+
+`legendFrom` and `legendNote` mark it as ours rather than the service's, and say
+what it was derived from — a legend nobody can trace is a legend nobody can
+correct. Keep them absent when `legendUrl` is the service's own.
+
+`scripts/build-openaip-legend.mjs` draws that one from a table of the colours,
+widths and dashes openAIP's published map style applies to each airspace type.
+`--check` prints the live style's airspace paint so the table can be compared
+against it; the script never rewrites the table by itself, because a legend is a
+reading of a style and an automatic rewrite would hide the day the reading
+changed.
+
 ## Scripts
 
 | command | does |

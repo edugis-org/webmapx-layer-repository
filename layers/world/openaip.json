@@ -31,6 +31,9 @@
           "type": "raster",
           "status": "active",
           "requiresKey": true,
+          "legendUrl": "https://edugis-org.github.io/webmapx-layer-repository/assets/legends/openaip-map.svg",
+          "legendFrom": "https://api.tiles.openaip.net/api/styles/openaip-default-style.json",
+          "legendNote": "openAIP publishes no legend image. This one is curated here, in assets/legends/, from the airspace paint of openAIP’s own published map style. The airport, navaid, obstacle and hotspot icons are not in it: that icon set is CC BY-NC-SA 4.0.",
           "webmapxConfig": {
             "source": {
               "type": "raster",

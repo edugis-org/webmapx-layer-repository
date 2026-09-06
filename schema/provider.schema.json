@@ -253,7 +253,15 @@
         "requiresKey":  { "type": "boolean", "default": false },
         "legendUrl": {
           "type": "string",
-          "description": "Image explaining the layer's symbology. Read from the LegendURL a WMS capabilities document publishes per style — not assumed to be a GetLegendGraphic call, which many services do not implement."
+          "description": "Image explaining the layer's symbology. Usually read from the LegendURL a WMS capabilities document publishes per style — not assumed to be a GetLegendGraphic call, which many services do not implement. May also point at a legend curated in assets/legends/ for a service that publishes none; say so in legendFrom and legendNote."
+        },
+        "legendFrom": {
+          "type": "string",
+          "description": "Where a curated legend was derived from, so a reader can check it and a stale one can be redrawn. Absent when legendUrl is the service's own published legend."
+        },
+        "legendNote": {
+          "type": "string",
+          "description": "Why a curated legend exists and what it does and does not cover, including the licence of anything it draws on."
         },
         "attributes": {
           "type": "array",
@@ -269,7 +277,7 @@
             }
           }
         },
-        "attributesFrom": { "type": "string", "description": "URL the attribute list was read from, so a stale one can be traced and refreshed" },
+        "attributesFrom": { "type": "string", "description": "URL the attribute list was read from, so a stale one can be traced and refreshed. For a vector tile set, the tile template whose features carry the fields." },
         "webmapxConfig": {
           "type": "object",
           "description": "Ready-to-use config for webmapx. Either styleUrl (full MapLibre style) or source+layer (addSource/addLayer).",

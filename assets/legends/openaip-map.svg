@@ -1,0 +1,168 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="1228" viewBox="0 0 560 1228" font-family="system-ui, -apple-system, Segoe UI, sans-serif">
+  <title>openAIP aviation chart — airspace legend</title>
+  <desc>Airspace symbology of the openAIP map, read from openAIP’s own published map style at https://api.tiles.openaip.net/api/styles/openaip-default-style.json. Colours, widths and dash patterns are those the style applies around zoom 10.</desc>
+  <defs>
+    <pattern id="hatch-red" width="6" height="6" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="6" stroke="rgb(154,14,14)" stroke-width="2"/></pattern>
+    <pattern id="hatch-green" width="6" height="6" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="6" stroke="rgb(51,158,47)" stroke-width="2"/></pattern>
+    <pattern id="hatch-blue" width="6" height="6" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="6" stroke="rgb(21,77,154)" stroke-width="2"/></pattern>
+    <pattern id="hatch-gray" width="6" height="6" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="6" stroke="rgb(87,87,87)" stroke-width="2"/></pattern>
+    <pattern id="hatch-teal" width="6" height="6" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="6" stroke="rgb(0,139,175)" stroke-width="2"/></pattern>
+  </defs>
+  <rect width="560" height="1228" fill="#ffffff"/>
+  <text x="20" y="34" font-size="17" font-weight="600" fill="#1a1a1a">openAIP aviation chart — airspaces</text>
+  <text x="20" y="54" font-size="11.5" fill="#666">Symbology as the openAIP map style draws it at about zoom 10.</text>
+  <g transform="translate(20,72)">
+    <rect width="86" height="30" fill="url(#hatch-red)" opacity="0.6"/>
+    <line x1="0" y1="1" x2="86" y2="1" stroke="rgb(154,14,14)" stroke-width="2"/>
+    <text x="100" y="14" font-size="12.5" fill="#1a1a1a">Restricted, danger, prohibited</text>
+    <text x="100" y="28" font-size="11" fill="#777">solid dark red edge, red hatch</text>
+  </g>
+  <g transform="translate(20,112)">
+    <rect width="86" height="30" fill="url(#hatch-red)" opacity="0.3"/>
+    <line x1="0" y1="1" x2="86" y2="1" stroke="rgb(154,14,14)" stroke-width="2" opacity="0.3"/>
+    <text x="100" y="14" font-size="12.5" fill="#1a1a1a">TSA — temporary segregated area</text>
+    <text x="100" y="28" font-size="11" fill="#777">as above, drawn faint</text>
+  </g>
+  <g transform="translate(20,152)">
+    <rect width="86" height="30" fill="url(#hatch-red)" opacity="0.3"/>
+    <line x1="0" y1="1" x2="86" y2="1" stroke="rgb(154,14,14)" stroke-width="2" stroke-dasharray="12 4" opacity="0.3"/>
+    <text x="100" y="14" font-size="12.5" fill="#1a1a1a">TRA — temporary reserved area</text>
+    <text x="100" y="28" font-size="11" fill="#777">dashed dark red edge, red hatch</text>
+  </g>
+  <g transform="translate(20,192)">
+    <line x1="0" y1="15" x2="86" y2="15" stroke="rgb(154,14,14)" stroke-width="1" opacity="0.5"/>
+    <text x="100" y="14" font-size="12.5" fill="#1a1a1a">TFR — temporary flight restriction</text>
+    <text x="100" y="28" font-size="11" fill="#777">faint red edge</text>
+  </g>
+  <g transform="translate(20,232)">
+    <rect width="86" height="30" fill="rgb(51,158,47)" opacity="0.2"/>
+    <line x1="0" y1="1" x2="86" y2="1" stroke="rgb(51,158,47)" stroke-width="2" stroke-dasharray="5 5" opacity="0.5"/>
+    <text x="100" y="14" font-size="12.5" fill="#1a1a1a">Class A and B</text>
+    <text x="100" y="28" font-size="11" fill="#777">dashed green edge, pale green fill</text>
+  </g>
+  <g transform="translate(20,272)">
+    <rect width="86" height="30" fill="url(#hatch-green)" opacity="0.55"/>
+    <line x1="0" y1="1" x2="86" y2="1" stroke="rgb(51,158,47)" stroke-width="2"/>
+    <text x="100" y="14" font-size="12.5" fill="#1a1a1a">Class C and D</text>
+    <text x="100" y="28" font-size="11" fill="#777">solid green edge, green hatch</text>
+  </g>
+  <g transform="translate(20,312)">
+    <line x1="0" y1="15" x2="86" y2="15" stroke="rgb(21,77,154)" stroke-width="2"/>
+    <text x="100" y="14" font-size="12.5" fill="#1a1a1a">Class E</text>
+    <text x="100" y="28" font-size="11" fill="#777">solid blue edge, no fill</text>
+  </g>
+  <g transform="translate(20,352)">
+    <rect width="86" height="30" fill="rgb(118,145,195)" opacity="0.5"/>
+    <line x1="0" y1="2" x2="86" y2="2" stroke="rgb(21,77,154)" stroke-width="4"/>
+    <text x="100" y="14" font-size="12.5" fill="#1a1a1a">Class F</text>
+    <text x="100" y="28" font-size="11" fill="#777">thick blue edge, blue-grey fill</text>
+  </g>
+  <g transform="translate(20,392)">
+    <rect width="86" height="30" fill="rgb(118,145,195)" opacity="0.1"/>
+    <line x1="0" y1="1" x2="86" y2="1" stroke="rgb(21,77,154)" stroke-width="2" stroke-dasharray="5 5" opacity="0.5"/>
+    <text x="100" y="14" font-size="12.5" fill="#1a1a1a">Class G</text>
+    <text x="100" y="28" font-size="11" fill="#777">dashed pale blue edge, very light fill</text>
+  </g>
+  <g transform="translate(20,432)">
+    <rect width="86" height="30" fill="rgb(218,111,134)" opacity="0.2"/>
+    <line x1="0" y1="1.5" x2="86" y2="1.5" stroke="rgb(21,77,154)" stroke-width="3" stroke-dasharray="12 4"/>
+    <text x="100" y="14" font-size="12.5" fill="#1a1a1a">CTR — control zone</text>
+    <text x="100" y="28" font-size="11" fill="#777">dashed blue edge, pink fill</text>
+  </g>
+  <g transform="translate(20,472)">
+    <rect width="86" height="30" fill="rgb(218,111,134)" opacity="0.2"/>
+    <line x1="0" y1="1" x2="86" y2="1" stroke="rgb(21,77,154)" stroke-width="2"/>
+    <text x="100" y="14" font-size="12.5" fill="#1a1a1a">TMA and CTA — control areas</text>
+    <text x="100" y="28" font-size="11" fill="#777">solid blue edge, pink fill</text>
+  </g>
+  <g transform="translate(20,512)">
+    <line x1="0" y1="15" x2="86" y2="15" stroke="rgb(21,77,154)" stroke-width="4" stroke-dasharray="10 10"/>
+    <line x1="0" y1="15" x2="86" y2="15" stroke="rgb(21,77,154)" stroke-width="4" stroke-dasharray="2 5"/>
+    <text x="100" y="14" font-size="12.5" fill="#1a1a1a">TMZ — transponder mandatory zone</text>
+    <text x="100" y="28" font-size="11" fill="#777">blue dash-dot edge</text>
+  </g>
+  <g transform="translate(20,552)">
+    <rect width="86" height="30" fill="rgb(101,134,175)" opacity="0.1"/>
+    <line x1="0" y1="1" x2="86" y2="1" stroke="rgb(21,77,154)" stroke-width="2" stroke-dasharray="2 2" opacity="0.5"/>
+    <text x="100" y="14" font-size="12.5" fill="#1a1a1a">RMZ, TIZ, TIA</text>
+    <text x="100" y="28" font-size="11" fill="#777">blue dotted edge, faint blue fill</text>
+  </g>
+  <g transform="translate(20,592)">
+    <line x1="0" y1="15" x2="86" y2="15" stroke="rgb(21,77,154)" stroke-width="4" stroke-dasharray="2 2"/>
+    <text x="100" y="14" font-size="12.5" fill="#1a1a1a">TRP — transponder recommended</text>
+    <text x="100" y="28" font-size="11" fill="#777">blue dotted edge</text>
+  </g>
+  <g transform="translate(20,632)">
+    <rect width="86" height="30" fill="url(#hatch-blue)" opacity="0.3"/>
+    <line x1="0" y1="0.5" x2="86" y2="0.5" stroke="rgb(21,77,154)" stroke-width="1" opacity="0.3"/>
+    <text x="100" y="14" font-size="12.5" fill="#1a1a1a">MATZ, ATZ, HTZ — traffic zones</text>
+    <text x="100" y="28" font-size="11" fill="#777">thin blue edge, blue hatch</text>
+  </g>
+  <g transform="translate(20,672)">
+    <rect width="86" height="30" fill="rgb(255,146,0)" opacity="0.1"/>
+    <line x1="0" y1="1" x2="86" y2="1" stroke="rgb(255,146,0)" stroke-width="2" stroke-dasharray="2 2" opacity="0.6"/>
+    <text x="100" y="14" font-size="12.5" fill="#1a1a1a">MOA, MTA, MRT — military areas</text>
+    <text x="100" y="28" font-size="11" fill="#777">dashed orange edge, faint orange fill</text>
+  </g>
+  <g transform="translate(20,712)">
+    <rect width="86" height="30" fill="rgb(147,53,201)" opacity="0.1"/>
+    <line x1="0" y1="1" x2="86" y2="1" stroke="rgb(147,53,201)" stroke-width="2" stroke-dasharray="12 4" opacity="0.4"/>
+    <text x="100" y="14" font-size="12.5" fill="#1a1a1a">Alert, warning, protected area</text>
+    <text x="100" y="28" font-size="11" fill="#777">dashed purple edge, purple fill</text>
+  </g>
+  <g transform="translate(20,752)">
+    <rect width="86" height="30" fill="url(#hatch-teal)" opacity="0.5"/>
+    <line x1="0" y1="1" x2="86" y2="1" stroke="rgb(0,139,175)" stroke-width="2"/>
+    <text x="100" y="14" font-size="12.5" fill="#1a1a1a">Aerial sporting and recreational</text>
+    <text x="100" y="28" font-size="11" fill="#777">teal edge, hatched fill</text>
+  </g>
+  <g transform="translate(20,792)">
+    <line x1="0" y1="15" x2="86" y2="15" stroke="rgb(119,21,154)" stroke-width="3"/>
+    <text x="100" y="14" font-size="12.5" fill="#1a1a1a">Overflight restriction</text>
+    <text x="100" y="28" font-size="11" fill="#777">thick violet edge</text>
+  </g>
+  <g transform="translate(20,832)">
+    <rect width="86" height="30" fill="rgb(255,215,0)" opacity="0.1"/>
+    <line x1="0" y1="0.5" x2="86" y2="0.5" stroke="rgb(255,215,0)" stroke-width="1"/>
+    <text x="100" y="14" font-size="12.5" fill="#1a1a1a">Gliding sector</text>
+    <text x="100" y="28" font-size="11" fill="#777">gold edge, faint gold fill</text>
+  </g>
+  <g transform="translate(20,872)">
+    <rect width="86" height="30" fill="rgb(206,206,206)" opacity="0.4"/>
+    <rect width="86" height="30" fill="url(#hatch-gray)" opacity="0.2"/>
+    <line x1="0" y1="0.5" x2="86" y2="0.5" stroke="rgb(87,87,87)" stroke-width="1" opacity="0.2"/>
+    <text x="100" y="14" font-size="12.5" fill="#1a1a1a">Airway (AWY), military training route</text>
+    <text x="100" y="28" font-size="11" fill="#777">grey hatch on light grey</text>
+  </g>
+  <g transform="translate(20,912)">
+    <line x1="0" y1="15" x2="86" y2="15" stroke="rgb(96,141,103)" stroke-width="3" opacity="0.6"/>
+    <text x="100" y="14" font-size="12.5" fill="#1a1a1a">Special rules area</text>
+    <text x="100" y="28" font-size="11" fill="#777">muted green edge</text>
+  </g>
+  <g transform="translate(20,952)">
+    <circle cx="43" cy="15" r="13" fill="#2973f8" fill-opacity="0.5" stroke="#0741a2" stroke-opacity="0.7" stroke-width="1"/>
+    <text x="100" y="14" font-size="12.5" fill="#1a1a1a">RC model airfield airspace</text>
+    <text x="100" y="28" font-size="11" fill="#777">blue circle, blue fill</text>
+  </g>
+  <g transform="translate(20,992)">
+    <line x1="0" y1="15" x2="86" y2="15" stroke="rgb(110,201,32)" stroke-width="6" stroke-dasharray="10 5" opacity="0.4"/>
+    <text x="100" y="14" font-size="12.5" fill="#1a1a1a">FIR, FIS, ACC boundary</text>
+    <text x="100" y="28" font-size="11" fill="#777">thick light green dashed edge</text>
+  </g>
+  <g transform="translate(20,1032)">
+    <line x1="0" y1="15" x2="86" y2="15" stroke="rgb(91,156,38)" stroke-width="6" stroke-dasharray="10 5" opacity="0.4"/>
+    <text x="100" y="14" font-size="12.5" fill="#1a1a1a">UIR boundary</text>
+    <text x="100" y="28" font-size="11" fill="#777">thick darker green dashed edge</text>
+  </g>
+  <g transform="translate(20,1072)">
+    <rect width="86" height="30" fill="rgb(122,0,150)" opacity="0.2"/>
+    <line x1="0" y1="2" x2="86" y2="2" stroke="rgb(86,0,150)" stroke-width="4"/>
+    <text x="100" y="14" font-size="12.5" fill="#1a1a1a">ADIZ — air defence identification zone</text>
+    <text x="100" y="28" font-size="11" fill="#777">thick purple edge, purple fill</text>
+  </g>
+  <line x1="20" y1="1124" x2="540" y2="1124" stroke="#e0e0e0" stroke-width="1"/>
+  <text x="20" y="1144" font-size="11" fill="#666">Airports, navaids, reporting points, obstacles, hang gliding sites and thermal hotspots are</text>
+  <text x="20" y="1160" font-size="11" fill="#666">drawn as icons; that icon set is published separately, under CC BY-NC-SA 4.0.</text>
+  <text x="20" y="1182" font-size="11" fill="#888">Read from openAIP’s published map style, openaip-default-style.json.</text>
+  <text x="20" y="1196" font-size="11" fill="#888">Data © openAIP contributors.</text>
+</svg>
