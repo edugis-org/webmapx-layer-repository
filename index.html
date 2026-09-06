@@ -157,6 +157,7 @@ import { resolveTimeDeep, hasTimeToken, resolveTimeValue } from './lib/time.mjs'
 import { WebMapX } from 'https://cdn.jsdelivr.net/npm/@edugis-org/webmapx@0.2/dist-lib/webmapx.js';
 import { layerEntries, services } from './lib/catalog.mjs';
 import { regionBounds } from './lib/regions.mjs';
+import { filterByQuery, searchText } from './lib/search.mjs';
 const LAYERS_BASE = './layers';
 
 let apiKeys = {};
@@ -379,10 +380,26 @@ async function selectProvider(path, id) {
   renderMain(currentProvider);
 }
 
+// A service with many WMS styles yields hundreds of layers, and a list that long
+// is not browsable. The table shows one page at a time, filtered by the search
+// box above it.
+const LAYER_PAGE_SIZE = 100;
+let layerQuery = '';
+let layerPage = 0;
+
+/** The text a layer query is matched against. */
+function layerHaystack(entry) {
+  const l = entry.layer;
+  return searchText(l.title, l.abstract, l.name, l.type,
+                    entry.service?.title, entry.service?.id);
+}
+
 function renderMain(data) {
   const provider = data.provider;
   const entries = layerEntries(data);          // layers now hang off services
   const layers = entries.map(e => e.layer);
+  layerQuery = '';
+  layerPage = 0;
   const cats = (provider.categories ?? []).map(c => `<span class="chip">${c}</span>`).join('');
   const breadcrumb = currentRegion
     ? `<p style="font-size:0.8rem;color:#888;margin-bottom:12px">
@@ -409,12 +426,43 @@ function renderMain(data) {
       ${layers.length} layers across ${services(data).length} service${services(data).length === 1 ? '' : 's'} —
       <a href="${LAYERS_BASE}/${currentPath}" target="_blank">View raw JSON ↗</a>
     </p>
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+      <input type="search" id="layer-search" placeholder="Filter layers — terms match anywhere, &quot;quoted&quot; matches a phrase"
+             style="flex:1;padding:6px 10px;border:1px solid #ddd;border-radius:4px;font-size:0.85rem">
+    </div>
     <table>
       <thead>
         <tr><th>Layer</th><th>Service</th><th>Type</th><th>Status</th><th>Key</th><th></th></tr>
       </thead>
-      <tbody>
-        ${(layers ?? []).map((l, i) => {
+      <tbody id="layer-rows"></tbody>
+    </table>
+    <div id="layer-pager"></div>
+  `;
+  document.getElementById('layer-search').addEventListener('input', e => {
+    layerQuery = e.target.value;
+    layerPage = 0;
+    renderLayerRows();
+  });
+  renderLayerRows();
+}
+
+/**
+ * Render the visible page of layer rows. Kept separate from renderMain so that
+ * typing in the search box does not rebuild — and so blur — the input itself.
+ */
+function renderLayerRows() {
+  const provider = currentProvider.provider;
+  // The original position is what showConfig/showPreview index by, so it has to
+  // survive filtering and paging.
+  const all = layerEntries(currentProvider).map((entry, index) => ({ ...entry, index }));
+  const matched = filterByQuery(all, layerQuery, layerHaystack);
+  const pages = Math.max(1, Math.ceil(matched.length / LAYER_PAGE_SIZE));
+  if (layerPage >= pages) layerPage = pages - 1;
+  const start = layerPage * LAYER_PAGE_SIZE;
+  const page = matched.slice(start, start + LAYER_PAGE_SIZE);
+
+  document.getElementById('layer-rows').innerHTML = page.length
+    ? page.map(({ layer: l, service, index: i }) => {
           const needsKey = layerNeedsKey(l);
           const hasKey = needsKey && layerKeysAvailable(l);
           const canPreview = !needsKey || hasKey;
@@ -425,8 +473,8 @@ function renderMain(data) {
               <span style="color:#555;font-size:0.8rem">${l.abstract ?? ''}</span>
             </td>
             <td>
-              <span style="font-size:0.78rem">${entries[i].service.title ?? entries[i].service.id}</span>
-              ${entries[i].service.endpoint ? `<br><span style="color:#999;font-size:0.7rem" title="${entries[i].service.endpoint}">${entries[i].service.type}</span>` : ''}
+              <span style="font-size:0.78rem">${service.title ?? service.id}</span>
+              ${service.endpoint ? `<br><span style="color:#999;font-size:0.7rem" title="${service.endpoint}">${service.type}</span>` : ''}
             </td>
             <td>${l.type}</td>
             <td>
@@ -443,10 +491,23 @@ function renderMain(data) {
               ` : ''}
             </td>
           </tr>`;
-        }).join('')}
-      </tbody>
-    </table>
-  `;
+        }).join('')
+    : `<tr><td colspan="6" style="color:#888;padding:16px">No layer matches ${'\u201c'}${layerQuery}${'\u201d'}.</td></tr>`;
+
+  // A provider whose layers all fit on one page needs no pager at all.
+  const shown = page.length ? `${start + 1}–${start + page.length} of ${matched.length}` : `0 of ${matched.length}`;
+  document.getElementById('layer-pager').innerHTML = pages === 1 && matched.length === all.length ? '' : `
+    <div style="display:flex;align-items:center;gap:10px;font-size:0.8rem;color:#666;margin-top:10px">
+      <button class="action-btn" onclick="setLayerPage(${layerPage - 1})" ${layerPage === 0 ? 'disabled' : ''}>← Prev</button>
+      <span>${shown}${matched.length !== all.length ? ` (filtered from ${all.length})` : ''}</span>
+      <button class="action-btn" onclick="setLayerPage(${layerPage + 1})" ${layerPage >= pages - 1 ? 'disabled' : ''}>Next →</button>
+      <span style="margin-left:auto">Page ${layerPage + 1} of ${pages}</span>
+    </div>`;
+}
+
+function setLayerPage(page) {
+  layerPage = page;
+  renderLayerRows();
 }
 
 function getLayer(index) {
@@ -715,22 +776,16 @@ function copyConfig() {
 }
 
 document.getElementById('search').addEventListener('input', e => {
-  const q = e.target.value.toLowerCase();
-  const filtered = q
-    ? allIndex.filter(p =>
-        p.providerName?.toLowerCase().includes(q) ||
-        (p.categories ?? []).some(c => c.includes(q)) ||
-        p.region?.includes(q)
-      )
-    : allIndex;
-  renderSidebar(filtered);
+  // Same rule as the layer filter: every term must appear, quotes make a phrase.
+  renderSidebar(filterByQuery(allIndex, e.target.value, p =>
+    searchText(p.providerName, p.categories, p.region)));
 });
 
 // Inline onclick= handlers resolve against the global scope, which a module does
 // not share. Bind them explicitly.
 Object.assign(window, {
   selectProvider, selectRegion, toggleRegion, showConfig, showPreview,
-  switchTab, copyConfig,
+  switchTab, copyConfig, setLayerPage,
 });
 
 init();
