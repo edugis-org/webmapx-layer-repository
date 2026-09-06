@@ -5,8 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WebMapX Layer Repository</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗺</text></svg>">
-  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4/dist/maplibre-gl.css">
-  <script src="https://unpkg.com/maplibre-gl@4/dist/maplibre-gl.js"></script>
+  <script type="importmap">
+  { "imports": { "maplibre-gl": "https://esm.sh/maplibre-gl@5" } }
+  </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@5/dist/maplibre-gl.css">
+  <!-- webmapx's controls are Shoelace elements; their design tokens live in the
+       Shoelace theme, which the library does not ship. Without it every button
+       renders at a fallback size. -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2/cdn/themes/light.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@edugis-org/webmapx@0.2/dist-lib/webmapx.css">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: system-ui, sans-serif; background: #f5f5f5; color: #1a1a1a; }
@@ -147,13 +154,16 @@
 
 <script type="module">
 import { resolveTimeDeep, hasTimeToken, resolveTimeValue } from './lib/time.mjs';
-import { layerEntries, allLayers, services } from './lib/catalog.mjs';
+import { WebMapX } from 'https://cdn.jsdelivr.net/npm/@edugis-org/webmapx@0.2/dist-lib/webmapx.js';
+import { layerEntries, services } from './lib/catalog.mjs';
 import { regionBounds } from './lib/regions.mjs';
 const LAYERS_BASE = './layers';
 
 let apiKeys = {};
 let activeConfig = null;
-let previewMap = null;
+let previewToken = 0;         // guards against a slow mount landing after a newer one
+let activeLayerRecord = null; // catalog record behind activeConfig (legend URL, title)
+let activeService = null;     // the service that serves it (WMS feature info)
 let activeLayerStyles = null; // array of {id, title, layer} from styles file
 let currentIndexEntry = null; // index entry for current provider
 
@@ -178,6 +188,15 @@ async function loadApiKeys() {
 
 function substituteKeys(str) {
   return str.replace(/\{key-([^}]+)\}/g, (m, name) => apiKeys[name] ?? m);
+}
+
+// A legend curated in this repository is published at the site's own URL, so
+// that consumers of a layer config get a link that works from anywhere. Running
+// the site from a checkout, that URL points at the deployed copy rather than the
+// one being edited — read it from here instead.
+const SITE_BASE = 'https://edugis-org.github.io/webmapx-layer-repository/';
+function localAsset(url) {
+  return url?.startsWith(SITE_BASE) ? `./${url.slice(SITE_BASE.length)}` : url;
 }
 
 // {time} is not a MapLibre token — the consumer resolves it. Do it at the same
@@ -431,14 +450,24 @@ function renderMain(data) {
 }
 
 function getLayer(index) {
-  return currentProvider ? allLayers(currentProvider)[index] : undefined;
+  return getEntry(index)?.layer;
+}
+
+function getEntry(index) {
+  return currentProvider ? layerEntries(currentProvider)[index] : undefined;
 }
 
 function renderInfo(layer) {
   const attrs = layer.attributes ?? [];
   const parts = [];
   if (layer.legendUrl) {
-    parts.push(`<h4>Legend</h4><img src="${layer.legendUrl}" alt="Legend for ${layer.title}" loading="lazy">`);
+    // A legend the service publishes needs no explanation; one curated here does,
+    // so its provenance travels with the image rather than living only in git.
+    const note = layer.legendNote
+      ? `<p style="font-size:0.72rem;color:#888;margin-top:8px">${layer.legendNote}${
+          layer.legendFrom ? ` <a href="${layer.legendFrom}" target="_blank">Source</a>` : ''}</p>`
+      : '';
+    parts.push(`<h4>Legend</h4><img src="${localAsset(layer.legendUrl)}" alt="Legend for ${layer.title}" loading="lazy">${note}`);
   }
   if (attrs.length) {
     parts.push(`<h4 style="margin-top:14px">Fields (${attrs.length})</h4>
@@ -465,7 +494,10 @@ function openDialog() {
 }
 
 function showConfig(index) {
-  const layer = getLayer(index);
+  const entry = getEntry(index);
+  const layer = entry.layer;
+  activeLayerRecord = layer;
+  activeService = entry.service;
   activeConfig = resolveConfig(layer);
   document.getElementById('dialog-title').textContent = layer.title;
   document.getElementById('dialog-code').textContent = JSON.stringify(activeConfig, null, 2);
@@ -475,7 +507,10 @@ function showConfig(index) {
 }
 
 async function showPreview(index) {
-  const layer = getLayer(index);
+  const entry = getEntry(index);
+  const layer = entry.layer;
+  activeLayerRecord = layer;
+  activeService = entry.service;
   activeConfig = resolveConfig(layer);
   document.getElementById('dialog-title').textContent = layer.title;
   document.getElementById('dialog-code').textContent = JSON.stringify(activeConfig, null, 2);
@@ -531,29 +566,113 @@ function switchTab(name) {
   }
 }
 
-function initPreviewMap(cfg) {
-  if (previewMap) { previewMap.remove(); previewMap = null; }
+// The preview is a webmapx map, not a bare MapLibre one: it brings the legend
+// (layerOverview) and the feature-info tool along, so a repository entry is seen
+// the way a consumer of this repository would see it.
+// The tools config is the object form, not the plain list: a scale bar is a
+// standalone control, and the list form drops every tool into the toolbar,
+// where it renders as a stray label instead of a bar on the map.
+const PREVIEW_TOOLS = {
+  mainToolbar: {
+    type: 'toolbar',
+    enabled: true,
+    position: 'top-left',
+    items: [
+      { type: 'layerOverview', id: 'layerOverview' },
+      { type: 'info', id: 'info' },
+    ],
+  },
+  scale: { position: 'bottom-left' },
+};
+
+// A basemap under overlay layers. Without one an overlay of thin lines hangs in
+// a void and reads as broken; a plain grey background gives nothing to click on
+// for feature info either. OpenFreeMap needs no key and no registered origin,
+// which a repository served from GitHub Pages cannot offer.
+const PREVIEW_BASEMAP = {
+  id: '_base',
+  type: 'style',
+  url: 'https://tiles.openfreemap.org/styles/positron',
+  title: 'Basemap',
+};
+
+// This repository stores a WMS as a ready-baked GetMap tile template, because
+// that is what a MapLibre source needs. The info tool needs the request taken
+// apart again: it builds its own GetFeatureInfo from endpoint, layers and
+// version. Recover them from the template rather than storing them twice.
+function wmsFeatureInfoFields(source) {
+  const tile = Array.isArray(source.tiles) ? source.tiles[0] : undefined;
+  if (!tile) return null;
+  let url;
+  try { url = new URL(tile); } catch { return null; }
+  const params = new Map([...url.searchParams].map(([k, v]) => [k.toLowerCase(), v]));
+  if ((params.get('service') ?? '').toLowerCase() !== 'wms') return null;
+  const layers = params.get('layers');
+  if (!layers) return null;
+  const endpoint = new URL(url.href);
+  endpoint.search = '';
+  return {
+    service: 'wms',
+    gfiUrl: endpoint.href,
+    gfiLayers: layers,
+    gfiVersion: params.get('version') ?? '1.1.1',
+  };
+}
+
+// webmapx keeps sources and layers in named maps, and reads the legend image
+// from layer.metadata.legendurl — the same field its own WMS discovery writes.
+function previewLayerData(cfg, layer) {
+  const sources = {};
+  const layers = {};
+  const activeLayers = [];
+
+  const isStyle = cfg.type === 'style' && cfg.url;
+  const layerDef = cfg.layer ?? {};
+  const isOverlay = !isStyle
+    && (cfg.source?.type !== 'raster' || layerDef.metadata?.legendRole === 'overlay');
+  if (isOverlay) {
+    layers._base = PREVIEW_BASEMAP;
+    activeLayers.push({ ref: '_base', visible: true });
+  }
+
+  const id = (isStyle ? cfg.id : layerDef.id) ?? 'preview';
+  const title = layerDef.metadata?.title ?? cfg.metadata?.title ?? layer?.title ?? id;
+  const metadata = {
+    ...(layerDef.metadata ?? cfg.metadata ?? {}),
+    ...(layer?.legendUrl ? { legendurl: localAsset(layer.legendUrl) } : {}),
+  };
+
+  if (isStyle) {
+    layers[id] = {
+      id, type: 'style', url: cfg.url, title, metadata,
+      ...(cfg.attribution ? { attribution: cfg.attribution } : {}),
+    };
+  } else {
+    sources[id] = { ...cfg.source, id, ...(wmsFeatureInfoFields(cfg.source ?? {}) ?? {}) };
+    layers[id] = { ...layerDef, id, type: layerDef.type, source: id, title, metadata };
+  }
+  activeLayers.push({ ref: id, visible: true });
+  return { layerData: { sources, layers }, activeLayers };
+}
+
+// webmapx takes a centre and a zoom, not a bounding box. Turn the layer's own
+// extent into the zoom that fits it in the container, in Web Mercator.
+function zoomForBounds(bounds, width, height) {
+  const my = lat => {
+    const clamped = Math.max(-85.05, Math.min(85.05, lat));
+    return (180 / Math.PI) * Math.log(Math.tan(Math.PI / 4 + (clamped * Math.PI) / 360));
+  };
+  const lonSpan = Math.abs(bounds[2] - bounds[0]);
+  const ySpan = Math.abs(my(bounds[3]) - my(bounds[1]));
+  if (!(lonSpan > 0) || !(ySpan > 0)) return 4;
+  const zx = Math.log2((width / 256) * (360 / lonSpan));
+  const zy = Math.log2((height / 256) * (360 / ySpan));
+  return Math.max(0, Math.min(18, Math.min(zx, zy) - 0.3));
+}
+
+async function initPreviewMap(cfg) {
   const container = document.getElementById('map-preview');
   if (!container.offsetParent) return; // not visible yet
-
-  let style;
-  if (cfg.type === 'style' && cfg.url) {
-    style = substituteKeys(cfg.url);
-  } else {
-    const source = cfg.source ?? {};
-    const layerDef = cfg.layer ?? {};
-    const sourceId = layerDef.id ?? 'preview-source';
-    const isOverlay = source.type === 'geojson' || layerDef.metadata?.legendRole === 'overlay';
-    const baseLayers = isOverlay ? [
-      { id: '_bg', type: 'background', paint: { 'background-color': '#e8eaed' } },
-    ] : [];
-    style = {
-      version: 8,
-      glyphs: 'https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf',
-      sources: { [sourceId]: source },
-      layers: [...baseLayers, { ...layerDef, source: sourceId }],
-    };
-  }
 
   const isGlobal = cfg.source?.type === 'geojson';
   const meta = cfg.layer?.metadata ?? cfg.metadata ?? {};
@@ -564,21 +683,31 @@ function initPreviewMap(cfg) {
   const center = meta.previewCenter
     ?? (bounds ? [(bounds[0] + bounds[2]) / 2, (bounds[1] + bounds[3]) / 2]
                : (isGlobal ? [10, 20] : [5.3, 52.1]));
-  const zoom = meta.previewZoom ?? (isGlobal ? 1 : 4);
-  previewMap = new maplibregl.Map({
-    container: 'map-preview',
-    style,
-    center,
-    zoom,
+  const zoom = meta.previewZoom
+    ?? (bounds && !meta.previewCenter
+        ? zoomForBounds(bounds, container.clientWidth || 640, container.clientHeight || 360)
+        : (isGlobal ? 1 : 4));
+
+  const { layerData, activeLayers } = previewLayerData(cfg, activeLayerRecord);
+  const token = ++previewToken;
+  container.innerHTML = '';
+  await WebMapX.mount('#map-preview', {
+    config: {
+      engine: 'maplibre',
+      tools: PREVIEW_TOOLS,
+      map: { center, zoom },
+      layerData,
+      state: { activeLayers },
+    },
   });
-  if (bounds && !meta.previewCenter) {
-    previewMap.once('load', () => previewMap.fitBounds(bounds, { padding: 16, animate: false }));
-  }
+  // A slower mount for an earlier layer must not win the container.
+  if (token !== previewToken) return;
 }
 
 document.getElementById('layer-dialog').addEventListener('close', () => {
   document.documentElement.classList.remove('modal-open');
-  if (previewMap) { previewMap.remove(); previewMap = null; }
+  previewToken++;
+  document.getElementById('map-preview').innerHTML = '';
 });
 
 function copyConfig() {
