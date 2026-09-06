@@ -163,11 +163,19 @@ async function readWmsCapabilities(source) {
                     let id = `${source.provider.id}-${slug(name)}`;
                     while (ids.has(id)) id += '-2';
                     ids.add(id);
-                    out.push(mkLayer({
+                    const layer = mkLayer({
                         id, name, title, abstract: l.Abstract ? String(l.Abstract) : undefined,
                         url: `${endpoint}?LAYERS=${encodeURIComponent(name)}&${WMS_TAIL}`, kind: 'wms',
                         bounds: source.bounds, attribution: attributionFor(source),
-                    }));
+                    });
+                    // Styles and their legends are in the document already being
+                    // parsed, so they cost nothing here. Only attribute schemas,
+                    // which are a request per layer against a separate WFS, are
+                    // worth hiding behind --enrich.
+                    const styles = stylesOf(l);
+                    out.push(...(styles.length
+                        ? expandStyles(layer, styles, inc.expandStyles !== false)
+                        : [layer]));
                 }
             }
             walk(l, crs);
@@ -179,7 +187,7 @@ async function readWmsCapabilities(source) {
         id: slug(endpoint.replace(/^https?:\/\/[^/]+/, '')) || 'wms',
         title: String(cap.Service?.Title ?? source.title ?? 'WMS'),
         ...(cap.Service?.Abstract ? { abstract: String(cap.Service.Abstract).slice(0, 600) } : {}),
-        type: 'wms', endpoint, capabilitiesUrl: source.url,
+        type: 'wms', endpoint, capabilitiesUrl: source.url, stylesRead: true,
         crs: [...new Set(arr(root.CRS ?? root.SRS).map(String))],
         harvestedFrom: source.id,
         layers: inc.limit ? out.slice(0, inc.limit) : out,
@@ -210,17 +218,21 @@ const XML = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: '@' })
  * Vierkantstatistieken each style is a different variable (inhabitants, distance
  * to a pharmacy), not a restyle of one.
  */
+function stylesOf(layerNode) {
+    return arr(layerNode.Style).map(st => ({
+        name: st.Name === undefined ? undefined : String(st.Name),
+        title: st.Title === undefined ? undefined : String(st.Title),
+        legendUrl: arr(st.LegendURL)[0]?.OnlineResource?.['@xlink:href'],
+    })).filter(st => st.name || st.legendUrl);
+}
+
 async function stylesFor(capabilitiesUrl) {
     const cap = XML.parse(await cachedText(capabilitiesUrl));
     const root = cap.WMS_Capabilities ?? cap.WMT_MS_Capabilities;
     const out = new Map();
     (function walk(node) {
         for (const l of arr(node?.Layer)) {
-            const styles = arr(l.Style).map(st => ({
-                name: st.Name === undefined ? undefined : String(st.Name),
-                title: st.Title === undefined ? undefined : String(st.Title),
-                legendUrl: arr(st.LegendURL)[0]?.OnlineResource?.['@xlink:href'],
-            })).filter(st => st.name || st.legendUrl);
+            const styles = stylesOf(l);
             if (l.Name !== undefined && styles.length) out.set(String(l.Name), styles);
             walk(l);
         }
@@ -238,9 +250,9 @@ async function stylesFor(capabilitiesUrl) {
  * the default style's, since a service that publishes styles without saying
  * which is default serves the first one.
  */
-function expandStyles(layer, styles) {
+function expandStyles(layer, styles, expand = true) {
     const named = styles.filter(st => st.name);
-    if (named.length < 2) {
+    if (!expand || named.length < 2) {
         const only = styles[0];
         if (only?.legendUrl) layer.legendUrl = String(only.legendUrl);
         if (only?.title && only?.name) layer.styleTitle = only.title;
@@ -270,35 +282,49 @@ function expandStyles(layer, styles) {
     });
 }
 
-/** feature type -> attribute list, from a WFS DescribeFeatureType. */
-async function attributesFor(wfsEndpoint, typeName) {
-    const url = `${wfsEndpoint}?SERVICE=WFS&VERSION=2.0.0&REQUEST=DescribeFeatureType` +
-                `&TYPENAMES=${encodeURIComponent(typeName)}`;
-    const doc = XML.parse(await cachedText(url, 40000));
-    const schema = doc.schema ?? doc['xsd:schema'];
-    const types = arr(schema?.complexType ?? schema?.['xsd:complexType']);
-    const seq = types.map(t => {
-        const cc = t.complexContent ?? t['xsd:complexContent'];
-        const ext = cc?.extension ?? cc?.['xsd:extension'];
-        return ext?.sequence ?? ext?.['xsd:sequence'] ?? t.sequence ?? t['xsd:sequence'];
-    }).find(Boolean);
-    const els = arr(seq?.element ?? seq?.['xsd:element']);
-    const attrs = els.map(e => {
-        const type = String(e['@type'] ?? '');
-        return {
-            name: String(e['@name']),
-            ...(type ? { type } : {}),
-            ...(/gml:/.test(type) ? { geometry: true } : {}),
-        };
-    }).filter(a => a.name);
-    return attrs.length ? { attributes: attrs, attributesFrom: url } : null;
-}
-
-/** A WFS alongside a WMS serves the same data with a describable schema. */
+/** Where a WFS might sit beside a WMS. A guess, confirmed by asking it. */
 function featuresEndpointFor(endpoint) {
     if (/\/wms\//.test(endpoint)) return endpoint.replace('/wms/', '/wfs/');
     if (/\/wms$/.test(endpoint)) return endpoint.replace(/\/wms$/, '/wfs');
+    if (/\/ows$/.test(endpoint)) return endpoint;   // GeoServer serves every service off /ows
     return null;
+}
+
+/**
+ * Ask a WFS what it is and what it holds.
+ *
+ * Returns the endpoint the service names for itself — not the URL we guessed to
+ * reach it, which can redirect or be one of several aliases — and the set of
+ * feature types it publishes. Knowing the set up front means DescribeFeatureType
+ * is only requested for layers that actually have one, instead of once per layer
+ * and mostly for nothing.
+ */
+async function wfsCapabilities(candidateUrl) {
+    const url = `${candidateUrl}?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetCapabilities`;
+    const doc = XML.parse(await cachedText(url, 60000));
+    const cap = doc['wfs:WFS_Capabilities'] ?? doc.WFS_Capabilities;
+    if (!cap) throw new Error('no WFS capabilities element');
+
+    const list = cap['wfs:FeatureTypeList'] ?? cap.FeatureTypeList;
+    const types = arr(list?.['wfs:FeatureType'] ?? list?.FeatureType);
+    const typeNames = new Set();
+    for (const t of types) {
+        const name = t['wfs:Name'] ?? t.Name;
+        if (name === undefined) continue;
+        const full = String(name);
+        typeNames.add(full);
+        // A WMS layer is often named without the workspace the WFS prefixes.
+        if (full.includes(':')) typeNames.add(full.split(':').pop());
+    }
+
+    // The endpoint the service publishes for itself, from its own operations
+    // metadata rather than from the URL we happened to reach it on.
+    const ops = arr(cap['ows:OperationsMetadata']?.['ows:Operation'] ?? cap.OperationsMetadata?.Operation);
+    const describe = ops.find(o => o['@name'] === 'DescribeFeatureType') ?? ops[0];
+    const get = describe?.['ows:DCP']?.['ows:HTTP']?.['ows:Get'] ?? describe?.DCP?.HTTP?.Get;
+    const href = arr(get)[0]?.['@xlink:href'];
+
+    return { endpoint: href ? String(href).split('?')[0] : candidateUrl, typeNames };
 }
 
 /**
@@ -309,7 +335,10 @@ function featuresEndpointFor(endpoint) {
 async function enrichServices(services, expand) {
     let legends = 0, schemas = 0, expansions = 0;
     for (const svc of services) {
-        if (svc.type === 'wms' && svc.capabilitiesUrl) {
+        // Sources read from a capabilities document already carry their styles
+        // and legends, extracted during that parse. Only catalogue-derived
+        // services (the PDOK plugin list) still need the document fetched.
+        if (svc.type === 'wms' && svc.capabilitiesUrl && !svc.stylesRead) {
             try {
                 const map = await stylesFor(svc.capabilitiesUrl);
                 const out = [];
@@ -328,21 +357,29 @@ async function enrichServices(services, expand) {
                 svc.layers = out;
             } catch { /* no capabilities, or no styles in them */ }
         }
-        const wfs = svc.type === 'wms' ? featuresEndpointFor(svc.endpoint) : null;
-        if (!wfs) continue;
-        // Keyed by WMS layer name on the service, not copied onto every layer:
-        // all styles of a layer are the same feature type, and a CBS type with
-        // 127 attributes copied across its 127 style layers is what turned this
-        // file into 162 MB.
+        const candidate = svc.type === 'wms' ? featuresEndpointFor(svc.endpoint) : null;
+        if (!candidate) continue;
+
+        let wfs;
+        try { wfs = await wfsCapabilities(candidate); }
+        catch { continue; }   // no WFS beside this WMS: a genuinely raster service
+
+        // Which WMS layers have a feature type, and under which name — that is
+        // all a capabilities document can say. The attribute list itself needs
+        // DescribeFeatureType, which the previewer asks for when someone opens a
+        // layer: one request for the layer being looked at, instead of thousands
+        // at harvest for layers nobody opens. Every endpoint here answers with
+        // Access-Control-Allow-Origin: *, so the browser can.
         const featureTypes = {};
-        let reachable = false;
         for (const name of new Set(svc.layers.map(l => l.name).filter(Boolean))) {
-            try {
-                const got = await attributesFor(wfs, name);
-                if (got) { featureTypes[name] = got; schemas++; reachable = true; }
-            } catch { /* raster service, or this layer has no feature type */ }
+            const typeName = wfs.typeNames.has(name) ? name
+                : [...wfs.typeNames].find(t => t.split(':').pop() === name.split(':').pop());
+            if (typeName) { featureTypes[name] = typeName; schemas++; }
         }
-        if (reachable) { svc.featuresEndpoint = wfs; svc.featureTypes = featureTypes; }
+        if (Object.keys(featureTypes).length) {
+            svc.featuresEndpoint = wfs.endpoint;
+            svc.featureTypes = featureTypes;
+        }
         process.stdout.write('.');
     }
     return { legends, schemas, expansions };
@@ -376,7 +413,7 @@ for (const source of sources) {
         process.stdout.write('\n   enriching ');
         const expand = (source.include ?? {}).expandStyles !== false;
         const { legends, schemas, expansions } = await enrichServices(services, expand);
-        process.stdout.write(` ${legends} legends, ${schemas} attribute schemas` +
+        process.stdout.write(` ${legends} legends, ${schemas} feature types` +
                              `${expand ? `, +${expansions} style layers` : ''}\n   `);
     }
 

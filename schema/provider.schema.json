@@ -241,20 +241,9 @@
         },
         "featureTypes": {
           "type": "object",
-          "description": "Attribute schemas for this service's feature types, keyed by WMS layer name. Held on the service rather than on each layer because every style of a layer describes the same feature type; copying it onto each style layer took one harvested file from 26 MB to 162 MB.",
+          "description": "WMS layer name -> WFS feature type name, read from the WFS capabilities document. Only the mapping is stored: the attribute list itself comes from DescribeFeatureType, which the previewer requests for the layer being opened rather than harvesting thousands of schemas nobody reads. Held on the service because every style of a layer is one feature type.",
           "additionalProperties": {
-            "type": "object",
-            "properties": {
-              "attributes": {
-                "type": "array",
-                "items": {
-                  "type": "object"
-                }
-              },
-              "attributesFrom": {
-                "type": "string"
-              }
-            }
+            "type": "string"
           }
         }
       }

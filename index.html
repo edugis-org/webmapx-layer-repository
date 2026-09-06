@@ -525,12 +525,70 @@ function getEntry(index) {
   return currentProvider ? layerEntries(currentProvider)[index] : undefined;
 }
 
+/**
+ * Attribute schemas, fetched when a layer is opened.
+ *
+ * Harvesting records only which WFS feature type backs a layer — the schema
+ * itself is one DescribeFeatureType request, and asking for thousands at harvest
+ * to store lists nobody reads is the wrong trade. Every endpoint we harvest
+ * answers with Access-Control-Allow-Origin: *, so the browser can ask directly.
+ * Kept for the session: a schema does not change while a dialog is open.
+ */
+const schemaCache = new Map();
+
+function describeUrl(service, typeName) {
+  return `${service.featuresEndpoint}?SERVICE=WFS&VERSION=2.0.0&REQUEST=DescribeFeatureType` +
+         `&TYPENAMES=${encodeURIComponent(typeName)}`;
+}
+
+async function fetchAttributes(service, typeName) {
+  const url = describeUrl(service, typeName);
+  if (schemaCache.has(url)) return schemaCache.get(url);
+
+  const doc = new DOMParser().parseFromString(await (await fetch(url)).text(), 'application/xml');
+  const attrs = [...doc.getElementsByTagNameNS('http://www.w3.org/2001/XMLSchema', 'element')]
+    .filter(e => e.getAttribute('name') && e.getAttribute('type'))
+    .map(e => ({
+      name: e.getAttribute('name'),
+      type: e.getAttribute('type'),
+      ...(/^gml:/.test(e.getAttribute('type')) ? { geometry: true } : {}),
+    }));
+  schemaCache.set(url, attrs);
+  return attrs;
+}
+
+/** Fill in the fields section once its schema arrives, leaving the rest as drawn. */
+async function loadAttributes(layer, service) {
+  const typeName = service?.featureTypes?.[layer.name];
+  if (!typeName || !service.featuresEndpoint) return;
+  const slot = document.getElementById('layer-fields');
+  if (!slot) return;
+  slot.innerHTML = '<p class="info-empty">Loading fields…</p>';
+  try {
+    const attrs = await fetchAttributes(service, typeName);
+    slot.innerHTML = attrs.length ? fieldsHtml(attrs, describeUrl(service, typeName))
+      : '<p class="info-empty">The WFS describes no fields for this type.</p>';
+  } catch {
+    slot.innerHTML = `<p class="info-empty">Could not load fields from
+      <a href="${describeUrl(service, typeName)}" target="_blank">DescribeFeatureType</a>.</p>`;
+  }
+}
+
+function fieldsHtml(attrs, from) {
+  return `<h4 style="margin-top:14px">Fields (${attrs.length})</h4>
+    <table class="attr-table">${attrs.map(a => `
+      <tr>
+        <td class="n">${a.name}${a.geometry ? ' <span style="color:#0f62fe">◆</span>' : ''}</td>
+        <td class="t">${a.type ?? ''}</td>
+      </tr>`).join('')}</table>
+    ${from ? `<p style="font-size:0.72rem;color:#aaa;margin-top:8px">from <a href="${from}" target="_blank">DescribeFeatureType</a></p>` : ''}`;
+}
+
 function renderInfo(layer, service) {
-  // Harvested attribute schemas live on the service, keyed by WMS layer name,
-  // because every style of a layer shares one feature type. Curated layers still
-  // carry their own.
-  const featureType = service?.featureTypes?.[layer.name];
-  const attrs = layer.attributes ?? featureType?.attributes ?? [];
+  // Curated layers carry their own attribute list; harvested ones name a feature
+  // type on the service and the schema is fetched when the dialog opens.
+  const attrs = layer.attributes ?? [];
+  const hasFeatureType = Boolean(service?.featureTypes?.[layer.name] && service.featuresEndpoint);
   const parts = [];
   if (layer.legendUrl) {
     // A legend the service publishes needs no explanation; one curated here does,
@@ -541,21 +599,14 @@ function renderInfo(layer, service) {
       : '';
     parts.push(`<h4>Legend</h4><img src="${localAsset(layer.legendUrl)}" alt="Legend for ${layer.title}" loading="lazy">${note}`);
   }
-  if (attrs.length) {
-    parts.push(`<h4 style="margin-top:14px">Fields (${attrs.length})</h4>
-      <table class="attr-table">${attrs.map(a => `
-        <tr>
-          <td class="n">${a.name}${a.geometry ? ' <span style="color:#0f62fe">◆</span>' : ''}</td>
-          <td class="t">${a.type ?? ''}</td>
-        </tr>`).join('')}</table>
-      ${(layer.attributesFrom ?? featureType?.attributesFrom) ? `<p style="font-size:0.72rem;color:#aaa;margin-top:8px">from <a href="${layer.attributesFrom ?? featureType.attributesFrom}" target="_blank">DescribeFeatureType</a></p>` : ''}`);
-  }
+  if (attrs.length) parts.push(fieldsHtml(attrs, layer.attributesFrom));
+  // Filled in by loadAttributes once the WFS answers.
+  if (hasFeatureType) parts.push('<div id="layer-fields"></div>');
   if (!parts.length) {
     // Say which of the two reasons applies, rather than just showing nothing.
     parts.push(`<p class="info-empty">No legend or field list recorded for this layer.<br>
       Legends come from the LegendURL a WMS publishes in its capabilities, and fields from the
-      matching WFS — a raster service has neither. Run <code>npm run harvest -- --enrich</code>
-      to collect them.</p>`);
+      matching WFS — a raster service has neither.</p>`);
   }
   document.getElementById('layer-info').innerHTML = parts.join('');
 }
@@ -574,6 +625,7 @@ function showConfig(index) {
   document.getElementById('dialog-title').textContent = layer.title;
   document.getElementById('dialog-code').textContent = JSON.stringify(activeConfig, null, 2);
   renderInfo(layer, entry.service);
+  loadAttributes(layer, entry.service);
   switchTab('config');
   openDialog();
 }
@@ -587,6 +639,7 @@ async function showPreview(index) {
   document.getElementById('dialog-title').textContent = layer.title;
   document.getElementById('dialog-code').textContent = JSON.stringify(activeConfig, null, 2);
   renderInfo(layer, entry.service);
+  loadAttributes(layer, entry.service);
   switchTab('preview');
   openDialog();
 

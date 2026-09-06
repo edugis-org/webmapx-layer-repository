@@ -44,7 +44,7 @@ generated layer records, so nobody should be asked to.
 **cannot be regenerated**. No rerun recreates "up 51 of the last 52 weeks"; it
 only accrues by observing. It is not a build artifact.
 
-Current state: 152 curated layers in 50 services across 27 providers; 27,952
+Current state: 152 curated layers in 50 services across 27 providers; 28,066
 harvested layers in 241 services from **10 source files**. Four providers that
 were hand-written are now sources, and their curated files are gone.
 
@@ -100,6 +100,16 @@ product returns that day's orbital strips; no date yields a full global field.
 Only a composited (L3) or analysed (L4) product does. `coverage` and
 `compositedOver` record this so users can choose correctly instead of discovering
 holes.
+
+**Harvest stores what a capabilities document says; the previewer asks for the
+rest.** Two requests per service — the WMS capabilities and the WFS capabilities
+— give the legend URL, abstract, styles and which feature type backs each layer.
+The attribute list is not in either document: it needs `DescribeFeatureType`, one
+request per type. Harvesting 8,730 of those to store schemas nobody opens was the
+wrong trade, so the previewer fetches the schema for the layer being opened, and
+caches it for the session. Every endpoint harvested here answers with
+`Access-Control-Allow-Origin: *`, which is what makes that possible; a service
+that did not would simply show no field list.
 
 **Attributes come from WFS, not GetFeatureInfo.** A WMS cannot describe its own
 fields; `GetFeatureInfo` samples a point and returns whatever is there — one
