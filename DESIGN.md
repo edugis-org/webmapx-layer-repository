@@ -57,6 +57,15 @@ the prober and never by hand. A 403 is `auth-required` — the endpoint answered
 and a DNS failure is `unreachable`; collapsing both into "unknown" hid real
 differences.
 
+**Availability is measured per endpoint, not per layer.** A service answering
+means everything harvested from it is reachable, so probing 127 layers of one
+WMS measures the same fact 127 times. `check-sources` probes each `sources/`
+endpoint once and records it under `status/sources/`; `test-layers` still walks
+curated layers, which are individually chosen and can each be wrong. The source
+probe also records how many layers the endpoint currently offers — a changed
+count is the signal that an admin added or withdrew layers and the harvest is
+stale, which no amount of uptime would tell you.
+
 **Availability is measurement, not validation.** `test-layers` exits 0 whatever
 it finds. An upstream service being down is a fact about the world, not a defect
 in this repository. Only `validate-layers`, which checks the files themselves,
@@ -169,9 +178,11 @@ than 14 nearly identical services. This is the same data as the
 
 ## 5. Next steps, in the order I would do them
 
-1. **Convert existing providers into sources.** Belgian services, remaining Dutch
-   ones. Each replaces hand-written layers with a self-refreshing endpoint. The
-   curated surface should stop growing as the catalog grows.
+1. **Convert the remaining providers into sources.** NGI Belgium, Royal
+   Observatory seismology, RCE and Flevoland are done — their hand-written files
+   are deleted, since a source covers every layer they held and uptime is now
+   measured on the endpoint. The rest of the Dutch and Belgian services follow
+   the same route. The curated surface should stop growing as the catalog grows.
 2. **Move `status/` to SQLite** — the piece actually breaking, and independent of
    any decision about the catalog.
 3. **Move `categories` to the layer** and generate topic/region indexes. This is

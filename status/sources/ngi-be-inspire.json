@@ -1,0 +1,29 @@
+{
+  "source": "ngi-be-inspire",
+  "provider": "ngi-be",
+  "url": "https://data.geo.be/ws/inspire_annex1/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities",
+  "endpoints": {
+    "ngi-be-inspire": {
+      "checks": [
+        {
+          "date": "2026-09-06",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 98,
+          "layersOffered": 18
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-06",
+        "lastChecked": "2026-09-06",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-06"
+      }
+    }
+  }
+}

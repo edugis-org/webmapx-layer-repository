@@ -10,9 +10,11 @@
     "build": "npm run harvest && npm run build-index",
     "test-layers": "node scripts/test-layers.mjs",
     "test-layers:dry": "node scripts/test-layers.mjs --dry-run",
+    "check-sources": "node scripts/check-sources.mjs",
+    "check-sources:dry": "node scripts/check-sources.mjs --dry-run",
     "validate-layers": "node scripts/validate-layers.mjs",
     "migrate-services": "node scripts/migrate-services.mjs",
-    "ci": "npm run build && node scripts/validate-layers.mjs && node scripts/test-layers.mjs"
+    "ci": "npm run build && node scripts/validate-layers.mjs && node scripts/test-layers.mjs && node scripts/check-sources.mjs"
   },
   "keywords": [
     "webmapx",

@@ -60,6 +60,15 @@ jobs:
           # both record as auth-required and the history learns the wrong thing.
           PROBE_REFERER:         ${{ secrets.PROBE_REFERER }}
 
+      # Availability is a property of the endpoint, so the sources are probed
+      # once each rather than through the thousands of layers they yield.
+      - name: Probe source endpoints
+        run: node scripts/check-sources.mjs
+        continue-on-error: true
+        env:
+          APIKEY_OPENAIP:  ${{ secrets.APIKEY_OPENAIP }}
+          PROBE_REFERER:   ${{ secrets.PROBE_REFERER }}
+
       - name: Commit status updates (scheduled runs only)
         if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         run: |

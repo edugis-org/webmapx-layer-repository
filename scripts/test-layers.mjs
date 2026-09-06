@@ -27,13 +27,13 @@ import { fileURLToPath } from 'url';
 import { resolveTimeTokens, hasTimeToken } from '../lib/time.mjs';
 import { services, layerEntries } from '../lib/catalog.mjs';
 import { regionBounds } from '../lib/regions.mjs';
+import { recordCheck, HISTORY_LIMIT } from '../lib/uptime.mjs';
 
 const ROOT = resolve(fileURLToPath(import.meta.url), '../../');
 const LAYERS_DIR = join(ROOT, 'layers');
 const STATUS_DIR = join(ROOT, 'status');
 
 /** Probes retained per layer: two years of the weekly cron. */
-const HISTORY_LIMIT = 104;
 const TIMEOUT_MS = 8000;
 
 
@@ -210,40 +210,6 @@ function legacyStatus(availability) {
     return (availability === 'up' || availability === 'auth-required') ? 'active' : 'unknown';
 }
 
-const FAILURE = new Set(['down', 'unreachable', 'auth-required']);
-
-function summarise(checks) {
-    const verdicts = checks.filter(c => c.availability !== 'unknown');
-    const up = verdicts.filter(c => c.availability === 'up');
-    const untested = checks.length - verdicts.length;
-
-    // Trailing failures since the last success. Probes we could not run are
-    // stepped over rather than treated as either outcome.
-    let consecutiveFailures = 0;
-    for (let i = checks.length - 1; i >= 0; i--) {
-        const a = checks[i].availability;
-        if (a === 'up') break;
-        if (FAILURE.has(a)) consecutiveFailures++;
-    }
-
-    const lastWith = pred => [...checks].reverse().find(pred)?.date;
-
-    return {
-        firstChecked: checks[0]?.date,
-        lastChecked: checks[checks.length - 1]?.date,
-        current: checks[checks.length - 1]?.availability,
-        checks: checks.length,
-        up: up.length,
-        // Probes recorded as unknown are excluded from both sides: a layer we
-        // could not test is not a layer that failed.
-        uptime: verdicts.length ? Number((up.length / verdicts.length).toFixed(4)) : null,
-        untested,
-        consecutiveFailures,
-        lastUp: lastWith(c => c.availability === 'up'),
-        lastDown: lastWith(c => c.availability === 'down' || c.availability === 'unreachable'),
-    };
-}
-
 function historyPathFor(providerFile) {
     return join(STATUS_DIR, relative(LAYERS_DIR, providerFile));
 }
@@ -258,21 +224,6 @@ function loadHistory(providerFile, data) {
         source: relative(LAYERS_DIR, providerFile),
         layers: {},
     };
-}
-
-function recordCheck(history, layerId, check, date) {
-    const rec = history.layers[layerId] ??= { checks: [] };
-    // Re-running on the same day replaces that day's entry instead of stacking.
-    const existing = rec.checks.findIndex(c => c.date === date);
-    const entry = { date, ...check };
-    if (existing >= 0) rec.checks[existing] = entry;
-    else rec.checks.push(entry);
-
-    if (rec.checks.length > HISTORY_LIMIT) {
-        rec.checks = rec.checks.slice(rec.checks.length - HISTORY_LIMIT);
-    }
-    rec.summary = summarise(rec.checks);
-    return rec.summary;
 }
 
 function writeJson(path, value) {
@@ -327,7 +278,7 @@ for (const file of files) {
         const check = await testLayer(layer, regionBounds(regionOf(file)));
         tally[check.availability]++;
 
-        const summary = recordCheck(history, layer.id, check, today);
+        const summary = recordCheck(history.layers, layer.id, check, today, HISTORY_LIMIT);
 
         const note = check.reason ? ` — ${check.reason}` : '';
         const rate = summary.uptime === null ? 'no verdicts yet'

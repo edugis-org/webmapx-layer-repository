@@ -1,0 +1,29 @@
+{
+  "source": "seismology-be-inspire",
+  "provider": "seismology-be",
+  "url": "https://inspire.seismology.be/geoserver/inspire/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities",
+  "endpoints": {
+    "seismology-be-inspire": {
+      "checks": [
+        {
+          "date": "2026-09-06",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 137,
+          "layersOffered": 7
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-06",
+        "lastChecked": "2026-09-06",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-06"
+      }
+    }
+  }
+}
