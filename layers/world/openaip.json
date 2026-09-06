@@ -58,6 +58,651 @@
           "lastChecked": "2026-09-05"
         }
       ]
+    },
+    {
+      "id": "api-tiles-openaip-net-mvt",
+      "title": "OpenAIP vector tiles",
+      "abstract": "The same content as the raster chart, as Mapbox Vector Tiles: one tile set carrying every dataset as its own source-layer, so each can be styled, queried and switched on its own. Zoom 12 and overzoomed above that.",
+      "type": "vector-tiles",
+      "endpoint": "https://api.tiles.openaip.net",
+      "availability": "up",
+      "layers": [
+        {
+          "id": "openaip-airspaces",
+          "title": "Airspaces",
+          "abstract": "Airspace outlines — CTR, TMA, restricted, danger, gliding sectors and the rest — coloured by type as openAIP colours them. Source: OpenAIP.",
+          "type": "vector",
+          "status": "active",
+          "requiresKey": true,
+          "webmapxConfig": {
+            "source": {
+              "type": "vector",
+              "tiles": [
+                "https://api.tiles.openaip.net/api/data/openaip/{z}/{x}/{y}.pbf?apiKey={key-openaip}"
+              ],
+              "maxzoom": 12,
+              "attribution": "&copy; <a href='https://www.openaip.net'>OpenAIP</a>"
+            },
+            "layer": {
+              "id": "openaip-airspaces",
+              "type": "line",
+              "source-layer": "airspaces",
+              "paint": {
+                "line-color": [
+                  "match",
+                  [
+                    "get",
+                    "type"
+                  ],
+                  [
+                    "restricted",
+                    "danger",
+                    "prohibited",
+                    "tsa",
+                    "tra",
+                    "tfr"
+                  ],
+                  "rgb(154,14,14)",
+                  [
+                    "moa",
+                    "mta",
+                    "mrt"
+                  ],
+                  "rgb(255,146,0)",
+                  [
+                    "alert",
+                    "warning",
+                    "protected"
+                  ],
+                  "rgb(147,53,201)",
+                  [
+                    "aerial_sporting_recreational"
+                  ],
+                  "rgb(0,139,175)",
+                  [
+                    "gliding_sector"
+                  ],
+                  "rgb(255,215,0)",
+                  [
+                    "fir",
+                    "fis_sector"
+                  ],
+                  "rgb(110,201,32)",
+                  [
+                    "uir"
+                  ],
+                  "rgb(91,156,38)",
+                  [
+                    "adiz"
+                  ],
+                  "rgb(86,0,150)",
+                  [
+                    "overflight_restriction"
+                  ],
+                  "rgb(119,21,154)",
+                  "rgb(21,77,154)"
+                ],
+                "line-width": 1.5,
+                "line-opacity": 0.9
+              },
+              "metadata": {
+                "title": "Airspaces",
+                "abstract": "Airspace outlines — CTR, TMA, restricted, danger, gliding sectors and the rest — coloured by type as openAIP colours them. Source: OpenAIP.",
+                "legendRole": "overlay"
+              }
+            }
+          },
+          "attributes": [
+            {
+              "name": "source_id"
+            },
+            {
+              "name": "feature_type"
+            },
+            {
+              "name": "name"
+            },
+            {
+              "name": "name_label"
+            },
+            {
+              "name": "name_label_full"
+            },
+            {
+              "name": "type"
+            },
+            {
+              "name": "icao_class"
+            },
+            {
+              "name": "country"
+            },
+            {
+              "name": "on_request"
+            },
+            {
+              "name": "on_demand"
+            },
+            {
+              "name": "by_notam"
+            },
+            {
+              "name": "special_agreement"
+            },
+            {
+              "name": "lower_limit_value"
+            },
+            {
+              "name": "lower_limit_unit"
+            },
+            {
+              "name": "lower_limit_reference_datum"
+            },
+            {
+              "name": "upper_limit_value"
+            },
+            {
+              "name": "upper_limit_unit"
+            },
+            {
+              "name": "upper_limit_reference_datum"
+            },
+            {
+              "name": "hours_of_operation"
+            }
+          ],
+          "attributesFrom": "https://api.tiles.openaip.net/api/data/openaip/{z}/{x}/{y}.pbf",
+          "availability": "up",
+          "lastChecked": "2026-09-05"
+        },
+        {
+          "id": "openaip-airports",
+          "title": "Airports and airfields",
+          "abstract": "Airports, airfields, heliports and gliding sites, with ICAO and IATA codes. Source: OpenAIP.",
+          "type": "vector",
+          "status": "active",
+          "requiresKey": true,
+          "webmapxConfig": {
+            "source": {
+              "type": "vector",
+              "tiles": [
+                "https://api.tiles.openaip.net/api/data/openaip/{z}/{x}/{y}.pbf?apiKey={key-openaip}"
+              ],
+              "maxzoom": 12,
+              "attribution": "&copy; <a href='https://www.openaip.net'>OpenAIP</a>"
+            },
+            "layer": {
+              "id": "openaip-airports",
+              "type": "circle",
+              "source-layer": "airports",
+              "paint": {
+                "circle-radius": 5,
+                "circle-color": "#0741a2",
+                "circle-opacity": 0.85,
+                "circle-stroke-width": 1,
+                "circle-stroke-color": "#ffffff"
+              },
+              "metadata": {
+                "title": "Airports and airfields",
+                "abstract": "Airports, airfields, heliports and gliding sites, with ICAO and IATA codes. Source: OpenAIP.",
+                "legendRole": "overlay"
+              }
+            }
+          },
+          "attributes": [
+            {
+              "name": "source_id"
+            },
+            {
+              "name": "feature_type"
+            },
+            {
+              "name": "country"
+            },
+            {
+              "name": "name"
+            },
+            {
+              "name": "name_label"
+            },
+            {
+              "name": "name_label_full"
+            },
+            {
+              "name": "type"
+            },
+            {
+              "name": "runway_rotation"
+            },
+            {
+              "name": "runway_surface"
+            },
+            {
+              "name": "skydive_activity"
+            },
+            {
+              "name": "winch_only"
+            },
+            {
+              "name": "icao_code"
+            },
+            {
+              "name": "iata_code"
+            }
+          ],
+          "attributesFrom": "https://api.tiles.openaip.net/api/data/openaip/{z}/{x}/{y}.pbf",
+          "availability": "up",
+          "lastChecked": "2026-09-05"
+        },
+        {
+          "id": "openaip-navaids",
+          "title": "Navaids",
+          "abstract": "Radio navigation aids — VOR, DME, TACAN, NDB. Source: OpenAIP.",
+          "type": "vector",
+          "status": "active",
+          "requiresKey": true,
+          "webmapxConfig": {
+            "source": {
+              "type": "vector",
+              "tiles": [
+                "https://api.tiles.openaip.net/api/data/openaip/{z}/{x}/{y}.pbf?apiKey={key-openaip}"
+              ],
+              "maxzoom": 12,
+              "attribution": "&copy; <a href='https://www.openaip.net'>OpenAIP</a>"
+            },
+            "layer": {
+              "id": "openaip-navaids",
+              "type": "circle",
+              "source-layer": "navaids",
+              "paint": {
+                "circle-radius": 4,
+                "circle-color": "#7a0096",
+                "circle-opacity": 0.85,
+                "circle-stroke-width": 1,
+                "circle-stroke-color": "#ffffff"
+              },
+              "metadata": {
+                "title": "Navaids",
+                "abstract": "Radio navigation aids — VOR, DME, TACAN, NDB. Source: OpenAIP.",
+                "legendRole": "overlay"
+              }
+            }
+          },
+          "attributes": [
+            {
+              "name": "source_id"
+            },
+            {
+              "name": "feature_type"
+            },
+            {
+              "name": "country"
+            },
+            {
+              "name": "type"
+            },
+            {
+              "name": "identifier"
+            },
+            {
+              "name": "name"
+            },
+            {
+              "name": "name_label"
+            },
+            {
+              "name": "name_label_full"
+            },
+            {
+              "name": "aligned_true_north"
+            },
+            {
+              "name": "icon_rotation"
+            },
+            {
+              "name": "hours_of_operation"
+            }
+          ],
+          "attributesFrom": "https://api.tiles.openaip.net/api/data/openaip/{z}/{x}/{y}.pbf",
+          "availability": "up",
+          "lastChecked": "2026-09-05"
+        },
+        {
+          "id": "openaip-reporting-points",
+          "title": "Reporting points",
+          "abstract": "VFR reporting points, compulsory and on request. Source: OpenAIP.",
+          "type": "vector",
+          "status": "active",
+          "requiresKey": true,
+          "webmapxConfig": {
+            "source": {
+              "type": "vector",
+              "tiles": [
+                "https://api.tiles.openaip.net/api/data/openaip/{z}/{x}/{y}.pbf?apiKey={key-openaip}"
+              ],
+              "maxzoom": 12,
+              "attribution": "&copy; <a href='https://www.openaip.net'>OpenAIP</a>"
+            },
+            "layer": {
+              "id": "openaip-reporting-points",
+              "type": "circle",
+              "source-layer": "reporting_points",
+              "paint": {
+                "circle-radius": 4,
+                "circle-color": "#154d9a",
+                "circle-opacity": 0.85,
+                "circle-stroke-width": 1,
+                "circle-stroke-color": "#ffffff"
+              },
+              "metadata": {
+                "title": "Reporting points",
+                "abstract": "VFR reporting points, compulsory and on request. Source: OpenAIP.",
+                "legendRole": "overlay"
+              }
+            }
+          },
+          "attributes": [
+            {
+              "name": "source_id"
+            },
+            {
+              "name": "feature_type"
+            },
+            {
+              "name": "country"
+            },
+            {
+              "name": "compulsory"
+            },
+            {
+              "name": "type"
+            },
+            {
+              "name": "airports"
+            },
+            {
+              "name": "name"
+            }
+          ],
+          "attributesFrom": "https://api.tiles.openaip.net/api/data/openaip/{z}/{x}/{y}.pbf",
+          "availability": "up",
+          "lastChecked": "2026-09-05"
+        },
+        {
+          "id": "openaip-obstacles",
+          "title": "Obstacles",
+          "abstract": "Masts, towers, chimneys, wind turbines and buildings, with height and top elevation. Source: OpenAIP.",
+          "type": "vector",
+          "status": "active",
+          "requiresKey": true,
+          "webmapxConfig": {
+            "source": {
+              "type": "vector",
+              "tiles": [
+                "https://api.tiles.openaip.net/api/data/openaip/{z}/{x}/{y}.pbf?apiKey={key-openaip}"
+              ],
+              "maxzoom": 12,
+              "attribution": "&copy; <a href='https://www.openaip.net'>OpenAIP</a>"
+            },
+            "layer": {
+              "id": "openaip-obstacles",
+              "type": "circle",
+              "source-layer": "obstacles",
+              "paint": {
+                "circle-radius": 3,
+                "circle-color": "#9a0e0e",
+                "circle-opacity": 0.85,
+                "circle-stroke-width": 1,
+                "circle-stroke-color": "#ffffff"
+              },
+              "metadata": {
+                "title": "Obstacles",
+                "abstract": "Masts, towers, chimneys, wind turbines and buildings, with height and top elevation. Source: OpenAIP.",
+                "legendRole": "overlay"
+              }
+            }
+          },
+          "attributes": [
+            {
+              "name": "source_id"
+            },
+            {
+              "name": "osm_id"
+            },
+            {
+              "name": "feature_type"
+            },
+            {
+              "name": "country"
+            },
+            {
+              "name": "name"
+            },
+            {
+              "name": "name_label"
+            },
+            {
+              "name": "name_label_full"
+            },
+            {
+              "name": "type"
+            },
+            {
+              "name": "elevation_top"
+            },
+            {
+              "name": "height"
+            }
+          ],
+          "attributesFrom": "https://api.tiles.openaip.net/api/data/openaip/{z}/{x}/{y}.pbf",
+          "availability": "up",
+          "lastChecked": "2026-09-05"
+        },
+        {
+          "id": "openaip-hotspots",
+          "title": "Thermal hotspots",
+          "abstract": "Thermal hotspots for gliding, with reliability and time of occurrence. Source: OpenAIP.",
+          "type": "vector",
+          "status": "active",
+          "requiresKey": true,
+          "webmapxConfig": {
+            "source": {
+              "type": "vector",
+              "tiles": [
+                "https://api.tiles.openaip.net/api/data/openaip/{z}/{x}/{y}.pbf?apiKey={key-openaip}"
+              ],
+              "maxzoom": 12,
+              "attribution": "&copy; <a href='https://www.openaip.net'>OpenAIP</a>"
+            },
+            "layer": {
+              "id": "openaip-hotspots",
+              "type": "circle",
+              "source-layer": "hotspots",
+              "paint": {
+                "circle-radius": 5,
+                "circle-color": "#ff9200",
+                "circle-opacity": 0.85,
+                "circle-stroke-width": 1,
+                "circle-stroke-color": "#ffffff"
+              },
+              "metadata": {
+                "title": "Thermal hotspots",
+                "abstract": "Thermal hotspots for gliding, with reliability and time of occurrence. Source: OpenAIP.",
+                "legendRole": "overlay"
+              }
+            }
+          },
+          "attributes": [
+            {
+              "name": "source_id"
+            },
+            {
+              "name": "feature_type"
+            },
+            {
+              "name": "country"
+            },
+            {
+              "name": "name"
+            },
+            {
+              "name": "name_label"
+            },
+            {
+              "name": "name_label_full"
+            },
+            {
+              "name": "type"
+            },
+            {
+              "name": "reliability"
+            },
+            {
+              "name": "occurrence"
+            }
+          ],
+          "attributesFrom": "https://api.tiles.openaip.net/api/data/openaip/{z}/{x}/{y}.pbf",
+          "availability": "up",
+          "lastChecked": "2026-09-05"
+        },
+        {
+          "id": "openaip-hang-gliding",
+          "title": "Hang gliding sites",
+          "abstract": "Hang gliding take-off and landing sites, with suitable wind directions. Source: OpenAIP.",
+          "type": "vector",
+          "status": "active",
+          "requiresKey": true,
+          "webmapxConfig": {
+            "source": {
+              "type": "vector",
+              "tiles": [
+                "https://api.tiles.openaip.net/api/data/openaip/{z}/{x}/{y}.pbf?apiKey={key-openaip}"
+              ],
+              "maxzoom": 12,
+              "attribution": "&copy; <a href='https://www.openaip.net'>OpenAIP</a>"
+            },
+            "layer": {
+              "id": "openaip-hang-gliding",
+              "type": "circle",
+              "source-layer": "hang_glidings",
+              "paint": {
+                "circle-radius": 4,
+                "circle-color": "#008baf",
+                "circle-opacity": 0.85,
+                "circle-stroke-width": 1,
+                "circle-stroke-color": "#ffffff"
+              },
+              "metadata": {
+                "title": "Hang gliding sites",
+                "abstract": "Hang gliding take-off and landing sites, with suitable wind directions. Source: OpenAIP.",
+                "legendRole": "overlay"
+              }
+            }
+          },
+          "attributes": [
+            {
+              "name": "source_id"
+            },
+            {
+              "name": "feature_type"
+            },
+            {
+              "name": "country"
+            },
+            {
+              "name": "name"
+            },
+            {
+              "name": "name_label"
+            },
+            {
+              "name": "name_label_full"
+            },
+            {
+              "name": "type"
+            },
+            {
+              "name": "certified"
+            },
+            {
+              "name": "suitable_wind_direction"
+            }
+          ],
+          "attributesFrom": "https://api.tiles.openaip.net/api/data/openaip/{z}/{x}/{y}.pbf",
+          "availability": "up",
+          "lastChecked": "2026-09-05"
+        },
+        {
+          "id": "openaip-rc-airfields",
+          "title": "RC model airfields",
+          "abstract": "Model aircraft airfields, with the propulsion types allowed. Source: OpenAIP.",
+          "type": "vector",
+          "status": "active",
+          "requiresKey": true,
+          "webmapxConfig": {
+            "source": {
+              "type": "vector",
+              "tiles": [
+                "https://api.tiles.openaip.net/api/data/openaip/{z}/{x}/{y}.pbf?apiKey={key-openaip}"
+              ],
+              "maxzoom": 12,
+              "attribution": "&copy; <a href='https://www.openaip.net'>OpenAIP</a>"
+            },
+            "layer": {
+              "id": "openaip-rc-airfields",
+              "type": "circle",
+              "source-layer": "rc_airfields",
+              "paint": {
+                "circle-radius": 4,
+                "circle-color": "#2973f8",
+                "circle-opacity": 0.85,
+                "circle-stroke-width": 1,
+                "circle-stroke-color": "#ffffff"
+              },
+              "metadata": {
+                "title": "RC model airfields",
+                "abstract": "Model aircraft airfields, with the propulsion types allowed. Source: OpenAIP.",
+                "legendRole": "overlay"
+              }
+            }
+          },
+          "attributes": [
+            {
+              "name": "source_id"
+            },
+            {
+              "name": "osm_id"
+            },
+            {
+              "name": "feature_type"
+            },
+            {
+              "name": "country"
+            },
+            {
+              "name": "name"
+            },
+            {
+              "name": "name_label"
+            },
+            {
+              "name": "name_label_full"
+            },
+            {
+              "name": "electric"
+            },
+            {
+              "name": "combustion"
+            },
+            {
+              "name": "turbine"
+            }
+          ],
+          "attributesFrom": "https://api.tiles.openaip.net/api/data/openaip/{z}/{x}/{y}.pbf",
+          "availability": "up",
+          "lastChecked": "2026-09-05"
+        }
+      ]
     }
   ]
 }
