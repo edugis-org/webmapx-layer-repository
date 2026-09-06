@@ -72,6 +72,10 @@
             "type": "string"
           },
           "description": "Themes the provider's layers cover. Carried through to the harvested provider record; harvesting cannot infer it from a capabilities document."
+        },
+        "attribution": {
+          "type": "string",
+          "description": "Credit line every harvested layer carries, written into webmapxConfig.source.attribution. Set it when the licensor dictates the wording — CC BY licences do. {year} resolves at harvest time. Left out, one is built from the provider's name, url and licence."
         }
       }
     },
@@ -122,6 +126,14 @@
         "limit": {
           "type": "integer",
           "description": "Cap on layers taken, for a first pass at a very large source"
+        },
+        "enrich": {
+          "type": "boolean",
+          "description": "Set false to skip legend and attribute enrichment for this source. Attribute schemas cost one request per layer, so a service offering tens of thousands of layers is left unenriched rather than hammered on every harvest."
+        },
+        "expandStyles": {
+          "type": "boolean",
+          "description": "Set false to keep a layer with several published WMS styles as one layer. Default is to expand: a style is a different rendering of the same source, which is what a layer is."
         }
       }
     },

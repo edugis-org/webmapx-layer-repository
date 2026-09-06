@@ -35,10 +35,36 @@ const slug = s => String(s ?? '').toLowerCase().normalize('NFD').replace(/[̀-ͯ
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60);
 const arr = x => (x === undefined || x === null ? [] : Array.isArray(x) ? x : [x]);
 
-function mkLayer({ id, name, title, abstract, datasetId, url, kind, background, bounds }) {
+/**
+ * Attribution a harvested layer must carry.
+ *
+ * A licence is a condition of use, not a note in a catalogue: a CC BY layer
+ * copied out of here without its credit line is being used in breach of the
+ * terms, and the consumer has no way of knowing. So the credit travels inside
+ * webmapxConfig.source.attribution, where every renderer already shows it,
+ * rather than staying on the provider record where only this UI would see it.
+ *
+ * Sources state their own text when the licensor dictates one — the
+ * Klimaateffectatlas asks for "Klimaateffectatlas, <year>". {year} resolves at
+ * harvest time. Otherwise it is built from the provider's name, site and
+ * licence, which is what an attribution-required licence asks for.
+ */
+function attributionFor(source) {
+    const p = source.provider ?? {};
+    if (p.attribution) return String(p.attribution).replace(/\{year\}/g, new Date().getFullYear());
+    if (!p.name) return undefined;
+    const who = p.url ? `<a href="${p.url}">${p.name}</a>` : p.name;
+    return p.license ? `&copy; ${who} (${p.license})` : `&copy; ${who}`;
+}
+
+function mkLayer({ id, name, title, abstract, datasetId, url, kind, background, bounds, attribution }) {
     const src = kind === 'geojson'
-        ? { type: 'geojson', data: url }
-        : { type: 'raster', tiles: [url], tileSize: 256, ...(bounds ? { bounds } : {}) };
+        ? { type: 'geojson', data: url, ...(attribution ? { attribution } : {}) }
+        : {
+            type: 'raster', tiles: [url], tileSize: 256,
+            ...(attribution ? { attribution } : {}),
+            ...(bounds ? { bounds } : {}),
+        };
     return {
         id, ...(name ? { name } : {}), title,
         ...(abstract ? { abstract: abstract.slice(0, 600) } : {}),
@@ -103,7 +129,7 @@ async function readPdokPluginList(source) {
 
         svc.layers.push(mkLayer({
             id, name: r.name, title: r.title, abstract: r.abstract, datasetId: r.dataset_md_id,
-            url, kind, bounds: source.bounds,
+            url, kind, bounds: source.bounds, attribution: attributionFor(source),
             background: /achtergrond|luchtfoto|ortho|topografi/i.test(r.title),
         }));
         services.set(key, svc);
@@ -140,7 +166,7 @@ async function readWmsCapabilities(source) {
                     out.push(mkLayer({
                         id, name, title, abstract: l.Abstract ? String(l.Abstract) : undefined,
                         url: `${endpoint}?LAYERS=${encodeURIComponent(name)}&${WMS_TAIL}`, kind: 'wms',
-                        bounds: source.bounds,
+                        bounds: source.bounds, attribution: attributionFor(source),
                     }));
                 }
             }
@@ -342,7 +368,11 @@ for (const source of sources) {
     try { services = await reader(source); }
     catch (e) { console.log(`failed: ${e.message}`); failed++; continue; }
 
-    if (enrich) {
+    // A source can decline enrichment. Reading legends is one request per
+    // service, but attribute schemas are one per layer, and a service offering
+    // 16,000 layers would turn a harvest into a small denial of service against
+    // the people publishing the data for free.
+    if (enrich && (source.include ?? {}).enrich !== false) {
         process.stdout.write('\n   enriching ');
         const expand = (source.include ?? {}).expandStyles !== false;
         const { legends, schemas, expansions } = await enrichServices(services, expand);

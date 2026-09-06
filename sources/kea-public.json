@@ -18,7 +18,8 @@
     "operator": {
       "type": "nonprofit",
       "country": "NL"
-    }
+    },
+    "attribution": "Klimaateffectatlas, {year} (<a href=\"https://creativecommons.org/licenses/by/4.0/\">CC BY 4.0</a>)"
   },
   "region": "world/europe/netherlands",
   "include": {

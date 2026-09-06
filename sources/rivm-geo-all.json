@@ -1,0 +1,35 @@
+{
+  "id": "rivm-geo-all",
+  "title": "RIVM GeoServer — full catalogue",
+  "type": "wms-capabilities",
+  "url": "https://data.rivm.nl/geo/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities",
+  "note": "Everything RIVM's GeoServer publishes: 16,161 named layers, mostly dashboard workspaces (dash:n2k alone is 10,033 Natura 2000 layers) that the themed alo/ank/dmg endpoints do not carry. Its capabilities document is 75 MB and takes ~30s to fetch, and enrichment is declined here: attribute schemas cost one request per layer, and 16,000 of those against a free public service is not a reasonable thing to do on every harvest. The themed endpoints stay listed separately because they are what the atlases actually publish.",
+  "provider": {
+    "id": "rivm",
+    "name": "RIVM",
+    "url": "https://www.rivm.nl",
+    "license": "CC-BY-4.0",
+    "access": "free",
+    "categories": [
+      "environment",
+      "health",
+      "nature"
+    ],
+    "operator": {
+      "type": "government",
+      "country": "NL"
+    }
+  },
+  "region": "world/europe/netherlands",
+  "include": {
+    "crs": "EPSG:3857",
+    "enrich": false
+  },
+  "enabled": true,
+  "bounds": [
+    3.2,
+    50.75,
+    7.22,
+    53.7
+  ]
+}

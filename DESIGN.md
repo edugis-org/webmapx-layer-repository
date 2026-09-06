@@ -44,8 +44,8 @@ generated layer records, so nobody should be asked to.
 **cannot be regenerated**. No rerun recreates "up 51 of the last 52 weeks"; it
 only accrues by observing. It is not a build artifact.
 
-Current state: 152 curated layers in 50 services across 27 providers; 11,791
-harvested layers in 240 services from **9 source files**. Four providers that
+Current state: 152 curated layers in 50 services across 27 providers; 27,952
+harvested layers in 241 services from **10 source files**. Four providers that
 were hand-written are now sources, and their curated files are gone.
 
 A provider can be reached through several sources — RIVM publishes Atlas
@@ -106,6 +106,13 @@ fields; `GetFeatureInfo` samples a point and returns whatever is there — one
 feature, not a schema, and nothing where the map is empty. `DescribeFeatureType`
 on the WFS beside it (`/wms/` → `/wfs/`) gives a typed list. Where that 404s the
 data is genuinely raster, which is worth recording rather than retrying.
+
+**A licence condition travels with the layer.** Attribution goes into
+`webmapxConfig.source.attribution`, not onto the provider record: a CC BY layer
+copied out of this catalog without its credit line is being used in breach of
+its terms, and the consumer cannot know that from the config alone. Sources give
+the exact wording when the licensor dictates one (`{year}` resolves at harvest);
+otherwise it is built from the provider's name, site and licence.
 
 **Legends come from `LegendURL` in the capabilities document**, not a constructed
 `GetLegendGraphic` call — PDOK answers that with `OperationNotSupported` while
