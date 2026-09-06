@@ -7,21 +7,22 @@
       "checks": [
         {
           "date": "2026-09-06",
-          "availability": "unreachable",
-          "ms": 29902,
-          "reason": "The operation was aborted due to timeout"
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 33285,
+          "layersOffered": 16164
         }
       ],
       "summary": {
         "firstChecked": "2026-09-06",
         "lastChecked": "2026-09-06",
-        "current": "unreachable",
+        "current": "up",
         "checks": 1,
-        "up": 0,
-        "uptime": 0,
+        "up": 1,
+        "uptime": 1,
         "untested": 0,
-        "consecutiveFailures": 1,
-        "lastDown": "2026-09-06"
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-06"
       }
     }
   }

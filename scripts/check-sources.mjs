@@ -22,7 +22,10 @@ import { recordCheck, HISTORY_LIMIT } from '../lib/uptime.mjs';
 const ROOT = resolve(fileURLToPath(import.meta.url), '../../');
 const SOURCES = join(ROOT, 'sources');
 const STATUS_DIR = join(ROOT, 'status', 'sources');
-const TIMEOUT_MS = 30000;
+// RIVM's full catalogue answers with a 75 MB capabilities document, which takes
+// about half a minute on a good line. A probe that times out on size would
+// record a healthy service as unreachable.
+const TIMEOUT_MS = 180000;
 
 const args = process.argv.slice(2);
 const dryRun = args.includes('--dry-run');
