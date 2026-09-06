@@ -46,7 +46,17 @@ function mkLayer({ id, name, title, abstract, datasetId, url, kind, background, 
         type: kind, requiresKey: false,
         webmapxConfig: {
             source: src,
-            layer: { id, type: 'raster', metadata: { title, legendRole: background ? 'background' : 'overlay' } },
+            // The abstract goes in metadata, not only on our own record: webmapx's
+            // layer-info dialog reads layer.metadata.abstract and shows a
+            // "no information available" placeholder when it is absent.
+            layer: {
+                id, type: 'raster',
+                metadata: {
+                    title,
+                    ...(abstract ? { abstract: abstract.slice(0, 600) } : {}),
+                    legendRole: background ? 'background' : 'overlay',
+                },
+            },
         },
     };
 }
