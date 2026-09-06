@@ -577,7 +577,23 @@ function firstText(el, localName) {
   return kids(el, localName)[0]?.textContent?.trim();
 }
 
-async function serviceLegends(service) {
+/** A layer's WGS84 extent: EX_GeographicBoundingBox (1.3.0) or LatLonBoundingBox (1.1.1). */
+function layerBounds(el) {
+  const ex = kids(el, 'EX_GeographicBoundingBox')[0];
+  if (ex) {
+    const b = ['westBoundLongitude', 'southBoundLatitude', 'eastBoundLongitude', 'northBoundLatitude']
+      .map(n => Number(firstText(ex, n)));
+    if (b.every(Number.isFinite)) return b;
+  }
+  const ll = kids(el, 'LatLonBoundingBox')[0];
+  if (ll) {
+    const b = ['minx', 'miny', 'maxx', 'maxy'].map(n => Number(ll.getAttribute(n)));
+    if (b.every(Number.isFinite)) return b;
+  }
+  return null;
+}
+
+async function serviceCapabilities(service) {
   if (!service?.capabilitiesUrl) return null;
   if (!capsCache.has(service.capabilitiesUrl)) {
     capsCache.set(service.capabilitiesUrl, (async () => {
@@ -587,9 +603,10 @@ async function serviceLegends(service) {
       // a default namespace and 1.1.1 in none, and Layer nests inside Layer, so
       // a descendant query would attribute a child's styles to its parent.
       const byLayer = new Map();
-      (function walk(node) {
+      (function walk(node, inheritedBounds) {
         for (const layer of kids(node, 'Layer')) {
           const name = firstText(layer, 'Name');
+          const bounds = layerBounds(layer) ?? inheritedBounds;
           if (name) {
             const styles = new Map();
             for (const st of kids(layer, 'Style')) {
@@ -600,13 +617,13 @@ async function serviceLegends(service) {
               styles.set(firstText(st, 'Name') ?? '', href);
               if (!styles.has('')) styles.set('', href);   // the service default
             }
-            if (styles.size) byLayer.set(name, styles);
+            if (styles.size || bounds) byLayer.set(name, { styles, bounds });
           }
-          walk(layer);
+          walk(layer, bounds);
         }
       })(doc.documentElement.getElementsByTagName('*').length
           ? [...doc.documentElement.children].find(c => c.localName === 'Capability') ?? doc.documentElement
-          : doc.documentElement);
+          : doc.documentElement, null);
       return byLayer;
     })());
   }
@@ -618,9 +635,9 @@ async function loadLegend(layer, service) {
   const slot = document.getElementById('layer-legend');
   if (!slot) return;
   try {
-    const byLayer = await serviceLegends(service);
-    const href = byLayer?.get(layer.name)?.get(layer.styleName ?? '')
-              ?? byLayer?.get(layer.name)?.get('');
+    const byLayer = await serviceCapabilities(service);
+    const styles = byLayer?.get(layer.name)?.styles;
+    const href = styles?.get(layer.styleName ?? '') ?? styles?.get('');
     slot.innerHTML = href
       ? `<h4>Legend</h4><img src="${href}" alt="Legend for ${layer.title}" loading="lazy">`
       : '';
@@ -706,6 +723,31 @@ function showConfig(index) {
   openDialog();
 }
 
+/**
+ * Adopt the layer's own extent from the capabilities document.
+ *
+ * A layer harvested before this was read, or one whose source only knew the
+ * service-wide box, claims an extent far larger than its data — "zoom to layer"
+ * on a US Census layer then frames the globe. The capabilities document states
+ * each layer's own bounding box, and it is already being fetched for the legend,
+ * so prefer what the service says over what we stored.
+ */
+async function applyLayerBounds(layer, service) {
+  if (!service?.capabilitiesUrl || !activeConfig?.source) return;
+  try {
+    const byLayer = await serviceCapabilities(service);
+    const bounds = byLayer?.get(layer.name)?.bounds;
+    if (!bounds) return;
+    const current = activeConfig.source.bounds;
+    if (current && current.every((v, i) => Math.abs(v - bounds[i]) < 1e-6)) return;
+    // Only the still-open layer, and only while nothing else has replaced it.
+    if (activeLayerRecord !== layer) return;
+    activeConfig = { ...activeConfig, source: { ...activeConfig.source, bounds } };
+    document.getElementById('dialog-code').textContent = JSON.stringify(activeConfig, null, 2);
+    initPreviewMap(activeConfig);
+  } catch { /* the map keeps whatever bounds it had */ }
+}
+
 async function showPreview(index) {
   const entry = getEntry(index);
   const layer = entry.layer;
@@ -717,6 +759,7 @@ async function showPreview(index) {
   renderInfo(layer, entry.service);
   loadAttributes(layer, entry.service);
   loadLegend(layer, entry.service);
+  applyLayerBounds(layer, entry.service);
   switchTab('preview');
   openDialog();
 

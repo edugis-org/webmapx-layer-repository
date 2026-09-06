@@ -153,9 +153,11 @@ async function readWmsCapabilities(source) {
 
     // Layers nest; only those with a <Name> are requestable.
     const out = []; const ids = new Set();
-    (function walk(node, inheritedCrs) {
+    (function walk(node, inheritedCrs, inheritedBounds) {
         for (const l of arr(node?.Layer)) {
             const crs = [...new Set([...inheritedCrs, ...arr(l.CRS ?? l.SRS).map(String)])];
+            // Per the spec a nested layer inherits its parent's extent.
+            const extent = boundsOf(l) ?? inheritedBounds;
             if (l.Name !== undefined) {
                 const name = String(l.Name);
                 const title = String(l.Title ?? name);
@@ -168,7 +170,10 @@ async function readWmsCapabilities(source) {
                     const layer = mkLayer({
                         id, name, title, abstract: l.Abstract ? String(l.Abstract) : undefined,
                         url: `${endpoint}?LAYERS=${encodeURIComponent(name)}&${WMS_TAIL}`, kind: 'wms',
-                        bounds: source.bounds, attribution: attributionFor(source),
+                        // The layer's own extent where it states one; the
+                        // source's only as a fallback.
+                        bounds: extent ?? source.bounds,
+                        attribution: attributionFor(source),
                     });
                     // Styles and their legends are in the document already being
                     // parsed, so they cost nothing here. Only attribute schemas,
@@ -180,9 +185,9 @@ async function readWmsCapabilities(source) {
                         : [layer]));
                 }
             }
-            walk(l, crs);
+            walk(l, crs, extent);
         }
-    })(cap.Capability, []);
+    })(cap.Capability, [], null);
 
     const root = arr(cap.Capability?.Layer)[0] ?? {};
     return [{
@@ -220,6 +225,30 @@ const XML = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: '@' })
  * Vierkantstatistieken each style is a different variable (inhabitants, distance
  * to a pharmacy), not a restyle of one.
  */
+/**
+ * A layer's own extent, from the capabilities document.
+ *
+ * WMS 1.3.0 states it as EX_GeographicBoundingBox and 1.1.1 as
+ * LatLonBoundingBox, both in WGS84. Without it a layer inherits the source's
+ * bounds, which describe the service: every TIGERweb layer would claim the
+ * whole world because the service spans Guam to Maine, and "zoom to layer"
+ * would land on the globe instead of on the data.
+ */
+function boundsOf(layerNode) {
+    const ex = arr(layerNode.EX_GeographicBoundingBox)[0];
+    if (ex) {
+        const b = [ex.westBoundLongitude, ex.southBoundLatitude,
+                   ex.eastBoundLongitude, ex.northBoundLatitude].map(Number);
+        if (b.every(Number.isFinite)) return b;
+    }
+    const ll = arr(layerNode.LatLonBoundingBox)[0];
+    if (ll) {
+        const b = [ll['@minx'], ll['@miny'], ll['@maxx'], ll['@maxy']].map(Number);
+        if (b.every(Number.isFinite)) return b;
+    }
+    return null;
+}
+
 function stylesOf(layerNode) {
     return arr(layerNode.Style).map(st => ({
         name: st.Name === undefined ? undefined : String(st.Name),
@@ -232,13 +261,13 @@ async function stylesFor(capabilitiesUrl) {
     const cap = XML.parse(await cachedText(capabilitiesUrl));
     const root = cap.WMS_Capabilities ?? cap.WMT_MS_Capabilities;
     const out = new Map();
-    (function walk(node) {
+    (function walk(node, inheritedBounds) {
         for (const l of arr(node?.Layer)) {
-            const styles = stylesOf(l);
-            if (l.Name !== undefined && styles.length) out.set(String(l.Name), styles);
-            walk(l);
+            const bounds = boundsOf(l) ?? inheritedBounds;
+            if (l.Name !== undefined) out.set(String(l.Name), { styles: stylesOf(l), bounds });
+            walk(l, bounds);
         }
-    })(root?.Capability);
+    })(root?.Capability, null);
     return out;
 }
 
@@ -345,7 +374,13 @@ async function enrichServices(services, expand) {
                 const map = await stylesFor(svc.capabilitiesUrl);
                 const out = [];
                 for (const l of svc.layers) {
-                    const styles = map.get(l.name);
+                    const entry = map.get(l.name);
+                    // A catalogue gave us this layer, so nothing had read its own
+                    // extent; the capabilities document states it.
+                    if (entry?.bounds && l.webmapxConfig?.source) {
+                        l.webmapxConfig.source.bounds = entry.bounds;
+                    }
+                    const styles = entry?.styles?.length ? entry.styles : null;
                     if (!styles) { out.push(l); continue; }
                     const expanded = expand ? expandStyles(l, styles) : [l];
                     if (!expand) {

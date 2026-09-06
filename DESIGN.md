@@ -101,6 +101,15 @@ Only a composited (L3) or analysed (L4) product does. `coverage` and
 `compositedOver` record this so users can choose correctly instead of discovering
 holes.
 
+**A layer's extent is the layer's, not the service's.** Every layer used to
+inherit the source's bounding box, which describes the endpoint: every TIGERweb
+layer claimed Guam to Maine, so "zoom to layer" framed the globe. The
+capabilities document states each layer's own `EX_GeographicBoundingBox`
+(1.1.1: `LatLonBoundingBox`), inherited from the parent layer where a nested one
+omits it, and that is what is stored now. For layers reached through a catalogue
+rather than a capabilities document, the previewer adopts the extent from the
+document it already fetches for the legend.
+
 **Harvest stores what a capabilities document says; the previewer asks for the
 rest.** Two requests per service — the WMS capabilities and the WFS capabilities
 — give the legend URL, abstract, styles and which feature type backs each layer.
