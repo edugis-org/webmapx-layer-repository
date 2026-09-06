@@ -3,98 +3,260 @@
   "$id": "provider.schema.json",
   "title": "WebMapX Layer Repository — Provider File",
   "type": "object",
-  "required": ["provider"],
+  "required": [
+    "provider"
+  ],
   "properties": {
     "provider": {
       "type": "object",
-      "required": ["id", "name", "access"],
+      "required": [
+        "id",
+        "name",
+        "access"
+      ],
       "properties": {
-        "id":         { "type": "string", "description": "Unique slug, e.g. 'openstreetmap'" },
-        "name":       { "type": "string", "description": "Human-readable provider name" },
-        "url":        { "type": "string", "format": "uri" },
-        "logo":       { "type": "string", "description": "URL or relative path to provider logo" },
-        "abstract":   { "type": "string", "description": "Short description of what the provider offers" },
+        "id": {
+          "type": "string",
+          "description": "Unique slug, e.g. 'openstreetmap'"
+        },
+        "name": {
+          "type": "string",
+          "description": "Human-readable provider name"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "logo": {
+          "type": "string",
+          "description": "URL or relative path to provider logo"
+        },
+        "abstract": {
+          "type": "string",
+          "description": "Short description of what the provider offers"
+        },
         "access": {
           "type": "string",
-          "enum": ["free", "api-key", "paid", "registration"],
+          "enum": [
+            "free",
+            "api-key",
+            "paid",
+            "registration"
+          ],
           "description": "free = no auth needed; api-key = free with key; paid = commercial; registration = free after sign-up"
         },
-        "apiKeyUrl":  { "type": "string", "format": "uri", "description": "Where to obtain an API key" },
-        "setupUrl":   { "type": "string", "format": "uri", "description": "Setup or dashboard URL for domain/property registration" },
-        "note":       { "type": "string", "description": "Free-text setup note shown in the UI, e.g. authentication instructions" },
-        "license":    { "type": "string", "description": "Data license, e.g. ODbL, CC-BY-4.0, proprietary" },
+        "apiKeyUrl": {
+          "type": "string",
+          "format": "uri",
+          "description": "Where to obtain an API key"
+        },
+        "setupUrl": {
+          "type": "string",
+          "format": "uri",
+          "description": "Setup or dashboard URL for domain/property registration"
+        },
+        "note": {
+          "type": "string",
+          "description": "Free-text setup note shown in the UI, e.g. authentication instructions"
+        },
+        "license": {
+          "type": "string",
+          "description": "Data license, e.g. ODbL, CC-BY-4.0, proprietary"
+        },
         "categories": {
           "type": "array",
           "items": {
             "type": "string",
             "enum": [
-              "general-purpose", "street-maps", "satellite", "elevation", "terrain", "artistic",
-              "weather", "climate", "population", "boundaries", "transport",
-              "hydrology", "geology", "tectonic", "environment", "land-use",
-              "historical", "realtime", "indoor", "maritime", "aviation"
+              "general-purpose",
+              "street-maps",
+              "satellite",
+              "elevation",
+              "terrain",
+              "artistic",
+              "weather",
+              "climate",
+              "population",
+              "boundaries",
+              "transport",
+              "hydrology",
+              "geology",
+              "tectonic",
+              "environment",
+              "land-use",
+              "historical",
+              "realtime",
+              "indoor",
+              "maritime",
+              "aviation"
             ]
           }
         },
         "regions": {
           "type": "array",
-          "items": { "type": "string" },
+          "items": {
+            "type": "string"
+          },
           "description": "Regions covered, e.g. ['world'], ['europe', 'netherlands']"
         },
-        "operator": { "$ref": "#/$defs/operator" },
-        "cost":     { "$ref": "#/$defs/cost" },
-        "lifecycle":    { "$ref": "#/$defs/lifecycle" },
-        "availability": { "$ref": "#/$defs/availability" },
+        "operator": {
+          "$ref": "#/$defs/operator"
+        },
+        "cost": {
+          "$ref": "#/$defs/cost"
+        },
+        "lifecycle": {
+          "$ref": "#/$defs/lifecycle"
+        },
+        "availability": {
+          "$ref": "#/$defs/availability"
+        },
         "status": {
           "type": "string",
-          "enum": ["active", "deprecated", "unknown"],
+          "enum": [
+            "active",
+            "deprecated",
+            "unknown"
+          ],
           "default": "active",
           "deprecated": true,
           "description": "DEPRECATED — conflated announced intent with measured reachability. Use lifecycle (curated) and availability (measured) instead. Retained so existing files validate; scripts/migrate-status.mjs converts."
         },
-        "lastChecked": { "type": "string", "format": "date", "description": "Date of the last availability probe. Point-in-time only; the uptime record lives in status/ (see status.schema.json)." }
+        "lastChecked": {
+          "type": "string",
+          "format": "date",
+          "description": "Date of the last availability probe. Point-in-time only; the uptime record lives in status/ (see status.schema.json)."
+        }
       }
     },
     "services": {
       "type": "array",
       "description": "The endpoints this provider runs. A provider may operate several: a WMTS for basemaps, a WMS for thematic overlays, a WFS for features. Grouping layers under the service that serves them keeps the endpoint, its CRS list, formats and auth stated once instead of repeated on every layer.",
-      "items": { "$ref": "#/$defs/service" }
+      "items": {
+        "$ref": "#/$defs/service"
+      }
     },
     "layers": {
       "type": "array",
       "description": "DEPRECATED — layers now hang off a service. Retained so pre-migration files still validate; scripts/migrate-services.mjs converts them.",
       "deprecated": true,
-      "items": { "$ref": "#/$defs/layer" }
+      "items": {
+        "$ref": "#/$defs/layer"
+      }
     }
   },
   "$defs": {
     "service": {
       "type": "object",
-      "required": ["id", "type", "layers"],
+      "required": [
+        "id",
+        "type",
+        "layers"
+      ],
       "properties": {
-        "id":       { "type": "string", "description": "Slug, unique within the provider file" },
-        "title":    { "type": "string" },
-        "abstract": { "type": "string" },
+        "id": {
+          "type": "string",
+          "description": "Slug, unique within the provider file"
+        },
+        "title": {
+          "type": "string"
+        },
+        "abstract": {
+          "type": "string"
+        },
         "type": {
           "type": "string",
-          "enum": ["wms", "wmts", "wfs", "wcs", "xyz", "vector-tiles", "geojson", "style", "ogc-api-tiles", "ogc-api-features", "arcgis-rest"],
+          "enum": [
+            "wms",
+            "wmts",
+            "wfs",
+            "wcs",
+            "xyz",
+            "vector-tiles",
+            "geojson",
+            "style",
+            "ogc-api-tiles",
+            "ogc-api-features",
+            "arcgis-rest"
+          ],
           "description": "Protocol the endpoint speaks. Distinct from a layer's rendering type: a WMS service yields raster layers, an OGC API Features service yields vector ones."
         },
-        "endpoint": { "type": "string", "description": "Base URL of the service, without request parameters. The identity of the service — two layers sharing it share an operator, an SLA and a rate limit." },
-        "capabilitiesUrl": { "type": "string", "description": "Self-description document (WMS/WMTS GetCapabilities, OGC API landing page). Where a harvester re-reads this service." },
-        "crs":     { "type": "array", "items": { "type": "string" }, "description": "Coordinate reference systems advertised, e.g. EPSG:3857. A service without EPSG:3857 cannot be used directly by MapLibre." },
-        "formats": { "type": "array", "items": { "type": "string" }, "description": "Output formats advertised, e.g. image/png" },
-        "metadataId": { "type": "string", "description": "Service metadata identifier in the provider's catalogue, e.g. an INSPIRE service_md_id" },
-        "lifecycle":    { "$ref": "#/$defs/lifecycle" },
-        "availability": { "$ref": "#/$defs/availability" },
-        "cost":         { "$ref": "#/$defs/cost", "description": "Only when this endpoint is priced apart from the provider default — a high-SLA provider can still run one experimental service" },
-        "operator":     { "$ref": "#/$defs/operator", "description": "Only when this endpoint is run by someone other than the provider, e.g. a cache fronting an upstream service" },
+        "endpoint": {
+          "type": "string",
+          "description": "Base URL of the service, without request parameters. The identity of the service — two layers sharing it share an operator, an SLA and a rate limit."
+        },
+        "capabilitiesUrl": {
+          "type": "string",
+          "description": "Self-description document (WMS/WMTS GetCapabilities, OGC API landing page). Where a harvester re-reads this service."
+        },
+        "crs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Coordinate reference systems advertised, e.g. EPSG:3857. A service without EPSG:3857 cannot be used directly by MapLibre."
+        },
+        "formats": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Output formats advertised, e.g. image/png"
+        },
+        "metadataId": {
+          "type": "string",
+          "description": "Service metadata identifier in the provider's catalogue, e.g. an INSPIRE service_md_id"
+        },
+        "lifecycle": {
+          "$ref": "#/$defs/lifecycle"
+        },
+        "availability": {
+          "$ref": "#/$defs/availability"
+        },
+        "cost": {
+          "$ref": "#/$defs/cost",
+          "description": "Only when this endpoint is priced apart from the provider default — a high-SLA provider can still run one experimental service"
+        },
+        "operator": {
+          "$ref": "#/$defs/operator",
+          "description": "Only when this endpoint is run by someone other than the provider, e.g. a cache fronting an upstream service"
+        },
         "featuresEndpoint": {
           "type": "string",
           "description": "Companion service serving the same data as features, typically a WFS alongside a WMS. Where attribute schemas come from; absent for genuinely raster services, which have no attributes to describe."
         },
-        "legendUrl": { "type": "string", "description": "Legend for the service as a whole, when it publishes one rather than per layer" },
-        "harvestedFrom": { "type": "string", "description": "Where this service description came from, when it was generated rather than hand-written. Its presence means the entry is machine-maintained and hand edits will be overwritten." },
-        "layers": { "type": "array", "items": { "$ref": "#/$defs/layer" } }
+        "legendUrl": {
+          "type": "string",
+          "description": "Legend for the service as a whole, when it publishes one rather than per layer"
+        },
+        "harvestedFrom": {
+          "type": "string",
+          "description": "Where this service description came from, when it was generated rather than hand-written. Its presence means the entry is machine-maintained and hand edits will be overwritten."
+        },
+        "layers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/layer"
+          }
+        },
+        "featureTypes": {
+          "type": "object",
+          "description": "Attribute schemas for this service's feature types, keyed by WMS layer name. Held on the service rather than on each layer because every style of a layer describes the same feature type; copying it onto each style layer took one harvested file from 26 MB to 162 MB.",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "attributes": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "attributesFrom": {
+                "type": "string"
+              }
+            }
+          }
+        }
       }
     },
     "timeDimension": {
@@ -114,7 +276,9 @@
         "extent": {
           "type": "array",
           "description": "Validity, as ISO 8601 intervals in WMTS <Value> form: start/end/period, e.g. '2000-02-24/2026-09-05/P1D'. 'latest' is permitted as the end of an open interval.",
-          "items": { "type": "string" }
+          "items": {
+            "type": "string"
+          }
         },
         "period": {
           "type": "string",
@@ -123,13 +287,23 @@
         },
         "precision": {
           "type": "string",
-          "enum": ["year", "month", "day", "hour", "minute", "second"],
+          "enum": [
+            "year",
+            "month",
+            "day",
+            "hour",
+            "minute",
+            "second"
+          ],
           "default": "day",
           "description": "How much of the ISO 8601 instant the endpoint expects. 'day' renders 2026-09-05; 'second' renders 2026-09-05T14:30:00Z."
         },
         "coverage": {
           "type": "string",
-          "enum": ["global", "partial"],
+          "enum": [
+            "global",
+            "partial"
+          ],
           "default": "global",
           "description": "Whether ONE instant covers the whole extent. 'partial' means a single time yields orbital swaths or otherwise incomplete cover (satellite L2 products), and no choice of time will fill it in — only a composited or analysed product does. Choosing a time is therefore not a way to get full cover; this field tells the user which products can offer it at all."
         },
@@ -147,13 +321,24 @@
     },
     "lifecycle": {
       "type": "string",
-      "enum": ["stable", "beta", "deprecated", "retired"],
+      "enum": [
+        "stable",
+        "beta",
+        "deprecated",
+        "retired"
+      ],
       "default": "stable",
       "description": "Operator-announced intent, curated by hand. stable = in normal service; beta = offered without commitment; deprecated = end-of-life announced but still served; retired = withdrawn. Never written by tooling."
     },
     "availability": {
       "type": "string",
-      "enum": ["up", "down", "auth-required", "unreachable", "unknown"],
+      "enum": [
+        "up",
+        "down",
+        "auth-required",
+        "unreachable",
+        "unknown"
+      ],
       "description": "Last measured reachability, written by scripts/test-layers.mjs. up = 2xx; auth-required = 401/403, endpoint alive but rejected our credentials; down = 4xx/5xx other than auth; unreachable = DNS/TLS/timeout, no HTTP response; unknown = not testable (no config, or key missing). Never edited by hand."
     },
     "operator": {
@@ -162,22 +347,58 @@
       "properties": {
         "type": {
           "type": "string",
-          "enum": ["government", "intergovernmental", "commercial", "research", "community", "individual"],
+          "enum": [
+            "government",
+            "intergovernmental",
+            "commercial",
+            "research",
+            "community",
+            "individual"
+          ],
           "description": "government = national/regional public body; intergovernmental = EU, UN, ESA and similar; commercial = company with paying customers; research = university or institute; community = volunteer project with governance (OSM, OpenTopoMap); individual = one person's server"
         },
-        "name":    { "type": "string", "description": "Legal or institutional name, when it differs from provider.name" },
-        "country": { "type": "string", "pattern": "^[A-Z]{2}$", "description": "ISO 3166-1 alpha-2 country of the operating body" },
-        "since":   { "type": "integer", "description": "Year the service has been operating since, if known" },
+        "name": {
+          "type": "string",
+          "description": "Legal or institutional name, when it differs from provider.name"
+        },
+        "country": {
+          "type": "string",
+          "pattern": "^[A-Z]{2}$",
+          "description": "ISO 3166-1 alpha-2 country of the operating body"
+        },
+        "since": {
+          "type": "integer",
+          "description": "Year the service has been operating since, if known"
+        },
         "sla": {
           "type": "object",
           "description": "Only for a published, committed service level. Absence means no SLA, not an unknown one.",
           "properties": {
-            "url":          { "type": "string", "format": "uri" },
-            "uptimeTarget": { "type": "number", "minimum": 0, "maximum": 100, "description": "Committed uptime percentage, e.g. 99.9" },
-            "support":      { "type": "string", "enum": ["none", "community", "business-hours", "24x7"] }
+            "url": {
+              "type": "string",
+              "format": "uri"
+            },
+            "uptimeTarget": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 100,
+              "description": "Committed uptime percentage, e.g. 99.9"
+            },
+            "support": {
+              "type": "string",
+              "enum": [
+                "none",
+                "community",
+                "business-hours",
+                "24x7"
+              ]
+            }
           }
         },
-        "termsUrl": { "type": "string", "format": "uri" }
+        "termsUrl": {
+          "type": "string",
+          "format": "uri"
+        }
       }
     },
     "cost": {
@@ -186,71 +407,182 @@
       "properties": {
         "model": {
           "type": "string",
-          "enum": ["free", "freemium", "registration", "paid"],
+          "enum": [
+            "free",
+            "freemium",
+            "registration",
+            "paid"
+          ],
           "description": "free = no account, no charge; freemium = free tier then metered; registration = free but account required; paid = charged from the first request"
         },
-        "freeTier":  { "$ref": "#/$defs/quota", "description": "Ceiling of the no-charge allowance" },
-        "rateLimit": { "$ref": "#/$defs/quota", "description": "Throughput cap, independent of price" },
+        "freeTier": {
+          "$ref": "#/$defs/quota",
+          "description": "Ceiling of the no-charge allowance"
+        },
+        "rateLimit": {
+          "$ref": "#/$defs/quota",
+          "description": "Throughput cap, independent of price"
+        },
         "price": {
           "type": "array",
           "description": "Metered price points beyond the free tier. Indicative, not a quote.",
           "items": {
             "type": "object",
-            "required": ["amount", "currency", "unit"],
+            "required": [
+              "amount",
+              "currency",
+              "unit"
+            ],
             "properties": {
-              "amount":   { "type": "number" },
-              "currency": { "type": "string", "pattern": "^[A-Z]{3}$" },
-              "per":      { "type": "integer", "default": 1, "description": "Quantity the amount buys, e.g. 1000" },
-              "unit":     { "$ref": "#/$defs/quotaUnit" },
-              "notes":    { "type": "string" }
+              "amount": {
+                "type": "number"
+              },
+              "currency": {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$"
+              },
+              "per": {
+                "type": "integer",
+                "default": 1,
+                "description": "Quantity the amount buys, e.g. 1000"
+              },
+              "unit": {
+                "$ref": "#/$defs/quotaUnit"
+              },
+              "notes": {
+                "type": "string"
+              }
             }
           }
         },
-        "attributionRequired": { "type": "boolean", "description": "Visible attribution is a licence condition" },
-        "pricingUrl":          { "type": "string", "format": "uri" },
-        "checked":             { "type": "string", "format": "date", "description": "When these terms were last read off the provider's own pricing page. Prices go stale silently." }
+        "attributionRequired": {
+          "type": "boolean",
+          "description": "Visible attribution is a licence condition"
+        },
+        "pricingUrl": {
+          "type": "string",
+          "format": "uri"
+        },
+        "checked": {
+          "type": "string",
+          "format": "date",
+          "description": "When these terms were last read off the provider's own pricing page. Prices go stale silently."
+        }
       }
     },
     "quotaUnit": {
       "type": "string",
-      "enum": ["tiles", "requests", "map-loads", "bytes", "features"]
+      "enum": [
+        "tiles",
+        "requests",
+        "map-loads",
+        "bytes",
+        "features"
+      ]
     },
     "quota": {
       "type": "object",
-      "required": ["amount", "unit", "period"],
+      "required": [
+        "amount",
+        "unit",
+        "period"
+      ],
       "properties": {
-        "amount": { "type": "number" },
-        "unit":   { "$ref": "#/$defs/quotaUnit" },
-        "period": { "type": "string", "enum": ["second", "minute", "hour", "day", "month", "year"] },
-        "notes":  { "type": "string" }
+        "amount": {
+          "type": "number"
+        },
+        "unit": {
+          "$ref": "#/$defs/quotaUnit"
+        },
+        "period": {
+          "type": "string",
+          "enum": [
+            "second",
+            "minute",
+            "hour",
+            "day",
+            "month",
+            "year"
+          ]
+        },
+        "notes": {
+          "type": "string"
+        }
       }
     },
     "layer": {
       "type": "object",
-      "required": ["id", "title", "type"],
+      "required": [
+        "id",
+        "title",
+        "type"
+      ],
       "properties": {
-        "id":       { "type": "string", "description": "Slug, unique within the provider file — the uptime history keys on it" },
-        "name":     { "type": "string", "description": "Identifier the service itself uses, e.g. the WMS LAYERS value or WMTS layer identifier. The id is ours; this is theirs." },
-        "title":    { "type": "string" },
-        "abstract": { "type": "string" },
-        "datasetId": { "type": "string", "description": "Dataset metadata identifier in the provider's catalogue. Several layers may render the same dataset." },
+        "id": {
+          "type": "string",
+          "description": "Slug, unique within the provider file — the uptime history keys on it"
+        },
+        "name": {
+          "type": "string",
+          "description": "Identifier the service itself uses, e.g. the WMS LAYERS value or WMTS layer identifier. The id is ours; this is theirs."
+        },
+        "title": {
+          "type": "string"
+        },
+        "abstract": {
+          "type": "string"
+        },
+        "datasetId": {
+          "type": "string",
+          "description": "Dataset metadata identifier in the provider's catalogue. Several layers may render the same dataset."
+        },
         "type": {
           "type": "string",
-          "enum": ["raster", "vector", "wms", "wmts", "wfs", "geojson", "mvt", "3d-tiles", "terrain"]
+          "enum": [
+            "raster",
+            "vector",
+            "wms",
+            "wmts",
+            "wfs",
+            "geojson",
+            "mvt",
+            "3d-tiles",
+            "terrain"
+          ]
         },
-        "lifecycle":    { "$ref": "#/$defs/lifecycle" },
-        "availability": { "$ref": "#/$defs/availability" },
-        "time":         { "$ref": "#/$defs/timeDimension" },
-        "cost":         { "$ref": "#/$defs/cost", "description": "Only when this layer is priced differently from the provider default" },
+        "lifecycle": {
+          "$ref": "#/$defs/lifecycle"
+        },
+        "availability": {
+          "$ref": "#/$defs/availability"
+        },
+        "time": {
+          "$ref": "#/$defs/timeDimension"
+        },
+        "cost": {
+          "$ref": "#/$defs/cost",
+          "description": "Only when this layer is priced differently from the provider default"
+        },
         "status": {
           "type": "string",
-          "enum": ["active", "deprecated", "unknown"],
+          "enum": [
+            "active",
+            "deprecated",
+            "unknown"
+          ],
           "default": "active",
           "deprecated": true,
           "description": "DEPRECATED — see provider.status. Use lifecycle + availability."
         },
-        "lastChecked":  { "type": "string", "format": "date", "description": "Date of the last availability probe. Uptime history lives in status/." },
-        "requiresKey":  { "type": "boolean", "default": false },
+        "lastChecked": {
+          "type": "string",
+          "format": "date",
+          "description": "Date of the last availability probe. Uptime history lives in status/."
+        },
+        "requiresKey": {
+          "type": "boolean",
+          "default": false
+        },
         "legendUrl": {
           "type": "string",
           "description": "Image explaining the layer's symbology. Usually read from the LegendURL a WMS capabilities document publishes per style — not assumed to be a GetLegendGraphic call, which many services do not implement. May also point at a legend curated in assets/legends/ for a service that publishes none; say so in legendFrom and legendNote."
@@ -268,16 +600,31 @@
           "description": "Fields carried by this layer's features, when the data is not raster. A WMS cannot describe these: GetFeatureInfo samples a point and returns whatever happens to be there. The schema comes from the matching WFS DescribeFeatureType, or an OGC API Features queryables document.",
           "items": {
             "type": "object",
-            "required": ["name"],
+            "required": [
+              "name"
+            ],
             "properties": {
-              "name": { "type": "string" },
-              "type": { "type": "string", "description": "As the service declares it, e.g. string, long, gml:GeometryPropertyType" },
-              "title": { "type": "string" },
-              "geometry": { "type": "boolean", "description": "True for the geometry property rather than an attribute" }
+              "name": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string",
+                "description": "As the service declares it, e.g. string, long, gml:GeometryPropertyType"
+              },
+              "title": {
+                "type": "string"
+              },
+              "geometry": {
+                "type": "boolean",
+                "description": "True for the geometry property rather than an attribute"
+              }
             }
           }
         },
-        "attributesFrom": { "type": "string", "description": "URL the attribute list was read from, so a stale one can be traced and refreshed. For a vector tile set, the tile template whose features carry the fields." },
+        "attributesFrom": {
+          "type": "string",
+          "description": "URL the attribute list was read from, so a stale one can be traced and refreshed. For a vector tile set, the tile template whose features carry the fields."
+        },
         "webmapxConfig": {
           "type": "object",
           "description": "Ready-to-use config for webmapx. Either styleUrl (full MapLibre style) or source+layer (addSource/addLayer).",
@@ -292,47 +639,138 @@
             },
             "source": {
               "type": "object",
-              "required": ["type"],
+              "required": [
+                "type"
+              ],
               "properties": {
-                "type":        { "type": "string", "enum": ["raster", "vector", "raster-dem", "geojson", "image", "video"] },
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "raster",
+                    "vector",
+                    "raster-dem",
+                    "geojson",
+                    "image",
+                    "video"
+                  ]
+                },
                 "tiles": {
                   "type": "array",
-                  "items": { "type": "string" },
+                  "items": {
+                    "type": "string"
+                  },
                   "description": "Tile URL templates. Beyond MapLibre's own tokens ({z}/{x}/{y}, {quadkey}, {ratio}, {prefix}, {bbox-epsg-3857}, {s}), a template may carry {time} (or {Time}) for a time-dimensioned service. MapLibre does not substitute {time} — the consumer must resolve it from the layer's time declaration before adding the source."
                 },
-                "url":         { "type": "string", "description": "TileJSON URL (alternative to tiles array)" },
-                "tileSize":    { "type": "integer" },
-                "minzoom":     { "type": "integer" },
-                "maxzoom":     { "type": "integer" },
-                "attribution": { "type": "string" },
-                "scheme":      { "type": "string", "enum": ["xyz", "tms"] }
+                "url": {
+                  "type": "string",
+                  "description": "TileJSON URL (alternative to tiles array)"
+                },
+                "tileSize": {
+                  "type": "integer"
+                },
+                "minzoom": {
+                  "type": "integer"
+                },
+                "maxzoom": {
+                  "type": "integer"
+                },
+                "attribution": {
+                  "type": "string"
+                },
+                "scheme": {
+                  "type": "string",
+                  "enum": [
+                    "xyz",
+                    "tms"
+                  ]
+                }
               }
             },
             "layer": {
               "type": "object",
-              "required": ["id", "type"],
+              "required": [
+                "id",
+                "type"
+              ],
               "properties": {
-                "id":           { "type": "string" },
-                "type":         { "type": "string", "enum": ["raster", "fill", "line", "symbol", "circle", "heatmap", "fill-extrusion", "hillshade", "background"] },
-                "source-layer": { "type": "string", "description": "Required for vector sources" },
-                "minzoom":      { "type": "number" },
-                "maxzoom":      { "type": "number" },
-                "filter":       { "type": "array" },
-                "layout":       { "type": "object" },
-                "paint":        { "type": "object" },
-                "metadata":     {
+                "id": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "raster",
+                    "fill",
+                    "line",
+                    "symbol",
+                    "circle",
+                    "heatmap",
+                    "fill-extrusion",
+                    "hillshade",
+                    "background"
+                  ]
+                },
+                "source-layer": {
+                  "type": "string",
+                  "description": "Required for vector sources"
+                },
+                "minzoom": {
+                  "type": "number"
+                },
+                "maxzoom": {
+                  "type": "number"
+                },
+                "filter": {
+                  "type": "array"
+                },
+                "layout": {
+                  "type": "object"
+                },
+                "paint": {
+                  "type": "object"
+                },
+                "metadata": {
                   "type": "object",
                   "properties": {
-                    "title":      { "type": "string" },
-                    "abstract":   { "type": "string" },
-                    "legendRole": { "type": "string", "enum": ["background", "overlay"] },
-                    "previewCenter": { "type": "array", "items": { "type": "number" }, "minItems": 2, "maxItems": 2, "description": "[lng, lat] for preview map center" },
-                    "previewZoom": { "type": "number", "description": "Zoom level for preview map" }
+                    "title": {
+                      "type": "string"
+                    },
+                    "abstract": {
+                      "type": "string"
+                    },
+                    "legendRole": {
+                      "type": "string",
+                      "enum": [
+                        "background",
+                        "overlay"
+                      ]
+                    },
+                    "previewCenter": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
+                      "minItems": 2,
+                      "maxItems": 2,
+                      "description": "[lng, lat] for preview map center"
+                    },
+                    "previewZoom": {
+                      "type": "number",
+                      "description": "Zoom level for preview map"
+                    }
                   }
                 }
               }
             }
           }
+        },
+        "styleName": {
+          "type": "string",
+          "description": "WMS style this layer renders, sent as STYLES= in GetMap. Present on layers expanded from a service's published styles."
+        },
+        "styleTitle": {
+          "type": "string",
+          "description": "Title of that style as the service publishes it — for CBS statistical services this names the variable being mapped, which is the only place the legend's numbers are explained."
         }
       }
     }

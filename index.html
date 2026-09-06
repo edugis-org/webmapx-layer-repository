@@ -525,8 +525,12 @@ function getEntry(index) {
   return currentProvider ? layerEntries(currentProvider)[index] : undefined;
 }
 
-function renderInfo(layer) {
-  const attrs = layer.attributes ?? [];
+function renderInfo(layer, service) {
+  // Harvested attribute schemas live on the service, keyed by WMS layer name,
+  // because every style of a layer shares one feature type. Curated layers still
+  // carry their own.
+  const featureType = service?.featureTypes?.[layer.name];
+  const attrs = layer.attributes ?? featureType?.attributes ?? [];
   const parts = [];
   if (layer.legendUrl) {
     // A legend the service publishes needs no explanation; one curated here does,
@@ -544,7 +548,7 @@ function renderInfo(layer) {
           <td class="n">${a.name}${a.geometry ? ' <span style="color:#0f62fe">◆</span>' : ''}</td>
           <td class="t">${a.type ?? ''}</td>
         </tr>`).join('')}</table>
-      ${layer.attributesFrom ? `<p style="font-size:0.72rem;color:#aaa;margin-top:8px">from <a href="${layer.attributesFrom}" target="_blank">DescribeFeatureType</a></p>` : ''}`);
+      ${(layer.attributesFrom ?? featureType?.attributesFrom) ? `<p style="font-size:0.72rem;color:#aaa;margin-top:8px">from <a href="${layer.attributesFrom ?? featureType.attributesFrom}" target="_blank">DescribeFeatureType</a></p>` : ''}`);
   }
   if (!parts.length) {
     // Say which of the two reasons applies, rather than just showing nothing.
@@ -569,7 +573,7 @@ function showConfig(index) {
   activeConfig = resolveConfig(layer);
   document.getElementById('dialog-title').textContent = layer.title;
   document.getElementById('dialog-code').textContent = JSON.stringify(activeConfig, null, 2);
-  renderInfo(layer);
+  renderInfo(layer, entry.service);
   switchTab('config');
   openDialog();
 }
@@ -582,7 +586,7 @@ async function showPreview(index) {
   activeConfig = resolveConfig(layer);
   document.getElementById('dialog-title').textContent = layer.title;
   document.getElementById('dialog-code').textContent = JSON.stringify(activeConfig, null, 2);
-  renderInfo(layer);
+  renderInfo(layer, entry.service);
   switchTab('preview');
   openDialog();
 
