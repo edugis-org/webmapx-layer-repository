@@ -8,7 +8,7 @@
           "date": "2026-09-05",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 147
+          "ms": 159
         }
       ],
       "summary": {
@@ -29,7 +29,7 @@
           "date": "2026-09-05",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 68
+          "ms": 73
         }
       ],
       "summary": {
@@ -50,7 +50,7 @@
           "date": "2026-09-05",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 67
+          "ms": 75
         }
       ],
       "summary": {
@@ -71,7 +71,7 @@
           "date": "2026-09-05",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 195
+          "ms": 164
         }
       ],
       "summary": {

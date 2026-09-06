@@ -127,8 +127,8 @@
               }
             }
           },
-          "availability": "unreachable",
-          "status": "unknown",
+          "availability": "up",
+          "status": "active",
           "lastChecked": "2026-09-05"
         },
         {
@@ -442,8 +442,8 @@
               }
             }
           },
-          "availability": "up",
-          "status": "active",
+          "availability": "unreachable",
+          "status": "unknown",
           "lastChecked": "2026-09-05"
         },
         {
