@@ -44,8 +44,14 @@ generated layer records, so nobody should be asked to.
 **cannot be regenerated**. No rerun recreates "up 51 of the last 52 weeks"; it
 only accrues by observing. It is not a build artifact.
 
-Current state: 156 curated layers in 54 services across 31 providers; 1837
-harvested layers in 233 services from **2 source files**.
+Current state: 152 curated layers in 50 services across 27 providers; 11,791
+harvested layers in 240 services from **9 source files**. Four providers that
+were hand-written are now sources, and their curated files are gone.
+
+A provider can be reached through several sources — RIVM publishes Atlas
+Leefomgeving, Atlas Natuurlijk Kapitaal and DMG as separate endpoints — so
+harvesting merges sources that share a `provider.id` into one file instead of
+letting the last one win.
 
 ## 2. Decisions worth not relitigating
 

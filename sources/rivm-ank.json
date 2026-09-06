@@ -1,0 +1,34 @@
+{
+  "id": "rivm-ank",
+  "title": "Atlas Natuurlijk Kapitaal WMS (RIVM)",
+  "type": "wms-capabilities",
+  "url": "https://data.rivm.nl/geo/ank/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities",
+  "note": "Natural-capital themes — ecosystem services, soil, groundwater, land cover — served from the same RIVM GeoServer as the Atlas Leefomgeving endpoint and under the same terms.",
+  "provider": {
+    "id": "rivm",
+    "name": "RIVM",
+    "url": "https://www.rivm.nl",
+    "license": "CC-BY-4.0",
+    "access": "free",
+    "categories": [
+      "environment",
+      "nature",
+      "soil"
+    ],
+    "operator": {
+      "type": "government",
+      "country": "NL"
+    }
+  },
+  "region": "world/europe/netherlands",
+  "include": {
+    "crs": "EPSG:3857"
+  },
+  "enabled": true,
+  "bounds": [
+    3.2,
+    50.75,
+    7.22,
+    53.7
+  ]
+}

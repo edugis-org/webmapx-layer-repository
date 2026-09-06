@@ -1,16 +1,16 @@
 {
-  "source": "flevoland-geoserver",
-  "provider": "flevoland",
-  "url": "https://geo2.flevoland.nl/geoserver/Extern/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities",
+  "source": "rivm-alo",
+  "provider": "rivm",
+  "url": "https://data.rivm.nl/geo/alo/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities",
   "endpoints": {
-    "flevoland-geoserver": {
+    "rivm-alo": {
       "checks": [
         {
           "date": "2026-09-06",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 378,
-          "layersOffered": 273
+          "ms": 705,
+          "layersOffered": 373
         }
       ],
       "summary": {

@@ -1,0 +1,35 @@
+{
+  "id": "rivm-alo",
+  "title": "Atlas Leefomgeving WMS (RIVM)",
+  "type": "wms-capabilities",
+  "url": "https://data.rivm.nl/geo/alo/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities",
+  "note": "The maps behind atlasleefomgeving.nl. The site itself is a GeodanMaps viewer whose configuration needs an account, but the data under it is this RIVM endpoint, which needs nothing: Fees NONE, AccessConstraints NONE. Noise, air quality, external safety, soil and water themes.",
+  "provider": {
+    "id": "rivm",
+    "name": "RIVM",
+    "url": "https://www.rivm.nl",
+    "license": "CC-BY-4.0",
+    "access": "free",
+    "categories": [
+      "environment",
+      "health",
+      "noise",
+      "air-quality"
+    ],
+    "operator": {
+      "type": "government",
+      "country": "NL"
+    }
+  },
+  "region": "world/europe/netherlands",
+  "include": {
+    "crs": "EPSG:3857"
+  },
+  "enabled": true,
+  "bounds": [
+    3.2,
+    50.75,
+    7.22,
+    53.7
+  ]
+}

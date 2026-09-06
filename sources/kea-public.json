@@ -1,0 +1,34 @@
+{
+  "id": "kea-public",
+  "title": "Klimaateffectatlas public WMS",
+  "type": "wms-capabilities",
+  "url": "https://cas.cloud.sogelink.com/public/data/org/gws/YWFMLMWERURF/kea_public/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities",
+  "note": "Climate-adaptation maps: flood depth and duration, heat stress, drought, subsidence. Published by Climate Adaptation Services, who name this endpoint on klimaateffectatlas.nl as the way to use their layers in your own GIS. CC BY 4.0 — attribution 'Klimaateffectatlas, <year>' is required, so it travels in the layer attribution rather than being left to the consumer.",
+  "provider": {
+    "id": "klimaateffectatlas",
+    "name": "Klimaateffectatlas (Climate Adaptation Services)",
+    "url": "https://www.klimaateffectatlas.nl",
+    "license": "CC-BY-4.0",
+    "access": "free",
+    "categories": [
+      "climate",
+      "water",
+      "hazard"
+    ],
+    "operator": {
+      "type": "nonprofit",
+      "country": "NL"
+    }
+  },
+  "region": "world/europe/netherlands",
+  "include": {
+    "crs": "EPSG:3857"
+  },
+  "enabled": true,
+  "bounds": [
+    3.2,
+    50.75,
+    7.22,
+    53.7
+  ]
+}

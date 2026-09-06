@@ -332,6 +332,8 @@ const sources = readdirSync(SOURCES).filter(f => f.endsWith('.json'))
 if (!dryRun && !only && existsSync(OUT)) rmSync(OUT, { recursive: true });
 
 let totalLayers = 0, totalServices = 0, failed = 0;
+/** Output file -> document, so several sources can feed one provider file. */
+const written = new Map();
 for (const source of sources) {
     const reader = READERS[source.type];
     if (!reader) { console.error(`✖ ${source.id}: no reader for type "${source.type}"`); failed++; continue; }
@@ -361,10 +363,33 @@ for (const source of sources) {
         },
         services,
     };
+    // One provider can be reached through several sources — RIVM publishes the
+    // Atlas Leefomgeving, Atlas Natuurlijk Kapitaal and DMG endpoints separately
+    // — and they all belong in that provider's file. Merge rather than
+    // overwrite, and keep whichever provider record has the most to say.
     const file = join(OUT, source.region ?? 'world', `${source.provider.id}.json`);
-    if (!dryRun) { mkdirSync(dirname(file), { recursive: true }); writeFileSync(file, JSON.stringify(doc, null, 2) + '\n'); }
+    const existing = written.get(file);
+    if (existing) {
+        const seen = new Set(existing.services.map(s => s.id));
+        for (const svc of doc.services) {
+            let id = svc.id, n = 2;
+            while (seen.has(id)) id = `${svc.id}-${n++}`;
+            seen.add(id);
+            existing.services.push({ ...svc, id });
+        }
+        existing.provider.categories = [...new Set([
+            ...(existing.provider.categories ?? []), ...(doc.provider.categories ?? [])])];
+    } else {
+        written.set(file, doc);
+    }
+    const merged = written.get(file);
+    if (!dryRun) {
+        mkdirSync(dirname(file), { recursive: true });
+        writeFileSync(file, JSON.stringify(merged, null, 2) + '\n');
+    }
     totalServices += services.length; totalLayers += layers;
-    console.log(`${services.length} services, ${layers} layers → ${relative(ROOT, file)}`);
+    console.log(`${services.length} services, ${layers} layers → ${relative(ROOT, file)}` +
+                `${existing ? ` (merged, now ${merged.services.length} services)` : ''}`);
 }
 console.log(`\n${totalServices} services, ${totalLayers} layers from ${sources.length} source(s)` +
             (failed ? `, ${failed} failed` : ''));
