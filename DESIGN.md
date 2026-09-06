@@ -157,10 +157,6 @@ than 14 nearly identical services. This is the same data as the
 
 ## 4. Known gaps
 
-- **`check-layers.yml` stages `git add layers/` only**, so CI-measured history in
-  `status/` is discarded. It also has no `PROBE_REFERER` secret, so it records
-  `auth-required` for providers that are actually fine and will commit that
-  weaker picture over local results on the next scheduled run.
 - **`edugis-org.github.io` is not a registered MapTiler origin** (403), so the
   deployed catalog cannot preview its own 8 MapTiler layers.
 - **TomTom's key is refused regardless of origin** — account entitlement, not a
@@ -168,25 +164,21 @@ than 14 nearly identical services. This is the same data as the
 - **8 layers are dead and recorded as such**: GHSL (JRC GeoServer withdrawn, no
   WMS successor), SEDAC (host accepts no connections; population density was
   recovered via NASA GIBS).
-- **`layers/world/europe/eu/germany.json`** is a `$ref` link resolving to zero
-  providers.
 - Legacy top-level `layers[]` still validates; `provider.status` is still written
   for the UI. Both are transitional and should be removed once nothing reads them.
 
 ## 5. Next steps, in the order I would do them
 
-1. **Fix the CI gaps** (§4, first bullet). Small, and every week without it loses
-   history that cannot be recovered.
-2. **Convert existing providers into sources.** Belgian services, remaining Dutch
+1. **Convert existing providers into sources.** Belgian services, remaining Dutch
    ones. Each replaces hand-written layers with a self-refreshing endpoint. The
    curated surface should stop growing as the catalog grows.
-3. **Move `status/` to SQLite** — the piece actually breaking, and independent of
+2. **Move `status/` to SQLite** — the piece actually breaking, and independent of
    any decision about the catalog.
-4. **Move `categories` to the layer** and generate topic/region indexes. This is
+3. **Move `categories` to the layer** and generate topic/region indexes. This is
    what makes the catalog answer users' real questions.
-5. **Harvest the 940 proxied EduGIS URLs**, now that services exist: model them
+4. **Harvest the 940 proxied EduGIS URLs**, now that services exist: model them
    as a service whose `operator` (the cache) differs from its `provider` (the
    upstream). The schema already allows this; nothing uses it yet.
-6. **Featuretype and attribute search** across harvested layers — 1378 layers
+5. **Featuretype and attribute search** across harvested layers — 1378 layers
    already carry field schemas, and nothing queries them.
-7. **SQLite query artifact** (§3.1) when client-side filtering stops being enough.
+6. **SQLite query artifact** (§3.1) when client-side filtering stops being enough.
