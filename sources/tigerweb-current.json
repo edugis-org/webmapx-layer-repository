@@ -1,0 +1,35 @@
+{
+  "id": "tigerweb-current",
+  "title": "US Census TIGERweb (current vintage) WMS",
+  "type": "wms-capabilities",
+  "url": "https://tigerweb.geo.census.gov/arcgis/services/TIGERweb/tigerWMS_Current/MapServer/WMSServer?request=GetCapabilities&service=WMS",
+  "note": "US administrative and statistical geography from the Census Bureau: states, counties, tracts, block groups, places, legislative districts, urban areas. ArcGIS Server, so layers are named by number and the title carries the meaning; it also rejects GetMap without an explicit STYLES parameter, and answers GetCapabilities only when 'request' precedes 'version'. No WFS: the service reports supportedExtensions WMSServer only, and offers ArcGIS REST /query instead.",
+  "provider": {
+    "id": "us-census",
+    "name": "US Census Bureau",
+    "url": "https://www.census.gov",
+    "license": "public-domain",
+    "access": "free",
+    "attribution": "US Census Bureau TIGERweb",
+    "categories": [
+      "boundaries",
+      "demographics",
+      "statistics"
+    ],
+    "operator": {
+      "type": "government",
+      "country": "US"
+    }
+  },
+  "region": "world/north-america/united-states",
+  "include": {
+    "crs": "EPSG:3857"
+  },
+  "enabled": true,
+  "bounds": [
+    -179.23,
+    -14.6,
+    179.86,
+    71.44
+  ]
+}

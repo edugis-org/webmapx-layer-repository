@@ -1,0 +1,28 @@
+{
+  "source": "rivm-geo-all",
+  "provider": "rivm",
+  "url": "https://data.rivm.nl/geo/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities",
+  "endpoints": {
+    "rivm-geo-all": {
+      "checks": [
+        {
+          "date": "2026-09-06",
+          "availability": "unreachable",
+          "ms": 29902,
+          "reason": "The operation was aborted due to timeout"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-06",
+        "lastChecked": "2026-09-06",
+        "current": "unreachable",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-06"
+      }
+    }
+  }
+}

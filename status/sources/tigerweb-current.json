@@ -1,16 +1,16 @@
 {
-  "source": "rce-ows",
-  "provider": "rce",
-  "url": "https://services.rce.geovoorziening.nl/rce/ows?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities",
+  "source": "tigerweb-current",
+  "provider": "us-census",
+  "url": "https://tigerweb.geo.census.gov/arcgis/services/TIGERweb/tigerWMS_Current/MapServer/WMSServer?request=GetCapabilities&service=WMS",
   "endpoints": {
-    "rce-ows": {
+    "tigerweb-current": {
       "checks": [
         {
           "date": "2026-09-06",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 178,
-          "layersOffered": 5
+          "ms": 1164,
+          "layersOffered": 80
         }
       ],
       "summary": {

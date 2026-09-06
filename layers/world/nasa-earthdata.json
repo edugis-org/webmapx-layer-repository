@@ -10,7 +10,8 @@
       "satellite",
       "climate",
       "weather",
-      "environment"
+      "environment",
+      "population"
     ],
     "regions": [
       "world"
@@ -290,6 +291,321 @@
               "2000-03-01/latest/P1M"
             ]
           }
+        },
+        {
+          "id": "gibs-gpw-population-density-2020",
+          "title": "Population Density 2020 (GPW v4)",
+          "abstract": "Gridded Population of the World v4 — estimated persons per km² for 2020 at ~5 km resolution. SEDAC's own GeoServer is gone; NASA GIBS carries the data.",
+          "type": "wms",
+          "status": "active",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://gitc.earthdata.nasa.gov/wmts/epsg3857/best/GPW_Population_Density_2020/default/GoogleMapsCompatible_Level7/{z}/{y}/{x}.png"
+              ],
+              "tileSize": 256,
+              "maxzoom": 7,
+              "attribution": "CIESIN GPW v4, served by <a href=\"https://earthdata.nasa.gov/gibs\">NASA GIBS</a>"
+            },
+            "layer": {
+              "id": "gibs-gpw-population-density-2020",
+              "type": "raster",
+              "metadata": {
+                "title": "Population Density 2020",
+                "abstract": "Persons per km², 2020. Source: NASA SEDAC GPW v4.",
+                "legendRole": "overlay",
+                "previewCenter": [
+                  20,
+                  30
+                ],
+                "previewZoom": 2
+              }
+            }
+          },
+          "availability": "up",
+          "lastChecked": "2026-09-06"
+        },
+        {
+          "id": "gibs-gpw-population-density-2000",
+          "title": "Population Density 2000 (GPW v4)",
+          "abstract": "Gridded Population of the World v4 — estimated persons per km² for 2000 at ~5 km resolution.",
+          "type": "wms",
+          "status": "active",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://gitc.earthdata.nasa.gov/wmts/epsg3857/best/GPW_Population_Density_2000/default/GoogleMapsCompatible_Level7/{z}/{y}/{x}.png"
+              ],
+              "tileSize": 256,
+              "maxzoom": 7,
+              "attribution": "CIESIN/SEDAC, served by <a href=\"https://earthdata.nasa.gov/gibs\">NASA GIBS</a>"
+            },
+            "layer": {
+              "id": "gibs-gpw-population-density-2000",
+              "type": "raster",
+              "metadata": {
+                "title": "Population Density 2000",
+                "abstract": "Persons per km², 2000. Source: CIESIN GPW v4 via NASA GIBS.",
+                "legendRole": "overlay",
+                "previewCenter": [
+                  20,
+                  30
+                ],
+                "previewZoom": 2
+              }
+            }
+          },
+          "availability": "up",
+          "lastChecked": "2026-09-06"
+        },
+        {
+          "id": "gibs-gpw-population-density-2005",
+          "title": "Population Density 2005 (GPW v4)",
+          "abstract": "Gridded Population of the World v4 — estimated persons per km² for 2005 at ~5 km resolution.",
+          "type": "wms",
+          "status": "active",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://gitc.earthdata.nasa.gov/wmts/epsg3857/best/GPW_Population_Density_2005/default/GoogleMapsCompatible_Level7/{z}/{y}/{x}.png"
+              ],
+              "tileSize": 256,
+              "maxzoom": 7,
+              "attribution": "CIESIN/SEDAC, served by <a href=\"https://earthdata.nasa.gov/gibs\">NASA GIBS</a>"
+            },
+            "layer": {
+              "id": "gibs-gpw-population-density-2005",
+              "type": "raster",
+              "metadata": {
+                "title": "Population Density 2005",
+                "abstract": "Persons per km², 2005. Source: CIESIN GPW v4 via NASA GIBS.",
+                "legendRole": "overlay",
+                "previewCenter": [
+                  20,
+                  30
+                ],
+                "previewZoom": 2
+              }
+            }
+          },
+          "availability": "up",
+          "lastChecked": "2026-09-06"
+        },
+        {
+          "id": "gibs-gpw-population-density-2010",
+          "title": "Population Density 2010 (GPW v4)",
+          "abstract": "Gridded Population of the World v4 — estimated persons per km² for 2010 at ~5 km resolution.",
+          "type": "wms",
+          "status": "active",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://gitc.earthdata.nasa.gov/wmts/epsg3857/best/GPW_Population_Density_2010/default/GoogleMapsCompatible_Level7/{z}/{y}/{x}.png"
+              ],
+              "tileSize": 256,
+              "maxzoom": 7,
+              "attribution": "CIESIN/SEDAC, served by <a href=\"https://earthdata.nasa.gov/gibs\">NASA GIBS</a>"
+            },
+            "layer": {
+              "id": "gibs-gpw-population-density-2010",
+              "type": "raster",
+              "metadata": {
+                "title": "Population Density 2010",
+                "abstract": "Persons per km², 2010. Source: CIESIN GPW v4 via NASA GIBS.",
+                "legendRole": "overlay",
+                "previewCenter": [
+                  20,
+                  30
+                ],
+                "previewZoom": 2
+              }
+            }
+          },
+          "availability": "up",
+          "lastChecked": "2026-09-06"
+        },
+        {
+          "id": "gibs-gpw-population-density-2015",
+          "title": "Population Density 2015 (GPW v4)",
+          "abstract": "Gridded Population of the World v4 — estimated persons per km² for 2015 at ~5 km resolution.",
+          "type": "wms",
+          "status": "active",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://gitc.earthdata.nasa.gov/wmts/epsg3857/best/GPW_Population_Density_2015/default/GoogleMapsCompatible_Level7/{z}/{y}/{x}.png"
+              ],
+              "tileSize": 256,
+              "maxzoom": 7,
+              "attribution": "CIESIN/SEDAC, served by <a href=\"https://earthdata.nasa.gov/gibs\">NASA GIBS</a>"
+            },
+            "layer": {
+              "id": "gibs-gpw-population-density-2015",
+              "type": "raster",
+              "metadata": {
+                "title": "Population Density 2015",
+                "abstract": "Persons per km², 2015. Source: CIESIN GPW v4 via NASA GIBS.",
+                "legendRole": "overlay",
+                "previewCenter": [
+                  20,
+                  30
+                ],
+                "previewZoom": 2
+              }
+            }
+          },
+          "availability": "up",
+          "lastChecked": "2026-09-06"
+        },
+        {
+          "id": "gibs-grump-urban-extents-1995",
+          "title": "Urban Extents 1995 (GRUMP v1)",
+          "abstract": "Global Rural-Urban Mapping Project: which cells are urban, from night lights and population.",
+          "type": "wms",
+          "status": "active",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://gitc.earthdata.nasa.gov/wmts/epsg3857/best/GRUMP_Urban_Extents_Grid_1995/default/GoogleMapsCompatible_Level7/{z}/{y}/{x}.png"
+              ],
+              "tileSize": 256,
+              "maxzoom": 7,
+              "attribution": "CIESIN/SEDAC, served by <a href=\"https://earthdata.nasa.gov/gibs\">NASA GIBS</a>"
+            },
+            "layer": {
+              "id": "gibs-grump-urban-extents-1995",
+              "type": "raster",
+              "metadata": {
+                "title": "Urban Extents 1995",
+                "abstract": "Urban versus rural cells, 1995. Source: CIESIN GRUMP v1 via NASA GIBS.",
+                "legendRole": "overlay",
+                "previewCenter": [
+                  20,
+                  30
+                ],
+                "previewZoom": 2
+              }
+            }
+          },
+          "availability": "up",
+          "lastChecked": "2026-09-06"
+        },
+        {
+          "id": "gibs-lecz-urban-rural-below-10m",
+          "title": "Urban/Rural Extents Below 10m Elevation (LECZ v3)",
+          "abstract": "Low Elevation Coastal Zone: urban and rural population living below 10 m, the population most exposed to sea-level rise.",
+          "type": "wms",
+          "status": "active",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://gitc.earthdata.nasa.gov/wmts/epsg3857/best/LECZ_Urban_Rural_Extents_Below_10m/default/GoogleMapsCompatible_Level7/{z}/{y}/{x}.png"
+              ],
+              "tileSize": 256,
+              "maxzoom": 7,
+              "attribution": "CIESIN/SEDAC, served by <a href=\"https://earthdata.nasa.gov/gibs\">NASA GIBS</a>"
+            },
+            "layer": {
+              "id": "gibs-lecz-urban-rural-below-10m",
+              "type": "raster",
+              "metadata": {
+                "title": "Urban/Rural Extents Below 10m",
+                "abstract": "Settlement below 10 m elevation. Source: CIESIN LECZ v3 via NASA GIBS.",
+                "legendRole": "overlay",
+                "previewCenter": [
+                  20,
+                  30
+                ],
+                "previewZoom": 2
+              }
+            }
+          },
+          "availability": "up",
+          "lastChecked": "2026-09-06"
+        },
+        {
+          "id": "gibs-urban-expansion-2000-2030",
+          "title": "Probability of Urban Expansion 2000–2030",
+          "abstract": "Modelled likelihood that a cell becomes urban between 2000 and 2030.",
+          "type": "wms",
+          "status": "active",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://gitc.earthdata.nasa.gov/wmts/epsg3857/best/Probabilities_of_Urban_Expansion_2000-2030/default/GoogleMapsCompatible_Level7/{z}/{y}/{x}.png"
+              ],
+              "tileSize": 256,
+              "maxzoom": 7,
+              "attribution": "CIESIN/SEDAC, served by <a href=\"https://earthdata.nasa.gov/gibs\">NASA GIBS</a>"
+            },
+            "layer": {
+              "id": "gibs-urban-expansion-2000-2030",
+              "type": "raster",
+              "metadata": {
+                "title": "Urban Expansion 2000–2030",
+                "abstract": "Probability of becoming urban by 2030. Source: CIESIN via NASA GIBS.",
+                "legendRole": "overlay",
+                "previewCenter": [
+                  20,
+                  30
+                ],
+                "previewZoom": 2
+              }
+            }
+          },
+          "availability": "up",
+          "lastChecked": "2026-09-06"
+        },
+        {
+          "id": "gibs-uhi-summer-day-2013",
+          "title": "Urban Heat Island, Summer Day 2013",
+          "abstract": "Maximum summer daytime land-surface temperature difference between urban areas and their rural surroundings.",
+          "type": "wms",
+          "status": "active",
+          "requiresKey": false,
+          "webmapxConfig": {
+            "source": {
+              "type": "raster",
+              "tiles": [
+                "https://gitc.earthdata.nasa.gov/wmts/epsg3857/best/UHI_Urban-Rural_Summer_Day_Max_Land_Surface_Temp_Difference_2013/default/GoogleMapsCompatible_Level7/{z}/{y}/{x}.png"
+              ],
+              "tileSize": 256,
+              "maxzoom": 7,
+              "attribution": "CIESIN/SEDAC, served by <a href=\"https://earthdata.nasa.gov/gibs\">NASA GIBS</a>"
+            },
+            "layer": {
+              "id": "gibs-uhi-summer-day-2013",
+              "type": "raster",
+              "metadata": {
+                "title": "Urban Heat Island (day, 2013)",
+                "abstract": "Urban minus rural summer daytime maximum LST, 2013. Source: CIESIN via NASA GIBS.",
+                "legendRole": "overlay",
+                "previewCenter": [
+                  20,
+                  30
+                ],
+                "previewZoom": 2
+              }
+            }
+          },
+          "availability": "up",
+          "lastChecked": "2026-09-06"
         }
       ]
     }

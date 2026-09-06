@@ -29,8 +29,10 @@ const enrich = args.includes('--enrich');
 const CACHE = join(ROOT, '.cache');
 const only = args.includes('--source') ? args[args.indexOf('--source') + 1] : null;
 
+// STYLES is sent empty rather than omitted: the spec requires the parameter,
+// most servers forgive its absence, and ArcGIS Server answers StylesNotDefined.
 const WMS_TAIL = 'SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true' +
-                 '&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256';
+                 '&STYLES=&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256';
 const slug = s => String(s ?? '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60);
 const arr = x => (x === undefined || x === null ? [] : Array.isArray(x) ? x : [x]);
