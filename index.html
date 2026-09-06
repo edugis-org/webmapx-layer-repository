@@ -155,7 +155,7 @@
 <script type="module">
 import { resolveTimeDeep, hasTimeToken, resolveTimeValue } from './lib/time.mjs';
 import { WebMapX } from 'https://cdn.jsdelivr.net/npm/@edugis-org/webmapx@0.2/dist-lib/webmapx.js';
-import { layerEntries, services } from './lib/catalog.mjs';
+import { layerEntries } from './lib/catalog.mjs';
 import { regionBounds } from './lib/regions.mjs';
 import { filterByQuery, searchText } from './lib/search.mjs';
 const LAYERS_BASE = './layers';
@@ -396,8 +396,6 @@ function layerHaystack(entry) {
 
 function renderMain(data) {
   const provider = data.provider;
-  const entries = layerEntries(data);          // layers now hang off services
-  const layers = entries.map(e => e.layer);
   layerQuery = '';
   layerPage = 0;
   const cats = (provider.categories ?? []).map(c => `<span class="chip">${c}</span>`).join('');
@@ -422,14 +420,12 @@ function renderMain(data) {
     </div>
     ${provider.abstract ? `<p class="abstract">${provider.abstract}</p>` : ''}
     ${provider.note ? `<p style="font-size:0.82rem;color:#856404;background:#fff3cd;border-radius:4px;padding:6px 10px;margin-bottom:8px">ℹ️ ${provider.note}</p>` : ''}
-    <p style="font-size:0.8rem;color:#888;margin-bottom:8px">
-      ${layers.length} layers across ${services(data).length} service${services(data).length === 1 ? '' : 's'} —
-      <a href="${LAYERS_BASE}/${currentPath}" target="_blank">View raw JSON ↗</a>
-    </p>
-    <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
-      <input type="search" id="layer-search" placeholder="Filter layers — terms match anywhere, &quot;quoted&quot; matches a phrase"
-             style="flex:1;padding:6px 10px;border:1px solid #ddd;border-radius:4px;font-size:0.85rem">
-    </div>
+    <label for="layer-search" style="display:block;font-size:0.78rem;color:#555;margin-bottom:4px">
+      Filter layers <span style="color:#999">— every word must match; use "quotes" for a phrase</span>
+    </label>
+    <input type="search" id="layer-search" placeholder="e.g. vier cbs"
+           style="width:100%;padding:6px 10px;border:1px solid #ddd;border-radius:4px;font-size:0.85rem;margin-bottom:8px">
+    <p id="layer-count" style="font-size:0.8rem;color:#888;margin-bottom:8px"></p>
     <table>
       <thead>
         <tr><th>Layer</th><th>Service</th><th>Type</th><th>Status</th><th>Key</th><th></th></tr>
@@ -493,6 +489,17 @@ function renderLayerRows() {
           </tr>`;
         }).join('')
     : `<tr><td colspan="6" style="color:#888;padding:16px">No layer matches ${'\u201c'}${layerQuery}${'\u201d'}.</td></tr>`;
+
+  // The count line reports what the filter selected, not what the file holds:
+  // "1822 layers" beside a filtered table is the one number nobody wants.
+  const svcCount = new Set(matched.map(e => e.service?.id ?? e.service?.title)).size;
+  const allSvcCount = new Set(all.map(e => e.service?.id ?? e.service?.title)).size;
+  const plural = (n, word) => `${n} ${word}${n === 1 ? '' : 's'}`;
+  document.getElementById('layer-count').innerHTML =
+    (matched.length === all.length
+      ? `${plural(all.length, 'layer')} across ${plural(allSvcCount, 'service')}`
+      : `${matched.length} of ${all.length} layers across ${svcCount} of ${allSvcCount} services`)
+    + ` — <a href="${LAYERS_BASE}/${currentPath}" target="_blank">View raw JSON ↗</a>`;
 
   // A provider whose layers all fit on one page needs no pager at all.
   const shown = page.length ? `${start + 1}–${start + page.length} of ${matched.length}` : `0 of ${matched.length}`;
