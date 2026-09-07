@@ -424,7 +424,17 @@ const DELIVERY_LABEL = {
 function groupDeliveries(entries) {
   const groups = new Map();
   for (const entry of entries) {
-    const key = deliveryKey(entry);
+    const base = deliveryKey(entry);
+    // A delivery is a way of getting the data, so a group holds each way once.
+    // Two layers of the same type under one title are not one dataset offered
+    // twice, they are two layers: IGN publishes its 20 cm orthophotos as both
+    // HR.ORTHOIMAGERY.ORTHOPHOTOS and the INSPIRE view OI.OrthoimageCoverage.HR,
+    // same title, no dataset id to tell them apart, and grouping them put two
+    // "wms" buttons on one row that switched between identical-looking things.
+    let key = base, n = 1;
+    while (groups.get(key)?.deliveries.some(d => d.layer.type === entry.layer.type)) {
+      key = `${base}#${++n}`;
+    }
     const group = groups.get(key);
     if (group) group.deliveries.push(entry);
     else groups.set(key, { ...entry, key, deliveries: [entry] });
@@ -515,6 +525,14 @@ function renderLayerRows() {
   // survive filtering and paging.
   const all = layerEntries(currentProvider).map((entry, index) => ({ ...entry, index }));
   const matched = groupDeliveries(filterByQuery(all, layerQuery, layerHaystack));
+  // Services do reuse a title across layers — IGN publishes its orthophotos
+  // under both a native and an INSPIRE name, both called "Ortho 20 cm". Rows
+  // that would otherwise be indistinguishable name the layer they preview.
+  const titleCounts = new Map();
+  for (const g of matched) {
+    const t = (g.layer.title ?? '').trim().toLowerCase();
+    titleCounts.set(t, (titleCounts.get(t) ?? 0) + 1);
+  }
   const pages = Math.max(1, Math.ceil(matched.length / LAYER_PAGE_SIZE));
   if (layerPage >= pages) layerPage = pages - 1;
   const start = layerPage * LAYER_PAGE_SIZE;
@@ -528,7 +546,9 @@ function renderLayerRows() {
           return `
           <tr>
             <td>
-              <strong>${l.title}</strong><br>
+              <strong>${l.title}</strong>
+              ${l.name && titleCounts.get((l.title ?? '').trim().toLowerCase()) > 1
+                  ? `<code style="color:#999;font-size:0.72rem">${l.name}</code>` : ''}<br>
               <span style="color:#555;font-size:0.8rem">${l.abstract ?? ''}</span>
             </td>
             <td>
