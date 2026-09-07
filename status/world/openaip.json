@@ -9,18 +9,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 130
+        },
+        {
+          "date": "2026-09-07",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 483
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-09-05",
+        "lastChecked": "2026-09-07",
         "current": "up",
-        "checks": 1,
-        "up": 1,
+        "checks": 2,
+        "up": 2,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-09-05"
+        "lastUp": "2026-09-07"
       }
     },
     "openaip-airspaces": {
@@ -30,18 +36,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 655
+        },
+        {
+          "date": "2026-09-07",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 863
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-09-05",
+        "lastChecked": "2026-09-07",
         "current": "up",
-        "checks": 1,
-        "up": 1,
+        "checks": 2,
+        "up": 2,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-09-05"
+        "lastUp": "2026-09-07"
       }
     },
     "openaip-airports": {
@@ -51,18 +63,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 589
+        },
+        {
+          "date": "2026-09-07",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 587
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-09-05",
+        "lastChecked": "2026-09-07",
         "current": "up",
-        "checks": 1,
-        "up": 1,
+        "checks": 2,
+        "up": 2,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-09-05"
+        "lastUp": "2026-09-07"
       }
     },
     "openaip-navaids": {
@@ -72,18 +90,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 581
+        },
+        {
+          "date": "2026-09-07",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 858
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-09-05",
+        "lastChecked": "2026-09-07",
         "current": "up",
-        "checks": 1,
-        "up": 1,
+        "checks": 2,
+        "up": 2,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-09-05"
+        "lastUp": "2026-09-07"
       }
     },
     "openaip-reporting-points": {
@@ -93,18 +117,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 469
+        },
+        {
+          "date": "2026-09-07",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 395
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-09-05",
+        "lastChecked": "2026-09-07",
         "current": "up",
-        "checks": 1,
-        "up": 1,
+        "checks": 2,
+        "up": 2,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-09-05"
+        "lastUp": "2026-09-07"
       }
     },
     "openaip-obstacles": {
@@ -114,18 +144,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 413
+        },
+        {
+          "date": "2026-09-07",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 1037
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-09-05",
+        "lastChecked": "2026-09-07",
         "current": "up",
-        "checks": 1,
-        "up": 1,
+        "checks": 2,
+        "up": 2,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-09-05"
+        "lastUp": "2026-09-07"
       }
     },
     "openaip-hotspots": {
@@ -135,18 +171,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 487
+        },
+        {
+          "date": "2026-09-07",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 338
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-09-05",
+        "lastChecked": "2026-09-07",
         "current": "up",
-        "checks": 1,
-        "up": 1,
+        "checks": 2,
+        "up": 2,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-09-05"
+        "lastUp": "2026-09-07"
       }
     },
     "openaip-hang-gliding": {
@@ -156,18 +198,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 1087
+        },
+        {
+          "date": "2026-09-07",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 866
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-09-05",
+        "lastChecked": "2026-09-07",
         "current": "up",
-        "checks": 1,
-        "up": 1,
+        "checks": 2,
+        "up": 2,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-09-05"
+        "lastUp": "2026-09-07"
       }
     },
     "openaip-rc-airfields": {
@@ -177,18 +225,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 444
+        },
+        {
+          "date": "2026-09-07",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 846
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-09-05",
+        "lastChecked": "2026-09-07",
         "current": "up",
-        "checks": 1,
-        "up": 1,
+        "checks": 2,
+        "up": 2,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-09-05"
+        "lastUp": "2026-09-07"
       }
     }
   }

@@ -9,18 +9,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 396
+        },
+        {
+          "date": "2026-09-07",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 345
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-09-05",
+        "lastChecked": "2026-09-07",
         "current": "up",
-        "checks": 1,
-        "up": 1,
+        "checks": 2,
+        "up": 2,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-09-05"
+        "lastUp": "2026-09-07"
       }
     },
     "viirs-nighttime-lights": {
@@ -30,18 +36,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 385
+        },
+        {
+          "date": "2026-09-07",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 281
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-09-05",
+        "lastChecked": "2026-09-07",
         "current": "up",
-        "checks": 1,
-        "up": 1,
+        "checks": 2,
+        "up": 2,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-09-05"
+        "lastUp": "2026-09-07"
       }
     },
     "ghrsst-sea-surface-temperature": {
@@ -51,18 +63,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 348
+        },
+        {
+          "date": "2026-09-07",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 254
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-09-05",
+        "lastChecked": "2026-09-07",
         "current": "up",
-        "checks": 1,
-        "up": 1,
+        "checks": 2,
+        "up": 2,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-09-05"
+        "lastUp": "2026-09-07"
       }
     },
     "modis-terra-ndvi": {
@@ -72,18 +90,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 396
+        },
+        {
+          "date": "2026-09-07",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 265
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-09-05",
+        "lastChecked": "2026-09-07",
         "current": "up",
-        "checks": 1,
-        "up": 1,
+        "checks": 2,
+        "up": 2,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-09-05"
+        "lastUp": "2026-09-07"
       }
     },
     "modis-aqua-chlorophyll": {
@@ -136,18 +160,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 473
+        },
+        {
+          "date": "2026-09-07",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 337
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-09-05",
+        "lastChecked": "2026-09-07",
         "current": "up",
-        "checks": 1,
-        "up": 1,
+        "checks": 2,
+        "up": 2,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-09-05"
+        "lastUp": "2026-09-07"
       }
     },
     "modis-aqua-chlorophyll-l2": {
@@ -157,18 +187,213 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 467
+        },
+        {
+          "date": "2026-09-07",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 256
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-09-05",
+        "lastChecked": "2026-09-07",
+        "current": "up",
+        "checks": 2,
+        "up": 2,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-07"
+      }
+    },
+    "gibs-gpw-population-density-2020": {
+      "checks": [
+        {
+          "date": "2026-09-07",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 239
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-07",
+        "lastChecked": "2026-09-07",
         "current": "up",
         "checks": 1,
         "up": 1,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-09-05"
+        "lastUp": "2026-09-07"
+      }
+    },
+    "gibs-gpw-population-density-2000": {
+      "checks": [
+        {
+          "date": "2026-09-07",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 302
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-07",
+        "lastChecked": "2026-09-07",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-07"
+      }
+    },
+    "gibs-gpw-population-density-2005": {
+      "checks": [
+        {
+          "date": "2026-09-07",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 277
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-07",
+        "lastChecked": "2026-09-07",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-07"
+      }
+    },
+    "gibs-gpw-population-density-2010": {
+      "checks": [
+        {
+          "date": "2026-09-07",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 309
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-07",
+        "lastChecked": "2026-09-07",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-07"
+      }
+    },
+    "gibs-gpw-population-density-2015": {
+      "checks": [
+        {
+          "date": "2026-09-07",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 259
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-07",
+        "lastChecked": "2026-09-07",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-07"
+      }
+    },
+    "gibs-grump-urban-extents-1995": {
+      "checks": [
+        {
+          "date": "2026-09-07",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 277
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-07",
+        "lastChecked": "2026-09-07",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-07"
+      }
+    },
+    "gibs-lecz-urban-rural-below-10m": {
+      "checks": [
+        {
+          "date": "2026-09-07",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 270
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-07",
+        "lastChecked": "2026-09-07",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-07"
+      }
+    },
+    "gibs-urban-expansion-2000-2030": {
+      "checks": [
+        {
+          "date": "2026-09-07",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 341
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-07",
+        "lastChecked": "2026-09-07",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-07"
+      }
+    },
+    "gibs-uhi-summer-day-2013": {
+      "checks": [
+        {
+          "date": "2026-09-07",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 247
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-07",
+        "lastChecked": "2026-09-07",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-07"
       }
     }
   }

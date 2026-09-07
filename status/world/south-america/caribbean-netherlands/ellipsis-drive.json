@@ -1,163 +1,148 @@
 {
-  "provider": "stadia",
-  "source": "world/stadia.json",
+  "provider": "ellipsis-drive",
+  "source": "world/south-america/caribbean-netherlands/ellipsis-drive.json",
   "layers": {
-    "stadia-watercolor": {
+    "ellipsis-drive-bonaire-luchtfoto-s": {
       "checks": [
-        {
-          "date": "2026-09-05",
-          "availability": "up",
-          "httpStatus": 200,
-          "ms": 106
-        },
         {
           "date": "2026-09-07",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 180
+          "ms": 303
         }
       ],
       "summary": {
-        "firstChecked": "2026-09-05",
+        "firstChecked": "2026-09-07",
         "lastChecked": "2026-09-07",
         "current": "up",
-        "checks": 2,
-        "up": 2,
+        "checks": 1,
+        "up": 1,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
         "lastUp": "2026-09-07"
       }
     },
-    "stadia-toner": {
+    "ellipsis-drive-bonaire-infrarood-luchtfoto-s": {
       "checks": [
-        {
-          "date": "2026-09-05",
-          "availability": "up",
-          "httpStatus": 200,
-          "ms": 82
-        },
         {
           "date": "2026-09-07",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 79
+          "ms": 288
         }
       ],
       "summary": {
-        "firstChecked": "2026-09-05",
+        "firstChecked": "2026-09-07",
         "lastChecked": "2026-09-07",
         "current": "up",
-        "checks": 2,
-        "up": 2,
+        "checks": 1,
+        "up": 1,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
         "lastUp": "2026-09-07"
       }
     },
-    "stadia-toner-lite": {
+    "ellipsis-drive-sint-eustatius-luchtfoto-s": {
       "checks": [
-        {
-          "date": "2026-09-05",
-          "availability": "up",
-          "httpStatus": 200,
-          "ms": 76
-        },
         {
           "date": "2026-09-07",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 79
+          "ms": 218
         }
       ],
       "summary": {
-        "firstChecked": "2026-09-05",
+        "firstChecked": "2026-09-07",
         "lastChecked": "2026-09-07",
         "current": "up",
-        "checks": 2,
-        "up": 2,
+        "checks": 1,
+        "up": 1,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
         "lastUp": "2026-09-07"
       }
     },
-    "stadia-terrain": {
+    "ellipsis-drive-st-eustatius-infrarood-luchtfoto-s": {
       "checks": [
-        {
-          "date": "2026-09-05",
-          "availability": "up",
-          "httpStatus": 200,
-          "ms": 79
-        },
         {
           "date": "2026-09-07",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 78
+          "ms": 304
         }
       ],
       "summary": {
-        "firstChecked": "2026-09-05",
+        "firstChecked": "2026-09-07",
         "lastChecked": "2026-09-07",
         "current": "up",
-        "checks": 2,
-        "up": 2,
+        "checks": 1,
+        "up": 1,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
         "lastUp": "2026-09-07"
       }
     },
-    "stadia-alidade-smooth": {
+    "ellipsis-drive-st-eustatius-hoogtekaart": {
       "checks": [
-        {
-          "date": "2026-09-05",
-          "availability": "up",
-          "httpStatus": 200,
-          "ms": 82
-        },
         {
           "date": "2026-09-07",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 78
+          "ms": 238
         }
       ],
       "summary": {
-        "firstChecked": "2026-09-05",
+        "firstChecked": "2026-09-07",
         "lastChecked": "2026-09-07",
         "current": "up",
-        "checks": 2,
-        "up": 2,
+        "checks": 1,
+        "up": 1,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
         "lastUp": "2026-09-07"
       }
     },
-    "stadia-alidade-smooth-dark": {
+    "ellipsis-drive-saba-luchtfoto-s": {
       "checks": [
-        {
-          "date": "2026-09-05",
-          "availability": "up",
-          "httpStatus": 200,
-          "ms": 80
-        },
         {
           "date": "2026-09-07",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 80
+          "ms": 606
         }
       ],
       "summary": {
-        "firstChecked": "2026-09-05",
+        "firstChecked": "2026-09-07",
         "lastChecked": "2026-09-07",
         "current": "up",
-        "checks": 2,
-        "up": 2,
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-07"
+      }
+    },
+    "ellipsis-drive-saba-infrarood-luchtfoto-s": {
+      "checks": [
+        {
+          "date": "2026-09-07",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 700
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-07",
+        "lastChecked": "2026-09-07",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
