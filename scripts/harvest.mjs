@@ -49,6 +49,23 @@ const WFS_PAGE_FALLBACK = 1000;
 // most servers forgive its absence, and ArcGIS Server answers StylesNotDefined.
 const WMS_TAIL = 'SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true' +
                  '&STYLES=&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256';
+
+/**
+ * A GetMap template in the version the service actually speaks.
+ *
+ * 1.1.1 names the projection SRS and 1.3.0 names it CRS, and servers are not
+ * uniformly forgiving: IGN's Géoplateforme rejects a 1.1.1 request outright
+ * ("VERSION query parameter have to be 1.3.0 or empty"), so a hard-coded 1.1.1
+ * tail turns a whole national service into blank tiles. The version is read off
+ * the capabilities document being parsed. Axis order is not a problem either
+ * way: 1.3.0 swaps it for geographic CRSs, and EPSG:3857 is not one.
+ */
+function wmsTail(version) {
+    const v = String(version ?? '1.3.0');
+    const axis = v.startsWith('1.3') ? 'CRS' : 'SRS';
+    return `SERVICE=WMS&VERSION=${v}&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true`
+         + `&STYLES=&${axis}=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256`;
+}
 const slug = s => String(s ?? '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60);
 const arr = x => (x === undefined || x === null ? [] : Array.isArray(x) ? x : [x]);
@@ -307,6 +324,7 @@ async function readWmsCapabilities(source) {
     if (!cap) throw new Error('no WMS capabilities element');
     const endpoint = source.url.split('?')[0];
     const inc = source.include ?? {};
+    const tail = wmsTail(cap['@version']);
 
     // Layers nest; only those with a <Name> are requestable.
     const out = []; const ids = new Set();
@@ -326,7 +344,7 @@ async function readWmsCapabilities(source) {
                     ids.add(id);
                     const layer = mkLayer({
                         id, name, title, abstract: l.Abstract ? String(l.Abstract) : undefined,
-                        url: `${endpoint}?LAYERS=${encodeURIComponent(name)}&${WMS_TAIL}`, kind: 'wms',
+                        url: `${endpoint}?LAYERS=${encodeURIComponent(name)}&${tail}`, kind: 'wms',
                         // The layer's own extent where it states one; the
                         // source's only as a fallback.
                         bounds: extent ?? source.bounds,

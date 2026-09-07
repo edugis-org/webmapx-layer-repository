@@ -1,0 +1,27 @@
+{
+  "id": "eea-corine",
+  "title": "Copernicus CORINE Land Cover 2018 WMS",
+  "type": "wms-capabilities",
+  "url": "https://image.discomap.eea.europa.eu/arcgis/services/Corine/CLC2018_WM/MapServer/WMSServer?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities",
+  "note": "Pan-European land cover, the reference dataset for the theme, plus the separately published French overseas territories. Web-mercator service, so it is the CLC variant a web map can actually draw.",
+  "provider": {
+    "id": "eea",
+    "name": "European Environment Agency",
+    "url": "https://www.eea.europa.eu",
+    "license": "CC-BY-4.0",
+    "access": "free",
+    "attribution": "© European Union, Copernicus Land Monitoring Service {year}, European Environment Agency (EEA)",
+    "operator": {
+      "type": "government",
+      "country": "EU"
+    },
+    "categories": [
+      "land-cover",
+      "environment"
+    ]
+  },
+  "region": "world/europe",
+  "include": { "crs": "EPSG:3857" },
+  "enabled": true,
+  "bounds": [-31, 27, 45, 72]
+}

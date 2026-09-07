@@ -1,0 +1,27 @@
+{
+  "id": "ign-es-base",
+  "title": "IGN España base map WMS",
+  "type": "wms-capabilities",
+  "url": "https://www.ign.es/wms-inspire/ign-base?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities",
+  "note": "Mapa Base de España — the national street map in colour, grey and image-backdrop variants.",
+  "provider": {
+    "id": "ign-es",
+    "name": "Instituto Geográfico Nacional (IGN)",
+    "url": "https://www.ign.es",
+    "license": "CC-BY-4.0",
+    "access": "free",
+    "attribution": "© Instituto Geográfico Nacional de España",
+    "operator": {
+      "type": "government",
+      "country": "ES"
+    },
+    "categories": [
+      "general-purpose",
+      "topographic"
+    ]
+  },
+  "region": "world/europe/spain",
+  "include": { "crs": "EPSG:3857" },
+  "enabled": true,
+  "bounds": [-18.2, 27.5, 4.4, 44.0]
+}

@@ -10,18 +10,25 @@
           "httpStatus": 404,
           "ms": 446,
           "reason": "HTTP 404"
+        },
+        {
+          "date": "2026-09-07",
+          "availability": "down",
+          "httpStatus": 404,
+          "ms": 445,
+          "reason": "HTTP 404"
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-09-05",
+        "lastChecked": "2026-09-07",
         "current": "down",
-        "checks": 1,
+        "checks": 2,
         "up": 0,
         "uptime": 0,
         "untested": 0,
-        "consecutiveFailures": 1,
-        "lastDown": "2026-09-05"
+        "consecutiveFailures": 2,
+        "lastDown": "2026-09-07"
       }
     },
     "ghsl-built-up-2020": {
@@ -32,18 +39,25 @@
           "httpStatus": 404,
           "ms": 325,
           "reason": "HTTP 404"
+        },
+        {
+          "date": "2026-09-07",
+          "availability": "down",
+          "httpStatus": 404,
+          "ms": 307,
+          "reason": "HTTP 404"
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-09-05",
+        "lastChecked": "2026-09-07",
         "current": "down",
-        "checks": 1,
+        "checks": 2,
         "up": 0,
         "uptime": 0,
         "untested": 0,
-        "consecutiveFailures": 1,
-        "lastDown": "2026-09-05"
+        "consecutiveFailures": 2,
+        "lastDown": "2026-09-07"
       }
     },
     "ghsl-settlement-model-2020": {
@@ -54,18 +68,25 @@
           "httpStatus": 404,
           "ms": 325,
           "reason": "HTTP 404"
+        },
+        {
+          "date": "2026-09-07",
+          "availability": "down",
+          "httpStatus": 404,
+          "ms": 316,
+          "reason": "HTTP 404"
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-09-05",
+        "lastChecked": "2026-09-07",
         "current": "down",
-        "checks": 1,
+        "checks": 2,
         "up": 0,
         "uptime": 0,
         "untested": 0,
-        "consecutiveFailures": 1,
-        "lastDown": "2026-09-05"
+        "consecutiveFailures": 2,
+        "lastDown": "2026-09-07"
       }
     }
   }

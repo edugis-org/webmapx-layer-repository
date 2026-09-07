@@ -10,17 +10,24 @@
           "httpStatus": 403,
           "ms": 93,
           "reason": "HTTP 403 (endpoint answered but rejected our credentials)"
+        },
+        {
+          "date": "2026-09-07",
+          "availability": "auth-required",
+          "httpStatus": 403,
+          "ms": 84,
+          "reason": "HTTP 403 (endpoint answered but rejected our credentials)"
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-09-05",
+        "lastChecked": "2026-09-07",
         "current": "auth-required",
-        "checks": 1,
+        "checks": 2,
         "up": 0,
         "uptime": 0,
         "untested": 0,
-        "consecutiveFailures": 1
+        "consecutiveFailures": 2
       }
     },
     "tomtom-satellite": {
@@ -31,17 +38,24 @@
           "httpStatus": 403,
           "ms": 76,
           "reason": "HTTP 403 (endpoint answered but rejected our credentials)"
+        },
+        {
+          "date": "2026-09-07",
+          "availability": "auth-required",
+          "httpStatus": 403,
+          "ms": 63,
+          "reason": "HTTP 403 (endpoint answered but rejected our credentials)"
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-09-05",
+        "lastChecked": "2026-09-07",
         "current": "auth-required",
-        "checks": 1,
+        "checks": 2,
         "up": 0,
         "uptime": 0,
         "untested": 0,
-        "consecutiveFailures": 1
+        "consecutiveFailures": 2
       }
     },
     "tomtom-hybrid": {
@@ -52,17 +66,24 @@
           "httpStatus": 403,
           "ms": 65,
           "reason": "HTTP 403 (endpoint answered but rejected our credentials)"
+        },
+        {
+          "date": "2026-09-07",
+          "availability": "auth-required",
+          "httpStatus": 403,
+          "ms": 57,
+          "reason": "HTTP 403 (endpoint answered but rejected our credentials)"
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-09-05",
+        "lastChecked": "2026-09-07",
         "current": "auth-required",
-        "checks": 1,
+        "checks": 2,
         "up": 0,
         "uptime": 0,
         "untested": 0,
-        "consecutiveFailures": 1
+        "consecutiveFailures": 2
       }
     }
   }

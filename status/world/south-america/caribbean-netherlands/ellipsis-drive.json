@@ -1,163 +1,148 @@
 {
-  "provider": "mapbox",
-  "source": "world/mapbox.json",
+  "provider": "ellipsis-drive",
+  "source": "world/south-america/caribbean-netherlands/ellipsis-drive.json",
   "layers": {
-    "mapbox-streets": {
+    "ellipsis-drive-bonaire-luchtfoto-s": {
       "checks": [
-        {
-          "date": "2026-09-05",
-          "availability": "up",
-          "httpStatus": 200,
-          "ms": 175
-        },
         {
           "date": "2026-09-07",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 77
+          "ms": 162
         }
       ],
       "summary": {
-        "firstChecked": "2026-09-05",
+        "firstChecked": "2026-09-07",
         "lastChecked": "2026-09-07",
         "current": "up",
-        "checks": 2,
-        "up": 2,
+        "checks": 1,
+        "up": 1,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
         "lastUp": "2026-09-07"
       }
     },
-    "mapbox-satellite": {
+    "ellipsis-drive-bonaire-infrarood-luchtfoto-s": {
       "checks": [
-        {
-          "date": "2026-09-05",
-          "availability": "up",
-          "httpStatus": 200,
-          "ms": 100
-        },
         {
           "date": "2026-09-07",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 65
+          "ms": 155
         }
       ],
       "summary": {
-        "firstChecked": "2026-09-05",
+        "firstChecked": "2026-09-07",
         "lastChecked": "2026-09-07",
         "current": "up",
-        "checks": 2,
-        "up": 2,
+        "checks": 1,
+        "up": 1,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
         "lastUp": "2026-09-07"
       }
     },
-    "mapbox-satellite-streets": {
+    "ellipsis-drive-sint-eustatius-luchtfoto-s": {
       "checks": [
-        {
-          "date": "2026-09-05",
-          "availability": "up",
-          "httpStatus": 200,
-          "ms": 90
-        },
         {
           "date": "2026-09-07",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 20
+          "ms": 113
         }
       ],
       "summary": {
-        "firstChecked": "2026-09-05",
+        "firstChecked": "2026-09-07",
         "lastChecked": "2026-09-07",
         "current": "up",
-        "checks": 2,
-        "up": 2,
+        "checks": 1,
+        "up": 1,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
         "lastUp": "2026-09-07"
       }
     },
-    "mapbox-outdoors": {
+    "ellipsis-drive-st-eustatius-infrarood-luchtfoto-s": {
       "checks": [
-        {
-          "date": "2026-09-05",
-          "availability": "up",
-          "httpStatus": 200,
-          "ms": 121
-        },
         {
           "date": "2026-09-07",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 25
+          "ms": 122
         }
       ],
       "summary": {
-        "firstChecked": "2026-09-05",
+        "firstChecked": "2026-09-07",
         "lastChecked": "2026-09-07",
         "current": "up",
-        "checks": 2,
-        "up": 2,
+        "checks": 1,
+        "up": 1,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
         "lastUp": "2026-09-07"
       }
     },
-    "mapbox-light": {
+    "ellipsis-drive-st-eustatius-hoogtekaart": {
       "checks": [
-        {
-          "date": "2026-09-05",
-          "availability": "up",
-          "httpStatus": 200,
-          "ms": 117
-        },
         {
           "date": "2026-09-07",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 19
+          "ms": 124
         }
       ],
       "summary": {
-        "firstChecked": "2026-09-05",
+        "firstChecked": "2026-09-07",
         "lastChecked": "2026-09-07",
         "current": "up",
-        "checks": 2,
-        "up": 2,
+        "checks": 1,
+        "up": 1,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
         "lastUp": "2026-09-07"
       }
     },
-    "mapbox-dark": {
+    "ellipsis-drive-saba-luchtfoto-s": {
       "checks": [
-        {
-          "date": "2026-09-05",
-          "availability": "up",
-          "httpStatus": 200,
-          "ms": 107
-        },
         {
           "date": "2026-09-07",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 20
+          "ms": 130
         }
       ],
       "summary": {
-        "firstChecked": "2026-09-05",
+        "firstChecked": "2026-09-07",
         "lastChecked": "2026-09-07",
         "current": "up",
-        "checks": 2,
-        "up": 2,
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-07"
+      }
+    },
+    "ellipsis-drive-saba-infrarood-luchtfoto-s": {
+      "checks": [
+        {
+          "date": "2026-09-07",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 139
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-07",
+        "lastChecked": "2026-09-07",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,

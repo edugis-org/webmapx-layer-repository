@@ -1,0 +1,27 @@
+{
+  "id": "gisco-maps",
+  "title": "Eurostat GISCO background map hub WMS",
+  "type": "wms-capabilities",
+  "url": "https://gisco-services.ec.europa.eu/maps/service?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities",
+  "note": "Eurostat's own map hub: NUTS regions, country and city boundaries, labels and background maps for the EU, EFTA and candidate countries. This is the statistical-geography layer the national services do not carry, because NUTS is defined at European level.",
+  "provider": {
+    "id": "eurostat-gisco",
+    "name": "Eurostat — GISCO",
+    "url": "https://ec.europa.eu/eurostat/web/gisco",
+    "access": "free",
+    "attribution": "© EuroGeographics for the administrative boundaries, Eurostat — GISCO",
+    "operator": {
+      "type": "government",
+      "country": "EU"
+    },
+    "categories": [
+      "boundaries",
+      "statistics",
+      "general-purpose"
+    ]
+  },
+  "region": "world/europe",
+  "include": { "crs": "EPSG:3857" },
+  "enabled": true,
+  "bounds": [-31, 27, 45, 72]
+}

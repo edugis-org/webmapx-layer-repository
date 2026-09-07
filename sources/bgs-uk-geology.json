@@ -1,0 +1,33 @@
+{
+  "id": "bgs-uk-geology",
+  "title": "British Geological Survey 1:50 000 digital geology WMS",
+  "type": "wms-capabilities",
+  "url": "https://map.bgs.ac.uk/arcgis/services/BGS_Detailed_Geology/MapServer/WMSServer?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities",
+  "note": "Bedrock, superficial deposits, artificial ground, mass movement and linear features for Great Britain. Ordnance Survey's own mapping needs an API key, and Defra publishes one dataset per endpoint, so this is the British service that yields a coherent set of layers without credentials. The service's top-level group layer, BGS.detailed.geology, is named but answers GetMap with LayerNotDefined, so it is excluded rather than published as five layers' worth of blank tiles.",
+  "provider": {
+    "id": "bgs",
+    "name": "British Geological Survey",
+    "url": "https://www.bgs.ac.uk",
+    "access": "free",
+    "attribution": "Contains British Geological Survey materials © UKRI {year}",
+    "operator": {
+      "type": "government",
+      "country": "GB"
+    },
+    "categories": [
+      "geology"
+    ]
+  },
+  "region": "world/europe/united-kingdom",
+  "include": {
+    "crs": "EPSG:3857",
+    "exclude": "^BGS\\.detailed\\.geology\\b"
+  },
+  "enabled": true,
+  "bounds": [
+    -8.7,
+    49.8,
+    2.0,
+    61.1
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "epa-ie-geoserver",
+  "title": "EPA Ireland GeoServer WMS",
+  "type": "wms-capabilities",
+  "url": "https://gis.epa.ie/geoserver/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities",
+  "note": "Ireland's environmental agency serves far more than its own remit: counties, NUTS regions and settlements alongside water quality, radon, air monitoring, soils and licensing. Tailte Éireann publishes no open national WMS, so this is where Irish reference geography comes from.",
+  "provider": {
+    "id": "epa-ie",
+    "name": "Environmental Protection Agency Ireland",
+    "url": "https://www.epa.ie",
+    "license": "CC-BY-4.0",
+    "access": "free",
+    "operator": {
+      "type": "government",
+      "country": "IE"
+    },
+    "categories": [
+      "environment",
+      "boundaries",
+      "water"
+    ]
+  },
+  "region": "world/europe/ireland",
+  "include": { "crs": "EPSG:3857" },
+  "enabled": true,
+  "bounds": [-10.7, 51.3, -5.3, 55.5]
+}

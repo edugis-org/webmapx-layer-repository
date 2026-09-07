@@ -1,0 +1,28 @@
+{
+  "id": "ign-fr-geoplateforme",
+  "title": "IGN France Géoplateforme WMS-Raster",
+  "type": "wms-capabilities",
+  "url": "https://data.geopf.fr/wms-r/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities",
+  "note": "The French national platform, open since IGN dropped its API keys: SCAN 25 and the other topographic maps, orthophotos, cadastre, land cover, plus a long tail of themed rasters from other agencies published through the same service.",
+  "provider": {
+    "id": "ign-fr",
+    "name": "Institut national de l'information géographique et forestière (IGN)",
+    "url": "https://www.ign.fr",
+    "license": "etalab-2.0",
+    "access": "free",
+    "operator": {
+      "type": "government",
+      "country": "FR"
+    },
+    "categories": [
+      "general-purpose",
+      "topographic",
+      "satellite",
+      "cadastre"
+    ]
+  },
+  "region": "world/europe/france",
+  "include": { "crs": "EPSG:3857" },
+  "enabled": true,
+  "bounds": [-5.3, 41.2, 9.7, 51.2]
+}
