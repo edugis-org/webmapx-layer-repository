@@ -168,6 +168,54 @@ function bboxOf(collection) {
     return b.length === 4 && b.every(v => Number.isFinite(Number(v))) ? b.map(Number) : null;
 }
 
+/**
+ * The web-mercator tile matrix set a WMTS row offers, under whatever name.
+ *
+ * MapLibre can only use a mercator grid, so a service that publishes only
+ * EPSG:28992 (Dutch RD) is not usable as an XYZ source and is skipped rather
+ * than turned into a layer whose every tile 404s.
+ */
+function mercatorMatrixSet(tileMatrixSets) {
+    const sets = String(tileMatrixSets ?? '').split(',').map(x => x.trim()).filter(Boolean);
+    return sets.find(x => x === 'EPSG:3857')
+        ?? sets.find(x => /GoogleMapsCompatible/i.test(x))
+        ?? sets.find(x => /^epsg[:_]?3857$/i.test(x))
+        ?? null;
+}
+
+/**
+ * A WMTS service's real tile templates, from its capabilities.
+ *
+ * The shape of a RESTful WMTS URL is the service's to state, not ours to guess:
+ * PDOK answers /{layer}/{matrixSet}/{z}/{x}/{y}.png, OpenBasisKaart answers
+ * /1.0.0/{layer}/default/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.png.
+ * Both are published as a ResourceURL template, so read it and substitute.
+ *
+ * {TileRow} is y and {TileCol} is x — the opposite pairing to the one the names
+ * suggest at a glance.
+ */
+async function wmtsTemplates(capabilitiesUrl) {
+    const cap = XML.parse(await cachedText(capabilitiesUrl));
+    const contents = cap.Capabilities?.Contents ?? cap['wmts:Capabilities']?.Contents;
+    const out = new Map();
+    for (const l of arr(contents?.Layer)) {
+        const name = l['ows:Identifier'] ?? l.Identifier;
+        if (name === undefined) continue;
+        const sets = arr(l.TileMatrixSetLink).map(x => String(x.TileMatrixSet)).filter(Boolean);
+        const matrixSet = mercatorMatrixSet(sets.join(','));
+        if (!matrixSet) continue;
+        const resource = arr(l.ResourceURL).find(r => (r['@resourceType'] ?? '') === 'tile');
+        const template = resource?.['@template'];
+        if (!template) continue;
+        out.set(String(name), String(template)
+            .replace('{TileMatrixSet}', matrixSet)
+            .replace('{TileMatrix}', '{z}')
+            .replace('{TileRow}', '{y}')
+            .replace('{TileCol}', '{x}'));
+    }
+    return out;
+}
+
 /** A catalogue that has already walked the provider's services for us. */
 async function readPdokPluginList(source) {
     const res = await fetch(source.url, { signal: AbortSignal.timeout(120000) });
@@ -205,7 +253,14 @@ async function readPdokPluginList(source) {
         if (r.service_type === 'wms') {
             url = `${endpoint}?LAYERS=${encodeURIComponent(r.name)}&${WMS_TAIL}`; kind = 'wms';
         } else if (r.service_type === 'wmts') {
-            url = `${endpoint}/${r.name}/EPSG:3857/{z}/{x}/{y}.png`; kind = 'wmts';
+            // The tile matrix set is the grid, and it is named per service: PDOK
+            // spells web mercator EPSG:3857, OGC:1.0:GoogleMapsCompatible or
+            // epsg3857 depending on the service. A service offering only
+            // EPSG:28992 has no web-mercator grid at all — TOP10NL is one — and
+            // asking it for /EPSG:3857/ returns 404s, which is a blank preview.
+            const matrixSet = mercatorMatrixSet(r.tilematrixsets);
+            if (!matrixSet) continue;
+            url = `${endpoint}/${r.name}/${matrixSet}/{z}/{x}/{y}.png`; kind = 'wmts';
         } else if (r.service_type === 'api tiles') {
             // The row describes the service; its collections are read below.
             services.set(key, svc);
@@ -524,6 +579,21 @@ async function enrichServices(services, expand) {
                 svc.layers = out;
             } catch { /* no capabilities, or no styles in them */ }
         }
+        // A WMTS states its own URL template; ours was a guess that fits PDOK and
+        // little else.
+        if (svc.type === 'wmts' && svc.capabilitiesUrl) {
+            try {
+                const templates = await wmtsTemplates(svc.capabilitiesUrl);
+                svc.layers = svc.layers.filter(l => {
+                    const t = templates.get(l.name);
+                    if (!t) return false;   // no mercator grid, or no template
+                    l.webmapxConfig.source.tiles = [t];
+                    return true;
+                });
+            } catch { /* keep the constructed template */ }
+            continue;
+        }
+
         // A service listed as a WFS in a catalogue is asked about itself; a WMS is
         // asked about the WFS that may sit beside it.
         if (svc.type === 'wfs') {
