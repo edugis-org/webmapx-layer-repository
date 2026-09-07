@@ -1,0 +1,32 @@
+{
+  "id": "ngi-be-cartoweb",
+  "title": "NGI CartoWeb.be topographic WMS",
+  "type": "wms-capabilities",
+  "url": "https://cartoweb.wms.ngi.be/service?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities",
+  "note": "The national topographic base map: topo and topo_grey, their cross-border variants, and a labels-and-symbols overlay. NGI's INSPIRE Annex I service carries only themed vector layers, so this is where the readable general-purpose map of Belgium comes from. A WMTS of the same five layers exists at cartoweb.wmts.ngi.be, but the harvester only reads WMS capabilities documents.",
+  "provider": {
+    "id": "ngi-be",
+    "name": "Nationaal Geografisch Instituut (NGI)",
+    "url": "https://www.ngi.be",
+    "access": "free",
+    "operator": {
+      "type": "government",
+      "country": "BE"
+    },
+    "categories": [
+      "general-purpose",
+      "topographic"
+    ]
+  },
+  "region": "world/europe/belgium",
+  "include": {
+    "crs": "EPSG:3857"
+  },
+  "enabled": true,
+  "bounds": [
+    2.5,
+    49.4,
+    6.5,
+    51.6
+  ]
+}

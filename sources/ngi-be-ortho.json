@@ -1,0 +1,32 @@
+{
+  "id": "ngi-be-ortho",
+  "title": "NGI Belgium INSPIRE orthoimagery WMS",
+  "type": "wms-capabilities",
+  "url": "https://wms.ngi.be/inspire/ortho/service?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities",
+  "note": "National aerial imagery, published as one layer per flight year (2016 onwards) plus a most-recent mosaic. Kept as a separate source from cartoweb because it is a different service on a different host.",
+  "provider": {
+    "id": "ngi-be",
+    "name": "Nationaal Geografisch Instituut (NGI)",
+    "url": "https://www.ngi.be",
+    "access": "free",
+    "operator": {
+      "type": "government",
+      "country": "BE"
+    },
+    "categories": [
+      "satellite",
+      "aerial"
+    ]
+  },
+  "region": "world/europe/belgium",
+  "include": {
+    "crs": "EPSG:3857"
+  },
+  "enabled": true,
+  "bounds": [
+    2.5,
+    49.4,
+    6.5,
+    51.6
+  ]
+}

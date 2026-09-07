@@ -1,0 +1,32 @@
+{
+  "id": "wallonie-limites",
+  "title": "Wallonia administrative and statistical boundaries WMS",
+  "type": "wms-capabilities",
+  "url": "https://geoservices.wallonie.be/arcgis/services/LIMITES/LIMITES_ADMINISTRATIVES/MapServer/WMSServer?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities",
+  "note": "Communes, provinces and the region outline. Belgium has no national administrative-units view service: NGI's INSPIRE Annex I WMS omits the AU theme, Statbel publishes its statistical sectors as downloads only, and Flanders serves VRBG over WFS but not WMS. So boundaries are harvested per region, and this covers Wallonia. Statistical sectors from the same portal live at LIMITES/LIMITES_QS_STATBEL.",
+  "provider": {
+    "id": "geoportail-wallonie",
+    "name": "Géoportail de la Wallonie — SPW",
+    "url": "https://geoportail.wallonie.be",
+    "access": "free",
+    "operator": {
+      "type": "government",
+      "country": "BE"
+    },
+    "categories": [
+      "boundaries",
+      "statistics"
+    ]
+  },
+  "region": "world/europe/belgium",
+  "include": {
+    "crs": "EPSG:3857"
+  },
+  "enabled": true,
+  "bounds": [
+    2.84,
+    49.49,
+    6.41,
+    50.85
+  ]
+}
