@@ -250,7 +250,9 @@ function layerKeysAvailable(layer) {
 
 // Load provider index
 async function loadIndex() {
-  const res = await fetch(`${LAYERS_BASE}/index.json`);
+  // no-store, like the provider files: a harvest rewrites the index in place,
+  // so a cached copy hides whole providers until the browser happens to revalidate.
+  const res = await fetch(`${LAYERS_BASE}/index.json`, { cache: 'no-store' });
   if (!res.ok) throw new Error('index.json not found — run: node scripts/build-index.mjs');
   return res.json();
 }
