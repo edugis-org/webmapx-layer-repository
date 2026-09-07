@@ -1,0 +1,28 @@
+{
+  "id": "vlaanderen-vrbg",
+  "title": "Voorlopig Referentiebestand Bestuurlijke Indelingen (VRBG) WFS",
+  "type": "wfs-capabilities",
+  "url": "https://geo.api.vlaanderen.be/VRBG/wfs?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetCapabilities",
+  "note": "Administrative boundaries of Flanders: gewest, provincie, arrondissement, gemeente. Digitaal Vlaanderen publishes VRBG over WFS only — the matching WMS endpoint answers with an error page — which is why the harvester grew a WFS reader.",
+  "provider": {
+    "id": "digitaal-vlaanderen",
+    "name": "Digitaal Vlaanderen",
+    "url": "https://www.vlaanderen.be/digitaal-vlaanderen",
+    "access": "free",
+    "operator": {
+      "type": "government",
+      "country": "BE"
+    },
+    "categories": [
+      "boundaries"
+    ]
+  },
+  "region": "world/europe/belgium",
+  "enabled": true,
+  "bounds": [
+    2.52,
+    50.67,
+    5.94,
+    51.51
+  ]
+}

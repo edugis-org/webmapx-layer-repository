@@ -62,6 +62,15 @@ function countWmsLayers(body) {
     return n;
 }
 
+/** Feature types a WFS capabilities document offers. */
+function countWfsFeatureTypes(body) {
+    const doc = XML.parse(body);
+    const cap = doc['wfs:WFS_Capabilities'] ?? doc.WFS_Capabilities;
+    const list = cap?.['wfs:FeatureTypeList'] ?? cap?.FeatureTypeList;
+    return arr(list?.['wfs:FeatureType'] ?? list?.FeatureType)
+        .filter(t => (t['wfs:Name'] ?? t.Name) !== undefined).length;
+}
+
 /** Entries a harvested catalogue lists. */
 function countPdokPluginRows(body) {
     const rows = JSON.parse(body);
@@ -70,6 +79,7 @@ function countPdokPluginRows(body) {
 
 const COUNTERS = {
     'wms-capabilities': countWmsLayers,
+    'wfs-capabilities': countWfsFeatureTypes,
     'pdok-plugin-list': countPdokPluginRows,
 };
 

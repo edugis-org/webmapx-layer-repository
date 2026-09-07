@@ -359,6 +359,133 @@ async function readWmsCapabilities(source) {
 }
 
 
+/**
+ * A WFS describing itself.
+ *
+ * The counterpart of readWmsCapabilities for services that publish vectors and
+ * no picture of them. Flanders' VRBG is the case that forced it: the boundaries
+ * of Belgium's regions, provinces, arrondissements and municipalities exist
+ * there over WFS and nowhere over WMS, so without this reader a whole theme is
+ * simply absent from the catalog.
+ *
+ * A feature type becomes a GeoJSON layer, which means the document is fetched
+ * whole, so the request carries the same cap the PDOK rows do — see
+ * WFS_FEATURE_CAP.
+ */
+async function readWfsCapabilities(source) {
+    const url = source.url.includes('?') ? source.url
+        : `${source.url}?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetCapabilities`;
+    const res = await fetch(url, { signal: AbortSignal.timeout(60000) });
+    if (!res.ok) throw new Error(`HTTP ${res.status} fetching ${url}`);
+    const doc = XML.parse(await res.text());
+    const cap = doc['wfs:WFS_Capabilities'] ?? doc.WFS_Capabilities;
+    if (!cap) throw new Error('no WFS capabilities element');
+
+    const version = String(cap['@version'] ?? '2.0.0');
+    // 2.0.0 names the type and counts in one dialect, 1.1.0 in another.
+    const v2 = version.startsWith('2');
+    const format = jsonOutputFormat(cap);
+    if (!format) throw new Error('service offers no JSON output format');
+
+    const endpoint = getFeatureEndpointOf(cap) ?? url.split('?')[0];
+    const inc = source.include ?? {};
+    const { pageSize, canPage } = pagingOf(cap);
+
+    const list = cap['wfs:FeatureTypeList'] ?? cap.FeatureTypeList;
+    const out = []; const ids = new Set();
+    for (const t of arr(list?.['wfs:FeatureType'] ?? list?.FeatureType)) {
+        const raw = t['wfs:Name'] ?? t.Name;
+        if (raw === undefined) continue;
+        const name = String(raw);
+        const title = String(t['wfs:Title'] ?? t.Title ?? name);
+        const abstract = t['wfs:Abstract'] ?? t.Abstract;
+        if (inc.match && !new RegExp(inc.match, 'i').test(`${name} ${title}`)) continue;
+        if (inc.exclude && new RegExp(inc.exclude, 'i').test(`${name} ${title}`)) continue;
+
+        let id = `${source.provider.id}-${slug(name)}`;
+        while (ids.has(id)) id += '-2';
+        ids.add(id);
+
+        // Asked for in WGS84 because a GeoJSON source is lon/lat by definition,
+        // whatever the service calls its default CRS.
+        const query = v2
+            ? `SERVICE=WFS&VERSION=${version}&REQUEST=GetFeature`
+              + `&TYPENAMES=${encodeURIComponent(name)}&COUNT=${pageSize}`
+            : `SERVICE=WFS&VERSION=${version}&REQUEST=GetFeature`
+              + `&TYPENAME=${encodeURIComponent(name)}&MAXFEATURES=${pageSize}`;
+        const layer = mkLayer({
+            id, name, title,
+            abstract: abstract ? String(abstract) : undefined,
+            url: `${endpoint}?${query}&OUTPUTFORMAT=${encodeURIComponent(format)}`
+                 + `&SRSNAME=EPSG:4326`,
+            kind: 'wfs',
+            bounds: wgs84BoundsOf(t) ?? source.bounds,
+            attribution: attributionFor(source),
+        });
+        layer.featureCap = WFS_FEATURE_CAP;
+        out.push(layer);
+    }
+
+    const svcId = slug(endpoint.replace(/^https?:\/\/[^/]+/, '')) || 'wfs';
+    const ident = cap['ows:ServiceIdentification'] ?? cap.ServiceIdentification ?? {};
+    const svcAbstract = ident['ows:Abstract'] ?? ident.Abstract;
+    return [{
+        id: svcId,
+        title: String(ident['ows:Title'] ?? ident.Title ?? source.title ?? 'WFS'),
+        ...(svcAbstract ? { abstract: String(svcAbstract).slice(0, 600) } : {}),
+        type: 'wfs', endpoint, capabilitiesUrl: url,
+        featuresEndpoint: endpoint,
+        featurePageSize: pageSize,
+        featurePaging: canPage,
+        harvestedFrom: source.id,
+        layers: inc.limit ? out.slice(0, inc.limit) : out,
+    }];
+}
+
+/**
+ * The JSON flavour a WFS will answer GetFeature in.
+ *
+ * Servers spell it application/json, application/geo+json, geojson or json, and
+ * a service offering none of them cannot back a GeoJSON source at all — GML
+ * would have to be converted, which is not this harvester's job. Read off
+ * GetFeature specifically: DescribeFeatureType advertises its own, narrower list.
+ */
+function jsonOutputFormat(cap) {
+    const ops = arr(cap['ows:OperationsMetadata']?.['ows:Operation']
+                 ?? cap.OperationsMetadata?.Operation);
+    const getFeature = ops.find(o => o['@name'] === 'GetFeature');
+    const params = arr(getFeature?.['ows:Parameter'] ?? getFeature?.Parameter);
+    const p = params.find(x => x['@name'] === 'outputFormat');
+    const values = arr(p?.['ows:AllowedValues']?.['ows:Value'] ?? p?.['ows:Value'] ?? p?.Value)
+        .map(String);
+    // Most specific first: geo+json is the registered GeoJSON type, and a server
+    // offering both means the plain one for something else in only rare cases.
+    return values.find(v => /geo\+json/i.test(v))
+        ?? values.find(v => /^geojson$/i.test(v))
+        ?? values.find(v => /application\/json/i.test(v))
+        ?? values.find(v => /^json$/i.test(v));
+}
+
+/** The URL the service names for GetFeature, rather than the one we asked on. */
+function getFeatureEndpointOf(cap) {
+    const ops = arr(cap['ows:OperationsMetadata']?.['ows:Operation']
+                 ?? cap.OperationsMetadata?.Operation);
+    const getFeature = ops.find(o => o['@name'] === 'GetFeature') ?? ops[0];
+    const get = getFeature?.['ows:DCP']?.['ows:HTTP']?.['ows:Get']
+             ?? getFeature?.DCP?.HTTP?.Get;
+    const href = arr(get)[0]?.['@xlink:href'];
+    return href ? String(href).split('?')[0] : null;
+}
+
+/** A feature type's extent, which WFS states as an ows:WGS84BoundingBox. */
+function wgs84BoundsOf(featureType) {
+    const bb = arr(featureType['ows:WGS84BoundingBox'] ?? featureType.WGS84BoundingBox)[0];
+    if (!bb) return null;
+    const lower = String(bb['ows:LowerCorner'] ?? bb.LowerCorner ?? '').trim().split(/\s+/);
+    const upper = String(bb['ows:UpperCorner'] ?? bb.UpperCorner ?? '').trim().split(/\s+/);
+    const b = [lower[0], lower[1], upper[0], upper[1]].map(Number);
+    return b.every(Number.isFinite) ? b : null;
+}
 /** Fetch with an on-disk cache, so --enrich is cheap to re-run. */
 async function cachedText(url, timeout = 60000) {
     const key = join(CACHE, Buffer.from(url).toString('base64url').slice(0, 180) + '.txt');
@@ -634,7 +761,11 @@ async function enrichServices(services, expand) {
     return { legends, schemas, expansions };
 }
 
-const READERS = { 'pdok-plugin-list': readPdokPluginList, 'wms-capabilities': readWmsCapabilities };
+const READERS = {
+    'pdok-plugin-list': readPdokPluginList,
+    'wms-capabilities': readWmsCapabilities,
+    'wfs-capabilities': readWfsCapabilities,
+};
 
 const sources = readdirSync(SOURCES).filter(f => f.endsWith('.json'))
     .map(f => JSON.parse(readFileSync(join(SOURCES, f), 'utf8')))

@@ -23,6 +23,7 @@
       "enum": [
         "wms-capabilities",
         "wmts-capabilities",
+        "wfs-capabilities",
         "pdok-plugin-list",
         "ogc-api-records"
       ],
