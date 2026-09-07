@@ -88,8 +88,18 @@
               "realtime",
               "indoor",
               "maritime",
-              "aviation"
-            ]
+              "aviation",
+              "hazard",
+              "health",
+              "air-quality",
+              "noise",
+              "water",
+              "nature",
+              "soil",
+              "demographics",
+              "statistics"
+            ],
+            "description": "Themes a provider's layers cover. Extended as real sources needed them — the atlases brought health, air-quality, noise and hazard; the Census brought demographics and statistics. Keep it a closed list so the generated topic indexes stay comparable."
           }
         },
         "regions": {
