@@ -928,14 +928,18 @@ const PREVIEW_TOOLS = {
 };
 
 // A basemap under overlay layers. Without one an overlay of thin lines hangs in
-// a void and reads as broken; a plain grey background gives nothing to click on
-// for feature info either. OpenFreeMap needs no key and no registered origin,
+// a void and reads as broken. OpenFreeMap needs no key and no registered origin,
 // which a repository served from GitHub Pages cannot offer.
+//
+// It is scenery, so metadata.queryable is false: the info tool is here to
+// report on the layer being previewed, and a click that answers with
+// OpenFreeMap's own roads and buildings buries that under noise.
 const PREVIEW_BASEMAP = {
   id: '_base',
   type: 'style',
   url: 'https://tiles.openfreemap.org/styles/positron',
   title: 'Basemap',
+  metadata: { queryable: false },
 };
 
 // This repository stores a WMS as a ready-baked GetMap tile template, because

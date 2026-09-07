@@ -752,6 +752,10 @@
                         "overlay"
                       ]
                     },
+                    "queryable": {
+                      "type": "boolean",
+                      "description": "Whether the info tool may ask this layer about a point. Written only when false, which a WMS states with queryable=\"0\" — asking such a layer anyway returns a service exception, and the tool would report that as a failure instead of as an empty result. Absent means queryable, which is what a client assumes."
+                    },
                     "previewCenter": {
                       "type": "array",
                       "items": {

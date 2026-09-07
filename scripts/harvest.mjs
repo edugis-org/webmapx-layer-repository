@@ -93,7 +93,7 @@ function attributionFor(source) {
 }
 
 function mkLayer({ id, name, title, abstract, datasetId, url, kind, background, bounds,
-                   attribution, sourceLayer, featureCount }) {
+                   attribution, sourceLayer, featureCount, queryable }) {
     // Three shapes, because three ways of delivering the same data: a raster
     // tile template, a vector tile template with a source-layer to draw from,
     // and a GeoJSON document fetched whole.
@@ -134,6 +134,11 @@ function mkLayer({ id, name, title, abstract, datasetId, url, kind, background, 
                     title,
                     ...(abstract ? { abstract: abstract.slice(0, 600) } : {}),
                     legendRole: background ? 'background' : 'overlay',
+                    // Only when the answer is no. Queryable is the default a
+                    // client assumes, and writing it onto twenty thousand
+                    // layers to say so would be twenty thousand lines of
+                    // nothing.
+                    ...(queryable === false ? { queryable: false } : {}),
                 },
             },
         },
@@ -345,6 +350,11 @@ async function readWmsCapabilities(source) {
                     const layer = mkLayer({
                         id, name, title, abstract: l.Abstract ? String(l.Abstract) : undefined,
                         url: `${endpoint}?LAYERS=${encodeURIComponent(name)}&${tail}`, kind: 'wms',
+                        // The service's own answer to "can this be asked about a
+                        // point?". A layer that says no and is asked anyway
+                        // replies with a service exception, which the info tool
+                        // would show as a failure rather than as "nothing here".
+                        queryable: queryableOf(l),
                         // The layer's own extent where it states one; the
                         // source's only as a fallback.
                         bounds: extent ?? source.bounds,
@@ -549,6 +559,20 @@ function boundsOf(layerNode) {
         if (b.every(Number.isFinite)) return b;
     }
     return null;
+}
+
+/**
+ * Whether a WMS layer accepts GetFeatureInfo, per its own capabilities.
+ *
+ * The attribute is optional and defaults to 0 in the spec, but servers are
+ * careless with it and a great many queryable layers simply omit it — so a
+ * missing attribute is left undecided (undefined) rather than read as "no",
+ * and only an explicit 0 turns the info tool off for the layer.
+ */
+function queryableOf(layerNode) {
+    const q = layerNode['@queryable'];
+    if (q === undefined) return undefined;
+    return !/^(0|false)$/i.test(String(q).trim());
 }
 
 function stylesOf(layerNode) {
