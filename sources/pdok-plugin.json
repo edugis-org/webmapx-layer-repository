@@ -27,6 +27,7 @@
     "serviceTypes": [
       "wms",
       "wmts",
+      "wfs",
       "api tiles"
     ],
     "crs": "EPSG:3857"

@@ -44,8 +44,9 @@ generated layer records, so nobody should be asked to.
 **cannot be regenerated**. No rerun recreates "up 51 of the last 52 weeks"; it
 only accrues by observing. It is not a build artifact.
 
-Current state: 152 curated layers in 50 services across 27 providers; 28,066
-harvested layers in 241 services from **10 source files**. Four providers that
+Current state: 152 curated layers in 50 services across 27 providers; 29,653
+harvested layers in 401 services from **11 source files** — 28,111 WMS, 1,455
+WFS, 52 vector-tile and 35 WMTS. Four providers that
 were hand-written are now sources, and their curated files are gone.
 
 A provider can be reached through several sources — RIVM publishes Atlas
@@ -119,6 +120,21 @@ wrong trade, so the previewer fetches the schema for the layer being opened, and
 caches it for the session. Every endpoint harvested here answers with
 `Access-Control-Allow-Origin: *`, which is what makes that possible; a service
 that did not would simply show no field list.
+
+**One dataset, several deliveries, one row.** PDOK serves the same data as WMS,
+WFS, WMTS and vector tiles, and listing each separately reads as duplicates while
+hiding the choice. The previewer groups them on dataset id plus title — the id
+alone merges every layer of a dataset (BGT has 49), the title alone merges
+unrelated layers that share a name — and the row carries a switch that Preview
+follows.
+
+**A WFS layer is capped and paged.** A GeoJSON source is fetched whole and
+MapLibre cannot template a bbox into it, so an uncapped national layer would ask
+for millions of features; the cap is 20,000. It cannot be fetched in one request
+either: a server clamps COUNT to its own `CountDefault` (PDOK returns 1000
+whatever is asked), so the previewer walks STARTINDEX. Both the page size and
+whether paging works at all are read from the service's capabilities rather than
+assumed — `ImplementsResultPaging` false means one page is all there is.
 
 **Attributes come from WFS, not GetFeatureInfo.** A WMS cannot describe its own
 fields; `GetFeatureInfo` samples a point and returns whatever is there — one

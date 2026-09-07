@@ -106,6 +106,15 @@
     .attr-table td.n { font-family: ui-monospace, monospace; }
     .attr-table td.t { color: #888; }
     .info-empty { font-size: 0.82rem; color: #888; line-height: 1.5; }
+    /* One dataset, several deliveries: the row shows what else it is served as. */
+    .delivery-switch { display: inline-flex; border: 1px solid #d6d6d6; border-radius: 4px; overflow: hidden; }
+    .delivery-switch .delivery {
+      border: 0; background: #fff; color: #666; font-size: 0.72rem; padding: 3px 7px;
+      cursor: pointer; border-right: 1px solid #eee; font-family: inherit;
+    }
+    .delivery-switch .delivery:last-child { border-right: 0; }
+    .delivery-switch .delivery:hover { background: #f2f6ff; color: #0f62fe; }
+    .delivery-switch .delivery.on { background: #0f62fe; color: #fff; }
     html.modal-open, html.modal-open body { overflow: hidden; }
     .dialog-footer { padding: 10px 20px; display: flex; gap: 8px; }
     .copy-btn { padding: 7px 16px; background: #0f62fe; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 0.85rem; }
@@ -387,6 +396,58 @@ const LAYER_PAGE_SIZE = 100;
 let layerQuery = '';
 let layerPage = 0;
 
+/**
+ * One dataset delivered several ways is one row, not several.
+ *
+ * PDOK publishes the same data as WMS, WFS, WMTS and vector tiles: 167 of its
+ * datasets arrive twice or more. Listing each delivery separately reads as
+ * duplicate layers and hides the choice; the row shows the alternatives and the
+ * Preview button follows the one selected.
+ *
+ * Grouped on the dataset's metadata id plus its title — the id alone would
+ * merge every layer of a dataset (BGT has 49), and the title alone would merge
+ * layers that share a name across unrelated services.
+ */
+function deliveryKey(entry) {
+  const l = entry.layer;
+  return `${l.datasetId ?? ''}|${(l.title ?? '').trim().toLowerCase()}`;
+}
+
+/** Preferred first: what a viewer wants by default. */
+const DELIVERY_ORDER = ['vector', 'wmts', 'wms', 'wfs', 'geojson'];
+const DELIVERY_LABEL = {
+  vector: 'Vector tiles', wmts: 'WMTS', wms: 'WMS', wfs: 'WFS (features)', geojson: 'GeoJSON',
+};
+
+function groupDeliveries(entries) {
+  const groups = new Map();
+  for (const entry of entries) {
+    const key = deliveryKey(entry);
+    const group = groups.get(key);
+    if (group) group.deliveries.push(entry);
+    else groups.set(key, { ...entry, key, deliveries: [entry] });
+  }
+  for (const g of groups.values()) {
+    g.deliveries.sort((a, b) =>
+      DELIVERY_ORDER.indexOf(a.layer.type) - DELIVERY_ORDER.indexOf(b.layer.type));
+    // The row represents whichever delivery is selected; default to the first.
+    const chosen = selectedDelivery.get(g.key);
+    const active = g.deliveries.find(d => d.layer.type === chosen) ?? g.deliveries[0];
+    g.layer = active.layer;
+    g.service = active.service;
+    g.index = active.index;
+  }
+  return [...groups.values()];
+}
+
+/** Which delivery a grouped row is showing, by group key. */
+const selectedDelivery = new Map();
+
+function chooseDelivery(key, type) {
+  selectedDelivery.set(key, type);
+  renderLayerRows();
+}
+
 /** The text a layer query is matched against. */
 function layerHaystack(entry) {
   const l = entry.layer;
@@ -451,14 +512,14 @@ function renderLayerRows() {
   // The original position is what showConfig/showPreview index by, so it has to
   // survive filtering and paging.
   const all = layerEntries(currentProvider).map((entry, index) => ({ ...entry, index }));
-  const matched = filterByQuery(all, layerQuery, layerHaystack);
+  const matched = groupDeliveries(filterByQuery(all, layerQuery, layerHaystack));
   const pages = Math.max(1, Math.ceil(matched.length / LAYER_PAGE_SIZE));
   if (layerPage >= pages) layerPage = pages - 1;
   const start = layerPage * LAYER_PAGE_SIZE;
   const page = matched.slice(start, start + LAYER_PAGE_SIZE);
 
   document.getElementById('layer-rows').innerHTML = page.length
-    ? page.map(({ layer: l, service, index: i }) => {
+    ? page.map(({ layer: l, service, index: i, key, deliveries }) => {
           const needsKey = layerNeedsKey(l);
           const hasKey = needsKey && layerKeysAvailable(l);
           const canPreview = !needsKey || hasKey;
@@ -472,7 +533,13 @@ function renderLayerRows() {
               <span style="font-size:0.78rem">${service.title ?? service.id}</span>
               ${service.endpoint ? `<br><span style="color:#999;font-size:0.7rem" title="${service.endpoint}">${service.type}</span>` : ''}
             </td>
-            <td>${l.type}</td>
+            <td>${(deliveries ?? []).length > 1
+              ? `<div class="delivery-switch">${deliveries.map(d => `
+                  <button class="delivery${d.layer.type === l.type ? ' on' : ''}"
+                          title="${DELIVERY_LABEL[d.layer.type] ?? d.layer.type}"
+                          onclick="chooseDelivery('${key.replace(/'/g, "\\'")}', '${d.layer.type}')"
+                  >${d.layer.type}</button>`).join('')}</div>`
+              : l.type}</td>
             <td>
               <span class="status-dot ${l.status ?? 'unknown'}"></span>${l.status ?? 'unknown'}
               ${l.lastChecked ? `<br><span style="color:#888;font-size:0.75rem">${l.lastChecked}</span>` : ''}
@@ -492,13 +559,18 @@ function renderLayerRows() {
 
   // The count line reports what the filter selected, not what the file holds:
   // "1822 layers" beside a filtered table is the one number nobody wants.
-  const svcCount = new Set(matched.map(e => e.service?.id ?? e.service?.title)).size;
+  // A grouped row can stand for several deliveries of one dataset, so the count
+  // reports both: what you can pick from, and how many rows that is.
+  const shownDeliveries = matched.reduce((n, g) => n + (g.deliveries?.length ?? 1), 0);
+  const svcCount = new Set(matched.flatMap(g => (g.deliveries ?? [g])
+    .map(e => e.service?.id ?? e.service?.title))).size;
   const allSvcCount = new Set(all.map(e => e.service?.id ?? e.service?.title)).size;
   const plural = (n, word) => `${n} ${word}${n === 1 ? '' : 's'}`;
+  const grouped = shownDeliveries !== matched.length ? ` in ${plural(matched.length, 'dataset')}` : '';
   document.getElementById('layer-count').innerHTML =
-    (matched.length === all.length
-      ? `${plural(all.length, 'layer')} across ${plural(allSvcCount, 'service')}`
-      : `${matched.length} of ${all.length} layers across ${svcCount} of ${allSvcCount} services`)
+    (shownDeliveries === all.length
+      ? `${plural(all.length, 'layer')}${grouped} across ${plural(allSvcCount, 'service')}`
+      : `${shownDeliveries} of ${all.length} layers${grouped} across ${svcCount} of ${allSvcCount} services`)
     + ` — <a href="${LAYERS_BASE}/${currentPath}" target="_blank">View raw JSON ↗</a>`;
 
   // A provider whose layers all fit on one page needs no pager at all.
@@ -763,6 +835,29 @@ async function showPreview(index) {
   switchTab('preview');
   openDialog();
 
+  // A WFS layer's data is paged in before the map is drawn: one GeoJSON source
+  // cannot walk STARTINDEX by itself.
+  if (layer.type === 'wfs') {
+    const status = document.getElementById('map-preview');
+    status.innerHTML = '<p style="padding:14px;color:#666;font-size:0.85rem">Loading features…</p>';
+    try {
+      const fc = await fetchWfsFeatures(layer, entry.service, (n, total) => {
+        status.innerHTML = `<p style="padding:14px;color:#666;font-size:0.85rem">Loading features… ${n}${
+          total ? ` of ${total}` : ''}</p>`;
+      });
+      if (activeLayerRecord !== layer) return;   // another layer was opened meanwhile
+      if (fc) {
+        activeConfig = { ...activeConfig, source: { ...activeConfig.source, data: fc } };
+        if (fc.truncated) {
+          console.info(`${layer.title}: stopped at the ${layer.featureCap}-feature cap`);
+        }
+      }
+    } catch {
+      status.innerHTML = '<p style="padding:14px;color:#a00;font-size:0.85rem">Could not load features from the WFS.</p>';
+      return;
+    }
+  }
+
   // Load styles file if available
   activeLayerStyles = null;
   const stylesPath = currentIndexEntry?.layerStyles?.[layer.id];
@@ -915,6 +1010,41 @@ function zoomForBounds(bounds, width, height) {
   return Math.max(0, Math.min(18, Math.min(zx, zy) - 0.3));
 }
 
+/**
+ * Load a WFS-backed layer's features, paging as the service allows.
+ *
+ * A GeoJSON source is one URL and one document, but servers cap what one request
+ * returns — PDOK gives 1000 however large a COUNT is sent — so reaching the
+ * layer's cap means walking STARTINDEX. The service states both its page size
+ * (CountDefault) and whether paging works at all (ImplementsResultPaging); a
+ * service that says it cannot page is asked once and believed.
+ *
+ * Returns an inline FeatureCollection, which also spares the map a second fetch.
+ */
+async function fetchWfsFeatures(layer, service, onProgress) {
+  const base = layer.webmapxConfig?.source?.data;
+  if (typeof base !== 'string') return null;
+  const cap = layer.featureCap ?? 20000;
+  const pageSize = service?.featurePageSize ?? 1000;
+  const canPage = service?.featurePaging !== false;
+
+  const features = [];
+  let truncated = false;
+  for (let start = 0; features.length < cap; start += pageSize) {
+    const url = new URL(base);
+    url.searchParams.set('COUNT', String(Math.min(pageSize, cap - features.length)));
+    if (start > 0) url.searchParams.set('STARTINDEX', String(start));
+    const page = await (await fetch(url)).json();
+    const got = page.features ?? [];
+    features.push(...got);
+    onProgress?.(features.length, page.numberMatched);
+    // A short page is the end of the data; a full one only means there may be more.
+    if (!canPage || got.length === 0 || got.length < pageSize) break;
+    if (features.length >= cap) { truncated = true; break; }
+  }
+  return { type: 'FeatureCollection', features, truncated };
+}
+
 async function initPreviewMap(cfg) {
   const container = document.getElementById('map-preview');
   if (!container.offsetParent) return; // not visible yet
@@ -969,7 +1099,7 @@ document.getElementById('search').addEventListener('input', e => {
 // not share. Bind them explicitly.
 Object.assign(window, {
   selectProvider, selectRegion, toggleRegion, showConfig, showPreview,
-  switchTab, copyConfig, setLayerPage,
+  switchTab, copyConfig, setLayerPage, chooseDelivery,
 });
 
 init();

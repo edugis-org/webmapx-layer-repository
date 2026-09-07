@@ -29,6 +29,22 @@ const enrich = args.includes('--enrich');
 const CACHE = join(ROOT, '.cache');
 const only = args.includes('--source') ? args[args.indexOf('--source') + 1] : null;
 
+/**
+ * Features a WFS layer asks for, and the page size it asks in.
+ *
+ * A WFS becomes a GeoJSON source, and a GeoJSON source is fetched whole — there
+ * is no bbox to narrow it, because MapLibre does not template one. Unbounded,
+ * adding "Panden" would ask PDOK for ten million buildings.
+ *
+ * The cap cannot be reached in one request: PDOK returns 1000 features however
+ * large a COUNT is asked for, and most servers set some such ceiling. So the
+ * URL stored here is the first page, and the layer carries the cap and page size
+ * for a client that wants the rest — see fetchWfsFeatures() in index.html.
+ */
+const WFS_FEATURE_CAP = 20000;
+/** Only if a service declares no CountDefault of its own. */
+const WFS_PAGE_FALLBACK = 1000;
+
 // STYLES is sent empty rather than omitted: the spec requires the parameter,
 // most servers forgive its absence, and ArcGIS Server answers StylesNotDefined.
 const WMS_TAIL = 'SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true' +
@@ -59,18 +75,35 @@ function attributionFor(source) {
     return p.license ? `&copy; ${who} (${p.license})` : `&copy; ${who}`;
 }
 
-function mkLayer({ id, name, title, abstract, datasetId, url, kind, background, bounds, attribution }) {
-    const src = kind === 'geojson'
-        ? { type: 'geojson', data: url, ...(attribution ? { attribution } : {}) }
-        : {
+function mkLayer({ id, name, title, abstract, datasetId, url, kind, background, bounds,
+                   attribution, sourceLayer, featureCount }) {
+    // Three shapes, because three ways of delivering the same data: a raster
+    // tile template, a vector tile template with a source-layer to draw from,
+    // and a GeoJSON document fetched whole.
+    let src, layerType;
+    if (kind === 'geojson' || kind === 'wfs') {
+        src = { type: 'geojson', data: url, ...(attribution ? { attribution } : {}) };
+        layerType = 'fill';
+    } else if (kind === 'vector') {
+        src = {
+            type: 'vector', tiles: [url],
+            ...(attribution ? { attribution } : {}),
+            ...(bounds ? { bounds } : {}),
+        };
+        layerType = 'fill';
+    } else {
+        src = {
             type: 'raster', tiles: [url], tileSize: 256,
             ...(attribution ? { attribution } : {}),
             ...(bounds ? { bounds } : {}),
         };
+        layerType = 'raster';
+    }
     return {
         id, ...(name ? { name } : {}), title,
         ...(abstract ? { abstract: abstract.slice(0, 600) } : {}),
         ...(datasetId ? { datasetId } : {}),
+        ...(featureCount !== undefined ? { featureCount } : {}),
         type: kind, requiresKey: false,
         webmapxConfig: {
             source: src,
@@ -78,7 +111,8 @@ function mkLayer({ id, name, title, abstract, datasetId, url, kind, background, 
             // layer-info dialog reads layer.metadata.abstract and shows a
             // "no information available" placeholder when it is absent.
             layer: {
-                id, type: 'raster',
+                id, type: layerType,
+                ...(sourceLayer ? { 'source-layer': sourceLayer } : {}),
                 metadata: {
                     title,
                     ...(abstract ? { abstract: abstract.slice(0, 600) } : {}),
@@ -87,6 +121,51 @@ function mkLayer({ id, name, title, abstract, datasetId, url, kind, background, 
             },
         },
     };
+}
+
+/**
+ * Collections behind an OGC API Tiles service, as vector-tile layers.
+ *
+ * The catalogue lists one row for the whole service, so the collections have to
+ * be asked for: /tiles names the tileset templates, /collections names the
+ * source-layers to draw from them. WebMercatorQuad is the one MapLibre can use;
+ * PDOK also publishes NetherlandsRDNewQuad and ETRS89-LAEA, which it cannot.
+ * The template speaks OGC's {tileMatrix}/{tileRow}/{tileCol}, MapLibre speaks
+ * {z}/{y}/{x} — the same numbers in the same order, renamed.
+ */
+async function ogcApiTileLayers(source, service) {
+    const base = service.endpoint.replace(/\/$/, '');
+    const tilesets = JSON.parse(await cachedText(`${base}/tiles?f=json`)).tilesets ?? [];
+    const mercator = tilesets.find(t => t.tileMatrixSetId === 'WebMercatorQuad');
+    if (!mercator) return [];
+    const item = (mercator.links ?? []).find(l => /item$/.test(l.rel ?? ''))?.href;
+    if (!item) return [];
+    const template = item
+        .replace('{tileMatrix}', '{z}').replace('{tileRow}', '{y}').replace('{tileCol}', '{x}');
+
+    // The template can name a different host than the catalogue did — PDOK's
+    // bestuurlijkegebieden answers for brk-bestuurlijke-gebieden — so the
+    // collections are read from the endpoint the service points at, not ours.
+    const root = template.split('/tiles/')[0];
+    const collections = JSON.parse(await cachedText(`${root}/collections?f=json`)).collections ?? [];
+
+    return collections.map(c => mkLayer({
+        id: `${source.provider.id}-${slug(service.id)}-${slug(c.id)}`,
+        name: c.id,
+        title: c.title ?? `${service.title} — ${c.id}`,
+        abstract: c.description,
+        url: template, kind: 'vector', sourceLayer: c.id,
+        bounds: bboxOf(c) ?? source.bounds,
+        attribution: attributionFor(source),
+    }));
+}
+
+/** WGS84 extent of an OGC API collection, where it states one. */
+function bboxOf(collection) {
+    const bbox = collection?.extent?.spatial?.bbox?.[0];
+    if (!Array.isArray(bbox)) return null;
+    const b = bbox.length === 6 ? [bbox[0], bbox[1], bbox[3], bbox[4]] : bbox.slice(0, 4);
+    return b.length === 4 && b.every(v => Number.isFinite(Number(v))) ? b.map(Number) : null;
 }
 
 /** A catalogue that has already walked the provider's services for us. */
@@ -127,16 +206,39 @@ async function readPdokPluginList(source) {
             url = `${endpoint}?LAYERS=${encodeURIComponent(r.name)}&${WMS_TAIL}`; kind = 'wms';
         } else if (r.service_type === 'wmts') {
             url = `${endpoint}/${r.name}/EPSG:3857/{z}/{x}/{y}.png`; kind = 'wmts';
+        } else if (r.service_type === 'api tiles') {
+            // The row describes the service; its collections are read below.
+            services.set(key, svc);
+            continue;
+        } else if (r.service_type === 'wfs') {
+            // A GeoJSON source fetches the whole document, so the request is
+            // capped: WFS_FEATURE_CAP features of a national dataset is a
+            // preview, and the alternative is a browser pulling millions.
+            url = `${endpoint}?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature` +
+                  `&TYPENAMES=${encodeURIComponent(r.name)}` +
+                  `&OUTPUTFORMAT=application/json&COUNT=${WFS_PAGE_FALLBACK}&SRSNAME=EPSG:4326`;
+            kind = 'wfs';
         } else { continue; }
 
-        svc.layers.push(mkLayer({
+        const built = mkLayer({
             id, name: r.name, title: r.title, abstract: r.abstract, datasetId: r.dataset_md_id,
             url, kind, bounds: source.bounds, attribution: attributionFor(source),
             background: /achtergrond|luchtfoto|ortho|topografi/i.test(r.title),
-        }));
+        });
+        // The page size is the service's to state, and enrichment reads it from
+        // the service's capabilities; the cap is ours.
+        if (kind === 'wfs') built.featureCap = WFS_FEATURE_CAP;
+        svc.layers.push(built);
         services.set(key, svc);
     }
     for (const s of services.values()) delete s._ids;
+
+    // An OGC API Tiles row describes a service, not a layer: ask it what it holds.
+    for (const svc of services.values()) {
+        if (svc.type !== 'ogc-api-tiles') continue;
+        try { svc.layers = await ogcApiTileLayers(source, svc); }
+        catch { svc.layers = []; }   // a service that will not describe itself
+    }
     return [...services.values()];
 }
 
@@ -322,6 +424,30 @@ function featuresEndpointFor(endpoint) {
 }
 
 /**
+ * What a WFS says about paging: its own page size and whether it can page.
+ *
+ * WFS 2.0 states both in OperationsMetadata — `CountDefault` is the ceiling it
+ * applies to COUNT (PDOK: 1000, whatever is asked for) and `ImplementsResultPaging`
+ * says whether STARTINDEX works. Reading them beats guessing: a server with a
+ * larger page needs fewer requests, and one that cannot page must not be asked to.
+ */
+function pagingOf(cap) {
+    const ops = cap['ows:OperationsMetadata'] ?? cap.OperationsMetadata ?? {};
+    const constraints = arr(ops['ows:Constraint'] ?? ops.Constraint);
+    const valueOf = name => {
+        const c = constraints.find(x => x['@name'] === name);
+        const v = c?.['ows:DefaultValue'] ?? c?.DefaultValue;
+        return v === undefined ? undefined : String(v);
+    };
+    const count = Number(valueOf('CountDefault'));
+    const paging = valueOf('ImplementsResultPaging');
+    return {
+        pageSize: Number.isFinite(count) && count > 0 ? count : WFS_PAGE_FALLBACK,
+        canPage: paging === undefined ? true : /true/i.test(paging),
+    };
+}
+
+/**
  * Ask a WFS what it is and what it holds.
  *
  * Returns the endpoint the service names for itself — not the URL we guessed to
@@ -355,7 +481,11 @@ async function wfsCapabilities(candidateUrl) {
     const get = describe?.['ows:DCP']?.['ows:HTTP']?.['ows:Get'] ?? describe?.DCP?.HTTP?.Get;
     const href = arr(get)[0]?.['@xlink:href'];
 
-    return { endpoint: href ? String(href).split('?')[0] : candidateUrl, typeNames };
+    return {
+        endpoint: href ? String(href).split('?')[0] : candidateUrl,
+        typeNames,
+        ...pagingOf(cap),
+    };
 }
 
 /**
@@ -394,6 +524,16 @@ async function enrichServices(services, expand) {
                 svc.layers = out;
             } catch { /* no capabilities, or no styles in them */ }
         }
+        // A service listed as a WFS in a catalogue is asked about itself; a WMS is
+        // asked about the WFS that may sit beside it.
+        if (svc.type === 'wfs') {
+            try {
+                const wfs = await wfsCapabilities(svc.endpoint);
+                svc.featurePageSize = wfs.pageSize;
+                svc.featurePaging = wfs.canPage;
+            } catch { /* it will be paged at the fallback size */ }
+            continue;
+        }
         const candidate = svc.type === 'wms' ? featuresEndpointFor(svc.endpoint) : null;
         if (!candidate) continue;
 
@@ -416,6 +556,8 @@ async function enrichServices(services, expand) {
         if (Object.keys(featureTypes).length) {
             svc.featuresEndpoint = wfs.endpoint;
             svc.featureTypes = featureTypes;
+            svc.featurePageSize = wfs.pageSize;
+            svc.featurePaging = wfs.canPage;
         }
         process.stdout.write('.');
     }

@@ -245,6 +245,14 @@
           "additionalProperties": {
             "type": "string"
           }
+        },
+        "featurePageSize": {
+          "type": "integer",
+          "description": "Features the service returns per request, from its CountDefault constraint. Servers clamp COUNT to this — PDOK returns 1000 however large a COUNT is sent — so loading more means paging with STARTINDEX."
+        },
+        "featurePaging": {
+          "type": "boolean",
+          "description": "Whether the service declares ImplementsResultPaging, i.e. whether STARTINDEX works at all. A service that says no must be taken at its word: one page is all it has."
         }
       }
     },
@@ -760,6 +768,10 @@
         "styleTitle": {
           "type": "string",
           "description": "Title of that style as the service publishes it — for CBS statistical services this names the variable being mapped, which is the only place the legend's numbers are explained."
+        },
+        "featureCap": {
+          "type": "integer",
+          "description": "How many features a WFS-backed layer will load at most. A GeoJSON source is fetched whole and cannot be narrowed by bbox, so an uncapped national dataset would ask for millions."
         }
       }
     }
