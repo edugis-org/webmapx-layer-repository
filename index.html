@@ -22,6 +22,17 @@
     header h1 { font-size: 1.1rem; font-weight: 600; }
     .header-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
     header input[type=search] { padding: 6px 12px; border-radius: 4px; border: none; width: 260px; font-size: 0.9rem; }
+    /* An active filter changes what every panel shows, so it is marked in all
+       three: the input, the sidebar, and above the provider grid. */
+    header input[type=search].filtering { background: #fffbe9; box-shadow: 0 0 0 2px #ffd97d; }
+    aside.filtering { background: #fffdf7; }
+    .filter-note { display: none; align-items: center; gap: 6px; margin: 4px 12px 8px; padding: 5px 10px;
+      background: #fff4d4; border: 1px solid #f0d27a; border-radius: 4px; font-size: 0.74rem; color: #6b5300; }
+    aside.filtering .filter-note { display: flex; }
+    .filter-banner { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; padding: 7px 12px;
+      background: #fff4d4; border: 1px solid #f0d27a; border-radius: 4px; font-size: 0.82rem; color: #6b5300; }
+    .filter-banner .clear { margin-left: auto; background: #6b5300; color: #fff; border: none; border-radius: 3px;
+      padding: 3px 10px; font-size: 0.75rem; cursor: pointer; }
     .key-status { font-size: 0.78rem; opacity: 0.85; white-space: nowrap; }
     .key-status.ok { color: #a8f0c6; }
     .key-status.none { color: #ffd97d; }
@@ -264,6 +275,14 @@ async function loadProvider(path) {
 }
 
 let allIndex = [];
+// The header search filters the whole browse view, not only the region tree:
+// clicking a region while a query is active must keep showing only the hits.
+let searchQuery = '';
+
+function visibleIndex() {
+  return filterByQuery(allIndex, searchQuery, p =>
+    searchText(p.providerName, p.categories, p.region, p.layerNames));
+}
 let currentProvider = null;
 let currentPath = null;
 let currentRegion = null;
@@ -332,8 +351,29 @@ function renderRegionNode(node, depth = 0) {
 
 function renderSidebar(index) {
   const tree = buildRegionTree(index);
+  const note = searchQuery.trim()
+    ? `<div class="filter-note">🔍 filtered: ${escapeHtml(searchQuery)} — ${index.length} match${index.length !== 1 ? 'es' : ''}</div>`
+    : '';
   document.getElementById('sidebar').innerHTML =
-    tree.children.map(c => renderRegionNode(c, 0)).join('');
+    note + tree.children.map(c => renderRegionNode(c, 0)).join('');
+}
+
+function escapeHtml(text) {
+  return String(text).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+}
+
+/** Mark the input and sidebar while a query narrows what the page shows. */
+function applyFilterChrome() {
+  const on = !!searchQuery.trim();
+  document.getElementById('search').classList.toggle('filtering', on);
+  document.getElementById('sidebar').classList.toggle('filtering', on);
+}
+
+function clearSearch() {
+  const input = document.getElementById('search');
+  input.value = '';
+  input.dispatchEvent(new Event('input'));
+  input.focus();
 }
 
 function toggleRegion(el, region) {
@@ -352,17 +392,25 @@ function selectRegion(region) {
   currentRegion = region;
   currentProvider = null;
   currentPath = null;
-  const entries = allIndex.filter(e => e.region === region && !e.linkedFrom);
+  const entries = visibleIndex().filter(e => e.region === region && !e.linkedFrom);
   if (entries.length === 0) {
-    document.getElementById('main').innerHTML = `<p class="empty">No providers for this region yet.</p>`;
+    document.getElementById('main').innerHTML = searchQuery.trim()
+      ? `<p class="empty">No providers in this region match \u201c${escapeHtml(searchQuery)}\u201d.</p>`
+      : `<p class="empty">No providers for this region yet.</p>`;
     return;
   }
   renderProviderGrid(region, entries);
 }
 
-function renderProviderGrid(region, entries) {
-  const label = region.split('/').map(regionLabel).join(' › ');
+function renderProviderGrid(region, entries, heading) {
+  const label = heading ?? region.split('/').map(regionLabel).join(' › ');
+  const banner = searchQuery.trim() ? `
+    <div class="filter-banner">
+      <span>🔍 Filtered by <strong>${escapeHtml(searchQuery)}</strong></span>
+      <button class="clear" onclick="clearSearch()">Clear filter</button>
+    </div>` : '';
   document.getElementById('main').innerHTML = `
+    ${banner}
     <h2 style="margin-bottom:4px">${label}</h2>
     <p style="color:#888;font-size:0.82rem;margin-bottom:16px">${entries.length} provider${entries.length !== 1 ? 's' : ''}</p>
     <div class="provider-grid">
@@ -1117,15 +1165,35 @@ function copyConfig() {
 
 document.getElementById('search').addEventListener('input', e => {
   // Same rule as the layer filter: every term must appear, quotes make a phrase.
-  renderSidebar(filterByQuery(allIndex, e.target.value, p =>
-    searchText(p.providerName, p.categories, p.region)));
+  searchQuery = e.target.value;
+  const query = searchQuery;
+  const matches = visibleIndex();
+  applyFilterChrome();
+  renderSidebar(matches);
+  // Filtering only the region tree looks like nothing happened: the tree is
+  // collapsed and the main panel keeps whatever was open. Show the hits.
+  if (!query.trim()) {
+    if (currentRegion) selectRegion(currentRegion);
+    else document.getElementById('main').innerHTML = '';
+    return;
+  }
+  renderSearchResults(query, matches.filter(m => !m.linkedFrom));
 });
+
+function renderSearchResults(query, entries) {
+  if (!entries.length) {
+    document.getElementById('main').innerHTML =
+      `<p class="empty">No providers match \u201c${escapeHtml(query)}\u201d.</p>`;
+    return;
+  }
+  renderProviderGrid(entries[0].region, entries, 'Search results');
+}
 
 // Inline onclick= handlers resolve against the global scope, which a module does
 // not share. Bind them explicitly.
 Object.assign(window, {
   selectProvider, selectRegion, toggleRegion, showConfig, showPreview,
-  switchTab, copyConfig, setLayerPage, chooseDelivery,
+  switchTab, copyConfig, setLayerPage, chooseDelivery, clearSearch,
 });
 
 init();

@@ -70,6 +70,8 @@ function findLayerStyles(file, providerId) {
     return map;
 }
 
+const LAYER_NAME_CAP = 150;
+
 function indexEntry(file, region, refSource, harvested = false) {
     const raw = JSON.parse(readFileSync(file, 'utf8'));
     const providerId = raw.provider?.id;
@@ -87,6 +89,11 @@ function indexEntry(file, region, refSource, harvested = false) {
         layerCount: layerCount(raw),
         serviceCount: services(raw).length,
         requiresKey: allLayers(raw).some(l => l.requiresKey === true),
+        // Enough layer titles for the header search to find a provider by its
+        // content, capped so a harvested WMS with hundreds of layers does not
+        // dominate the index.
+        layerNames: allLayers(raw).slice(0, LAYER_NAME_CAP)
+            .map(l => l.title ?? l.name).filter(Boolean),
         ...(Object.keys(layerStyles).length ? { layerStyles } : {}),
         ...(refSource ? { linkedFrom: refSource } : {}),
     };
