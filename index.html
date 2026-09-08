@@ -184,6 +184,9 @@ let apiKeys = {};
 let activeConfig = null;
 let previewToken = 0;         // guards against a slow mount landing after a newer one
 let activeLayerRecord = null; // catalog record behind activeConfig (legend URL, title)
+// The config object the preview map was mounted with, so switching tabs can tell
+// "already showing this" from "needs mounting" and leave a restyled map alone.
+let previewMountedFor = null;
 let activeService = null;     // the service that serves it (WMS feature info)
 let activeLayerStyles = null; // array of {id, title, layer} from styles file
 let currentIndexEntry = null; // index entry for current provider
@@ -965,15 +968,61 @@ function applySelectedStyle() {
 
 function switchTab(name) {
   const tabs = ['config', 'preview', 'info'];
+  // Whatever the user restyled on the map belongs in the config before the
+  // config tab is read — and before the map is torn down for any reason.
+  syncConfigFromMap();
   document.querySelectorAll('.dialog-tab').forEach((t, i) =>
     t.classList.toggle('active', tabs[i] === name));
   for (const t of tabs) {
     document.getElementById(`panel-${t}`).classList.toggle('active', t === name);
   }
   if (name === 'preview' && activeConfig) {
-    // Small delay lets the panel become visible before MapLibre measures the container
-    setTimeout(() => initPreviewMap(activeConfig), 50);
+    // Re-mounting would throw away everything the user has changed on the map,
+    // so a map already showing this config is left alone and only told that its
+    // container is visible again. Small delay lets the panel become visible
+    // before MapLibre measures the container.
+    setTimeout(() => {
+      if (previewMountedFor === activeConfig) {
+        // The panel was display:none, so the map measured a zero-height
+        // container while it was hidden; every engine re-measures on this.
+        window.dispatchEvent(new Event('resize'));
+        return;
+      }
+      initPreviewMap(activeConfig);
+    }, 50);
   }
+}
+
+/**
+ * Copies the layer as the map now draws it back into `activeConfig`.
+ *
+ * The preview carries webmapx's own legend and style dialog, so a user can
+ * recolour the layer, change its classes or add labels. Those edits live in the
+ * map, not in the config it was mounted with, and `getLayerDefinition` is what
+ * hands them back config-shaped (webmapx >= 0.2.13). Without this the config
+ * tab and the copy button both describe the layer as it arrived rather than as
+ * it is on screen.
+ */
+function syncConfigFromMap() {
+  const el = document.querySelector('#map-preview webmapx-map');
+  const id = activeConfig?.layer?.id ?? activeConfig?.id;
+  if (!el || !id || typeof el.getLayerDefinition !== 'function') return;
+
+  const live = el.getLayerDefinition(id);
+  if (!live?.layer) return;
+
+  // activeConfig is replaced rather than mutated, and the mounted-for marker is
+  // an identity check — carry it across or the next visit to the preview tab
+  // would remount and throw away the very edits just synced.
+  const wasMounted = previewMountedFor === activeConfig;
+
+  // The source is the repository's, not the map's: a WFS layer's data was paged
+  // in as an inline FeatureCollection for the preview, and pasting a megabyte of
+  // features into a config is not what the copy button is for.
+  activeConfig = { ...activeConfig, layer: live.layer };
+  if (wasMounted) previewMountedFor = activeConfig;
+  const code = document.getElementById('dialog-code');
+  if (code) code.textContent = JSON.stringify(activeConfig, null, 2);
 }
 
 // The preview is a webmapx map, not a bare MapLibre one: it brings the legend
@@ -992,7 +1041,7 @@ const PREVIEW_TOOLS = {
       { type: 'info', id: 'info' },
     ],
   },
-  scale: { position: 'bottom-left' },
+  scale: { enabled: true, position: 'bottom-left' },
 };
 
 // A basemap under overlay layers. Without one an overlay of thin lines hangs in
@@ -1139,6 +1188,7 @@ async function initPreviewMap(cfg) {
 
   const { layerData, activeLayers } = previewLayerData(cfg, activeLayerRecord);
   const token = ++previewToken;
+  previewMountedFor = null;
   container.innerHTML = '';
   await WebMapX.mount('#map-preview', {
     config: {
@@ -1151,15 +1201,19 @@ async function initPreviewMap(cfg) {
   });
   // A slower mount for an earlier layer must not win the container.
   if (token !== previewToken) return;
+  previewMountedFor = cfg;
 }
 
 document.getElementById('layer-dialog').addEventListener('close', () => {
   document.documentElement.classList.remove('modal-open');
   previewToken++;
+  previewMountedFor = null;
   document.getElementById('map-preview').innerHTML = '';
 });
 
 function copyConfig() {
+  // What is copied is the layer as it looks now, restyling included.
+  syncConfigFromMap();
   navigator.clipboard.writeText(JSON.stringify(activeConfig, null, 2));
 }
 
