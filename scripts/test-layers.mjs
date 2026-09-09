@@ -165,6 +165,76 @@ function probeUrl(layer, regionHint) {
 }
 
 /**
+ * What a layer's config promises the response will be.
+ *
+ * A raster source must answer with an image, a GeoJSON source with JSON, a
+ * composite style with its style document. Knowing this up front is what lets a
+ * 200 be disbelieved.
+ */
+function expectedPayload(layer) {
+    const cfg = layer.webmapxConfig ?? {};
+    if (cfg.url) return 'json';                       // composite style document
+    if (cfg.source?.type === 'geojson' || typeof cfg.source?.data === 'string') return 'json';
+    if (Array.isArray(cfg.source?.tiles)) {
+        return cfg.source.type === 'vector' ? 'binary' : 'image';
+    }
+    return 'any';
+}
+
+/**
+ * A response body that answers 200 while carrying something other than the data.
+ *
+ * Three of these have already been found in this repository, so none is
+ * hypothetical: a WMS answering 200 text/xml with a ServiceException because the
+ * LAYERS name is wrong; an HTML error page from a service that lost its backend;
+ * and a domain-parking page, after cmems-du.eu lapsed and was re-registered by a
+ * third party, which this prober scored as up at 200 for five days running.
+ */
+const PARKED = /301domains|domain (is )?for sale|hugedomains|sedoparking|afternic|buy this domain|parked (free )?courtesy|intercepted by/i;
+
+function classifyBody(body, contentType) {
+    if (PARKED.test(body)) {
+        return 'domain parked — this host no longer belongs to the provider';
+    }
+    // The tag must end here: ServiceExceptionReport is the wrapper, and matching
+    // it captures the whitespace before the real message instead of the message.
+    const fault = body.match(/<(?:ServiceException|ows:ExceptionText)(?:\s[^>]*)?>([^<]{0,160})/i);
+    if (fault) return `service exception: ${fault[1].trim().replace(/\s+/g, ' ') || 'no message'}`;
+    if (/^\s*<(!doctype\s+html|html)\b/i.test(body)) return 'HTML page where data was expected';
+    return `content-type ${contentType || 'unknown'} where data was expected`;
+}
+
+/**
+ * Does the response actually carry what the layer promised?
+ *
+ * A status code says the server answered, not that it answered with the layer.
+ * The content type settles it in the common case; where it does not — a HEAD
+ * that returned no type, or a type that contradicts the config — the body is
+ * read and classified, so the reason recorded names what really came back.
+ */
+async function verifyPayload(res, expected, target, headers) {
+    if (expected === 'any') return null;
+    const ct = res.headers.get('content-type') ?? '';
+    const wanted = { image: /^image\//i, json: /json|^text\/plain/i, binary: /octet-stream|protobuf|mvt|pbf|x-protobuf/i }[expected];
+    if (wanted.test(ct)) return null;
+
+    // A HEAD can answer without a content type at all; ask for the body before
+    // calling a layer broken on the strength of a missing header.
+    let body = '';
+    try {
+        const r = target.method === 'HEAD'
+            ? await fetch(target.url, { method: 'GET', headers, signal: AbortSignal.timeout(TIMEOUT_MS) })
+            : res;
+        const type = r.headers.get('content-type') ?? ct;
+        if (target.method === 'HEAD' && wanted.test(type)) return null;
+        body = (await r.text()).slice(0, 4000);
+        return classifyBody(body, type);
+    } catch {
+        return `content-type ${ct || 'unknown'} where data was expected`;
+    }
+}
+
+/**
  * One probe. Returns a check record matching status.schema.json:
  * { availability, httpStatus?, ms?, reason? }
  */
@@ -191,7 +261,12 @@ async function testLayer(layer, regionHint) {
             res = await fetch(target.url, { method: 'GET', headers, signal: AbortSignal.timeout(TIMEOUT_MS) });
         }
         const ms = Date.now() - started;
-        if (res.ok) return { availability: 'up', httpStatus: res.status, ms };
+        if (res.ok) {
+            // A 200 is the server answering, not the layer working.
+            const wrong = await verifyPayload(res, expectedPayload(layer), target, headers);
+            if (wrong) return { availability: 'down', httpStatus: res.status, ms, reason: wrong };
+            return { availability: 'up', httpStatus: res.status, ms };
+        }
         if (res.status === 401 || res.status === 403) {
             return {
                 availability: 'auth-required', httpStatus: res.status, ms,
