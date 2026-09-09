@@ -53,7 +53,7 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-09-05"
+          "lastChecked": "2026-09-07"
         },
         {
           "id": "esri-world-imagery",
@@ -83,7 +83,7 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-09-05"
+          "lastChecked": "2026-09-07"
         },
         {
           "id": "esri-world-topo-map",
@@ -113,7 +113,7 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-09-05"
+          "lastChecked": "2026-09-07"
         },
         {
           "id": "esri-light-gray-canvas",
@@ -143,7 +143,7 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-09-05"
+          "lastChecked": "2026-09-07"
         },
         {
           "id": "esri-dark-gray-canvas",
@@ -173,7 +173,7 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-09-05"
+          "lastChecked": "2026-09-07"
         },
         {
           "id": "esri-ocean-basemap",
@@ -203,7 +203,7 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-09-05"
+          "lastChecked": "2026-09-07"
         },
         {
           "id": "esri-natgeo-world-map",
@@ -233,7 +233,7 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-09-05"
+          "lastChecked": "2026-09-07"
         },
         {
           "id": "esri-world-physical-map",
@@ -263,7 +263,7 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-09-05"
+          "lastChecked": "2026-09-07"
         },
         {
           "id": "esri-world-shaded-relief",
@@ -293,7 +293,7 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-09-05"
+          "lastChecked": "2026-09-07"
         },
         {
           "id": "esri-world-hillshade",
@@ -323,7 +323,7 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-09-05"
+          "lastChecked": "2026-09-07"
         },
         {
           "id": "esri-world-hillshade-dark",
@@ -353,7 +353,7 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-09-05"
+          "lastChecked": "2026-09-07"
         },
         {
           "id": "esri-world-terrain-base",
@@ -383,7 +383,7 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-09-05"
+          "lastChecked": "2026-09-07"
         },
         {
           "id": "esri-world-boundaries-places",
@@ -413,7 +413,7 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-09-05"
+          "lastChecked": "2026-09-07"
         },
         {
           "id": "esri-world-transportation",
@@ -443,7 +443,7 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-09-05"
+          "lastChecked": "2026-09-07"
         }
       ]
     }
