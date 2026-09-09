@@ -14,7 +14,7 @@
           "date": "2026-09-07",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 74
+          "ms": 77
         }
       ],
       "summary": {
@@ -41,7 +41,7 @@
           "date": "2026-09-07",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 49
+          "ms": 36
         }
       ],
       "summary": {
@@ -68,7 +68,7 @@
           "date": "2026-09-07",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 53
+          "ms": 32
         }
       ],
       "summary": {

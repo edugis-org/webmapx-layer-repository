@@ -15,7 +15,7 @@
           "date": "2026-09-07",
           "availability": "auth-required",
           "httpStatus": 403,
-          "ms": 84,
+          "ms": 139,
           "reason": "HTTP 403 (endpoint answered but rejected our credentials)"
         }
       ],
@@ -43,7 +43,7 @@
           "date": "2026-09-07",
           "availability": "auth-required",
           "httpStatus": 403,
-          "ms": 63,
+          "ms": 18,
           "reason": "HTTP 403 (endpoint answered but rejected our credentials)"
         }
       ],
@@ -71,7 +71,7 @@
           "date": "2026-09-07",
           "availability": "auth-required",
           "httpStatus": 403,
-          "ms": 57,
+          "ms": 24,
           "reason": "HTTP 403 (endpoint answered but rejected our credentials)"
         }
       ],

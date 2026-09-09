@@ -924,7 +924,7 @@
       "title": "PDOK WMS",
       "type": "wms",
       "endpoint": "https://service.pdok.nl/ez/fysischgeografischeregios/wms/v1_0",
-      "availability": "unreachable",
+      "availability": "up",
       "layers": [
         {
           "id": "pdok-fysisch-geografische-regio-s",
@@ -949,8 +949,8 @@
               }
             }
           },
-          "availability": "unreachable",
-          "status": "unknown",
+          "availability": "up",
+          "status": "active",
           "lastChecked": "2026-09-07"
         }
       ]

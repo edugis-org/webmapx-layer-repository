@@ -14,7 +14,7 @@
           "date": "2026-09-07",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 401
+          "ms": 345
         }
       ],
       "summary": {
@@ -41,7 +41,7 @@
           "date": "2026-09-07",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 386
+          "ms": 281
         }
       ],
       "summary": {
@@ -68,7 +68,7 @@
           "date": "2026-09-07",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 370
+          "ms": 254
         }
       ],
       "summary": {
@@ -95,7 +95,7 @@
           "date": "2026-09-07",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 475
+          "ms": 265
         }
       ],
       "summary": {
@@ -165,7 +165,7 @@
           "date": "2026-09-07",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 416
+          "ms": 337
         }
       ],
       "summary": {
@@ -192,7 +192,7 @@
           "date": "2026-09-07",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 432
+          "ms": 256
         }
       ],
       "summary": {
@@ -213,7 +213,7 @@
           "date": "2026-09-07",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 373
+          "ms": 239
         }
       ],
       "summary": {
@@ -234,7 +234,7 @@
           "date": "2026-09-07",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 471
+          "ms": 302
         }
       ],
       "summary": {
@@ -255,7 +255,7 @@
           "date": "2026-09-07",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 419
+          "ms": 277
         }
       ],
       "summary": {
@@ -276,7 +276,7 @@
           "date": "2026-09-07",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 549
+          "ms": 309
         }
       ],
       "summary": {
@@ -297,7 +297,7 @@
           "date": "2026-09-07",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 455
+          "ms": 259
         }
       ],
       "summary": {
@@ -318,7 +318,7 @@
           "date": "2026-09-07",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 434
+          "ms": 277
         }
       ],
       "summary": {
@@ -339,7 +339,7 @@
           "date": "2026-09-07",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 449
+          "ms": 270
         }
       ],
       "summary": {
@@ -360,7 +360,7 @@
           "date": "2026-09-07",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 427
+          "ms": 341
         }
       ],
       "summary": {
@@ -381,91 +381,7 @@
           "date": "2026-09-07",
           "availability": "up",
           "httpStatus": 200,
-          "ms": 701
-        }
-      ],
-      "summary": {
-        "firstChecked": "2026-09-07",
-        "lastChecked": "2026-09-07",
-        "current": "up",
-        "checks": 1,
-        "up": 1,
-        "uptime": 1,
-        "untested": 0,
-        "consecutiveFailures": 0,
-        "lastUp": "2026-09-07"
-      }
-    },
-    "modis-terra-bands721": {
-      "checks": [
-        {
-          "date": "2026-09-07",
-          "availability": "up",
-          "httpStatus": 200,
-          "ms": -51
-        }
-      ],
-      "summary": {
-        "firstChecked": "2026-09-07",
-        "lastChecked": "2026-09-07",
-        "current": "up",
-        "checks": 1,
-        "up": 1,
-        "uptime": 1,
-        "untested": 0,
-        "consecutiveFailures": 0,
-        "lastUp": "2026-09-07"
-      }
-    },
-    "modis-aqua-bands721": {
-      "checks": [
-        {
-          "date": "2026-09-07",
-          "availability": "up",
-          "httpStatus": 200,
-          "ms": 436
-        }
-      ],
-      "summary": {
-        "firstChecked": "2026-09-07",
-        "lastChecked": "2026-09-07",
-        "current": "up",
-        "checks": 1,
-        "up": 1,
-        "uptime": 1,
-        "untested": 0,
-        "consecutiveFailures": 0,
-        "lastUp": "2026-09-07"
-      }
-    },
-    "viirs-snpp-swir": {
-      "checks": [
-        {
-          "date": "2026-09-07",
-          "availability": "up",
-          "httpStatus": 200,
-          "ms": 509
-        }
-      ],
-      "summary": {
-        "firstChecked": "2026-09-07",
-        "lastChecked": "2026-09-07",
-        "current": "up",
-        "checks": 1,
-        "up": 1,
-        "uptime": 1,
-        "untested": 0,
-        "consecutiveFailures": 0,
-        "lastUp": "2026-09-07"
-      }
-    },
-    "viirs-noaa20-swir": {
-      "checks": [
-        {
-          "date": "2026-09-07",
-          "availability": "up",
-          "httpStatus": 200,
-          "ms": 381
+          "ms": 247
         }
       ],
       "summary": {
