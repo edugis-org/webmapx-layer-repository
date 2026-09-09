@@ -1,0 +1,34 @@
+{
+  "id": "ngr-geonetwork",
+  "title": "Nationaal Georegister (GeoNetwork catalogue)",
+  "type": "geonetwork-search",
+  "url": "https://www.nationaalgeoregister.nl/geonetwork",
+  "note": "A catalogue, not a service: the records describe other people's endpoints, so the harvested services point at provincial GeoServers, PDOK, RIVM and Rijkswaterstaat rather than at this host. Grouped under the catalogue because that is where the records were found; each layer carries the credit line of the organisation its own record names. The search API answers Access-Control-Allow-Origin: *, so the previewer can query it live.",
+  "provider": {
+    "id": "ngr",
+    "name": "Nationaal Georegister",
+    "url": "https://www.nationaalgeoregister.nl",
+    "license": "CC-BY-4.0",
+    "access": "free",
+    "operator": {
+      "type": "government",
+      "country": "NL"
+    },
+    "categories": [
+      "boundaries",
+      "environment",
+      "elevation",
+      "general-purpose"
+    ]
+  },
+  "region": "world/europe/netherlands",
+  "search": {
+    "query": "bodem OR natuur OR water OR landgebruik"
+  },
+  "include": {
+    "serviceTypes": ["wms"],
+    "limit": 400
+  },
+  "enabled": true,
+  "bounds": [3.2, 50.75, 7.22, 53.7]
+}

@@ -127,6 +127,13 @@
     .delivery-switch .delivery:hover { background: #f2f6ff; color: #0f62fe; }
     .delivery-switch .delivery.on { background: #0f62fe; color: #fff; }
     html.modal-open, html.modal-open body { overflow: hidden; }
+    .catalogue-heading { padding: 10px 16px 4px; font-size: 0.72rem; letter-spacing: .06em;
+      text-transform: uppercase; color: #888; }
+    .catalogue-node.selected { background: #e8f0fe; }
+    .catalogue-form { display: flex; gap: 8px; margin-bottom: 10px; }
+    .catalogue-form input { flex: 1; padding: 7px 10px; border: 1px solid #ddd; border-radius: 4px; font-size: 0.9rem; }
+    .catalogue-form button { padding: 7px 16px; background: #0f62fe; color: #fff; border: none;
+      border-radius: 4px; cursor: pointer; font-size: 0.85rem; }
     .dialog-footer { padding: 10px 20px; display: flex; gap: 8px; }
     .copy-btn { padding: 7px 16px; background: #0f62fe; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 0.85rem; }
     .copy-btn:hover { background: #0353e9; }
@@ -178,6 +185,7 @@ import { WebMapX } from 'https://cdn.jsdelivr.net/npm/@edugis-org/webmapx@0.2/di
 import { layerEntries } from './lib/catalog.mjs';
 import { regionBounds } from './lib/regions.mjs';
 import { filterByQuery, searchText } from './lib/search.mjs';
+import * as geonetwork from './lib/geonetwork.mjs';
 const LAYERS_BASE = './layers';
 
 let apiKeys = {};
@@ -289,6 +297,17 @@ function visibleIndex() {
 let currentProvider = null;
 let currentPath = null;
 let currentRegion = null;
+/**
+ * Catalogues this page may search live, projected out of sources/ by the build.
+ *
+ * Everything else on this page is a file in this repository. These are not: the
+ * browser talks to a GeoNetwork catalogue itself, over the same search API the
+ * harvest uses, and turns what comes back into layers without a harvest, a
+ * build or a commit. It works because those deployments answer
+ * Access-Control-Allow-Origin: * — checked per catalogue before adding one.
+ */
+let catalogues = [];
+let currentCatalogue = null;
 
 async function init() {
   await loadApiKeys();
@@ -299,6 +318,10 @@ async function init() {
       `<p style="padding:16px;color:#c00;font-size:0.85rem">${e.message}</p>`;
     return;
   }
+  try {
+    const res = await fetch(`${LAYERS_BASE}/catalogues.json`, { cache: 'no-store' });
+    if (res.ok) catalogues = await res.json();
+  } catch { /* no catalogues.json: the browse view works without it */ }
   renderSidebar(allIndex);
   // auto-select and open World
   const worldNode = document.querySelector('[data-region="world"]');
@@ -357,8 +380,16 @@ function renderSidebar(index) {
   const note = searchQuery.trim()
     ? `<div class="filter-note">🔍 filtered: ${escapeHtml(searchQuery)} — ${index.length} match${index.length !== 1 ? 'es' : ''}</div>`
     : '';
+  const catalogueSection = catalogues.length ? `
+    <div class="catalogue-heading">🔎 Search a catalogue</div>
+    ${catalogues.map(c => `
+      <div class="region-node catalogue-node" style="padding-left:16px"
+           onclick="selectCatalogue('${c.id}')">
+        <span class="arrow"></span><span>${escapeHtml(c.provider ?? c.title)}</span>
+      </div>`).join('')}
+    <div class="catalogue-heading">📁 Browse this repository</div>` : '';
   document.getElementById('sidebar').innerHTML =
-    note + tree.children.map(c => renderRegionNode(c, 0)).join('');
+    note + catalogueSection + tree.children.map(c => renderRegionNode(c, 0)).join('');
 }
 
 function escapeHtml(text) {
@@ -1243,11 +1274,99 @@ function renderSearchResults(query, entries) {
   renderProviderGrid(entries[0].region, entries, 'Search results');
 }
 
+
+/**
+ * Live catalogue search: the browser as a GeoNetwork client.
+ *
+ * The same adapter the harvest imports runs here unchanged — it is plain ESM
+ * with no imports and no Node in it, so there is nothing to compile and no
+ * bundle to ship, which is what static hosting allows. What the harvest does
+ * nightly for a fixed query, this does for whatever is typed.
+ *
+ * Results are turned into the same {provider, services[]} document a harvested
+ * file holds, so every part of this page that already works — the layer table,
+ * the config tab, the preview map, legends, WMS feature info — works on them
+ * without knowing they never touched disk.
+ */
+function selectCatalogue(id) {
+  const cat = catalogues.find(c => c.id === id);
+  if (!cat) return;
+  currentCatalogue = cat;
+  currentProvider = null;
+  currentPath = null;
+  currentRegion = null;
+  document.querySelectorAll('.region-node').forEach(n => n.classList.remove('selected'));
+  document.querySelectorAll('.catalogue-node').forEach(n => {
+    if (n.textContent.trim() === (cat.provider ?? cat.title)) n.classList.add('selected');
+  });
+  document.getElementById('main').innerHTML = `
+    <h2>${escapeHtml(cat.title)}</h2>
+    <p style="font-size:0.8rem;color:#888;margin:4px 0 12px">
+      Searched live in your browser · <a href="${cat.url}" target="_blank">${escapeHtml(cat.url)}</a>
+    </p>
+    ${cat.note ? `<p style="font-size:0.82rem;color:#856404;background:#fff3cd;border-radius:4px;padding:6px 10px;margin-bottom:10px">ℹ️ ${escapeHtml(cat.note)}</p>` : ''}
+    <form class="catalogue-form" id="catalogue-form">
+      <input type="search" id="catalogue-query" placeholder="e.g. bodemkaart, forest, water quality" autofocus>
+      <button type="submit">Search</button>
+    </form>
+    <label style="font-size:0.78rem;color:#555">
+      <input type="checkbox" id="catalogue-bbox" checked> only records covering ${escapeHtml(cat.region.split('/').pop())}
+    </label>
+    <div id="catalogue-results" style="margin-top:12px"></div>`;
+  document.getElementById('catalogue-form').addEventListener('submit', e => {
+    e.preventDefault();
+    runCatalogueSearch(cat, document.getElementById('catalogue-query').value);
+  });
+}
+
+/** One search, rendered as a provider page over live records. */
+async function runCatalogueSearch(cat, query) {
+  const out = document.getElementById('catalogue-results');
+  out.innerHTML = '<p class="empty">Searching…</p>';
+  const useBbox = document.getElementById('catalogue-bbox')?.checked;
+  let result;
+  try {
+    result = await geonetwork.search(cat.url, {
+      text: query || undefined,
+      protocols: ['OGC:WMS', 'OGC:WFS'],
+      bbox: useBbox ? cat.bounds : undefined,
+      size: 100,
+    });
+  } catch (e) {
+    // A catalogue that stops answering cross-origin requests fails exactly
+    // here, and saying so beats an empty result list.
+    out.innerHTML = `<p class="empty" style="color:#c00">${escapeHtml(cat.title)} did not answer: ${escapeHtml(e.message)}</p>`;
+    return;
+  }
+  const services = geonetwork.servicesFromRecords(result.records, {
+    protocols: ['OGC:WMS', 'OGC:WFS'],
+    providerId: cat.id,
+    fallbackBounds: cat.bounds,
+  });
+  const found = services.reduce((n, s) => n + s.layers.length, 0);
+  if (!found) {
+    out.innerHTML = `<p class="empty">${result.total} record(s) matched, none with a named WMS or WFS layer.
+      A record that links only to a service's capabilities describes the endpoint, not a layer, so there is nothing to draw.</p>`;
+    return;
+  }
+  currentProvider = {
+    provider: {
+      name: `${cat.provider ?? cat.title} — “${query || 'everything'}”`,
+      url: cat.url,
+      access: 'free',
+      categories: [],
+      abstract: `${found} layer(s) in ${services.length} service(s), from ${result.records.length} of ${result.total} catalogue record(s). Live search — nothing here is stored in this repository.`,
+    },
+    services,
+  };
+  renderMain(currentProvider);
+}
+
 // Inline onclick= handlers resolve against the global scope, which a module does
 // not share. Bind them explicitly.
 Object.assign(window, {
   selectProvider, selectRegion, toggleRegion, showConfig, showPreview,
-  switchTab, copyConfig, setLayerPage, chooseDelivery, clearSearch,
+  switchTab, copyConfig, setLayerPage, chooseDelivery, clearSearch, selectCatalogue,
 });
 
 init();

@@ -7,4 +7,6 @@ harvested/
 # Built by 'npm run build-index' from layers/ + harvested/. Tracking it meant CI,
 # which has no harvested/, could commit a truncated index over the real one.
 layers/index.json
+# Projected out of sources/ by the same build, for the previewer's live search.
+layers/catalogues.json
 .cache/

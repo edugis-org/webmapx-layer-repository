@@ -68,6 +68,46 @@ layers/
     north-america/caribbean-netherlands/
 ```
 
+## Metadata catalogues (GeoNetwork)
+
+A source of type `geonetwork-search` is a catalogue rather than a service: it
+describes *other people's* endpoints. One search of the Dutch Nationaal
+Georegister yields WMS links into provincial GeoServers, PDOK, RIVM and
+Rijkswaterstaat, so the harvested services point at those hosts and each layer
+carries the credit line of the organisation its own record names — not the
+catalogue's.
+
+```json
+{
+  "type": "geonetwork-search",
+  "url": "https://www.nationaalgeoregister.nl/geonetwork",
+  "search": { "query": "bodem OR natuur OR water" },
+  "include": { "serviceTypes": ["wms"], "limit": 400 }
+}
+```
+
+A catalogue has to be *asked* something, unlike a capabilities document that is
+read whole, so `search.query` and `include.limit` are what bound the harvest.
+
+`lib/geonetwork.mjs` is the adapter, and it imports nothing: it uses `fetch`,
+which both Node and browsers have, so the same file is the harvest reader **and
+the previewer's client**. There is nothing to compile and no bundle to ship,
+which is what static hosting allows. The previewer's sidebar offers each
+catalogue under "Search a catalogue": typing there queries GeoNetwork live from
+the browser and turns the answers into previewable layers without a harvest, a
+build or a commit. It works because these deployments answer
+`Access-Control-Allow-Origin: *` — check that before adding a catalogue, or the
+harvest will work and the browser will not.
+
+Two limits worth knowing:
+
+- A record whose WMS link names no layer describes the endpoint, not a layer,
+  and is skipped rather than guessed at. The EEA's SDI links this way, which is
+  why it is not a source here; such a catalogue is better followed with a
+  `wms-capabilities` source per endpoint.
+- WMTS links are not turned into layers. A WMTS link states no tile matrix set,
+  and a guessed grid is a layer whose every tile 404s.
+
 ## Availability
 
 `npm run test-layers` probes one tile or feature per layer and records what it
