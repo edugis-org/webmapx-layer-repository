@@ -1,0 +1,20 @@
+{
+  "id": "geocat-ch",
+  "title": "geocat.ch — Swiss spatial data catalogue (GeoNetwork)",
+  "type": "geonetwork-search",
+  "url": "https://www.geocat.ch/geonetwork",
+  "note": "The Swiss national metadata catalogue. Records describe cantonal and federal services, so the harvested endpoints belong to those bodies rather than to geocat.ch.",
+  "provider": {
+    "id": "geocat-ch",
+    "name": "geocat.ch",
+    "url": "https://www.geocat.ch",
+    "access": "free",
+    "operator": { "type": "government", "country": "CH" },
+    "categories": ["general-purpose", "boundaries", "environment"]
+  },
+  "region": "world/europe/switzerland",
+  "search": { "query": "Boden OR Wald OR Gewässer OR Landnutzung OR forest OR water" },
+  "include": { "serviceTypes": ["wms"], "limit": 200 },
+  "enabled": true,
+  "bounds": [5.9, 45.8, 10.5, 47.9]
+}

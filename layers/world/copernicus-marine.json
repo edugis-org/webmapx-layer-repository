@@ -3,10 +3,9 @@
     "id": "copernicus-marine",
     "name": "Copernicus Marine Service (CMEMS)",
     "url": "https://marine.copernicus.eu",
-    "abstract": "EU Copernicus Marine Environment Monitoring Service — sea surface temperature, salinity, ocean currents, and sea level. Free after registration.",
-    "access": "api-key",
-    "apiKeyUrl": "https://data.marine.copernicus.eu/register",
-    "note": "Register at https://data.marine.copernicus.eu/register for a free account. Use your username as the key name 'copernicus-marine-user' and password as 'copernicus-marine-pass', or use the WMS endpoint with Basic Auth configured in your environment.",
+    "abstract": "EU Copernicus Marine Environment Monitoring Service \u2014 sea surface temperature, salinity, ocean currents and sea level.",
+    "access": "free",
+    "note": "The view service at wmts.marine.copernicus.eu needs no account; downloading the underlying data still requires a free registration at data.marine.copernicus.eu. The former THREDDS WMS endpoints on nrt.cmems-du.eu are retired and that domain has since been registered by a third party, which now serves a parking page in its place \u2014 do not restore those URLs, and never send CMEMS credentials to that host.",
     "license": "Copernicus Marine Service Product Licence",
     "categories": [
       "climate",
@@ -20,35 +19,43 @@
   },
   "services": [
     {
-      "id": "thredds-wms-metoffice-glo-sst-l4-nrt-obs-sst-v2",
-      "title": "Copernicus Marine Service (CMEMS) WMS",
-      "type": "wms",
-      "endpoint": "https://nrt.cmems-du.eu/thredds/wms/METOFFICE-GLO-SST-L4-NRT-OBS-SST-V2",
-      "availability": "up",
+      "id": "cmems-wmts",
+      "title": "Copernicus Marine Service WMTS",
+      "type": "wmts",
+      "endpoint": "https://wmts.marine.copernicus.eu/teroWmts",
+      "capabilitiesUrl": "https://wmts.marine.copernicus.eu/teroWmts?SERVICE=WMTS&REQUEST=GetCapabilities",
+      "crs": [
+        "EPSG:3857",
+        "EPSG:4326"
+      ],
+      "formats": [
+        "image/png"
+      ],
       "layers": [
         {
           "id": "cmems-sst-global",
           "title": "Sea Surface Temperature (SST)",
-          "abstract": "Daily global sea surface temperature analysis from the CMEMS Global Ocean Physics Analysis product.",
-          "type": "wms",
-          "status": "active",
-          "requiresKey": true,
+          "abstract": "Daily global sea surface temperature analysis, Met Office OSTIA near-real-time product.",
+          "type": "wmts",
+          "name": "SST_GLO_SST_L4_NRT_OBSERVATIONS_010_001/METOFFICE-GLO-SST-L4-NRT-OBS-SST-V2/analysed_sst",
+          "lifecycle": "stable",
+          "legendUrl": "https://wmts.marine.copernicus.eu/teroWmts?SERVICE=WMTS&REQUEST=GetLegend&LAYER=SST_GLO_SST_L4_NRT_OBSERVATIONS_010_001%2FMETOFFICE-GLO-SST-L4-NRT-OBS-SST-V2%2Fanalysed_sst&STYLE=cmap%3Athermal&FORMAT=image%2Fsvg%2Bxml",
           "webmapxConfig": {
             "source": {
               "type": "raster",
               "tiles": [
-                "https://nrt.cmems-du.eu/thredds/wms/METOFFICE-GLO-SST-L4-NRT-OBS-SST-V2?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&LAYERS=analysed_sst&STYLES=boxfill/rainbow&COLORSCALERANGE=271,305&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
+                "https://wmts.marine.copernicus.eu/teroWmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=SST_GLO_SST_L4_NRT_OBSERVATIONS_010_001%2FMETOFFICE-GLO-SST-L4-NRT-OBS-SST-V2%2Fanalysed_sst&STYLE=cmap%3Athermal&TILEMATRIXSET=EPSG:3857&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&FORMAT=image%2Fpng&TIME={time}"
               ],
               "tileSize": 256,
-              "maxzoom": 7,
+              "maxzoom": 10,
               "attribution": "<a href='https://marine.copernicus.eu'>Copernicus Marine Service</a>"
             },
             "layer": {
               "id": "cmems-sst-global",
               "type": "raster",
               "metadata": {
-                "title": "CMEMS Sea Surface Temperature",
-                "abstract": "Daily global SST (Kelvin scale 271-305K). Source: Copernicus Marine / Met Office.",
+                "title": "Sea Surface Temperature (SST)",
+                "abstract": "Daily global SST analysis (OSTIA). Source: Copernicus Marine / Met Office.",
                 "legendRole": "overlay",
                 "previewCenter": [
                   0,
@@ -58,41 +65,42 @@
               }
             }
           },
-          "availability": "up",
-          "lastChecked": "2026-09-05"
-        }
-      ]
-    },
-    {
-      "id": "thredds-wms-global-analysis-forecast-phy-001-024",
-      "title": "Copernicus Marine Service (CMEMS) WMS",
-      "type": "wms",
-      "endpoint": "https://nrt.cmems-du.eu/thredds/wms/global-analysis-forecast-phy-001-024",
-      "availability": "up",
-      "layers": [
+          "time": {
+            "identifier": "time",
+            "default": "latest",
+            "precision": "day",
+            "period": "P1D",
+            "lag": "P1D",
+            "coverage": "global",
+            "extent": [
+              "2024-01-17/latest/P1D"
+            ]
+          }
+        },
         {
           "id": "cmems-salinity-global",
-          "title": "Ocean Salinity",
-          "abstract": "Global ocean surface salinity from the CMEMS Global Ocean Physics Reanalysis.",
-          "type": "wms",
-          "status": "active",
-          "requiresKey": true,
+          "title": "Sea Surface Salinity",
+          "abstract": "Hourly global sea surface salinity from the CMEMS global ocean physics analysis and forecast.",
+          "type": "wmts",
+          "name": "GLOBAL_ANALYSISFORECAST_PHY_001_024/cmems_mod_glo_phy_anfc_0.083deg_PT1H-m_202406/so",
+          "lifecycle": "stable",
+          "legendUrl": "https://wmts.marine.copernicus.eu/teroWmts?SERVICE=WMTS&REQUEST=GetLegend&LAYER=GLOBAL_ANALYSISFORECAST_PHY_001_024%2Fcmems_mod_glo_phy_anfc_0.083deg_PT1H-m_202406%2Fso&STYLE=cmap%3Ahaline&FORMAT=image%2Fsvg%2Bxml",
           "webmapxConfig": {
             "source": {
               "type": "raster",
               "tiles": [
-                "https://nrt.cmems-du.eu/thredds/wms/global-analysis-forecast-phy-001-024?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&LAYERS=so&STYLES=boxfill/rainbow&COLORSCALERANGE=30,40&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
+                "https://wmts.marine.copernicus.eu/teroWmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=GLOBAL_ANALYSISFORECAST_PHY_001_024%2Fcmems_mod_glo_phy_anfc_0.083deg_PT1H-m_202406%2Fso&STYLE=cmap%3Ahaline&TILEMATRIXSET=EPSG:3857&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&FORMAT=image%2Fpng&TIME={time}"
               ],
               "tileSize": 256,
-              "maxzoom": 7,
+              "maxzoom": 10,
               "attribution": "<a href='https://marine.copernicus.eu'>Copernicus Marine Service</a>"
             },
             "layer": {
               "id": "cmems-salinity-global",
               "type": "raster",
               "metadata": {
-                "title": "CMEMS Ocean Salinity",
-                "abstract": "Surface salinity (PSU 30-40). Source: Copernicus Marine Service.",
+                "title": "Sea Surface Salinity",
+                "abstract": "Hourly global sea surface salinity. Source: Copernicus Marine.",
                 "legendRole": "overlay",
                 "previewCenter": [
                   0,
@@ -102,41 +110,41 @@
               }
             }
           },
-          "availability": "up",
-          "lastChecked": "2026-09-05"
-        }
-      ]
-    },
-    {
-      "id": "thredds-wms-dataset-duacs-nrt-global-merged-allsat-phy-l4",
-      "title": "Copernicus Marine Service (CMEMS) WMS",
-      "type": "wms",
-      "endpoint": "https://nrt.cmems-du.eu/thredds/wms/dataset-duacs-nrt-global-merged-allsat-phy-l4",
-      "availability": "up",
-      "layers": [
+          "time": {
+            "identifier": "time",
+            "default": "latest",
+            "precision": "hour",
+            "period": "PT1H",
+            "coverage": "global",
+            "extent": [
+              "2022-06-01T00:00:00Z/latest/PT1H"
+            ]
+          }
+        },
         {
           "id": "cmems-sea-level-anomaly",
           "title": "Sea Level Anomaly",
-          "abstract": "Global sea level anomaly (deviation from mean sea level) from satellite altimetry.",
-          "type": "wms",
-          "status": "active",
-          "requiresKey": true,
+          "abstract": "Daily global sea level anomaly from multi-satellite altimetry (DUACS near-real-time).",
+          "type": "wmts",
+          "name": "SEALEVEL_GLO_PHY_L4_NRT_008_046/cmems_obs-sl_glo_phy-ssh_nrt_allsat-l4-duacs-0.125deg_P1D_202506/sla",
+          "lifecycle": "stable",
+          "legendUrl": "https://wmts.marine.copernicus.eu/teroWmts?SERVICE=WMTS&REQUEST=GetLegend&LAYER=SEALEVEL_GLO_PHY_L4_NRT_008_046%2Fcmems_obs-sl_glo_phy-ssh_nrt_allsat-l4-duacs-0.125deg_P1D_202506%2Fsla&STYLE=cmap%3Aplasma&FORMAT=image%2Fsvg%2Bxml",
           "webmapxConfig": {
             "source": {
               "type": "raster",
               "tiles": [
-                "https://nrt.cmems-du.eu/thredds/wms/dataset-duacs-nrt-global-merged-allsat-phy-l4?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&LAYERS=sla&STYLES=boxfill/redblue&COLORSCALERANGE=-0.5,0.5&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256"
+                "https://wmts.marine.copernicus.eu/teroWmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=SEALEVEL_GLO_PHY_L4_NRT_008_046%2Fcmems_obs-sl_glo_phy-ssh_nrt_allsat-l4-duacs-0.125deg_P1D_202506%2Fsla&STYLE=cmap%3Aplasma&TILEMATRIXSET=EPSG:3857&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&FORMAT=image%2Fpng&TIME={time}"
               ],
               "tileSize": 256,
-              "maxzoom": 7,
+              "maxzoom": 10,
               "attribution": "<a href='https://marine.copernicus.eu'>Copernicus Marine Service</a>"
             },
             "layer": {
               "id": "cmems-sea-level-anomaly",
               "type": "raster",
               "metadata": {
-                "title": "CMEMS Sea Level Anomaly",
-                "abstract": "Sea level deviation from mean (±0.5m). Source: Copernicus Marine / DUACS.",
+                "title": "Sea Level Anomaly",
+                "abstract": "Daily global sea level anomaly (DUACS). Source: Copernicus Marine.",
                 "legendRole": "overlay",
                 "previewCenter": [
                   0,
@@ -146,8 +154,16 @@
               }
             }
           },
-          "availability": "up",
-          "lastChecked": "2026-09-05"
+          "time": {
+            "identifier": "time",
+            "default": "latest",
+            "precision": "day",
+            "period": "P1D",
+            "coverage": "global",
+            "extent": [
+              "2024-07-01/latest/P1D"
+            ]
+          }
         }
       ]
     }

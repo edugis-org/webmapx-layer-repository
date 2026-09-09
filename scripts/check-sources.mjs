@@ -18,6 +18,7 @@ import { join, resolve, dirname, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { XMLParser } from 'fast-xml-parser';
 import { recordCheck, HISTORY_LIMIT } from '../lib/uptime.mjs';
+import * as geonetwork from '../lib/geonetwork.mjs';
 
 const ROOT = resolve(fileURLToPath(import.meta.url), '../../');
 const SOURCES = join(ROOT, 'sources');
@@ -83,8 +84,41 @@ const COUNTERS = {
     'pdok-plugin-list': countPdokPluginRows,
 };
 
+/**
+ * One probe of a catalogue.
+ *
+ * A GET of a GeoNetwork base URL answers 200 with the web UI whether or not
+ * the search API behind it works, so probing that would record a broken
+ * catalogue as up. The probe is the same query the harvest runs, asking for no
+ * results: it measures what harvesting depends on, and the record count it
+ * reports is the drift signal — a catalogue that has 400 matching records this
+ * week and 40 next week has lost something.
+ */
+async function probeGeoNetwork(source) {
+    const started = Date.now();
+    try {
+        const { total } = await geonetwork.search(source.url, {
+            text: source.search?.query,
+            bbox: source.search?.bbox ?? source.bounds,
+            protocols: (source.include?.serviceTypes ?? ['wms']).map(t => `OGC:${t.toUpperCase()}`),
+            size: 0,
+            signal: AbortSignal.timeout(TIMEOUT_MS),
+        });
+        return { availability: 'up', httpStatus: 200, ms: Date.now() - started, layersOffered: total };
+    } catch (e) {
+        const status = Number(String(e.message).match(/HTTP (\d+)/)?.[1]);
+        if (status === 401 || status === 403) {
+            return { availability: 'auth-required', httpStatus: status, ms: Date.now() - started,
+                     reason: `HTTP ${status} (catalogue answered but rejected our request)` };
+        }
+        if (status) return { availability: 'down', httpStatus: status, ms: Date.now() - started, reason: `HTTP ${status}` };
+        return { availability: 'unreachable', ms: Date.now() - started, reason: String(e.message ?? e) };
+    }
+}
+
 /** One probe of a source's endpoint. Returns a check record. */
 async function probeSource(source) {
+    if (source.type === 'geonetwork-search') return probeGeoNetwork(source);
     const url = substituteKeys(source.url);
     const started = Date.now();
     try {

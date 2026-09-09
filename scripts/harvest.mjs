@@ -13,6 +13,7 @@ import { readFileSync, writeFileSync, readdirSync, mkdirSync, rmSync, existsSync
 import { join, resolve, dirname, relative } from 'path';
 import { fileURLToPath } from 'url';
 import { XMLParser } from 'fast-xml-parser';
+import * as geonetwork from '../lib/geonetwork.mjs';
 
 const ROOT = resolve(fileURLToPath(import.meta.url), '../../');
 const SOURCES = join(ROOT, 'sources');
@@ -803,10 +804,74 @@ async function enrichServices(services, expand) {
     return { legends, schemas, expansions };
 }
 
+
+/**
+ * A metadata catalogue, asked what it knows about renderable data.
+ *
+ * Unlike every other reader here, the endpoint being read is not the endpoint
+ * being harvested: GeoNetwork describes other people's services. One search
+ * yields links into dozens of unrelated GeoServers, so the output is grouped by
+ * the endpoint each record points at, and each layer carries the credit line of
+ * the organisation the record names — not of the catalogue, which publishes
+ * none of it.
+ *
+ * The search is paged because a catalogue holds thousands of records and one
+ * request returns at most a few hundred. `include.limit` caps the walk; without
+ * one, a broad query against a national catalogue is a long harvest for the
+ * catalogue as much as for us.
+ */
+async function readGeoNetworkSearch(source) {
+    const inc = source.include ?? {};
+    const search = source.search ?? {};
+    const protocols = (inc.serviceTypes ?? ['wms', 'wfs'])
+        .map(t => `OGC:${t.toUpperCase()}`);
+    const limit = inc.limit ?? 500;
+    const page = Math.min(200, limit);
+
+    const records = [];
+    for (let from = 0; from < limit; from += page) {
+        const { total, records: batch } = await geonetwork.search(source.url, {
+            text: search.query, bbox: search.bbox ?? source.bounds,
+            protocols, size: Math.min(page, limit - from), from,
+            signal: AbortSignal.timeout(60000),
+        });
+        records.push(...batch);
+        if (batch.length === 0 || from + batch.length >= total) break;
+    }
+
+    const kept = records.filter(r => {
+        const hay = `${r.title} ${r.abstract ?? ''} ${r.keywords.join(' ')}`;
+        if (inc.match && !new RegExp(inc.match, 'i').test(hay)) return false;
+        if (inc.exclude && new RegExp(inc.exclude, 'i').test(hay)) return false;
+        return true;
+    });
+
+    return geonetwork.servicesFromRecords(kept, {
+        protocols,
+        providerId: source.provider.id,
+        fallbackBounds: source.bounds,
+        // A record naming no organisation falls back to the source's own
+        // attribution, so no layer ships without a credit line.
+        attribution: undefined,
+    }).map(svc => ({ ...svc, harvestedFrom: source.id,
+        layers: svc.layers.map(l => withFallbackAttribution(l, source)) }));
+}
+
+/** A layer whose record named nobody still needs the source's credit line. */
+function withFallbackAttribution(layer, source) {
+    const src = layer.webmapxConfig?.source;
+    if (src && !src.attribution) {
+        const a = attributionFor(source);
+        if (a) src.attribution = a;
+    }
+    return layer;
+}
+
 const READERS = {
     'pdok-plugin-list': readPdokPluginList,
     'wms-capabilities': readWmsCapabilities,
     'wfs-capabilities': readWfsCapabilities,
+    'geonetwork-search': readGeoNetworkSearch,
 };
 
 const sources = readdirSync(SOURCES).filter(f => f.endsWith('.json'))

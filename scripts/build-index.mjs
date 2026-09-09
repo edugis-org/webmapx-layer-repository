@@ -23,7 +23,7 @@ function providerJsonFiles(dir) {
     // Recursive — used when expanding a $ref directory; skips nested $ref link files
     const results = [];
     for (const entry of readdirSync(dir)) {
-        if (entry === 'index.json') continue;
+        if (entry === 'index.json' || entry === 'catalogues.json') continue;
         const full = join(dir, entry);
         if (statSync(full).isDirectory()) {
             results.push(...providerJsonFiles(full));
@@ -40,7 +40,7 @@ function providerJsonFiles(dir) {
 function allJsonFiles(dir) {
     const results = [];
     for (const entry of readdirSync(dir)) {
-        if (entry === 'index.json') continue;
+        if (entry === 'index.json' || entry === 'catalogues.json') continue;
         const full = join(dir, entry);
         if (statSync(full).isDirectory()) {
             if (entry === 'styles') continue; // reserved — not a region
@@ -142,6 +142,28 @@ if (existsSync(HARVESTED_DIR)) {
 } else {
     console.log('ℹ️  no harvested/ directory — run: npm run harvest');
 }
+
+/**
+ * The catalogues the previewer may search live.
+ *
+ * A browser cannot list sources/, and the list of GeoNetwork catalogues is
+ * curated there like every other endpoint, so it is projected out here — the
+ * same curated/generated split the rest of the repository follows. Only what
+ * the client needs travels: where to ask, what to call it, and the region to
+ * frame results in.
+ */
+const catalogues = readdirSync(join(ROOT, 'sources'))
+    .filter(f => f.endsWith('.json'))
+    .map(f => { try { return JSON.parse(readFileSync(join(ROOT, 'sources', f), 'utf8')); } catch { return null; } })
+    .filter(s => s && s.type === 'geonetwork-search' && s.enabled !== false)
+    .map(s => ({
+        id: s.id, title: s.title ?? s.provider?.name ?? s.id, url: s.url,
+        provider: s.provider?.name, region: s.region ?? 'world',
+        ...(s.bounds ? { bounds: s.bounds } : {}),
+        ...(s.note ? { note: s.note } : {}),
+    }));
+writeFileSync(join(LAYERS_DIR, 'catalogues.json'), JSON.stringify(catalogues, null, 2) + '\n');
+console.log(`🔎 Wrote layers/catalogues.json (${catalogues.length} searchable catalogue(s))`);
 
 const outPath = join(LAYERS_DIR, 'index.json');
 writeFileSync(outPath, JSON.stringify(index, null, 2) + '\n');

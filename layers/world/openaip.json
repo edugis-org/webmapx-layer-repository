@@ -55,7 +55,7 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-09-05"
+          "lastChecked": "2026-09-07"
         }
       ]
     },
@@ -213,7 +213,7 @@
           ],
           "attributesFrom": "https://api.tiles.openaip.net/api/data/openaip/{z}/{x}/{y}.pbf",
           "availability": "up",
-          "lastChecked": "2026-09-05"
+          "lastChecked": "2026-09-07"
         },
         {
           "id": "openaip-airports",
@@ -292,7 +292,7 @@
           ],
           "attributesFrom": "https://api.tiles.openaip.net/api/data/openaip/{z}/{x}/{y}.pbf",
           "availability": "up",
-          "lastChecked": "2026-09-05"
+          "lastChecked": "2026-09-07"
         },
         {
           "id": "openaip-navaids",
@@ -365,7 +365,7 @@
           ],
           "attributesFrom": "https://api.tiles.openaip.net/api/data/openaip/{z}/{x}/{y}.pbf",
           "availability": "up",
-          "lastChecked": "2026-09-05"
+          "lastChecked": "2026-09-07"
         },
         {
           "id": "openaip-reporting-points",
@@ -426,7 +426,7 @@
           ],
           "attributesFrom": "https://api.tiles.openaip.net/api/data/openaip/{z}/{x}/{y}.pbf",
           "availability": "up",
-          "lastChecked": "2026-09-05"
+          "lastChecked": "2026-09-07"
         },
         {
           "id": "openaip-obstacles",
@@ -496,7 +496,7 @@
           ],
           "attributesFrom": "https://api.tiles.openaip.net/api/data/openaip/{z}/{x}/{y}.pbf",
           "availability": "up",
-          "lastChecked": "2026-09-05"
+          "lastChecked": "2026-09-07"
         },
         {
           "id": "openaip-hotspots",
@@ -563,7 +563,7 @@
           ],
           "attributesFrom": "https://api.tiles.openaip.net/api/data/openaip/{z}/{x}/{y}.pbf",
           "availability": "up",
-          "lastChecked": "2026-09-05"
+          "lastChecked": "2026-09-07"
         },
         {
           "id": "openaip-hang-gliding",
@@ -630,7 +630,7 @@
           ],
           "attributesFrom": "https://api.tiles.openaip.net/api/data/openaip/{z}/{x}/{y}.pbf",
           "availability": "up",
-          "lastChecked": "2026-09-05"
+          "lastChecked": "2026-09-07"
         },
         {
           "id": "openaip-rc-airfields",
@@ -700,7 +700,7 @@
           ],
           "attributesFrom": "https://api.tiles.openaip.net/api/data/openaip/{z}/{x}/{y}.pbf",
           "availability": "up",
-          "lastChecked": "2026-09-05"
+          "lastChecked": "2026-09-07"
         }
       ]
     }

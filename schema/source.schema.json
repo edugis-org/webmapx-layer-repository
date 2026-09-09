@@ -25,7 +25,8 @@
         "wmts-capabilities",
         "wfs-capabilities",
         "pdok-plugin-list",
-        "ogc-api-records"
+        "ogc-api-records",
+        "geonetwork-search"
       ],
       "description": "How to read this source. Self-describing services (WMS/WMTS GetCapabilities, OGC API) versus third-party catalogues that already did the harvesting, of which the QGIS PDOK plugin's layer list is one."
     },
@@ -77,6 +78,23 @@
         "attribution": {
           "type": "string",
           "description": "Credit line every harvested layer carries, written into webmapxConfig.source.attribution. Set it when the licensor dictates the wording — CC BY licences do. {year} resolves at harvest time. Left out, one is built from the provider's name, url and licence."
+        }
+      }
+    },
+    "search": {
+      "type": "object",
+      "description": "How to query a catalogue source. A catalogue holds everything anybody registered, so unlike a capabilities document it has to be asked a question rather than read whole.",
+      "properties": {
+        "query": {
+          "type": "string",
+          "description": "Full-text query, in Elasticsearch query_string syntax. Left out, every record with a renderable link is taken, subject to include.limit."
+        },
+        "bbox": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": { "type": "number" },
+          "description": "Only records whose extent intersects this box. Defaults to the source's bounds."
         }
       }
     },
