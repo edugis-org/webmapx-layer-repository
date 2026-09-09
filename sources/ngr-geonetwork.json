@@ -3,7 +3,7 @@
   "title": "Nationaal Georegister (GeoNetwork catalogue)",
   "type": "geonetwork-search",
   "url": "https://www.nationaalgeoregister.nl/geonetwork",
-  "note": "A catalogue, not a service: the records describe other people's endpoints, so the harvested services point at provincial GeoServers, PDOK, RIVM and Rijkswaterstaat rather than at this host. Grouped under the catalogue because that is where the records were found; each layer carries the credit line of the organisation its own record names. The search API answers Access-Control-Allow-Origin: *, so the previewer can query it live.",
+  "note": "A catalogue, not a service: the records describe other people's endpoints, so the harvested services point at provincial GeoServers, PDOK, RIVM and Rijkswaterstaat rather than at this host. Grouped under the catalogue because that is where the records were found; each layer carries the credit line of the organisation its own record names. Harvest-only: the search API answers Access-Control-Allow-Origin: * on the request itself, but this deployment's nginx answers every CORS preflight with a bare 204 carrying no headers, so a browser never gets to send the POST. Node has no such restriction. liveSearch is false so the previewer does not offer a search that cannot run; CSW over GET is a simple request and would reach it, which is the way back in.",
   "provider": {
     "id": "ngr",
     "name": "Nationaal Georegister",
@@ -26,9 +26,17 @@
     "query": "bodem OR natuur OR water OR landgebruik"
   },
   "include": {
-    "serviceTypes": ["wms"],
+    "serviceTypes": [
+      "wms"
+    ],
     "limit": 400
   },
   "enabled": true,
-  "bounds": [3.2, 50.75, 7.22, 53.7]
+  "bounds": [
+    3.2,
+    50.75,
+    7.22,
+    53.7
+  ],
+  "liveSearch": false
 }

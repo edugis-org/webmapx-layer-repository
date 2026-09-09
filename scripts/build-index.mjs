@@ -156,6 +156,9 @@ const catalogues = readdirSync(join(ROOT, 'sources'))
     .filter(f => f.endsWith('.json'))
     .map(f => { try { return JSON.parse(readFileSync(join(ROOT, 'sources', f), 'utf8')); } catch { return null; } })
     .filter(s => s && s.type === 'geonetwork-search' && s.enabled !== false)
+    // A catalogue whose deployment refuses CORS preflight cannot be searched from
+    // a page at all, so listing it would offer the reader a control that fails.
+    .filter(s => s.liveSearch !== false)
     .map(s => ({
         id: s.id, title: s.title ?? s.provider?.name ?? s.id, url: s.url,
         provider: s.provider?.name, region: s.region ?? 'world',

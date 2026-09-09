@@ -156,6 +156,12 @@
         }
       }
     },
+    "liveSearch": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether the previewer may search this catalogue from the browser. False where the deployment refuses CORS preflight, which makes the search impossible from a page while leaving the harvest unaffected — offering it anyway is a control that cannot work. Verify with an OPTIONS request carrying Origin and Access-Control-Request-Method before setting it true.",
+      "$comment": "Only meaningful for catalogue source types."
+    },
     "enabled": {
       "type": "boolean",
       "default": true
