@@ -3,18 +3,37 @@
   "title": "Metawal — Wallonia spatial data catalogue (GeoNetwork)",
   "type": "geonetwork-search",
   "url": "https://metawal.wallonie.be/geonetwork",
-  "note": "The Walloon regional metadata catalogue. Most records point at the region's own GeoServer, so provider and endpoint largely coincide here — unlike the national catalogues.",
+  "note": "The Walloon regional metadata catalogue. Disabled: its records name the service in prose rather than naming a layer — every sampled link carries gmd:name \"Service de visualisation WMS\" — so the harvest builds LAYERS parameters no server recognises and all 203 layers it yielded returned ServiceExceptions. The endpoints themselves are alive, so this becomes harvestable as soon as layer names are read from each service's GetCapabilities instead of from the record.",
   "provider": {
     "id": "metawal",
     "name": "Métawal — Service public de Wallonie",
     "url": "https://metawal.wallonie.be",
     "access": "free",
-    "operator": { "type": "government", "country": "BE" },
-    "categories": ["boundaries", "environment", "general-purpose"]
+    "operator": {
+      "type": "government",
+      "country": "BE"
+    },
+    "categories": [
+      "boundaries",
+      "environment",
+      "general-purpose"
+    ]
   },
   "region": "world/europe/belgium",
-  "search": { "query": "sol OR forêt OR eau OR occupation OR relief" },
-  "include": { "serviceTypes": ["wms"], "limit": 200 },
-  "enabled": true,
-  "bounds": [2.75, 49.45, 6.45, 50.85]
+  "search": {
+    "query": "sol OR forêt OR eau OR occupation OR relief"
+  },
+  "include": {
+    "serviceTypes": [
+      "wms"
+    ],
+    "limit": 200
+  },
+  "enabled": false,
+  "bounds": [
+    2.75,
+    49.45,
+    6.45,
+    50.85
+  ]
 }
