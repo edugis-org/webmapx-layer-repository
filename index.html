@@ -1093,7 +1093,11 @@ const PREVIEW_BASEMAP = {
 // This repository stores a WMS as a ready-baked GetMap tile template, because
 // that is what a MapLibre source needs. The info tool needs the request taken
 // apart again: it builds its own GetFeatureInfo from endpoint, layers and
-// version. Recover them from the template rather than storing them twice.
+// version. Recover them from the template rather than storing them twice, under
+// the names webmapx's raster source schema uses — service, url, layers, version,
+// format — since anything else is dropped with an "Unknown key" warning. The
+// baked tiles still win for rendering: the adapter only composes a GetMap of its
+// own when a WMS source arrives without them.
 function wmsFeatureInfoFields(source) {
   const tile = Array.isArray(source.tiles) ? source.tiles[0] : undefined;
   if (!tile) return null;
@@ -1107,9 +1111,10 @@ function wmsFeatureInfoFields(source) {
   endpoint.search = '';
   return {
     service: 'wms',
-    gfiUrl: endpoint.href,
-    gfiLayers: layers,
-    gfiVersion: params.get('version') ?? '1.1.1',
+    url: endpoint.href,
+    layers,
+    version: params.get('version') ?? '1.1.1',
+    ...(params.get('format') ? { format: params.get('format') } : {}),
   };
 }
 
