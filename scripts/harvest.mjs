@@ -95,7 +95,7 @@ function attributionFor(source) {
 }
 
 function mkLayer({ id, name, title, abstract, datasetId, url, kind, background, bounds,
-                   attribution, sourceLayer, featureCount, queryable }) {
+                   attribution, sourceLayer, featureCount, queryable, time }) {
     // Three shapes, because three ways of delivering the same data: a raster
     // tile template, a vector tile template with a source-layer to draw from,
     // and a GeoJSON document fetched whole.
@@ -123,6 +123,7 @@ function mkLayer({ id, name, title, abstract, datasetId, url, kind, background, 
         ...(abstract ? { abstract: abstract.slice(0, 600) } : {}),
         ...(datasetId ? { datasetId } : {}),
         ...(featureCount !== undefined ? { featureCount } : {}),
+        ...(time ? { time } : {}),
         type: kind, requiresKey: false,
         webmapxConfig: {
             source: src,
@@ -337,11 +338,12 @@ async function readWmsCapabilities(source) {
 
     // Layers nest; only those with a <Name> are requestable.
     const out = []; const ids = new Set();
-    (function walk(node, inheritedCrs, inheritedBounds) {
+    (function walk(node, inheritedCrs, inheritedBounds, inheritedTime) {
         for (const l of arr(node?.Layer)) {
             const crs = [...new Set([...inheritedCrs, ...arr(l.CRS ?? l.SRS).map(String)])];
             // Per the spec a nested layer inherits its parent's extent.
             const extent = boundsOf(l) ?? inheritedBounds;
+            const time = timeDimensionOf(l, inheritedTime);
             if (l.Name !== undefined) {
                 const name = String(l.Name);
                 const title = String(l.Title ?? name);
@@ -353,7 +355,12 @@ async function readWmsCapabilities(source) {
                     ids.add(id);
                     const layer = mkLayer({
                         id, name, title, abstract: l.Abstract ? String(l.Abstract) : undefined,
-                        url: withQuery(endpoint, `LAYERS=${encodeURIComponent(name)}&${tail}`), kind: 'wms',
+                        // A time-dimensioned layer needs the instant in the
+                        // request: WMS-T reads it from TIME, and the consumer
+                        // resolves {time} before the source is added.
+                        url: withQuery(endpoint, `LAYERS=${encodeURIComponent(name)}&${tail}`
+                            + (time ? '&TIME={time}' : '')), kind: 'wms',
+                        time,
                         // The service's own answer to "can this be asked about a
                         // point?". A layer that says no and is asked anyway
                         // replies with a service exception, which the info tool
@@ -374,9 +381,9 @@ async function readWmsCapabilities(source) {
                         : [layer]));
                 }
             }
-            walk(l, crs, extent);
+            walk(l, crs, extent, time);
         }
-    })(cap.Capability, [], null);
+    })(cap.Capability, [], null, undefined);
 
     const root = arr(cap.Capability?.Layer)[0] ?? {};
     return [{
@@ -568,6 +575,61 @@ function boundsOf(layerNode) {
         if (b.every(Number.isFinite)) return b;
     }
     return null;
+}
+
+/**
+ * A layer's time dimension, as the service declares it.
+ *
+ * This is the one machine-readable statement a WMS makes about versions. Where
+ * it is present there is nothing to guess: the service names its instants, its
+ * step and its default. Where it is absent — and it is absent from every service
+ * harvested so far, including one publishing 32432 layers — a date buried in a
+ * layer name stays exactly that, a string, and this repository does not pretend
+ * to read it. maximale_waterdiepte_nederland_kleine_kans_20251219 and
+ * IGNF_COSIA_2017-2020 are not the same kind of thing, and neither announces
+ * which it is.
+ *
+ * Two spellings, because two versions of the spec:
+ *   1.3.0  <Dimension name="time" units="ISO8601" default="…">values</Dimension>
+ *   1.1.1  <Dimension name="time" units="ISO8601"/> declares it and a separate
+ *          <Extent name="time" default="…">values</Extent> carries the values.
+ * Per the spec a nested layer inherits its parent's dimensions, so the caller
+ * passes down what it found above.
+ */
+function timeDimensionOf(layerNode, inherited) {
+    const named = xs => arr(xs).find(d => /^time$/i.test(String(d?.['@name'] ?? '')));
+    const dim = named(layerNode.Dimension);
+    const ext = named(layerNode.Extent);
+    if (!dim && !ext) return inherited;
+
+    // 1.1.1 splits the declaration from the values; 1.3.0 puts both on Dimension.
+    const holder = ext ?? dim;
+    const raw = String(holder?.['#text'] ?? dim?.['#text'] ?? '').trim();
+    if (!raw) return inherited;
+
+    // A comma-separated list of instants, of intervals, or a mixture. Kept as
+    // the service wrote them: start/end/period is already the WMTS <Value> form
+    // the schema asks for.
+    const values = raw.split(',').map(v => v.trim()).filter(Boolean);
+    if (!values.length) return inherited;
+
+    const period = values.map(v => v.split('/')[2]).find(Boolean);
+    const first = values[0].split('/')[0];
+    const precision = first.length <= 4 ? 'year'
+        : first.length <= 7 ? 'month'
+        : first.length <= 10 ? 'day'
+        : first.length <= 16 ? 'minute' : 'second';
+    const declared = holder?.['@default'] ?? dim?.['@default'];
+
+    return {
+        identifier: String(holder?.['@name'] ?? dim?.['@name'] ?? 'time'),
+        // WMS-T spells "now" as the keyword 'current'; the schema's own keyword
+        // is 'latest', and a service that names a concrete default is believed.
+        default: declared && !/^current$/i.test(String(declared)) ? String(declared) : 'latest',
+        extent: values,
+        ...(period ? { period } : {}),
+        precision,
+    };
 }
 
 /**
