@@ -599,6 +599,19 @@ async function stylesFor(capabilitiesUrl) {
 }
 
 /**
+ * Name the style in a GetMap template. The template already carries an empty
+ * STYLES= (the spec requires the parameter), so the value is filled in rather
+ * than a second STYLES= appended: servers that see the parameter twice may
+ * fault instead of picking one.
+ */
+function withStyle(tileUrl, styleName) {
+    const value = encodeURIComponent(styleName);
+    return /([?&])STYLES=(?=&|$)/.test(tileUrl)
+        ? tileUrl.replace(/([?&])STYLES=(?=&|$)/, `$1STYLES=${value}`)
+        : `${tileUrl}&STYLES=${value}`;
+}
+
+/**
  * Turn a layer with several published styles into one layer per style.
  *
  * The style rides in the GetMap STYLES parameter, so each expansion is a
@@ -629,7 +642,7 @@ function expandStyles(layer, styles, expand = true) {
         const src = out.webmapxConfig.source;
         out.webmapxConfig = {
             ...out.webmapxConfig,
-            source: { ...src, tiles: src.tiles.map(t => `${t}&STYLES=${encodeURIComponent(st.name)}`) },
+            source: { ...src, tiles: src.tiles.map(t => withStyle(t, st.name)) },
             layer: {
                 ...out.webmapxConfig.layer,
                 id: out.id,
