@@ -654,17 +654,25 @@ function stylesOf(layerNode) {
     })).filter(st => st.name || st.legendUrl);
 }
 
-async function stylesFor(capabilitiesUrl) {
+async function capabilitiesIndex(capabilitiesUrl) {
     const cap = XML.parse(await cachedText(capabilitiesUrl));
     const root = cap.WMS_Capabilities ?? cap.WMT_MS_Capabilities;
     const out = new Map();
-    (function walk(node, inheritedBounds) {
+    (function walk(node, inheritedBounds, inheritedTime) {
         for (const l of arr(node?.Layer)) {
             const bounds = boundsOf(l) ?? inheritedBounds;
-            if (l.Name !== undefined) out.set(String(l.Name), { styles: stylesOf(l), bounds });
-            walk(l, bounds);
+            const time = timeDimensionOf(l, inheritedTime);
+            if (l.Name !== undefined) {
+                out.set(String(l.Name), {
+                    title: l.Title === undefined ? undefined : String(l.Title),
+                    abstract: l.Abstract ? String(l.Abstract) : undefined,
+                    styles: stylesOf(l), bounds, time,
+                    queryable: queryableOf(l),
+                });
+            }
+            walk(l, bounds, time);
         }
-    })(root?.Capability, null);
+    })(root?.Capability, null, undefined);
     return out;
 }
 
@@ -797,6 +805,87 @@ async function wfsCapabilities(candidateUrl) {
 }
 
 /**
+ * Check catalogue-derived layers against the service's own capabilities.
+ *
+ * A catalogue record says what a layer is called; only the service knows. When
+ * the two disagree the catalogue loses, because a name the server does not
+ * recognise is not a layer at all — geocat.ch stores "WMS Vegetationskundliche
+ * Kartierung der Wälder" where wms.zh.ch calls the layer "waldareal", and every
+ * tile request for it comes back as a ServiceException.
+ *
+ * One request per service, not per layer, and the answer settles four things at
+ * once: whether the name exists, what the layer's own extent is, which styles
+ * and legends it publishes, and whether it carries a time dimension. That last
+ * one is the only machine-readable statement about versions a WMS makes, and
+ * skipping this read is why 53 dated swisstopo layers looked undated to us.
+ *
+ * Sources parsed from a capabilities document already know all of this and are
+ * left alone. A layer whose name the document does not list is dropped rather
+ * than shipped: it cannot render, and a preview that cannot render is worse
+ * than an absent one.
+ */
+async function resolveAgainstCapabilities(services, expand) {
+    let legends = 0, expansions = 0, dropped = 0, timed = 0, unread = 0;
+    for (const svc of services) {
+        if (svc.type !== 'wms' || !svc.capabilitiesUrl || svc.stylesRead) continue;
+        let index;
+        try { index = await capabilitiesIndex(svc.capabilitiesUrl); }
+        catch { unread++; continue; }          // unreachable service: keep what we have
+        if (index.size === 0) { unread++; continue; }
+
+        // A record's "name" is sometimes the layer's title. Ask the document for
+        // that reading before discarding the layer.
+        const byTitle = new Map();
+        for (const [name, entry] of index) {
+            if (entry.title && !byTitle.has(entry.title)) byTitle.set(entry.title, name);
+        }
+
+        const out = [];
+        for (const l of svc.layers) {
+            let name = l.name;
+            let entry = index.get(name);
+            if (!entry && byTitle.has(name)) {
+                name = byTitle.get(name);
+                entry = index.get(name);
+                // The template names the layer, so correcting the name means
+                // rewriting the request it was baked into.
+                const src = l.webmapxConfig?.source;
+                if (src?.tiles) {
+                    src.tiles = src.tiles.map(t => t.replace(
+                        /([?&]LAYERS=)[^&]*/i, `$1${encodeURIComponent(name)}`));
+                }
+                l.name = name;
+            }
+            if (!entry) { dropped++; continue; }
+
+            if (entry.bounds && l.webmapxConfig?.source) l.webmapxConfig.source.bounds = entry.bounds;
+            if (entry.queryable === false && l.webmapxConfig?.layer?.metadata) {
+                l.webmapxConfig.layer.metadata.queryable = false;
+            }
+            if (entry.time) {
+                l.time = entry.time;
+                const src = l.webmapxConfig?.source;
+                if (src?.tiles) src.tiles = src.tiles.map(t => /[?&]TIME=/i.test(t) ? t : `${t}&TIME={time}`);
+                timed++;
+            }
+
+            const styles = entry.styles?.length ? entry.styles : null;
+            if (!styles) { out.push(l); continue; }
+            const expanded = expand ? expandStyles(l, styles) : [l];
+            if (!expand) {
+                const href = styles.map(st => st.legendUrl).find(Boolean);
+                if (href) l.legendUrl = String(href);
+            }
+            legends += expanded.filter(x => x.legendUrl).length;
+            expansions += expanded.length - 1;
+            out.push(...expanded);
+        }
+        svc.layers = out;
+    }
+    return { legends, expansions, dropped, timed, unread };
+}
+
+/**
  * Fill in legends and attribute schemas for services already harvested.
  * Failures are expected and silent per service: a raster service has no WFS,
  * and plenty of WMS servers publish no LegendURL.
@@ -804,34 +893,6 @@ async function wfsCapabilities(candidateUrl) {
 async function enrichServices(services, expand) {
     let legends = 0, schemas = 0, expansions = 0;
     for (const svc of services) {
-        // Sources read from a capabilities document already carry their styles
-        // and legends, extracted during that parse. Only catalogue-derived
-        // services (the PDOK plugin list) still need the document fetched.
-        if (svc.type === 'wms' && svc.capabilitiesUrl && !svc.stylesRead) {
-            try {
-                const map = await stylesFor(svc.capabilitiesUrl);
-                const out = [];
-                for (const l of svc.layers) {
-                    const entry = map.get(l.name);
-                    // A catalogue gave us this layer, so nothing had read its own
-                    // extent; the capabilities document states it.
-                    if (entry?.bounds && l.webmapxConfig?.source) {
-                        l.webmapxConfig.source.bounds = entry.bounds;
-                    }
-                    const styles = entry?.styles?.length ? entry.styles : null;
-                    if (!styles) { out.push(l); continue; }
-                    const expanded = expand ? expandStyles(l, styles) : [l];
-                    if (!expand) {
-                        const href = styles.map(st => st.legendUrl).find(Boolean);
-                        if (href) l.legendUrl = String(href);
-                    }
-                    legends += expanded.filter(x => x.legendUrl).length;
-                    expansions += expanded.length - 1;
-                    out.push(...expanded);
-                }
-                svc.layers = out;
-            } catch { /* no capabilities, or no styles in them */ }
-        }
         // A WMTS states its own URL template; ours was a guess that fits PDOK and
         // little else.
         if (svc.type === 'wmts' && svc.capabilitiesUrl) {
@@ -975,10 +1036,27 @@ for (const source of sources) {
     try { services = await reader(source); }
     catch (e) { console.log(`failed: ${e.message}`); failed++; continue; }
 
-    // A source can decline enrichment. Reading legends is one request per
-    // service, but attribute schemas are one per layer, and a service offering
-    // 16,000 layers would turn a harvest into a small denial of service against
-    // the people publishing the data for free.
+    // Catalogue-derived layers are checked against the service itself. For a
+    // GeoNetwork source this is not optional: its layer names are transcribed
+    // metadata, and the check is what tells a real name from a description
+    // somebody typed. Other catalogue sources keep it behind --enrich, where it
+    // has always been — turning it on for them is a decision about how large
+    // the catalogue should be, not a bug fix, because style expansion alone
+    // takes PDOK from 3319 layers to 12072.
+    const catalogueDerived = services.some(s => s.type === 'wms' && !s.stylesRead);
+    const mustCheck = source.type === 'geonetwork-search';
+    if (catalogueDerived && (mustCheck || (enrich && (source.include ?? {}).enrich !== false))) {
+        const expand = (source.include ?? {}).expandStyles !== false;
+        const r = await resolveAgainstCapabilities(services, expand);
+        process.stdout.write(`\n   capabilities: ${r.dropped} layers dropped as unknown, ` +
+            `${r.timed} time-dimensioned, ${r.legends} legends` +
+            `${expand ? `, +${r.expansions} style layers` : ''}` +
+            `${r.unread ? `, ${r.unread} services unreadable` : ''}\n   `);
+    }
+
+    // A source can decline enrichment. Attribute schemas are one request per
+    // layer, and a service offering 16,000 layers would turn a harvest into a
+    // small denial of service against the people publishing the data for free.
     if (enrich && (source.include ?? {}).enrich !== false) {
         process.stdout.write('\n   enriching ');
         const expand = (source.include ?? {}).expandStyles !== false;
