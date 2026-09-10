@@ -181,6 +181,7 @@
 
 <script type="module">
 import { resolveTimeDeep, hasTimeToken, resolveTimeValue } from './lib/time.mjs';
+import { endpointOf } from './lib/ows.mjs';
 import { WebMapX } from 'https://cdn.jsdelivr.net/npm/@edugis-org/webmapx@0.2/dist-lib/webmapx.js';
 import { layerEntries } from './lib/catalog.mjs';
 import { regionBounds } from './lib/regions.mjs';
@@ -1098,6 +1099,10 @@ const PREVIEW_BASEMAP = {
 // format — since anything else is dropped with an "Unknown key" warning. The
 // baked tiles still win for rendering: the adapter only composes a GetMap of its
 // own when a WMS source arrives without them.
+//
+// Taking the endpoint back out means dropping the request keywords and nothing
+// else — a MapServer template addresses its mapfile with ?map=, and a service
+// may carry a key or a ref the same way. endpointOf() knows that difference.
 function wmsFeatureInfoFields(source) {
   const tile = Array.isArray(source.tiles) ? source.tiles[0] : undefined;
   if (!tile) return null;
@@ -1107,11 +1112,9 @@ function wmsFeatureInfoFields(source) {
   if ((params.get('service') ?? '').toLowerCase() !== 'wms') return null;
   const layers = params.get('layers');
   if (!layers) return null;
-  const endpoint = new URL(url.href);
-  endpoint.search = '';
   return {
     service: 'wms',
-    url: endpoint.href,
+    url: endpointOf(url.href),
     layers,
     version: params.get('version') ?? '1.1.1',
     ...(params.get('format') ? { format: params.get('format') } : {}),

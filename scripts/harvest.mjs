@@ -14,6 +14,7 @@ import { join, resolve, dirname, relative } from 'path';
 import { fileURLToPath } from 'url';
 import { XMLParser } from 'fast-xml-parser';
 import * as geonetwork from '../lib/geonetwork.mjs';
+import { endpointOf, withQuery } from '../lib/ows.mjs';
 
 const ROOT = resolve(fileURLToPath(import.meta.url), '../../');
 const SOURCES = join(ROOT, 'sources');
@@ -254,7 +255,7 @@ async function readPdokPluginList(source) {
         if (inc.match && !new RegExp(inc.match, 'i').test(`${r.name} ${r.title}`)) continue;
         if (inc.exclude && new RegExp(inc.exclude, 'i').test(`${r.name} ${r.title}`)) continue;
 
-        const endpoint = r.service_url.split('?')[0];
+        const endpoint = endpointOf(r.service_url);
         const key = `${r.service_type}|${endpoint}`;
         const svc = services.get(key) ?? {
             id: slug(endpoint.replace(/^https?:\/\/[^/]+/, '')) || slug(r.service_title),
@@ -274,7 +275,7 @@ async function readPdokPluginList(source) {
         // WMTS in this catalogue is RESTful; WMS needs a GetMap template built.
         let url, kind;
         if (r.service_type === 'wms') {
-            url = `${endpoint}?LAYERS=${encodeURIComponent(r.name)}&${WMS_TAIL}`; kind = 'wms';
+            url = withQuery(endpoint, `LAYERS=${encodeURIComponent(r.name)}&${WMS_TAIL}`); kind = 'wms';
         } else if (r.service_type === 'wmts') {
             // The tile matrix set is the grid, and it is named per service: PDOK
             // spells web mercator EPSG:3857, OGC:1.0:GoogleMapsCompatible or
@@ -283,7 +284,9 @@ async function readPdokPluginList(source) {
             // asking it for /EPSG:3857/ returns 404s, which is a blank preview.
             const matrixSet = mercatorMatrixSet(r.tilematrixsets);
             if (!matrixSet) continue;
-            url = `${endpoint}/${r.name}/${matrixSet}/{z}/{x}/{y}.png`; kind = 'wmts';
+            // A RESTful path, not a query: any vendor parameter the endpoint
+            // carries has no place in it, so this branch uses the bare path.
+            url = `${endpoint.split('?')[0]}/${r.name}/${matrixSet}/{z}/{x}/{y}.png`; kind = 'wmts';
         } else if (r.service_type === 'api tiles') {
             // The row describes the service; its collections are read below.
             services.set(key, svc);
@@ -292,9 +295,9 @@ async function readPdokPluginList(source) {
             // A GeoJSON source fetches the whole document, so the request is
             // capped: WFS_FEATURE_CAP features of a national dataset is a
             // preview, and the alternative is a browser pulling millions.
-            url = `${endpoint}?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature` +
+            url = withQuery(endpoint, `SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature` +
                   `&TYPENAMES=${encodeURIComponent(r.name)}` +
-                  `&OUTPUTFORMAT=application/json&COUNT=${WFS_PAGE_FALLBACK}&SRSNAME=EPSG:4326`;
+                  `&OUTPUTFORMAT=application/json&COUNT=${WFS_PAGE_FALLBACK}&SRSNAME=EPSG:4326`);
             kind = 'wfs';
         } else { continue; }
 
@@ -328,7 +331,7 @@ async function readWmsCapabilities(source) {
         .parse(await res.text());
     const cap = xml.WMS_Capabilities ?? xml.WMT_MS_Capabilities;
     if (!cap) throw new Error('no WMS capabilities element');
-    const endpoint = source.url.split('?')[0];
+    const endpoint = endpointOf(source.url);
     const inc = source.include ?? {};
     const tail = wmsTail(cap['@version']);
 
@@ -350,7 +353,7 @@ async function readWmsCapabilities(source) {
                     ids.add(id);
                     const layer = mkLayer({
                         id, name, title, abstract: l.Abstract ? String(l.Abstract) : undefined,
-                        url: `${endpoint}?LAYERS=${encodeURIComponent(name)}&${tail}`, kind: 'wms',
+                        url: withQuery(endpoint, `LAYERS=${encodeURIComponent(name)}&${tail}`), kind: 'wms',
                         // The service's own answer to "can this be asked about a
                         // point?". A layer that says no and is asked anyway
                         // replies with a service exception, which the info tool
@@ -403,7 +406,7 @@ async function readWmsCapabilities(source) {
  */
 async function readWfsCapabilities(source) {
     const url = source.url.includes('?') ? source.url
-        : `${source.url}?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetCapabilities`;
+        : withQuery(endpointOf(source.url), 'SERVICE=WFS&VERSION=2.0.0&REQUEST=GetCapabilities');
     const res = await fetch(url, { signal: AbortSignal.timeout(60000) });
     if (!res.ok) throw new Error(`HTTP ${res.status} fetching ${url}`);
     const doc = XML.parse(await res.text());
@@ -416,7 +419,7 @@ async function readWfsCapabilities(source) {
     const format = jsonOutputFormat(cap);
     if (!format) throw new Error('service offers no JSON output format');
 
-    const endpoint = getFeatureEndpointOf(cap) ?? url.split('?')[0];
+    const endpoint = getFeatureEndpointOf(cap) ?? endpointOf(url);
     const inc = source.include ?? {};
     const { pageSize, canPage } = pagingOf(cap);
 
@@ -445,8 +448,8 @@ async function readWfsCapabilities(source) {
         const layer = mkLayer({
             id, name, title,
             abstract: abstract ? String(abstract) : undefined,
-            url: `${endpoint}?${query}&OUTPUTFORMAT=${encodeURIComponent(format)}`
-                 + `&SRSNAME=EPSG:4326`,
+            url: withQuery(endpoint, `${query}&OUTPUTFORMAT=${encodeURIComponent(format)}`
+                 + `&SRSNAME=EPSG:4326`),
             kind: 'wfs',
             bounds: wgs84BoundsOf(t) ?? source.bounds,
             attribution: attributionFor(source),
@@ -495,7 +498,12 @@ function jsonOutputFormat(cap) {
         ?? values.find(v => /^json$/i.test(v));
 }
 
-/** The URL the service names for GetFeature, rather than the one we asked on. */
+/**
+ * The URL the service names for GetFeature, rather than the one we asked on.
+ *
+ * MapServer publishes its own mapfile here (?map=/srv/x.map), so the href is
+ * read with endpointOf: the request keywords go, everything else stays.
+ */
 function getFeatureEndpointOf(cap) {
     const ops = arr(cap['ows:OperationsMetadata']?.['ows:Operation']
                  ?? cap.OperationsMetadata?.Operation);
@@ -503,7 +511,7 @@ function getFeatureEndpointOf(cap) {
     const get = getFeature?.['ows:DCP']?.['ows:HTTP']?.['ows:Get']
              ?? getFeature?.DCP?.HTTP?.Get;
     const href = arr(get)[0]?.['@xlink:href'];
-    return href ? String(href).split('?')[0] : null;
+    return href ? endpointOf(String(href)) : null;
 }
 
 /** A feature type's extent, which WFS states as an ows:WGS84BoundingBox. */
@@ -695,7 +703,7 @@ function pagingOf(cap) {
  * and mostly for nothing.
  */
 async function wfsCapabilities(candidateUrl) {
-    const url = `${candidateUrl}?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetCapabilities`;
+    const url = withQuery(endpointOf(candidateUrl), 'SERVICE=WFS&VERSION=2.0.0&REQUEST=GetCapabilities');
     const doc = XML.parse(await cachedText(url, 60000));
     const cap = doc['wfs:WFS_Capabilities'] ?? doc.WFS_Capabilities;
     if (!cap) throw new Error('no WFS capabilities element');
@@ -720,7 +728,7 @@ async function wfsCapabilities(candidateUrl) {
     const href = arr(get)[0]?.['@xlink:href'];
 
     return {
-        endpoint: href ? String(href).split('?')[0] : candidateUrl,
+        endpoint: href ? endpointOf(String(href)) : candidateUrl,
         typeNames,
         ...pagingOf(cap),
     };
