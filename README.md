@@ -3,6 +3,9 @@
 A catalog of map layer services: who provides them, what endpoints they run, what
 layers those serve, and whether any of it is actually up.
 
+**Browse it: https://edugis-org.github.io/webmapx-layer-repository/** — the previewer
+served from GitHub Pages, rebuilt on every push to main.
+
 ## What is curated and what is generated
 
 Two kinds of data live here, and the difference decides where each belongs.
