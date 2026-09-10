@@ -1,0 +1,494 @@
+{
+  "provider": "geocat-ch",
+  "source": "world/europe/switzerland/geocat-ch.json",
+  "layers": {
+    "wms-geo-admin-ch-lang-de": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "geoportal-georhena-eu-geoserver-water-ows": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "www-gis-service-ch-hostingserver-services-geographische-regi": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "down",
+          "httpStatus": 200,
+          "reason": "service exception: Parameter 'layers' contains unacceptable layer names."
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "geodienste-ch-db-npl-waldabstandslinien-v1-2-0-deu": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "down",
+          "httpStatus": 200,
+          "reason": "service exception: msWMSLoadGetMapParams(): WMS server error. Invalid layer(s) given in the LAYERS parameter. A layer might be disabled for this request. Check wms/ows_enable_req"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "services-geo-zg-ch-ows-abstandslinien": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "down",
+          "httpStatus": 400,
+          "reason": "HTTP 400"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "www-gis-daten-ch-wms-nw-service": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "www-gis-daten-ch-wms-ow-service": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "wms-geo-ag-ch-public-ch-ag-geo-alg-felsflora-wms": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "wms-geo-bs-ch": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 400
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "geodienste-ch-db-gewaesserraum-v1-1-0-deu": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "geodienste-ch-db-gefahrenkarten-v1-3-0-deu": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "wms-geo-ag-ch-public-ch-ag-geo-alg-amzgeimer-wms": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "wms-geo-ag-ch-public-ch-ag-geo-alg-amzgleitsystem-wms": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "wms-geo-ag-ch-public-ch-ag-geo-alg-amzgstopprinne-wms": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "wms-geo-ag-ch-public-ch-ag-geo-alg-amzgdurchlass-wms": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "geodienste-ch-db-av-0-deu": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "geo-ur-ch-wms": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "geodienste-ch-db-planungszonen-v1-1-0-deu": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "service-geo-llv-li-wmsli-service-language-ger": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "wms-zh-ch-waldvkwms": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "down",
+          "httpStatus": 200,
+          "reason": "service exception: msWMSLoadGetMapParams(): WMS server error. Invalid layer(s) given in the LAYERS parameter. A layer might be disabled for this request. Check wms/ows_enable_req"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "wms-zh-ch-waldarealzhwms": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "down",
+          "httpStatus": 200,
+          "reason": "service exception: msWMSLoadGetMapParams(): WMS server error. Invalid layer(s) given in the LAYERS parameter. A layer might be disabled for this request. Check wms/ows_enable_req"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "wms-zh-ch-waldwnbzhwms": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "down",
+          "httpStatus": 200,
+          "reason": "service exception: msWMSLoadGetMapParams(): WMS server error. Invalid layer(s) given in the LAYERS parameter. A layer might be disabled for this request. Check wms/ows_enable_req"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "wms-zh-ch-waldswzhwms": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "down",
+          "httpStatus": 200,
+          "reason": "service exception: msWMSLoadGetMapParams(): WMS server error. Invalid layer(s) given in the LAYERS parameter. A layer might be disabled for this request. Check wms/ows_enable_req"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "wms-zh-ch-waldwep2zhwms": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "down",
+          "httpStatus": 200,
+          "reason": "service exception: msWMSLoadGetMapParams(): WMS server error. Invalid layer(s) given in the LAYERS parameter. A layer might be disabled for this request. Check wms/ows_enable_req"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    }
+  }
+}

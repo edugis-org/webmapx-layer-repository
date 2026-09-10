@@ -1,0 +1,26 @@
+{
+  "provider": "bgs",
+  "source": "world/europe/united-kingdom/bgs.json",
+  "layers": {
+    "arcgis-services-bgs-detailed-geology-mapserver-wmsserver": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    }
+  }
+}

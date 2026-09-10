@@ -1,0 +1,66 @@
+{
+  "provider": "ngi-be",
+  "source": "world/europe/belgium/ngi-be.json",
+  "layers": {
+    "service": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "ws-inspire-annex1-wms": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "inspire-ortho-service": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    }
+  }
+}

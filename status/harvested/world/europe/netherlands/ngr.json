@@ -1,0 +1,1695 @@
+{
+  "provider": "ngr",
+  "source": "world/europe/netherlands/ngr.json",
+  "layers": {
+    "geoserver-gelderland-nl-geoserver-ngr-a-wms": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "service-pdok-nl-wur-landelijk-grondgebruik-nederland-wms-v1-": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "geoserver-gelderland-nl-geoserver-ngr-d-wms": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "data-rivm-nl-geo-ank-wms": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "unreachable",
+          "reason": "The operation was aborted due to timeout"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "unreachable",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "opengeodata-zeeland-nl-geoserver-rasters-bodem-wms": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "kaartportaal-drenthe-nl-server-services-gdb-actueel-gbi-bode": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "opengeodata-zeeland-nl-geoserver-rasters-wms": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "geodata-zuid-holland-nl-geoserver-bodem-wms": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "kaartportaal-drenthe-nl-server-services-gdb-actueel-gbi-wat-": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "services-geodata-utrecht-nl-geoserver-w01-2-grondwater-wms": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "kaartportaal-drenthe-nl-server-services-gdb-actueel-gbi-pov2": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "geo2-flevoland-nl-geoserver-extern-wms": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "data-rivm-nl-geo-nl-wms": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "geodata-zuid-holland-nl-geoserver-klimaat-wms": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "opengeodata-zeeland-nl-geoserver-wbn-wms": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "geoservices-noord-holland-nl-ags-services-oi-dataservice-alg": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "geo-rijkswaterstaat-nl-services-ogc-gdr-water-en-bodem-ro-ra": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "kaartportaal-drenthe-nl-server-services-gdb-actueel-gbi-keil": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "opengeodata-zeeland-nl-geoserver-bodem-wms": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "service-pdok-nl-cbs-landuse-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "down",
+          "httpStatus": 200,
+          "reason": "service exception: msWMSLoadGetMapParams(): WMS server error. Invalid layer(s) given in the LAYERS parameter. A layer might be disabled for this request. Check wms/ows_enable_req"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "kaartportaal-drenthe-nl-server-services-gdb-actueel-gbi-ikn-": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "kaartportaal-drenthe-nl-server-services-gdb-actueel-gbi-mili": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "service-pdok-nl-cbs-bestandbodemgebruik-2010-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "service-pdok-nl-cbs-bestandbodemgebruik-2015-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "service-pdok-nl-cbs-bestandbodemgebruik-2017-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "service-pdok-nl-kadaster-ruimtelijke-plannen-gepland-landgeb": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "down",
+          "httpStatus": 200,
+          "reason": "service exception: msWMSLoadGetMapParams(): WMS server error. Invalid layer(s) given in the LAYERS parameter. A layer might be disabled for this request. Check wms/ows_enable_req"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "luchtfoto-flevoland-nl-apollo-ogc-wms-bodem": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "services-geodata-utrecht-nl-geoserver-m01-2-bodem-wms": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "data-rivm-nl-geo-alo-wms": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "kaartportaal-drenthe-nl-server-services-gdb-actueel-pl-grond": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "geoportaal-fryslan-nl-arcgis-services-provinciaalgeoregister": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "geoserver-gelderland-nl-geoserver-ngr-verordening-wms": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "geoservices-provinciegroningen-nl-server-services-landelijkg": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "unreachable",
+          "reason": "The operation was aborted due to timeout"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "unreachable",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "services-geodata-utrecht-nl-geoserver-w01-3-oppervlaktewater": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "opengeodata-zeeland-nl-geoserver-natuur-wms": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "geo-rijkswaterstaat-nl-services-ogc-gdr-ecotopen-ows": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "luchtfoto-flevoland-nl-apollo-ogc-wms-chloride": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "services-geodata-utrecht-nl-geoserver-w01-2-grondwatersystee": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "data-rivm-nl-geo-wms": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "down",
+          "httpStatus": 200,
+          "reason": "service exception: Could not find layer dank:rivm_r4_gm_waterreg (2 layers sampled, none worked)"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "services-geodata-utrecht-nl-geoserver-n01-2-2-natuur-natuurb": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "service-pdok-nl-ihw-krw-grondwaterlichamen-geharmoniseerd-wm": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "geoservices-provinciegroningen-nl-server-services-milieu-bod": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "unreachable",
+          "reason": "The operation was aborted due to timeout"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "unreachable",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "services-geodata-utrecht-nl-geoserver-n01-2-natuur-landschap": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "geodata-zuid-holland-nl-geoserver-landelijk-gebied-wms": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "geoservices-zuid-holland-nl-arcgis-services-bodem-bodem-wate": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "kaartportaal-drenthe-nl-server-services-gdb-actueel-gbi-nat-": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "data-rivm-nl-geo-cbs-wms": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "geoserver-gelderland-nl-geoserver-ngr-visie-wms": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "opengeodata-zeeland-nl-geoserver-cds-wms": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "opengeodata-zeeland-nl-geoserver-water-wms": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "services-rce-geovoorziening-nl-cultgis-wms": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "geoservices-portaalnatuurenlandschap-nl-geoserver-imna-nbp-w": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "geodata-zuid-holland-nl-geoserver-water-wms": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "geo-rijkswaterstaat-nl-services-ogc-gdr-water-en-bodem-ro-ow": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "www-warmteatlas-nl-geoserver-warmteatlas-wms": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "geoservices-zuid-holland-nl-arcgis-services-bodem-bodem-ener": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "unreachable",
+          "reason": "The operation was aborted due to timeout"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "unreachable",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "geoservices-provinciegroningen-nl-server-services-beleidspla": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "unreachable",
+          "reason": "The operation was aborted due to timeout"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "unreachable",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "kaartportaal-drenthe-nl-server-services-gdb-actueel-ext-veen": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "geoserver-gelderland-nl-geoserver-ngr-b-wms": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "kaartportaal-drenthe-nl-server-services-gdb-actueel-gbi-aov1": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "service-pdok-nl-ez-fysischgeografischeregios-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "down",
+          "httpStatus": 200,
+          "reason": "service exception: msWMSLoadGetMapParams(): WMS server error. Invalid layer(s) given in the LAYERS parameter. A layer might be disabled for this request. Check wms/ows_enable_req"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "services-geodata-utrecht-nl-geoserver-n01-2-2-natuur-beheer-": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "kaartportaal-drenthe-nl-server-services-gdb-actueel-gbi-eneg": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "service-pdok-nl-ihw-krw-oppervlaktewaterlichamen-geharmonise": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "kaartportaal-drenthe-nl-server-services-gdb-actueel-gbi-ogv2": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "kaartportaal-drenthe-nl-server-services-gdb-actueel-gbi-pov-": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "services-geosolutions-nl-arcgis-services-bma-bestrijdingsmid": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "services-rce-geovoorziening-nl-landschapsatlas-wms": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "services-rce-geovoorziening-nl-landschappent0123-wms": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "data-rivm-nl-geo-inspire-wms": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "service-pdok-nl-bzk-novexgebieden-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "down",
+          "httpStatus": 200,
+          "reason": "service exception: msWMSLoadGetMapParams(): WMS server error. Invalid layer(s) given in the LAYERS parameter. A layer might be disabled for this request. Check wms/ows_enable_req"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "geoservices-zuid-holland-nl-arcgis-services-bodem-bodem-ecol": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "portal-wsrl-nl-kaarten-services-werkingsgebieden-werkingsgeb": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "down",
+          "httpStatus": 200,
+          "reason": "service exception: Parameter 'layers' contains unacceptable layer names."
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "kaartportaal-drenthe-nl-server-services-gdb-actueel-lg-flora": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "geodata-zuid-holland-nl-geoserver-ruimte-wms": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "service-pdok-nl-rvo-beschermdegebieden-wetlands-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "down",
+          "httpStatus": 200,
+          "reason": "service exception: msWMSLoadGetMapParams(): WMS server error. Invalid layer(s) given in the LAYERS parameter. A layer might be disabled for this request. Check wms/ows_enable_req"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "kaartportaal-drenthe-nl-server-services-gdb-actueel-gbi-ro-l": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "service-pdok-nl-tno-bro-bodemkundig-booronderzoek-bodem-geha": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "geoservices-zuid-holland-nl-arcgis-services-bodem-bodem-bode": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "services-rce-geovoorziening-nl-ikaw-wms": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "geo-rijkswaterstaat-nl-services-ogc-gdr-rws-legger-ows": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "down",
+          "httpStatus": 200,
+          "reason": "service exception: Could not find layer rws_legger:Dwarsprofiel_over_genormeerde_bodem (2 layers sampled, none worked)"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "geo-rijkswaterstaat-nl-services-ogc-gdr-geografische-areaalr": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "service-pdok-nl-tno-bro-bodemkaart-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "down",
+          "httpStatus": 200,
+          "reason": "service exception: msWMSLoadGetMapParams(): WMS server error. Invalid layer(s) given in the LAYERS parameter. A layer might be disabled for this request. Check wms/ows_enable_req"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "kaartportaal-drenthe-nl-server-services-gdb-actueel-gbi-ro-r": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    }
+  }
+}

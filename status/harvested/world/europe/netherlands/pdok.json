@@ -1,0 +1,7778 @@
+{
+  "provider": "pdok",
+  "source": "world/europe/netherlands/pdok.json",
+  "layers": {
+    "lv-bgt-ogc-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "down",
+          "httpStatus": 404,
+          "reason": "HTTP 404 (4 layers sampled, none worked)"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "kadaster-bestuurlijkegebieden-ogc-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "down",
+          "httpStatus": 404,
+          "reason": "HTTP 404 (3 layers sampled, none worked)"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "hwh-luchtfotorgb-wmts-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "hwh-luchtfotocir-wmts-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "mapcache-wmts": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "down",
+          "httpStatus": 404,
+          "reason": "HTTP 404"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "kadaster-bestuurlijkegebieden-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "brt-topraster-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "brt-achtergrondkaart-wmts-v2-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rws-ahn-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "provincies-aardkundige-waarden-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "kadaster-au-wms-v2-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "kadaster-adressen-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "kadaster-ad-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "down",
+          "httpStatus": 200,
+          "reason": "content-type text/html where data was expected"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "lv-bag-terugmeldingen-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "lv-bag-wms-v2-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "lv-bgt-terugmeldingen-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "bzk-bodem-bro-bodemkundig-booronderzoek-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "bzk-geologie-bro-bodemkundig-booronderzoek-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "bzk-geologie-bro-geotechnisch-booronderzoek-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "bzk-geologie-bro-geotechnisch-sondeeronderzoek-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "bzk-bro-wandonderzoek-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "bzk-bro-bodemkaart-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "bzk-brobhrpkenset-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "bzk-bro-geotechnischbooronderzoek-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "bzk-bro-geomorfologischekaart-wms-v2-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "bzk-brocptkenset-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "bzk-brogmwkenset-wms-v2-1": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "down",
+          "httpStatus": 404,
+          "reason": "HTTP 404"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "bzk-bro-grondwaterspiegeldiepte-wms-v2-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "brt-top10nl-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "brt-terugmeldingen-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rvo-brpgewaspercelen-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "provincies-begrenzingen-vergunde-ontgrondingsgebieden-zand-g": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rce-ps-ch-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "kadaster-netcapaciteit-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "down",
+          "httpStatus": 404,
+          "reason": "HTTP 404 (2 layers sampled, none worked)"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "kadaster-bestuurlijkegebieden-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "kadaster-lc-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-bestandbodemgebruik-2010-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-bestandbodemgebruik-2015-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-bestandbodemgebruik-2017-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-bevolkingskernen-2011-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-landuse-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-1995-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-1996-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-1997-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-1998-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-1999-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-2000-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-2001-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-2002-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-2003-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "unreachable",
+          "reason": "fetch failed"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "unreachable",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-2004-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-2005-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-2006-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-2007-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-2008-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-2009-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-2010-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-2011-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-2012-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-2013-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-2014-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-2015-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-2016-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-2017-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-2018-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-2019-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-2020-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-2021-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-2022-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-2023-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-2024-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-postcode4-2015-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-postcode4-2016-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-postcode4-2017-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-postcode4-2018-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-postcode4-2019-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-postcode4-2020-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-postcode4-2021-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-postcode4-2022-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-postcode6-2015-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-postcode6-2016-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-postcode6-2017-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-postcode6-2018-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-postcode6-2019-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-postcode6-2020-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-postcode6-2021-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-postcode6-2022-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken100m-2000-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken100m-2001-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken100m-2002-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken100m-2003-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken100m-2004-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken100m-2005-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken100m-2006-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken100m-2007-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken100m-2008-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken100m-2009-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken100m-2010-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken100m-2011-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken100m-2012-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken100m-2013-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken100m-2014-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken100m-2015-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken100m-2016-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken100m-2017-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken100m-2018-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken100m-2019-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken100m-2020-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken100m-2021-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken100m-2022-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken500m-1971-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken500m-2000-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken500m-2001-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken500m-2002-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken500m-2003-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken500m-2004-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken500m-2005-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken500m-2006-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken500m-2007-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken500m-2008-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken500m-2009-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken500m-2010-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken500m-2011-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken500m-2012-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken500m-2013-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken500m-2014-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken500m-2015-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken500m-2016-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken500m-2017-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken500m-2018-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken500m-2019-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken500m-2020-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken500m-2021-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken500m-2022-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-wijkenbuurten-2012-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-wijkenbuurten-2017-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-wijkenbuurten-2018-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-wijkenbuurten-2019-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-wijkenbuurten-2020-wms-v2-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-wijkenbuurten-2021-wms-v2-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-wijkenbuurten-2022-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "kadaster-cp-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rws-digitaaltopografischbestand-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "lvnl-drone-no-flyzones-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "down",
+          "httpStatus": 404,
+          "reason": "HTTP 404 (3 layers sampled, none worked)"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "ez-fysischgeografischeregios-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "kadaster-bu-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "unreachable",
+          "reason": "fetch failed"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "unreachable",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "provincies-geluidzones-rondom-vliegvelden-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "kadaster-gn-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "kadaster-lu-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rvo-geslotenvisserij-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "provincies-grondwaterbeschermingsgebieden-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rvo-habitatrichtlijntypen-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rvo-habitatrichtlijnsoorten-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-hh-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "kadaster-hy-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rws-hydrografie-netwerk-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rvo-indgebfunderingsproblematiek-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "kadaster-kadastralekaart-wms-v5-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rws-richtlijnmarienestrategienederland-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "fietsplatform-landelijke-fietsroutes-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "wandelnet-landelijke-wandelroutes-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "liander-elektriciteitsnetten-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "down",
+          "httpStatus": 404,
+          "reason": "HTTP 404 (4 layers sampled, none worked)"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "hwh-luchtfotocir-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "hwh-luchtfotorgb-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rvo-mosselenoesterhabitats-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rvo-mosselzaadinvanginstallaties-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "bzk-novexgebieden-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "bzk-novexwoningbouwlocaties-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rws-nwbvaarwegen-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rws-nwbwegen-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rvo-beschermde-gebieden-cdda-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "down",
+          "httpStatus": 404,
+          "reason": "HTTP 404"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "rws-nhi-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "kadaster-nationale-energie-atlas-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "down",
+          "httpStatus": 404,
+          "reason": "HTTP 404 (4 layers sampled, none worked)"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "rvo-beschermde-gebieden-nationaleparken-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rvo-nationaleparken-wms-v2-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rvo-beschermdegebieden-natura2000-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "down",
+          "httpStatus": 404,
+          "reason": "HTTP 404"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "rvo-natura2000-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rvo-natuurmetingopkaart-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "provincies-natuurnetwerk-nederland-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "kvk-overheidsdiensten-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "down",
+          "httpStatus": 404,
+          "reason": "HTTP 404"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "cbs-pd-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rvo-wko-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rvo-omgevingswarmte-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rvo-restwarmte-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rvo-potentiekaart-reststromen-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "kadaster-deltaplanagrarischwaterbeheer-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "provincies-provinciaal-landschapsbeleid-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "provincies-provinciale-monumenten-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "kadaster-wkpb-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "kadaster-rdinfo-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rvo-referentiepercelen-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "fietsplatform-regionale-fietsnetwerken-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "wandelnet-regionale-wandelnetwerken-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "bzk-woondeals-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rws-richtlijnoverstromingsrisico-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "down",
+          "httpStatus": 404,
+          "reason": "HTTP 404 (3 layers sampled, none worked)"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "rws-richtlijnstedelijkafvalwater-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "down",
+          "httpStatus": 404,
+          "reason": "HTTP 404 (4 layers sampled, none worked)"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "kadaster-plu-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rws-verkeersscheidingsstelsel-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rvo-landbouw-en-aquacultuur-schelpdierpercelen-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rvo-schelpdierpercelen-wms-v2-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "down",
+          "httpStatus": 404,
+          "reason": "HTTP 404"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "prorail-spoorwegen-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rvo-spreiding-van-soorten-invasieve-exoten-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "down",
+          "httpStatus": 404,
+          "reason": "HTTP 404 (4 layers sampled, none worked)"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "cbs-statisticalunitsvector-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rioned-beheerstedelijkwater-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "provincies-stiltegebieden-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "defensie-luchtvaartobstakels-terugmeldingen-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rws-vnds-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "down",
+          "httpStatus": 404,
+          "reason": "HTTP 404"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "rws-vaarwegmarkeringennld-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "kadaster-tn-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkant1kmlaea-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkant500m-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rvo-vogelrichtlijnsoorten-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rvo-vogelrichtlijngebieds-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "hwh-administratieve-eenheden-waterschapsgrenzen-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "hwh-hydrografie-wms-v2-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "hwh-keringenimwa-wms-v2-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "down",
+          "httpStatus": 404,
+          "reason": "HTTP 404 (4 layers sampled, none worked)"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "hwh-kunstwerkenimwa-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "down",
+          "httpStatus": 404,
+          "reason": "HTTP 404 (4 layers sampled, none worked)"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "hwh-nutsdiensten-en-overheidsdiensten-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "hwh-oppervlaktewaterenimwa-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "down",
+          "httpStatus": 404,
+          "reason": "HTTP 404 (4 layers sampled, none worked)"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "hwh-waterbeheergebiedenimwa-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "down",
+          "httpStatus": 404,
+          "reason": "HTTP 404 (4 layers sampled, none worked)"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "rioned-wswaterketen-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "hwh-waterschapsgrenzenimso-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "down",
+          "httpStatus": 404,
+          "reason": "HTTP 404"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "hwh-zoneringenimwa-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "down",
+          "httpStatus": 404,
+          "reason": "HTTP 404 (4 layers sampled, none worked)"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "rws-weggeg-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "provincies-wet-ammoniak-veehouderij-gebieden-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "down",
+          "httpStatus": 404,
+          "reason": "HTTP 404 (2 layers sampled, none worked)"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "rvo-beschermdegebieden-wetlands-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rvo-wetlands-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rvo-windkaart-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "kadaster-sr-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "provincies-zwemwater-provinciaal-rijkswateren-wms-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "provincies-zwemwaterkwaliteit-provinciaal-rijkswateren-wms-v": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "lv-bag-terugmeldingen-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "lv-bag-wfs-v2-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "lv-bgt-terugmeldingen-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "brt-terugmeldingen-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rvo-brpgewaspercelen-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rce-ps-ch-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "kadaster-netcapaciteit-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "down",
+          "httpStatus": 404,
+          "reason": "HTTP 404 (2 layers sampled, none worked)"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "cbs-bestandbodemgebruik-2010-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-bestandbodemgebruik-2015-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "unreachable",
+          "reason": "The operation was aborted due to timeout"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "unreachable",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "cbs-bestandbodemgebruik-2017-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-bevolkingskernen-2011-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-landuse-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "unreachable",
+          "reason": "The operation was aborted due to timeout"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "unreachable",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-1995-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-1996-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-1997-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-1998-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-1999-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-2000-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-2001-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-2002-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-2003-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-2004-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-2005-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-2006-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-2007-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-2008-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-2009-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-2010-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-2011-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-2012-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-2013-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-2014-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-2015-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-2016-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-2017-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-2018-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-2019-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-2020-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-2021-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-2022-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-2023-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-gebiedsindelingen-2024-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-postcode4-2015-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-postcode4-2016-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-postcode4-2017-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-postcode4-2018-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-postcode4-2019-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-postcode4-2020-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-postcode4-2021-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-postcode4-2022-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-postcode6-2015-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-postcode6-2016-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-postcode6-2017-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-postcode6-2018-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-postcode6-2019-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-postcode6-2020-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-postcode6-2021-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-postcode6-2022-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken100m-2000-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken100m-2001-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken100m-2002-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken100m-2003-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken100m-2004-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken100m-2005-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken100m-2006-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken100m-2007-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken100m-2008-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken100m-2009-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken100m-2010-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken100m-2011-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken100m-2012-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken100m-2013-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken100m-2014-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken100m-2015-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken100m-2016-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken100m-2017-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken100m-2018-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken100m-2019-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken100m-2020-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken100m-2021-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken100m-2022-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken500m-1971-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken500m-2000-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken500m-2001-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken500m-2002-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken500m-2003-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken500m-2004-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "unreachable",
+          "reason": "fetch failed"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "unreachable",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken500m-2005-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken500m-2006-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken500m-2007-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken500m-2008-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken500m-2009-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken500m-2010-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken500m-2011-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken500m-2012-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken500m-2013-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken500m-2014-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken500m-2015-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken500m-2016-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken500m-2017-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken500m-2018-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken500m-2019-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken500m-2020-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken500m-2021-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkantstatistieken500m-2022-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-wijkenbuurten-2012-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-wijkenbuurten-2017-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-wijkenbuurten-2018-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-wijkenbuurten-2019-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-wijkenbuurten-2020-wfs-v2-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-wijkenbuurten-2021-wfs-v2-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-wijkenbuurten-2022-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rws-digitaaltopografischbestand-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "lvnl-drone-no-flyzones-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "down",
+          "httpStatus": 404,
+          "reason": "HTTP 404 (3 layers sampled, none worked)"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "ez-fysischgeografischeregios-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rvo-geslotenvisserij-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rvo-habitatrichtlijntypen-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rvo-habitatrichtlijnsoorten-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-hh-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rvo-indgebfunderingsproblematiek-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "kadaster-kadastralekaart-wfs-v5-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "liander-elektriciteitsnetten-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "down",
+          "httpStatus": 404,
+          "reason": "HTTP 404 (4 layers sampled, none worked)"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "rvo-mosselenoesterhabitats-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rvo-mosselzaadinvanginstallaties-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rvo-beschermde-gebieden-cdda-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "down",
+          "httpStatus": 404,
+          "reason": "HTTP 404"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "kadaster-nationale-energie-atlas-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "down",
+          "httpStatus": 404,
+          "reason": "HTTP 404 (4 layers sampled, none worked)"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "rvo-beschermde-gebieden-nationaleparken-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rvo-nationaleparken-wfs-v2-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rvo-beschermdegebieden-natura2000-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "down",
+          "httpStatus": 404,
+          "reason": "HTTP 404"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "rvo-natura2000-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rvo-natuurmetingopkaart-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-pd-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rvo-wko-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rvo-omgevingswarmte-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rvo-restwarmte-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rvo-potentiekaart-reststromen-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "kadaster-deltaplanagrarischwaterbeheer-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "kadaster-wkpb-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "kadaster-rdinfo-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rvo-referentiepercelen-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rws-verkeersscheidingsstelsel-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rvo-landbouw-en-aquacultuur-schelpdierpercelen-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rvo-schelpdierpercelen-wfs-v2-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "down",
+          "httpStatus": 404,
+          "reason": "HTTP 404"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "prorail-spoorwegen-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rvo-spreiding-van-soorten-invasieve-exoten-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "down",
+          "httpStatus": 404,
+          "reason": "HTTP 404 (4 layers sampled, none worked)"
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "down",
+        "checks": 1,
+        "up": 0,
+        "uptime": 0,
+        "untested": 0,
+        "consecutiveFailures": 1,
+        "lastDown": "2026-09-10"
+      }
+    },
+    "cbs-statisticalunitsvector-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rioned-beheerstedelijkwater-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "defensie-luchtvaartobstakels-terugmeldingen-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkant1kmlaea-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "cbs-vierkant500m-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rvo-vogelrichtlijnsoorten-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rvo-vogelrichtlijngebieds-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rioned-wswaterketen-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rvo-beschermdegebieden-wetlands-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rvo-wetlands-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    },
+    "rvo-windkaart-wfs-v1-0": {
+      "checks": [
+        {
+          "date": "2026-09-10",
+          "availability": "up",
+          "httpStatus": 200
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-09-10",
+        "lastChecked": "2026-09-10",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-09-10"
+      }
+    }
+  }
+}
