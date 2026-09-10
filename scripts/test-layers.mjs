@@ -14,6 +14,11 @@
  *
  * Usage:
  *   node scripts/test-layers.mjs [--file layers/world/openstreetmap.json] [--dry-run]
+ *   node scripts/test-layers.mjs --harvested [--dry-run]
+ *
+ * --harvested probes harvested/ instead of layers/, one sample per service
+ * rather than every layer, and writes its history to status/harvested/. See
+ * sampleService() for what sampling can and cannot see.
  *
  * API keys: copy apikeys.example.json → apikeys.json and fill in your keys.
  * In CI: pass keys via environment variables prefixed with APIKEY_ (e.g. APIKEY_OPENWEATHERMAP).
@@ -31,6 +36,7 @@ import { recordCheck, HISTORY_LIMIT } from '../lib/uptime.mjs';
 
 const ROOT = resolve(fileURLToPath(import.meta.url), '../../');
 const LAYERS_DIR = join(ROOT, 'layers');
+const HARVESTED_DIR = join(ROOT, 'harvested');
 const STATUS_DIR = join(ROOT, 'status');
 
 /** Probes retained per layer: two years of the weekly cron. */
@@ -40,6 +46,11 @@ const TIMEOUT_MS = 8000;
 
 const args = process.argv.slice(2);
 const dryRun = args.includes('--dry-run');
+/**
+ * Probe harvested/ instead of layers/, sampling each service rather than
+ * testing every layer. See sampleService() for why the two modes differ.
+ */
+const harvestedMode = args.includes('--harvested');
 const fileArg = args.find(a => a.startsWith('--file=') || a === '--file');
 const targetFile = fileArg
     ? (fileArg === '--file' ? args[args.indexOf('--file') + 1] : fileArg.slice(7))
@@ -255,9 +266,12 @@ async function testLayer(layer, regionHint) {
             headers,
             signal: AbortSignal.timeout(TIMEOUT_MS),
         });
-        // Some servers reject HEAD outright. That says nothing about whether the
-        // layer works, so retry once with GET before recording a failure.
-        if (res.status === 405 && target.method === 'HEAD') {
+        // Plenty of servers reject HEAD, and not always with the 405 that would
+        // say so: ArcGIS Server answers 400 text/html to a HEAD and 200 image/png
+        // to the same URL as a GET. A HEAD failure is therefore evidence about
+        // HEAD, not about the layer — so any failed HEAD is asked again as the
+        // GET a real consumer would send, and only that answer is recorded.
+        if (!res.ok && target.method === 'HEAD') {
             res = await fetch(target.url, { method: 'GET', headers, signal: AbortSignal.timeout(TIMEOUT_MS) });
         }
         const ms = Date.now() - started;
@@ -280,13 +294,103 @@ async function testLayer(layer, regionHint) {
     }
 }
 
+/**
+ * What a failed probe says about the rest of the service.
+ *
+ * A verdict is evidence about one layer, but not only about that layer. Where
+ * the failure landed decides how much more asking is worth doing:
+ *
+ * - 'stop'     — the endpoint itself is gone or refuses us. A name that does not
+ *                resolve, a refused connection, an expired certificate, a
+ *                timeout, a rejected credential: none of it is about the layer,
+ *                and the next 400 probes would all fail the same way, slowly.
+ * - 'escalate' — the endpoint answered and this layer did not work: a 404, or a
+ *                200 carrying a ServiceException. That is exactly the ambiguity
+ *                worth spending requests on, because it separates one rotten
+ *                layer from a service whose every name is wrong.
+ * - 'done'     — the layer worked, so the service works. Nothing left to learn.
+ */
+function escalationFor(check) {
+    if (check.availability === 'up') return 'done';
+    if (check.availability === 'auth-required') return 'stop';
+    if (check.availability === 'unreachable') return 'stop';
+    return 'escalate';
+}
+
+/** How many layers a service is worth asking about before calling it. */
+const MAX_SAMPLES = 4;
+
+/**
+ * Layers to sample, spread across the service rather than taken from the front.
+ *
+ * Harvested services list their layers in the order the capabilities document
+ * or the catalogue gave them, which tends to group related layers together. The
+ * first four would therefore probe one corner of the service; four spread evenly
+ * probe four different corners, which is what makes "all its names are wrong"
+ * distinguishable from "the first one is".
+ */
+function spread(layers, count) {
+    if (layers.length <= count) return layers.slice();
+    const step = layers.length / count;
+    return Array.from({ length: count }, (_, i) => layers[Math.floor(i * step)]);
+}
+
+/**
+ * Probe one harvested service by sampling its layers.
+ *
+ * Harvested services are too many to test exhaustively — one recent harvest held
+ * 22945 layers across 614 services — and testing them exhaustively would not buy
+ * much: layers of one service share an endpoint, a capabilities document and a
+ * naming scheme, so they tend to fail together. What sampling catches is the
+ * systematic case, which is the one that matters: a service whose layer names
+ * came from catalogue metadata rather than its own capabilities, where every
+ * name is a description and nothing renders.
+ *
+ * The escalation is the point. One probe settles a working service; a failure
+ * buys up to MAX_SAMPLES probes, but only when the failure was about the layer.
+ * A dead host costs one request, not four.
+ */
+async function sampleService(service, regionHint) {
+    const layers = service.layers ?? [];
+    if (layers.length === 0) return { verdict: 'unknown', checks: [], reason: 'service lists no layers' };
+
+    const candidates = spread(layers, MAX_SAMPLES);
+    const checks = [];
+    for (const layer of candidates) {
+        const check = await testLayer(layer, regionHint);
+        checks.push({ layer, check });
+        const next = escalationFor(check);
+        if (next === 'done' || next === 'stop') break;
+    }
+
+    // One layer answering is enough: the endpoint serves what it claims to. The
+    // verdict otherwise is the first real failure, the sampled layers agreeing.
+    const up = checks.find(c => c.check.availability === 'up');
+    if (up) return { verdict: 'up', checks, reason: null };
+    const worst = checks[0].check;
+    const all = checks.length > 1 ? ` (${checks.length} layers sampled, none worked)` : '';
+    return { verdict: worst.availability, checks, reason: `${worst.reason ?? ''}${all}` };
+}
+
 /** Legacy "status" field, kept in sync so the current UI keeps rendering. */
 function legacyStatus(availability) {
     return (availability === 'up' || availability === 'auth-required') ? 'active' : 'unknown';
 }
 
+/** The tree a run reads its provider files from. */
+const SOURCE_DIR = harvestedMode ? HARVESTED_DIR : LAYERS_DIR;
+
+/**
+ * Where a provider file's history lives.
+ *
+ * Harvested history goes under status/harvested/ rather than beside the curated
+ * history: harvested/world/europe/netherlands/pdok.json and its curated namesake
+ * would otherwise write to one file, and they are not the same layers.
+ */
 function historyPathFor(providerFile) {
-    return join(STATUS_DIR, relative(LAYERS_DIR, providerFile));
+    return harvestedMode
+        ? join(STATUS_DIR, 'harvested', relative(HARVESTED_DIR, providerFile))
+        : join(STATUS_DIR, relative(LAYERS_DIR, providerFile));
 }
 
 function loadHistory(providerFile, data) {
@@ -296,7 +400,7 @@ function loadHistory(providerFile, data) {
     }
     return {
         provider: data.provider?.id ?? '',
-        source: relative(LAYERS_DIR, providerFile),
+        source: relative(SOURCE_DIR, providerFile),
         layers: {},
     };
 }
@@ -326,10 +430,14 @@ function allProviderFiles(dir) {
     return results;
 }
 
-const files = targetFile ? [resolve(ROOT, targetFile)] : allProviderFiles(LAYERS_DIR);
+const files = targetFile ? [resolve(ROOT, targetFile)]
+    : existsSync(SOURCE_DIR) ? allProviderFiles(SOURCE_DIR) : [];
+if (harvestedMode && files.length === 0) {
+    console.log('ℹ️  no harvested/ directory — run: npm run harvest');
+}
 
 /** Region path a provider file sits at, e.g. world/europe/netherlands */
-const regionOf = file => relative(LAYERS_DIR, file).split('/').slice(0, -1).join('/') || 'world';
+const regionOf = file => relative(SOURCE_DIR, file).split('/').slice(0, -1).join('/') || 'world';
 
 const today = new Date().toISOString().slice(0, 10);
 const tally = { total: 0, up: 0, down: 0, unreachable: 0, 'auth-required': 0, unknown: 0 };
@@ -347,6 +455,41 @@ for (const file of files) {
 
     console.log(`\n📂 ${relative(ROOT, file)}`);
     console.log(`   Provider: ${data.provider.name}`);
+
+    if (harvestedMode) {
+        for (const service of services(data)) {
+            const { verdict, checks, reason } = await sampleService(service, regionBounds(regionOf(file)));
+            tally.total++;
+            tally[verdict]++;
+
+            // The history is keyed by service, not by layer: a sample says
+            // something about the service, and recording it against whichever
+            // layer happened to be drawn would make a layer's history a record
+            // of the times it was picked.
+            const summary = recordCheck(history.layers, service.id, {
+                availability: verdict,
+                ...(checks[0]?.check.httpStatus ? { httpStatus: checks[0].check.httpStatus } : {}),
+                ...(reason ? { reason } : {}),
+            }, today, HISTORY_LIMIT);
+
+            const rate = summary.uptime === null ? 'no verdicts yet'
+                : `${(summary.uptime * 100).toFixed(0)}% of ${summary.checks - summary.untested}`;
+            const note = reason ? ` — ${reason}` : '';
+            const sampled = `${checks.length}/${(service.layers ?? []).length} sampled`;
+            console.log(`   ${ICON[verdict]} ${service.title ?? service.id}${note}  [${sampled}, ${rate}]`);
+
+            if (service.availability !== verdict) { service.availability = verdict; layersChanged = true; }
+            service.lastChecked = today;
+        }
+        if (!dryRun) {
+            // harvested/ is a build artifact, but the previewer reads it through
+            // layers/index.json, so the verdict is written where it will be read.
+            writeJson(file, data);
+            writeJson(historyPathFor(file), history);
+            console.log(`   📈 ${relative(ROOT, historyPathFor(file))}`);
+        }
+        continue;
+    }
 
     for (const { layer, service } of layerEntries(data)) {
         tally.total++;
@@ -390,6 +533,6 @@ for (const file of files) {
 }
 
 console.log(`\n─────────────────────────────────`);
-console.log(`Tested ${tally.total} layers — ✅ ${tally.up} up  ❌ ${tally.down} down  ` +
+console.log(`Tested ${tally.total} ${harvestedMode ? 'services' : 'layers'} — ✅ ${tally.up} up  ❌ ${tally.down} down  ` +
             `🚫 ${tally.unreachable} unreachable  🔒 ${tally['auth-required']} auth  ⚠️  ${tally.unknown} untested`);
 if (dryRun) console.log('(dry-run: no files written)');
