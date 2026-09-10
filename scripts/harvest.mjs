@@ -1036,16 +1036,16 @@ for (const source of sources) {
     try { services = await reader(source); }
     catch (e) { console.log(`failed: ${e.message}`); failed++; continue; }
 
-    // Catalogue-derived layers are checked against the service itself. For a
-    // GeoNetwork source this is not optional: its layer names are transcribed
-    // metadata, and the check is what tells a real name from a description
-    // somebody typed. Other catalogue sources keep it behind --enrich, where it
-    // has always been — turning it on for them is a decision about how large
-    // the catalogue should be, not a bug fix, because style expansion alone
-    // takes PDOK from 3319 layers to 12072.
+    // Catalogue-derived layers are always checked against the service itself.
+    // It settles whether a transcribed name is real, and it is also the only
+    // way the data becomes findable: CBS publishes cbs/wijkenbuurten as three
+    // layers — buurten, wijken, gemeenten — carrying 211 styles each, one per
+    // variable. Without this read the catalogue offers three lines and
+    // "gemiddeld aantal auto's per huishouden" exists nowhere a search could
+    // reach it, because a WMS lists its attributes nowhere else: of 21578
+    // harvested WMS layers, none carries an attribute schema.
     const catalogueDerived = services.some(s => s.type === 'wms' && !s.stylesRead);
-    const mustCheck = source.type === 'geonetwork-search';
-    if (catalogueDerived && (mustCheck || (enrich && (source.include ?? {}).enrich !== false))) {
+    if (catalogueDerived && (source.include ?? {}).capabilities !== false) {
         const expand = (source.include ?? {}).expandStyles !== false;
         const r = await resolveAgainstCapabilities(services, expand);
         process.stdout.write(`\n   capabilities: ${r.dropped} layers dropped as unknown, ` +
