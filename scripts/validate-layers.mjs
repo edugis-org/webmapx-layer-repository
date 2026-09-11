@@ -27,9 +27,9 @@ const validate = ajv.compile(schema);
 function allProviderFiles(dir) {
     const results = [];
     for (const entry of readdirSync(dir)) {
-        // index.json and catalogues.json are written into layers/ by the build,
+        // index.json, catalogues.json and phrases.json are written into layers/ by the build,
         // not curated in it, and neither is a provider file.
-        if (entry === 'index.json' || entry === 'catalogues.json') continue;
+        if (entry === 'index.json' || entry === 'catalogues.json' || entry === 'phrases.json') continue;
         const full = join(dir, entry);
         if (statSync(full).isDirectory()) {
             if (entry === 'styles') continue; // reserved — skip

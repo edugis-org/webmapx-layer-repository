@@ -72,10 +72,70 @@ function findLayerStyles(file, providerId) {
 
 const LAYER_NAME_CAP = 150;
 
+/**
+ * Every distinct line of real text a provider's layers carry.
+ *
+ * The index summarises a large provider into a word list, which answers "does
+ * this provider mention `auto`" but cannot answer `"aantal autos"` — the word
+ * order is gone. This keeps the sentences themselves, deduplicated, and is
+ * written to a separate file the page fetches only when a query is quoted:
+ * roughly 4% of the harvest's bytes, because the bulk of a harvested layer is
+ * its ready-to-mount config, not its prose.
+ */
+function phraseLines(raw) {
+    const lines = new Set();
+    const add = value => {
+        for (const v of [value].flat()) {
+            if (typeof v === 'string' && v.trim()) lines.add(v.trim().toLowerCase());
+        }
+    };
+    for (const service of services(raw)) {
+        add(service.title); add(service.name); add(service.abstract); add(service.keywords);
+        for (const layer of service.layers ?? []) {
+            add(layer.title); add(layer.name); add(layer.abstract); add(layer.keywords);
+        }
+    }
+    return [...lines];
+}
+
+/**
+ * Every distinct word of 3+ characters from everything a layer is described
+ * by, lowercased: its title AND its literal name, its abstract and keywords,
+ * plus the titles and abstracts of the services holding it. Deduping keeps
+ * this small even for a 17000-layer harvest, and the header search does
+ * substring matching, so `auto` still finds "autos per huishouden".
+ */
+function layerWords(raw) {
+    const words = new Set();
+    const add = value => {
+        for (const v of [value].flat()) {
+            if (typeof v !== 'string') continue;
+            for (const word of v.toLowerCase().split(/[^\p{L}\p{N}]+/u)) {
+                if (word.length > 2) words.add(word);
+            }
+        }
+    };
+    for (const service of services(raw)) {
+        add(service.title); add(service.name); add(service.abstract); add(service.keywords);
+        for (const layer of service.layers ?? []) {
+            add(layer.title); add(layer.name); add(layer.abstract); add(layer.keywords);
+        }
+    }
+    return [...words];
+}
+
+/** path -> the provider's phrase lines, written out as layers/phrases.json. */
+const phrases = {};
+
 function indexEntry(file, region, refSource, harvested = false) {
     const raw = JSON.parse(readFileSync(file, 'utf8'));
     const providerId = raw.provider?.id;
     const layerStyles = providerId ? findLayerStyles(file, providerId) : {};
+    const path = harvested
+        ? `../harvested/${relative(HARVESTED_DIR, file)}`
+        : relative(LAYERS_DIR, file);
+    const lines = phraseLines(raw);
+    if (lines.length) phrases[path] = lines;
     return {
         path: harvested
             ? `../harvested/${relative(HARVESTED_DIR, file)}`   // gitignored build output
@@ -94,6 +154,11 @@ function indexEntry(file, region, refSource, harvested = false) {
         // dominate the index.
         layerNames: allLayers(raw).slice(0, LAYER_NAME_CAP)
             .map(l => l.title ?? l.name).filter(Boolean),
+        // The capped titles keep phrase search working for the first layers;
+        // this is every distinct word from every title, so a provider with
+        // 12000 layers is still findable by a word from layer 9000. Deduped it
+        // costs a couple of thousand entries, not a couple of hundred thousand.
+        layerWords: layerWords(raw),
         ...(Object.keys(layerStyles).length ? { layerStyles } : {}),
         ...(refSource ? { linkedFrom: refSource } : {}),
     };
@@ -167,6 +232,11 @@ const catalogues = readdirSync(join(ROOT, 'sources'))
     }));
 writeFileSync(join(LAYERS_DIR, 'catalogues.json'), JSON.stringify(catalogues, null, 2) + '\n');
 console.log(`🔎 Wrote layers/catalogues.json (${catalogues.length} searchable catalogue(s))`);
+
+const phrasePath = join(LAYERS_DIR, 'phrases.json');
+writeFileSync(phrasePath, JSON.stringify(phrases) + '\n');
+const phraseKB = Math.round(statSync(phrasePath).size / 1024);
+console.log(`💬 Wrote ${phrasePath} (${Object.keys(phrases).length} providers, ${phraseKB} KB)`);
 
 const outPath = join(LAYERS_DIR, 'index.json');
 writeFileSync(outPath, JSON.stringify(index, null, 2) + '\n');
