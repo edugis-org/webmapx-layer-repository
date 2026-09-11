@@ -15,6 +15,9 @@ import { fileURLToPath } from 'url';
 import { XMLParser } from 'fast-xml-parser';
 import * as geonetwork from '../lib/geonetwork.mjs';
 import { endpointOf, withQuery } from '../lib/ows.mjs';
+import * as allmaps from '../lib/allmaps.mjs';
+import { REGION_BOUNDS } from '../lib/regions.mjs';
+import { buildRegionIndex, assignRegion } from '../lib/region-index.mjs';
 
 const ROOT = resolve(fileURLToPath(import.meta.url), '../../');
 const SOURCES = join(ROOT, 'sources');
@@ -1011,11 +1014,153 @@ function withFallbackAttribution(layer, source) {
     return layer;
 }
 
+/**
+ * The region tree, when it has been built.
+ *
+ * data/regions.json is committed and .cache/region-shapes.json is not, because
+ * the polygons are 24 MB of build input while the extents are a page of data
+ * the rest of the repository reads. Without the shapes there is nothing to
+ * sample, so the caller falls back to the curated extents and says so.
+ */
+function loadRegionIndex() {
+    const regionsFile = join(ROOT, 'data', 'regions.json');
+    const shapesFile = join(CACHE, 'region-shapes.json');
+    if (!existsSync(regionsFile) || !existsSync(shapesFile)) {
+        console.log('\n   ℹ️  no region shapes — run: node scripts/build-regions.mjs' +
+                    '\n      falling back to the curated extents in lib/regions.mjs');
+        return null;
+    }
+    return buildRegionIndex(
+        JSON.parse(readFileSync(regionsFile, 'utf8')),
+        JSON.parse(readFileSync(shapesFile, 'utf8')),
+    );
+}
+
+/**
+ * Manifest titles for the maps being kept, cached across runs.
+ *
+ * Only the maps that survived the per-region cap are looked up — the harvest
+ * throws most of a large region away, and titling what it throws away is the
+ * bulk of the work for none of the benefit.
+ */
+async function readManifestTitles(byRegion, fetchJson) {
+    const file = join(CACHE, 'allmaps-manifests.json');
+    const cached = existsSync(file) ? JSON.parse(readFileSync(file, 'utf8')) : {};
+    const wanted = new Set();
+    for (const features of byRegion.values()) {
+        for (const f of features) for (const id of allmaps.manifestIds(f.properties)) wanted.add(id);
+    }
+    const missing = [...wanted].filter(id => !(id in cached));
+    process.stdout.write(`\n   titles: ${wanted.size} manifests, ${missing.length} to fetch `);
+    if (missing.length) {
+        const fetched = await allmaps.manifestLabels(missing, {
+            fetchJson,
+            onProgress: n => { if (n % 100 === 0) process.stdout.write('.'); },
+        });
+        // A manifest that answered nothing is remembered as nothing, so the next
+        // harvest does not ask again.
+        for (const id of missing) cached[id] = fetched.get(id) ?? null;
+        mkdirSync(CACHE, { recursive: true });
+        writeFileSync(file, JSON.stringify(cached));
+    }
+    const titles = new Map(Object.entries(cached).filter(([, v]) => v));
+    const titled = [...wanted].filter(id => titles.has(id)).length;
+    process.stdout.write(`\n   ${titled} of ${wanted.size} manifests carry a title`);
+    return titles;
+}
+
+/**
+ * Allmaps: every georeferenced scan, filed under the region that contains it.
+ *
+ * One walk of the whole catalogue, newest first, rather than one query per
+ * region: a map's footprint decides where it belongs, and the footprint is in
+ * the record, so asking the API the same question once per region would be
+ * paying for the same 20,000 rows several times over. `cap` bounds the walk
+ * (200 records per request, no cursor, so the cost is linear in records).
+ */
+async function readAllmaps(source) {
+    const inc = source.include ?? {};
+    const cap = inc.cap ?? 5000;
+    const perRegion = inc.perRegion ?? 250;
+    const index = loadRegionIndex();
+    // Fraction of a footprint's land samples one region must hold to claim it.
+    const threshold = inc.threshold ?? 0.6;
+    // Without the Natural Earth build there is no geometry to sample, so the
+    // nine curated extents stand in — the old behaviour, said out loud.
+    const fallbackRegions = { ...REGION_BOUNDS, ...(inc.regions ?? {}) };
+    const minFill = inc.minFill ?? 1e-6;
+
+    const fetchJson = async url => {
+        const res = await fetch(url, { signal: AbortSignal.timeout(60000) });
+        if (!res.ok) throw new Error(`HTTP ${res.status} fetching ${url}`);
+        return res.json();
+    };
+
+    const byRegion = new Map();
+    /** 5-degree cell -> maps that fit no region, for the report below. */
+    const misses = new Map();
+    let read = 0, unplaceable = 0;
+    for await (const page of allmaps.mapPages({ cap, fetchJson, maxArea: inc.maxArea })) {
+        for (const feature of page) {
+            read++;
+            const bounds = allmaps.geometryBounds(feature.geometry);
+            // A warp can produce a footprint spanning 400 degrees of longitude.
+            // It fits no region, and filing it under "world" would bury the
+            // maps that really are world maps.
+            const placed = bounds && index
+                ? assignRegion(bounds, index, { threshold })?.region
+                : bounds && allmaps.regionFor(bounds, fallbackRegions, { minFill });
+            const region = placed;
+            if (!region) {
+                unplaceable++;
+                // Where the misses are is the whole point of counting them:
+                // a 5-degree cell is coarse enough to cluster and fine enough
+                // to name the country that is missing from the table.
+                if (bounds) {
+                    const cell = [Math.floor((bounds[0] + bounds[2]) / 10) * 5,
+                                  Math.floor((bounds[1] + bounds[3]) / 10) * 5].join(',');
+                    misses.set(cell, (misses.get(cell) ?? 0) + 1);
+                }
+                continue;
+            }
+            const kept = byRegion.get(region) ?? [];
+            if (kept.length < perRegion) kept.push(feature);
+            byRegion.set(region, kept);
+        }
+        process.stdout.write(`\r   ${read} maps read, ${byRegion.size} regions `);
+    }
+    // Titles come from the manifests, one fetch each rather than one per map:
+    // 200 maps in the catalogue share 126 manifests. Cached, because a second
+    // harvest should not ask Allmaps the same 3,000 questions again.
+    const titles = inc.titles === false ? new Map() : await readManifestTitles(byRegion, fetchJson);
+
+    process.stdout.write(`\n   ${unplaceable} footprints fit no region`);
+    const top = [...misses].sort((a, b) => b[1] - a[1]).slice(0, 12);
+    if (top.length) {
+        process.stdout.write(` — clustered at (lon,lat, 5° cells): ` +
+            top.map(([cell, n]) => `${cell}:${n}`).join('  '));
+    }
+    process.stdout.write('\n   ');
+
+    return [...byRegion].map(([region, features]) => ({
+        id: `allmaps-${region.replaceAll('/', '-')}`,
+        title: `Allmaps — ${region.split('/').pop()}`,
+        abstract: `Georeferenced historical maps whose footprint falls within ${region}.`,
+        type: 'xyz',
+        endpoint: 'https://allmaps.xyz',
+        region,
+        availability: 'up',
+        harvestedFrom: source.id,
+        layers: features.map(f => allmaps.layerFor(f, { attribution: inc.attribution, titles })),
+    }));
+}
+
 const READERS = {
     'pdok-plugin-list': readPdokPluginList,
     'wms-capabilities': readWmsCapabilities,
     'wfs-capabilities': readWfsCapabilities,
     'geonetwork-search': readGeoNetworkSearch,
+    'allmaps-maps': readAllmaps,
 };
 
 const sources = readdirSync(SOURCES).filter(f => f.endsWith('.json'))
@@ -1067,44 +1212,61 @@ for (const source of sources) {
 
     const layers = services.reduce((n, s) => n + s.layers.length, 0);
     services = services.filter(s => s.layers.length > 0);
-    const doc = {
-        provider: {
-            ...source.provider,
-            abstract: source.title,
-            categories: source.provider.categories ?? [],
-            regions: (source.region ?? 'world').split('/').slice(1),
-            cost: { model: source.provider.access === 'free' ? 'free' : 'freemium' },
-            lifecycle: 'stable',
-        },
-        services,
-    };
-    // One provider can be reached through several sources — RIVM publishes the
-    // Atlas Leefomgeving, Atlas Natuurlijk Kapitaal and DMG endpoints separately
-    // — and they all belong in that provider's file. Merge rather than
-    // overwrite, and keep whichever provider record has the most to say.
-    const file = join(OUT, source.region ?? 'world', `${source.provider.id}.json`);
-    const existing = written.get(file);
-    if (existing) {
-        const seen = new Set(existing.services.map(s => s.id));
-        for (const svc of doc.services) {
-            let id = svc.id, n = 2;
-            while (seen.has(id)) id = `${svc.id}-${n++}`;
-            seen.add(id);
-            existing.services.push({ ...svc, id });
+
+    // Most sources are one endpoint covering one place, so they write one file
+    // under the source's own region. A source that indexes by geography —
+    // Allmaps files 20,000 scans from world down to city — says so per service,
+    // and each group lands in the region tree where the browser expects it.
+    const groups = new Map();
+    for (const svc of services) {
+        const region = svc.region ?? source.region ?? 'world';
+        const { region: _drop, ...rest } = svc;
+        if (!groups.has(region)) groups.set(region, []);
+        groups.get(region).push(rest);
+    }
+    const reports = [];
+    for (const [region, groupServices] of groups) {
+        const doc = {
+            provider: {
+                ...source.provider,
+                abstract: source.title,
+                categories: source.provider.categories ?? [],
+                regions: region.split('/').slice(1),
+                cost: { model: source.provider.access === 'free' ? 'free' : 'freemium' },
+                lifecycle: 'stable',
+            },
+            services: groupServices,
+        };
+        // One provider can be reached through several sources — RIVM publishes the
+        // Atlas Leefomgeving, Atlas Natuurlijk Kapitaal and DMG endpoints separately
+        // — and they all belong in that provider's file. Merge rather than
+        // overwrite, and keep whichever provider record has the most to say.
+        const file = join(OUT, region, `${source.provider.id}.json`);
+        const existing = written.get(file);
+        if (existing) {
+            const seen = new Set(existing.services.map(s => s.id));
+            for (const svc of doc.services) {
+                let id = svc.id, n = 2;
+                while (seen.has(id)) id = `${svc.id}-${n++}`;
+                seen.add(id);
+                existing.services.push({ ...svc, id });
+            }
+            existing.provider.categories = [...new Set([
+                ...(existing.provider.categories ?? []), ...(doc.provider.categories ?? [])])];
+        } else {
+            written.set(file, doc);
         }
-        existing.provider.categories = [...new Set([
-            ...(existing.provider.categories ?? []), ...(doc.provider.categories ?? [])])];
-    } else {
-        written.set(file, doc);
+        const merged = written.get(file);
+        if (!dryRun) {
+            mkdirSync(dirname(file), { recursive: true });
+            writeFileSync(file, JSON.stringify(merged, null, 2) + '\n');
+        }
+        const groupLayers = groupServices.reduce((n, s) => n + s.layers.length, 0);
+        reports.push(`${groupServices.length} services, ${groupLayers} layers → ${relative(ROOT, file)}` +
+                     `${existing ? ` (merged, now ${merged.services.length} services)` : ''}`);
     }
-    const merged = written.get(file);
-    if (!dryRun) {
-        mkdirSync(dirname(file), { recursive: true });
-        writeFileSync(file, JSON.stringify(merged, null, 2) + '\n');
-    }
+    console.log(reports.join('\n   '));
     totalServices += services.length; totalLayers += layers;
-    console.log(`${services.length} services, ${layers} layers → ${relative(ROOT, file)}` +
-                `${existing ? ` (merged, now ${merged.services.length} services)` : ''}`);
 }
 console.log(`\n${totalServices} services, ${totalLayers} layers from ${sources.length} source(s)` +
             (failed ? `, ${failed} failed` : ''));

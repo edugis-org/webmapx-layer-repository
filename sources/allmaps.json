@@ -1,0 +1,29 @@
+{
+  "id": "allmaps",
+  "title": "Allmaps georeferenced historical maps",
+  "type": "allmaps-maps",
+  "url": "https://api.allmaps.org/maps.geojson",
+  "note": "Allmaps warps scanned historical maps from IIIF collections and serves each as XYZ raster from allmaps.xyz. The API (v3, CORS *, no key) answers at most 200 records per request and offers no cursor, so the harvest is a keyset walk on modifiedBefore, newest first. Records carry no title, theme or keyword — only a footprint, an area and who holds the scan — so geography is the only axis to index on: each map is filed under the deepest curated region whose extent contains its footprint. 'containedBy' is documented but returned nothing for every extent tried, world included, so containment is computed from each record's own geometry.",
+  "provider": {
+    "id": "allmaps",
+    "name": "Allmaps",
+    "url": "https://allmaps.org",
+    "license": "varies by holding institution",
+    "access": "free",
+    "attribution": "Georeferenced by <a href=\"https://allmaps.org\">Allmaps</a>",
+    "categories": [
+      "historical-maps",
+      "scanned-maps",
+      "general-purpose"
+    ],
+    "operator": {
+      "type": "nonprofit"
+    }
+  },
+  "region": "world",
+  "include": {
+    "cap": 5000,
+    "perRegion": 250
+  },
+  "enabled": true
+}
