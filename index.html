@@ -185,7 +185,7 @@ import { endpointOf } from './lib/ows.mjs';
 import { WebMapX } from 'https://cdn.jsdelivr.net/npm/@edugis-org/webmapx@0.2/dist-lib/webmapx.js';
 import { layerEntries } from './lib/catalog.mjs';
 import { regionBounds } from './lib/regions.mjs';
-import { filterByQuery, searchText } from './lib/search.mjs';
+import { filterByQuery, searchText, hasPhrase } from './lib/search.mjs';
 import * as geonetwork from './lib/geonetwork.mjs';
 const LAYERS_BASE = './layers';
 
@@ -283,17 +283,46 @@ async function loadIndex() {
 async function loadProvider(path) {
   // path from index.json always points to the real provider file (link files are expanded by build-index)
   const res = await fetch(`${LAYERS_BASE}/${path}`, { cache: 'no-store' });
+  // The index is a build artifact and the files are another: a harvest running
+  // against the served directory, or an index built before one, leaves entries
+  // pointing at files that are not there. Saying so beats a click that does
+  // nothing and an uncaught parse error in the console.
+  if (!res.ok) throw new Error(`${res.status} — ${path} is in the index but not on disk; rebuild: node scripts/build-index.mjs`);
   return res.json();
 }
 
 let allIndex = [];
+/**
+ * Full layer text per provider path, for quoted queries only.
+ *
+ * The index carries a word list for big providers, which cannot answer a
+ * phrase — the order is gone. phrases.json carries the sentences, and at a
+ * couple of megabytes it is not worth fetching until someone types a quote.
+ */
+let phraseIndex = null;
+let phraseLoad = null;
+
+function loadPhrases() {
+  phraseLoad ??= fetch(`${LAYERS_BASE}/phrases.json`, { cache: 'no-store' })
+    .then(res => (res.ok ? res.json() : {}))
+    // A missing phrases.json must not break plain search: quoted terms then
+    // fall back to the summarised text, which is what happened before it existed.
+    .catch(() => ({}))
+    .then(data => { phraseIndex = data; return data; });
+  return phraseLoad;
+}
 // The header search filters the whole browse view, not only the region tree:
 // clicking a region while a query is active must keep showing only the hits.
 let searchQuery = '';
 
 function visibleIndex() {
-  return filterByQuery(allIndex, searchQuery, p =>
-    searchText(p.providerName, p.categories, p.region, p.layerNames));
+  return filterByQuery(
+    allIndex, searchQuery,
+    p => searchText(p.providerName, p.categories, p.region, p.layerNames, p.layerWords),
+    phraseIndex
+      ? p => searchText(p.providerName, p.categories, phraseIndex[p.path] ?? p.layerNames)
+      : null,
+  );
 }
 let currentProvider = null;
 let currentPath = null;
@@ -468,7 +497,13 @@ async function selectProvider(path, id) {
   document.querySelectorAll('.tree-node').forEach(n =>
     n.classList.toggle('selected', n.dataset.id === id));
 
-  currentProvider = await loadProvider(path);
+  try {
+    currentProvider = await loadProvider(path);
+  } catch (e) {
+    document.getElementById('main').innerHTML =
+      `<p class="empty">Could not load this provider.<br><small>${escapeHtml(e.message)}</small></p>`;
+    return;
+  }
   currentPath = path;
   currentIndexEntry = allIndex.find(e => e.path === path) ?? null;
   renderMain(currentProvider);
@@ -1256,10 +1291,16 @@ function copyConfig() {
   navigator.clipboard.writeText(JSON.stringify(activeConfig, null, 2));
 }
 
-document.getElementById('search').addEventListener('input', e => {
+document.getElementById('search').addEventListener('input', async e => {
   // Same rule as the layer filter: every term must appear, quotes make a phrase.
   searchQuery = e.target.value;
   const query = searchQuery;
+  // A phrase needs the real sentences; fetch them once, then re-check that the
+  // box still holds this query — a slow fetch must not redraw a stale one.
+  if (hasPhrase(query) && !phraseIndex) {
+    await loadPhrases();
+    if (searchQuery !== query) return;
+  }
   const matches = visibleIndex();
   applyFilterChrome();
   renderSidebar(matches);

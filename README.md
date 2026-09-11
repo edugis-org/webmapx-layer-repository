@@ -33,7 +33,7 @@ Two kinds of data live here, and the difference decides where each belongs.
 ```bash
 npm install
 npm run harvest       # sources/ -> harvested/
-npm run build-index   # layers/ + harvested/ -> layers/index.json
+npm run build-index   # layers/ + harvested/ -> layers/index.json + phrases.json
 npm run build         # both of the above
 npm run serve         # browse at http://localhost:5200
 ```
@@ -195,7 +195,8 @@ changed.
 |---|---|
 | `npm run harvest` | read `sources/`, write `harvested/` |
 | `npm run harvest -- --enrich` | also collect legends and field schemas (a request per service, cached in `.cache/`) |
-| `npm run build-index` | index `layers/` + `harvested/` into `layers/index.json` |
+| `node scripts/build-regions.mjs` | derive the region tree from Natural Earth into `data/regions.json` (+ polygons in `.cache/`) |
+| `npm run build-index` | index `layers/` + `harvested/` into `layers/index.json`, plus `layers/phrases.json` for quoted search |
 | `npm run validate-layers` | check every provider file against the schema |
 | `npm run test-layers` | probe availability, append to `status/` |
 | `npm run migrate-services` | one-shot: convert legacy `layers[]` to `services[]` |
