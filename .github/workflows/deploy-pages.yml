@@ -31,6 +31,20 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # Natural Earth is 41 MB per run and changes rarely; the region shapes it
+      # produces are what the harvest samples footprints against. Without them
+      # the harvest falls back to the nine curated extents and files every
+      # georeferenced map into eight buckets.
+      - name: Cache Natural Earth downloads
+        uses: actions/cache@v4
+        with:
+          path: .cache
+          key: natural-earth-${{ hashFiles('scripts/build-regions.mjs') }}
+          restore-keys: natural-earth-
+
+      - name: Build the region tree
+        run: node scripts/build-regions.mjs
+
       - name: Harvest sources
         run: node scripts/harvest.mjs
 
@@ -45,7 +59,10 @@ jobs:
       - name: Assemble site
         run: |
           mkdir -p _site
-          rsync -a --exclude='_site' --exclude='.git' --exclude='node_modules' --exclude='.github' . _site/
+          # .cache is build input, not site content: 65 MB of Natural Earth
+          # GeoJSON and region polygons nothing on the page fetches.
+          rsync -a --exclude='_site' --exclude='.git' --exclude='node_modules' \
+                   --exclude='.github' --exclude='.cache' . _site/
 
       - uses: actions/upload-pages-artifact@v3
         with:
