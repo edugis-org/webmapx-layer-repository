@@ -1090,16 +1090,30 @@ async function readAllmaps(source) {
     const fallbackRegions = { ...REGION_BOUNDS, ...(inc.regions ?? {}) };
     const minFill = inc.minFill ?? 1e-6;
 
+    // A single slow response used to cost the whole source: the reader threw,
+    // harvest dropped it, and a deploy published no Allmaps at all after
+    // reading 1800 maps. Transient failures are retried instead.
     const fetchJson = async url => {
-        const res = await fetch(url, { signal: AbortSignal.timeout(60000) });
-        if (!res.ok) throw new Error(`HTTP ${res.status} fetching ${url}`);
-        return res.json();
+        let last;
+        for (let attempt = 0; attempt < 3; attempt++) {
+            if (attempt) await new Promise(r => setTimeout(r, 2000 * attempt));
+            try {
+                const res = await fetch(url, { signal: AbortSignal.timeout(120000) });
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                return await res.json();
+            } catch (e) { last = e; }
+        }
+        throw new Error(`${last.message} fetching ${url}`);
     };
 
     const byRegion = new Map();
     /** 5-degree cell -> maps that fit no region, for the report below. */
     const misses = new Map();
     let read = 0, unplaceable = 0;
+    // What has been read is worth keeping. A walk that dies at map 1800 of 5000
+    // still knows where 1800 maps belong, and publishing those beats publishing
+    // none — the next harvest starts again from the newest anyway.
+    try {
     for await (const page of allmaps.mapPages({ cap, fetchJson, maxArea: inc.maxArea })) {
         for (const feature of page) {
             read++;
@@ -1128,6 +1142,9 @@ async function readAllmaps(source) {
             byRegion.set(region, kept);
         }
         process.stdout.write(`\r   ${read} maps read, ${byRegion.size} regions `);
+    }
+    } catch (e) {
+        process.stdout.write(`\n   ⚠️  walk stopped after ${read} maps: ${e.message}\n   keeping what was read\n   `);
     }
     // Titles come from the manifests, one fetch each rather than one per map:
     // 200 maps in the catalogue share 126 manifests. Cached, because a second
