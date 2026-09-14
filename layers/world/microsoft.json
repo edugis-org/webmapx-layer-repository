@@ -55,7 +55,7 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-09-07"
+          "lastChecked": "2026-09-14"
         },
         {
           "id": "bing-hybrid",
@@ -88,7 +88,7 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-09-07"
+          "lastChecked": "2026-09-14"
         },
         {
           "id": "bing-streets",
@@ -121,7 +121,7 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-09-07"
+          "lastChecked": "2026-09-14"
         }
       ]
     }

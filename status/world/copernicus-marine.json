@@ -15,18 +15,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 477
+        },
+        {
+          "date": "2026-09-14",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 1034
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-09-07",
+        "lastChecked": "2026-09-14",
         "current": "up",
-        "checks": 2,
-        "up": 2,
+        "checks": 3,
+        "up": 3,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-09-07"
+        "lastUp": "2026-09-14"
       }
     },
     "cmems-salinity-global": {
@@ -42,18 +48,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 184
+        },
+        {
+          "date": "2026-09-14",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 1219
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-09-07",
+        "lastChecked": "2026-09-14",
         "current": "up",
-        "checks": 2,
-        "up": 2,
+        "checks": 3,
+        "up": 3,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-09-07"
+        "lastUp": "2026-09-14"
       }
     },
     "cmems-sea-level-anomaly": {
@@ -69,18 +81,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 153
+        },
+        {
+          "date": "2026-09-14",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 1564
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-09-07",
+        "lastChecked": "2026-09-14",
         "current": "up",
-        "checks": 2,
-        "up": 2,
+        "checks": 3,
+        "up": 3,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-09-07"
+        "lastUp": "2026-09-14"
       }
     }
   }

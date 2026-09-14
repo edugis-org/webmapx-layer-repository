@@ -63,7 +63,7 @@
           },
           "availability": "up",
           "status": "active",
-          "lastChecked": "2026-09-07"
+          "lastChecked": "2026-09-14"
         },
         {
           "id": "rivm-hemelhelderheid-in-de-nacht-met-bewolking",
@@ -96,7 +96,7 @@
           },
           "availability": "up",
           "status": "active",
-          "lastChecked": "2026-09-07"
+          "lastChecked": "2026-09-14"
         },
         {
           "id": "rivm-hemelhelderheid-in-de-nacht-zonder-bewolking",
@@ -129,7 +129,7 @@
           },
           "availability": "up",
           "status": "active",
-          "lastChecked": "2026-09-07"
+          "lastChecked": "2026-09-14"
         },
         {
           "id": "rivm-lichtemissie-nederland-foto-van-iss-2012",
@@ -162,7 +162,7 @@
           },
           "availability": "up",
           "status": "active",
-          "lastChecked": "2026-09-07"
+          "lastChecked": "2026-09-14"
         },
         {
           "id": "rivm-lichtemissie-nederland-2012",
@@ -195,7 +195,7 @@
           },
           "availability": "up",
           "status": "active",
-          "lastChecked": "2026-09-07"
+          "lastChecked": "2026-09-14"
         }
       ]
     },
@@ -237,7 +237,7 @@
           },
           "availability": "up",
           "status": "active",
-          "lastChecked": "2026-09-07"
+          "lastChecked": "2026-09-14"
         },
         {
           "id": "rivm-fijnstof-pm10-actueel",
@@ -270,7 +270,7 @@
           },
           "availability": "up",
           "status": "active",
-          "lastChecked": "2026-09-07"
+          "lastChecked": "2026-09-14"
         },
         {
           "id": "rivm-stikstofoxide-no2-actueel",
@@ -303,7 +303,7 @@
           },
           "availability": "up",
           "status": "active",
-          "lastChecked": "2026-09-07"
+          "lastChecked": "2026-09-14"
         },
         {
           "id": "rivm-ozon-actueel",
@@ -336,7 +336,7 @@
           },
           "availability": "up",
           "status": "active",
-          "lastChecked": "2026-09-07"
+          "lastChecked": "2026-09-14"
         }
       ]
     },
@@ -378,7 +378,7 @@
           },
           "availability": "up",
           "status": "active",
-          "lastChecked": "2026-09-07"
+          "lastChecked": "2026-09-14"
         },
         {
           "id": "rivm-stikstofdioxide-concentratie-2016",
@@ -411,7 +411,7 @@
           },
           "availability": "up",
           "status": "active",
-          "lastChecked": "2026-09-07"
+          "lastChecked": "2026-09-14"
         },
         {
           "id": "rivm-roet-2016",
@@ -444,7 +444,7 @@
           },
           "availability": "up",
           "status": "active",
-          "lastChecked": "2026-09-07"
+          "lastChecked": "2026-09-14"
         },
         {
           "id": "rivm-zonpotentie-velden",
@@ -477,7 +477,7 @@
           },
           "availability": "up",
           "status": "active",
-          "lastChecked": "2026-09-07"
+          "lastChecked": "2026-09-14"
         }
       ]
     },
@@ -519,7 +519,7 @@
           },
           "availability": "up",
           "status": "active",
-          "lastChecked": "2026-09-07"
+          "lastChecked": "2026-09-14"
         }
       ]
     },
@@ -561,7 +561,7 @@
           },
           "availability": "up",
           "status": "active",
-          "lastChecked": "2026-09-07"
+          "lastChecked": "2026-09-14"
         }
       ]
     }

@@ -52,7 +52,7 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-09-07"
+          "lastChecked": "2026-09-14"
         },
         {
           "id": "openrailwaymap-maxspeed",
@@ -84,7 +84,7 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-09-07"
+          "lastChecked": "2026-09-14"
         },
         {
           "id": "openrailwaymap-signals",
@@ -116,7 +116,7 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-09-07"
+          "lastChecked": "2026-09-14"
         },
         {
           "id": "openrailwaymap-electrification",
@@ -148,7 +148,7 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-09-07"
+          "lastChecked": "2026-09-14"
         }
       ]
     }

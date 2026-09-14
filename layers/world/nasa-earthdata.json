@@ -52,7 +52,7 @@
               }
             }
           },
-          "lastChecked": "2026-09-07",
+          "lastChecked": "2026-09-14",
           "availability": "up",
           "time": {
             "identifier": "Time",
@@ -92,7 +92,7 @@
               }
             }
           },
-          "lastChecked": "2026-09-07",
+          "lastChecked": "2026-09-14",
           "availability": "up",
           "time": {
             "identifier": "Time",
@@ -139,7 +139,7 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-09-07",
+          "lastChecked": "2026-09-14",
           "time": {
             "identifier": "Time",
             "default": "latest",
@@ -185,7 +185,7 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-09-07",
+          "lastChecked": "2026-09-14",
           "time": {
             "identifier": "Time",
             "default": "latest",
@@ -232,7 +232,7 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-09-07",
+          "lastChecked": "2026-09-14",
           "time": {
             "identifier": "Time",
             "default": "latest",
@@ -278,7 +278,7 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-09-07",
+          "lastChecked": "2026-09-14",
           "time": {
             "identifier": "Time",
             "default": "latest",
@@ -325,7 +325,7 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-09-07"
+          "lastChecked": "2026-09-14"
         },
         {
           "id": "gibs-gpw-population-density-2000",
@@ -360,7 +360,7 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-09-07"
+          "lastChecked": "2026-09-14"
         },
         {
           "id": "gibs-gpw-population-density-2005",
@@ -395,7 +395,7 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-09-07"
+          "lastChecked": "2026-09-14"
         },
         {
           "id": "gibs-gpw-population-density-2010",
@@ -430,7 +430,7 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-09-07"
+          "lastChecked": "2026-09-14"
         },
         {
           "id": "gibs-gpw-population-density-2015",
@@ -465,7 +465,7 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-09-07"
+          "lastChecked": "2026-09-14"
         },
         {
           "id": "gibs-grump-urban-extents-1995",
@@ -500,7 +500,7 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-09-07"
+          "lastChecked": "2026-09-14"
         },
         {
           "id": "gibs-lecz-urban-rural-below-10m",
@@ -535,7 +535,7 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-09-07"
+          "lastChecked": "2026-09-14"
         },
         {
           "id": "gibs-urban-expansion-2000-2030",
@@ -570,7 +570,7 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-09-07"
+          "lastChecked": "2026-09-14"
         },
         {
           "id": "gibs-uhi-summer-day-2013",
@@ -605,7 +605,7 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-09-07"
+          "lastChecked": "2026-09-14"
         }
       ]
     }

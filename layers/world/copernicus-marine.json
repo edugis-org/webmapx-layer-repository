@@ -3,9 +3,9 @@
     "id": "copernicus-marine",
     "name": "Copernicus Marine Service (CMEMS)",
     "url": "https://marine.copernicus.eu",
-    "abstract": "EU Copernicus Marine Environment Monitoring Service \u2014 sea surface temperature, salinity, ocean currents and sea level.",
+    "abstract": "EU Copernicus Marine Environment Monitoring Service — sea surface temperature, salinity, ocean currents and sea level.",
     "access": "free",
-    "note": "The view service at wmts.marine.copernicus.eu needs no account; downloading the underlying data still requires a free registration at data.marine.copernicus.eu. The former THREDDS WMS endpoints on nrt.cmems-du.eu are retired and that domain has since been registered by a third party, which now serves a parking page in its place \u2014 do not restore those URLs, and never send CMEMS credentials to that host.",
+    "note": "The view service at wmts.marine.copernicus.eu needs no account; downloading the underlying data still requires a free registration at data.marine.copernicus.eu. The former THREDDS WMS endpoints on nrt.cmems-du.eu are retired and that domain has since been registered by a third party, which now serves a parking page in its place — do not restore those URLs, and never send CMEMS credentials to that host.",
     "license": "Copernicus Marine Service Product Licence",
     "categories": [
       "climate",
@@ -75,7 +75,10 @@
             "extent": [
               "2024-01-17/latest/P1D"
             ]
-          }
+          },
+          "availability": "up",
+          "status": "active",
+          "lastChecked": "2026-09-14"
         },
         {
           "id": "cmems-salinity-global",
@@ -119,7 +122,10 @@
             "extent": [
               "2022-06-01T00:00:00Z/latest/PT1H"
             ]
-          }
+          },
+          "availability": "up",
+          "status": "active",
+          "lastChecked": "2026-09-14"
         },
         {
           "id": "cmems-sea-level-anomaly",
@@ -163,9 +169,13 @@
             "extent": [
               "2024-07-01/latest/P1D"
             ]
-          }
+          },
+          "availability": "up",
+          "status": "active",
+          "lastChecked": "2026-09-14"
         }
-      ]
+      ],
+      "availability": "up"
     }
   ]
 }
