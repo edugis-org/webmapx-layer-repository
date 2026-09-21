@@ -50,7 +50,7 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-09-14"
+          "lastChecked": "2026-09-21"
         },
         {
           "id": "gbif-occurrences-plants",
@@ -80,14 +80,14 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-09-14"
+          "lastChecked": "2026-09-21"
         },
         {
           "id": "gbif-occurrences-birds",
           "title": "Bird Occurrences (Aves)",
           "abstract": "Density map of bird occurrence records from GBIF. Class Aves (taxonKey=212).",
           "type": "raster",
-          "status": "active",
+          "status": "unknown",
           "requiresKey": false,
           "webmapxConfig": {
             "source": {
@@ -109,8 +109,8 @@
               }
             }
           },
-          "availability": "up",
-          "lastChecked": "2026-09-14"
+          "availability": "unreachable",
+          "lastChecked": "2026-09-21"
         }
       ]
     }

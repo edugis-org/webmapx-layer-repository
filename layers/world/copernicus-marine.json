@@ -78,7 +78,7 @@
           },
           "availability": "up",
           "status": "active",
-          "lastChecked": "2026-09-14"
+          "lastChecked": "2026-09-21"
         },
         {
           "id": "cmems-salinity-global",
@@ -125,7 +125,7 @@
           },
           "availability": "up",
           "status": "active",
-          "lastChecked": "2026-09-14"
+          "lastChecked": "2026-09-21"
         },
         {
           "id": "cmems-sea-level-anomaly",
@@ -172,7 +172,7 @@
           },
           "availability": "up",
           "status": "active",
-          "lastChecked": "2026-09-14"
+          "lastChecked": "2026-09-21"
         }
       ],
       "availability": "up"
