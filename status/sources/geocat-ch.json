@@ -18,18 +18,25 @@
           "httpStatus": 200,
           "ms": 579,
           "layersOffered": 742
+        },
+        {
+          "date": "2026-09-28",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 613,
+          "layersOffered": 742
         }
       ],
       "summary": {
         "firstChecked": "2026-09-14",
-        "lastChecked": "2026-09-21",
+        "lastChecked": "2026-09-28",
         "current": "up",
-        "checks": 2,
-        "up": 2,
+        "checks": 3,
+        "up": 3,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-09-21"
+        "lastUp": "2026-09-28"
       }
     }
   }

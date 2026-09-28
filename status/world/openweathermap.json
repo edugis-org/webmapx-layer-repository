@@ -27,18 +27,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 425
+        },
+        {
+          "date": "2026-09-28",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 423
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-09-21",
+        "lastChecked": "2026-09-28",
         "current": "up",
-        "checks": 4,
-        "up": 4,
+        "checks": 5,
+        "up": 5,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-09-21"
+        "lastUp": "2026-09-28"
       }
     },
     "owm-wind": {
@@ -66,18 +72,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 433
+        },
+        {
+          "date": "2026-09-28",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 446
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-09-21",
+        "lastChecked": "2026-09-28",
         "current": "up",
-        "checks": 4,
-        "up": 4,
+        "checks": 5,
+        "up": 5,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-09-21"
+        "lastUp": "2026-09-28"
       }
     },
     "owm-temperature": {
@@ -105,18 +117,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 424
+        },
+        {
+          "date": "2026-09-28",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 382
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-09-21",
+        "lastChecked": "2026-09-28",
         "current": "up",
-        "checks": 4,
-        "up": 4,
+        "checks": 5,
+        "up": 5,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-09-21"
+        "lastUp": "2026-09-28"
       }
     }
   }

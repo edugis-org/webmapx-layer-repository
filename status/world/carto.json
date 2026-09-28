@@ -27,18 +27,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 168
+        },
+        {
+          "date": "2026-09-28",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 166
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-09-21",
+        "lastChecked": "2026-09-28",
         "current": "up",
-        "checks": 4,
-        "up": 4,
+        "checks": 5,
+        "up": 5,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-09-21"
+        "lastUp": "2026-09-28"
       }
     },
     "carto-light-matter": {
@@ -66,18 +72,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 46
+        },
+        {
+          "date": "2026-09-28",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 52
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-09-21",
+        "lastChecked": "2026-09-28",
         "current": "up",
-        "checks": 4,
-        "up": 4,
+        "checks": 5,
+        "up": 5,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-09-21"
+        "lastUp": "2026-09-28"
       }
     },
     "carto-light-matter-no-labels": {
@@ -105,18 +117,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 83
+        },
+        {
+          "date": "2026-09-28",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 49
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-09-21",
+        "lastChecked": "2026-09-28",
         "current": "up",
-        "checks": 4,
-        "up": 4,
+        "checks": 5,
+        "up": 5,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-09-21"
+        "lastUp": "2026-09-28"
       }
     },
     "carto-dark-matter": {
@@ -144,18 +162,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 68
+        },
+        {
+          "date": "2026-09-28",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 34
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-09-21",
+        "lastChecked": "2026-09-28",
         "current": "up",
-        "checks": 4,
-        "up": 4,
+        "checks": 5,
+        "up": 5,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-09-21"
+        "lastUp": "2026-09-28"
       }
     },
     "carto-dark-matter-no-labels": {
@@ -183,18 +207,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 63
+        },
+        {
+          "date": "2026-09-28",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 36
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-09-21",
+        "lastChecked": "2026-09-28",
         "current": "up",
-        "checks": 4,
-        "up": 4,
+        "checks": 5,
+        "up": 5,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-09-21"
+        "lastUp": "2026-09-28"
       }
     }
   }
