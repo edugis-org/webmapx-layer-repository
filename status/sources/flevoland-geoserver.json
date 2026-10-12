@@ -44,18 +44,25 @@
           "availability": "unreachable",
           "ms": 10307,
           "reason": "fetch failed"
+        },
+        {
+          "date": "2026-10-12",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 2148,
+          "layersOffered": 271
         }
       ],
       "summary": {
         "firstChecked": "2026-09-06",
-        "lastChecked": "2026-10-05",
-        "current": "unreachable",
-        "checks": 6,
-        "up": 4,
-        "uptime": 0.6667,
+        "lastChecked": "2026-10-12",
+        "current": "up",
+        "checks": 7,
+        "up": 5,
+        "uptime": 0.7143,
         "untested": 0,
-        "consecutiveFailures": 2,
-        "lastUp": "2026-09-21",
+        "consecutiveFailures": 0,
+        "lastUp": "2026-10-12",
         "lastDown": "2026-10-05"
       }
     }
