@@ -45,18 +45,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 439
+        },
+        {
+          "date": "2026-10-19",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 402
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-12",
+        "lastChecked": "2026-10-19",
         "current": "up",
-        "checks": 7,
-        "up": 7,
+        "checks": 8,
+        "up": 8,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-12"
+        "lastUp": "2026-10-19"
       }
     },
     "openrailwaymap-maxspeed": {
@@ -102,18 +108,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 295
+        },
+        {
+          "date": "2026-10-19",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 296
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-12",
+        "lastChecked": "2026-10-19",
         "current": "up",
-        "checks": 7,
-        "up": 7,
+        "checks": 8,
+        "up": 8,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-12"
+        "lastUp": "2026-10-19"
       }
     },
     "openrailwaymap-signals": {
@@ -159,18 +171,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 293
+        },
+        {
+          "date": "2026-10-19",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 295
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-12",
+        "lastChecked": "2026-10-19",
         "current": "up",
-        "checks": 7,
-        "up": 7,
+        "checks": 8,
+        "up": 8,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-12"
+        "lastUp": "2026-10-19"
       }
     },
     "openrailwaymap-electrification": {
@@ -216,18 +234,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 294
+        },
+        {
+          "date": "2026-10-19",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 295
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-12",
+        "lastChecked": "2026-10-19",
         "current": "up",
-        "checks": 7,
-        "up": 7,
+        "checks": 8,
+        "up": 8,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-12"
+        "lastUp": "2026-10-19"
       }
     }
   }

@@ -52,7 +52,7 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-10-12"
+          "lastChecked": "2026-10-19"
         },
         {
           "id": "owm-wind",
@@ -82,7 +82,7 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-10-12"
+          "lastChecked": "2026-10-19"
         },
         {
           "id": "owm-temperature",
@@ -112,7 +112,7 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-10-12"
+          "lastChecked": "2026-10-19"
         }
       ]
     }

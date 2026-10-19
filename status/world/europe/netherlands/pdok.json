@@ -45,18 +45,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 326
+        },
+        {
+          "date": "2026-10-19",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 353
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-12",
+        "lastChecked": "2026-10-19",
         "current": "up",
-        "checks": 7,
-        "up": 7,
+        "checks": 8,
+        "up": 8,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-12"
+        "lastUp": "2026-10-19"
       }
     },
     "pdok-brt-grijs": {
@@ -102,18 +108,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 294
+        },
+        {
+          "date": "2026-10-19",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 319
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-12",
+        "lastChecked": "2026-10-19",
         "current": "up",
-        "checks": 7,
-        "up": 7,
+        "checks": 8,
+        "up": 8,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-12"
+        "lastUp": "2026-10-19"
       }
     },
     "pdok-brt-pastel": {
@@ -159,18 +171,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 306
+        },
+        {
+          "date": "2026-10-19",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 320
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-12",
+        "lastChecked": "2026-10-19",
         "current": "up",
-        "checks": 7,
-        "up": 7,
+        "checks": 8,
+        "up": 8,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-12"
+        "lastUp": "2026-10-19"
       }
     },
     "pdok-brt-water": {
@@ -216,18 +234,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 301
+        },
+        {
+          "date": "2026-10-19",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 350
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-12",
+        "lastChecked": "2026-10-19",
         "current": "up",
-        "checks": 7,
-        "up": 7,
+        "checks": 8,
+        "up": 8,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-12"
+        "lastUp": "2026-10-19"
       }
     },
     "pdok-luchtfoto-actueel": {
@@ -273,18 +297,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 288
+        },
+        {
+          "date": "2026-10-19",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 293
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-12",
+        "lastChecked": "2026-10-19",
         "current": "up",
-        "checks": 7,
-        "up": 7,
+        "checks": 8,
+        "up": 8,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-12"
+        "lastUp": "2026-10-19"
       }
     },
     "pdok-luchtfoto-2023": {
@@ -330,18 +360,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 394
+        },
+        {
+          "date": "2026-10-19",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 357
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-12",
+        "lastChecked": "2026-10-19",
         "current": "up",
-        "checks": 7,
-        "up": 7,
+        "checks": 8,
+        "up": 8,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-12"
+        "lastUp": "2026-10-19"
       }
     },
     "pdok-ahn-dtm": {
@@ -387,18 +423,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 279
+        },
+        {
+          "date": "2026-10-19",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 278
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-12",
+        "lastChecked": "2026-10-19",
         "current": "up",
-        "checks": 7,
-        "up": 7,
+        "checks": 8,
+        "up": 8,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-12"
+        "lastUp": "2026-10-19"
       }
     },
     "pdok-ahn-dsm": {
@@ -444,18 +486,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 290
+        },
+        {
+          "date": "2026-10-19",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 289
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-12",
+        "lastChecked": "2026-10-19",
         "current": "up",
-        "checks": 7,
-        "up": 7,
+        "checks": 8,
+        "up": 8,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-12"
+        "lastUp": "2026-10-19"
       }
     },
     "pdok-2019": {
@@ -501,18 +549,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 358
+        },
+        {
+          "date": "2026-10-19",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 408
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-12",
+        "lastChecked": "2026-10-19",
         "current": "up",
-        "checks": 7,
-        "up": 7,
+        "checks": 8,
+        "up": 8,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-12"
+        "lastUp": "2026-10-19"
       }
     },
     "pdok-2020": {
@@ -558,18 +612,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 277
+        },
+        {
+          "date": "2026-10-19",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 410
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-12",
+        "lastChecked": "2026-10-19",
         "current": "up",
-        "checks": 7,
-        "up": 7,
+        "checks": 8,
+        "up": 8,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-12"
+        "lastUp": "2026-10-19"
       }
     },
     "pdok-luchtfoto-nederland-pdok": {
@@ -615,18 +675,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 389
+        },
+        {
+          "date": "2026-10-19",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 351
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-12",
+        "lastChecked": "2026-10-19",
         "current": "up",
-        "checks": 7,
-        "up": 7,
+        "checks": 8,
+        "up": 8,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-12"
+        "lastUp": "2026-10-19"
       }
     },
     "pdok-nederland-2016-pdok": {
@@ -672,18 +738,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 367
+        },
+        {
+          "date": "2026-10-19",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 372
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-12",
+        "lastChecked": "2026-10-19",
         "current": "up",
-        "checks": 7,
-        "up": 7,
+        "checks": 8,
+        "up": 8,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-12"
+        "lastUp": "2026-10-19"
       }
     },
     "pdok-topografie-1-1000-000": {
@@ -729,18 +801,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 276
+        },
+        {
+          "date": "2026-10-19",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 280
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-12",
+        "lastChecked": "2026-10-19",
         "current": "up",
-        "checks": 7,
-        "up": 7,
+        "checks": 8,
+        "up": 8,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-12"
+        "lastUp": "2026-10-19"
       }
     },
     "pdok-topografie-1-250-000": {
@@ -786,18 +864,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 272
+        },
+        {
+          "date": "2026-10-19",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 277
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-12",
+        "lastChecked": "2026-10-19",
         "current": "up",
-        "checks": 7,
-        "up": 7,
+        "checks": 8,
+        "up": 8,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-12"
+        "lastUp": "2026-10-19"
       }
     },
     "pdok-topografie-1-50-000": {
@@ -843,18 +927,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 255
+        },
+        {
+          "date": "2026-10-19",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 283
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-12",
+        "lastChecked": "2026-10-19",
         "current": "up",
-        "checks": 7,
-        "up": 7,
+        "checks": 8,
+        "up": 8,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-12"
+        "lastUp": "2026-10-19"
       }
     },
     "pdok-topografie-1-25-000": {
@@ -900,18 +990,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 272
+        },
+        {
+          "date": "2026-10-19",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 300
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-12",
+        "lastChecked": "2026-10-19",
         "current": "up",
-        "checks": 7,
-        "up": 7,
+        "checks": 8,
+        "up": 8,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-12"
+        "lastUp": "2026-10-19"
       }
     },
     "pdok-topografie-1-10-000": {
@@ -962,19 +1058,26 @@
           "httpStatus": 200,
           "ms": 265,
           "reason": "content-type text/html where data was expected"
+        },
+        {
+          "date": "2026-10-19",
+          "availability": "down",
+          "httpStatus": 200,
+          "ms": 309,
+          "reason": "content-type text/html where data was expected"
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-12",
+        "lastChecked": "2026-10-19",
         "current": "down",
-        "checks": 7,
+        "checks": 8,
         "up": 2,
-        "uptime": 0.2857,
+        "uptime": 0.25,
         "untested": 0,
-        "consecutiveFailures": 5,
+        "consecutiveFailures": 6,
         "lastUp": "2026-09-07",
-        "lastDown": "2026-10-12"
+        "lastDown": "2026-10-19"
       }
     },
     "pdok-bodemkaart": {
@@ -1020,18 +1123,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 296
+        },
+        {
+          "date": "2026-10-19",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 293
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-12",
+        "lastChecked": "2026-10-19",
         "current": "up",
-        "checks": 7,
-        "up": 7,
+        "checks": 8,
+        "up": 8,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-12"
+        "lastUp": "2026-10-19"
       }
     },
     "pdok-fysisch-geografische-regio-s": {
@@ -1077,18 +1186,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 281
+        },
+        {
+          "date": "2026-10-19",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 292
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-12",
+        "lastChecked": "2026-10-19",
         "current": "up",
-        "checks": 7,
-        "up": 7,
+        "checks": 8,
+        "up": 8,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-12"
+        "lastUp": "2026-10-19"
       }
     },
     "pdok-pdok-luchtfoto-s-2017-wmts": {
@@ -1134,18 +1249,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 358
+        },
+        {
+          "date": "2026-10-19",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 387
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-12",
+        "lastChecked": "2026-10-19",
         "current": "up",
-        "checks": 7,
-        "up": 7,
+        "checks": 8,
+        "up": 8,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-12"
+        "lastUp": "2026-10-19"
       }
     },
     "pdok-top25raster": {
@@ -1191,18 +1312,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 282
+        },
+        {
+          "date": "2026-10-19",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 289
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-12",
+        "lastChecked": "2026-10-19",
         "current": "up",
-        "checks": 7,
-        "up": 7,
+        "checks": 8,
+        "up": 8,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-12"
+        "lastUp": "2026-10-19"
       }
     },
     "pdok-top50raster": {
@@ -1248,18 +1375,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 267
+        },
+        {
+          "date": "2026-10-19",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 297
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-12",
+        "lastChecked": "2026-10-19",
         "current": "up",
-        "checks": 7,
-        "up": 7,
+        "checks": 8,
+        "up": 8,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-12"
+        "lastUp": "2026-10-19"
       }
     },
     "pdok-top100raster": {
@@ -1305,18 +1438,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 284
+        },
+        {
+          "date": "2026-10-19",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 281
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-12",
+        "lastChecked": "2026-10-19",
         "current": "up",
-        "checks": 7,
-        "up": 7,
+        "checks": 8,
+        "up": 8,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-12"
+        "lastUp": "2026-10-19"
       }
     },
     "pdok-top250raster": {
@@ -1362,18 +1501,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 271
+        },
+        {
+          "date": "2026-10-19",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 290
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-12",
+        "lastChecked": "2026-10-19",
         "current": "up",
-        "checks": 7,
-        "up": 7,
+        "checks": 8,
+        "up": 8,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-12"
+        "lastUp": "2026-10-19"
       }
     },
     "pdok-top500raster": {
@@ -1419,18 +1564,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 286
+        },
+        {
+          "date": "2026-10-19",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 271
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-12",
+        "lastChecked": "2026-10-19",
         "current": "up",
-        "checks": 7,
-        "up": 7,
+        "checks": 8,
+        "up": 8,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-12"
+        "lastUp": "2026-10-19"
       }
     },
     "pdok-top1000raster": {
@@ -1476,18 +1627,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 280
+        },
+        {
+          "date": "2026-10-19",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 271
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-12",
+        "lastChecked": "2026-10-19",
         "current": "up",
-        "checks": 7,
-        "up": 7,
+        "checks": 8,
+        "up": 8,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-12"
+        "lastUp": "2026-10-19"
       }
     },
     "pdok-kadastralekaart": {
@@ -1533,18 +1690,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 287
+        },
+        {
+          "date": "2026-10-19",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 307
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-12",
+        "lastChecked": "2026-10-19",
         "current": "up",
-        "checks": 7,
-        "up": 7,
+        "checks": 8,
+        "up": 8,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-12"
+        "lastUp": "2026-10-19"
       }
     }
   }

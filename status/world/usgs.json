@@ -45,18 +45,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 106
+        },
+        {
+          "date": "2026-10-19",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 48
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-12",
+        "lastChecked": "2026-10-19",
         "current": "up",
-        "checks": 7,
-        "up": 7,
+        "checks": 8,
+        "up": 8,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-12"
+        "lastUp": "2026-10-19"
       }
     },
     "usgs-earthquakes-week-significant": {
@@ -102,18 +108,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 12
+        },
+        {
+          "date": "2026-10-19",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 14
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-12",
+        "lastChecked": "2026-10-19",
         "current": "up",
-        "checks": 7,
-        "up": 7,
+        "checks": 8,
+        "up": 8,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-12"
+        "lastUp": "2026-10-19"
       }
     },
     "usgs-earthquakes-month-m45": {
@@ -159,18 +171,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 6
+        },
+        {
+          "date": "2026-10-19",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 9
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-12",
+        "lastChecked": "2026-10-19",
         "current": "up",
-        "checks": 7,
-        "up": 7,
+        "checks": 8,
+        "up": 8,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-12"
+        "lastUp": "2026-10-19"
       }
     },
     "usgs-aardbevingen-dit-uur": {
@@ -216,18 +234,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 6
+        },
+        {
+          "date": "2026-10-19",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 5
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-12",
+        "lastChecked": "2026-10-19",
         "current": "up",
-        "checks": 7,
-        "up": 7,
+        "checks": 8,
+        "up": 8,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-12"
+        "lastUp": "2026-10-19"
       }
     },
     "usgs-aardbevingen-vandaag-2-5": {
@@ -273,18 +297,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 12
+        },
+        {
+          "date": "2026-10-19",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 14
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-12",
+        "lastChecked": "2026-10-19",
         "current": "up",
-        "checks": 7,
-        "up": 7,
+        "checks": 8,
+        "up": 8,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-12"
+        "lastUp": "2026-10-19"
       }
     },
     "usgs-aardbevingen-deze-week-2-5": {
@@ -330,18 +360,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 6
+        },
+        {
+          "date": "2026-10-19",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 5
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-12",
+        "lastChecked": "2026-10-19",
         "current": "up",
-        "checks": 7,
-        "up": 7,
+        "checks": 8,
+        "up": 8,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-12"
+        "lastUp": "2026-10-19"
       }
     },
     "usgs-aardbevingen-deze-maand-2-5": {
@@ -387,18 +423,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 6
+        },
+        {
+          "date": "2026-10-19",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 9
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-12",
+        "lastChecked": "2026-10-19",
         "current": "up",
-        "checks": 7,
-        "up": 7,
+        "checks": 8,
+        "up": 8,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-12"
+        "lastUp": "2026-10-19"
       }
     }
   }
