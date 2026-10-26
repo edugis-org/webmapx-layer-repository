@@ -51,18 +51,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 119
+        },
+        {
+          "date": "2026-10-26",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 138
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-19",
+        "lastChecked": "2026-10-26",
         "current": "up",
-        "checks": 8,
-        "up": 8,
+        "checks": 9,
+        "up": 9,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-19"
+        "lastUp": "2026-10-26"
       }
     },
     "mapbox-satellite": {
@@ -114,18 +120,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 49
+        },
+        {
+          "date": "2026-10-26",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 147
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-19",
+        "lastChecked": "2026-10-26",
         "current": "up",
-        "checks": 8,
-        "up": 8,
+        "checks": 9,
+        "up": 9,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-19"
+        "lastUp": "2026-10-26"
       }
     },
     "mapbox-satellite-streets": {
@@ -177,18 +189,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 105
+        },
+        {
+          "date": "2026-10-26",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 64
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-19",
+        "lastChecked": "2026-10-26",
         "current": "up",
-        "checks": 8,
-        "up": 8,
+        "checks": 9,
+        "up": 9,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-19"
+        "lastUp": "2026-10-26"
       }
     },
     "mapbox-outdoors": {
@@ -240,18 +258,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 56
+        },
+        {
+          "date": "2026-10-26",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 113
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-19",
+        "lastChecked": "2026-10-26",
         "current": "up",
-        "checks": 8,
-        "up": 8,
+        "checks": 9,
+        "up": 9,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-19"
+        "lastUp": "2026-10-26"
       }
     },
     "mapbox-light": {
@@ -303,18 +327,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 97
+        },
+        {
+          "date": "2026-10-26",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 34
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-19",
+        "lastChecked": "2026-10-26",
         "current": "up",
-        "checks": 8,
-        "up": 8,
+        "checks": 9,
+        "up": 9,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-19"
+        "lastUp": "2026-10-26"
       }
     },
     "mapbox-dark": {
@@ -366,18 +396,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 154
+        },
+        {
+          "date": "2026-10-26",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 75
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-19",
+        "lastChecked": "2026-10-26",
         "current": "up",
-        "checks": 8,
-        "up": 8,
+        "checks": 9,
+        "up": 9,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-19"
+        "lastUp": "2026-10-26"
       }
     }
   }

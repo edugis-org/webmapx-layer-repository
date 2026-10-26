@@ -51,18 +51,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 677
+        },
+        {
+          "date": "2026-10-26",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 704
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-19",
+        "lastChecked": "2026-10-26",
         "current": "up",
-        "checks": 8,
-        "up": 8,
+        "checks": 9,
+        "up": 9,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-19"
+        "lastUp": "2026-10-26"
       }
     },
     "cmems-salinity-global": {
@@ -114,18 +120,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 767
+        },
+        {
+          "date": "2026-10-26",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 899
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-19",
+        "lastChecked": "2026-10-26",
         "current": "up",
-        "checks": 8,
-        "up": 8,
+        "checks": 9,
+        "up": 9,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-19"
+        "lastUp": "2026-10-26"
       }
     },
     "cmems-sea-level-anomaly": {
@@ -177,18 +189,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 649
+        },
+        {
+          "date": "2026-10-26",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 741
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-19",
+        "lastChecked": "2026-10-26",
         "current": "up",
-        "checks": 8,
-        "up": 8,
+        "checks": 9,
+        "up": 9,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-19"
+        "lastUp": "2026-10-26"
       }
     }
   }
