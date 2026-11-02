@@ -57,18 +57,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 764
+        },
+        {
+          "date": "2026-11-02",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 858
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-26",
+        "lastChecked": "2026-11-02",
         "current": "up",
-        "checks": 9,
-        "up": 9,
+        "checks": 10,
+        "up": 10,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-26"
+        "lastUp": "2026-11-02"
       }
     },
     "rivm-hemelhelderheid-in-de-nacht-met-bewolking": {
@@ -126,18 +132,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 514
+        },
+        {
+          "date": "2026-11-02",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 536
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-26",
+        "lastChecked": "2026-11-02",
         "current": "up",
-        "checks": 9,
-        "up": 9,
+        "checks": 10,
+        "up": 10,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-26"
+        "lastUp": "2026-11-02"
       }
     },
     "rivm-hemelhelderheid-in-de-nacht-zonder-bewolking": {
@@ -195,18 +207,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 526
+        },
+        {
+          "date": "2026-11-02",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 527
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-26",
+        "lastChecked": "2026-11-02",
         "current": "up",
-        "checks": 9,
-        "up": 9,
+        "checks": 10,
+        "up": 10,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-26"
+        "lastUp": "2026-11-02"
       }
     },
     "rivm-lichtemissie-nederland-foto-van-iss-2012": {
@@ -264,18 +282,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 393
+        },
+        {
+          "date": "2026-11-02",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 396
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-26",
+        "lastChecked": "2026-11-02",
         "current": "up",
-        "checks": 9,
-        "up": 9,
+        "checks": 10,
+        "up": 10,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-26"
+        "lastUp": "2026-11-02"
       }
     },
     "rivm-lichtemissie-nederland-2012": {
@@ -333,18 +357,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 459
+        },
+        {
+          "date": "2026-11-02",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 426
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-26",
+        "lastChecked": "2026-11-02",
         "current": "up",
-        "checks": 9,
-        "up": 9,
+        "checks": 10,
+        "up": 10,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-26"
+        "lastUp": "2026-11-02"
       }
     },
     "rivm-luchtkwaliteitsindex-actueel": {
@@ -402,18 +432,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 507
+        },
+        {
+          "date": "2026-11-02",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 623
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-26",
+        "lastChecked": "2026-11-02",
         "current": "up",
-        "checks": 9,
-        "up": 9,
+        "checks": 10,
+        "up": 10,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-26"
+        "lastUp": "2026-11-02"
       }
     },
     "rivm-fijnstof-pm10-actueel": {
@@ -471,18 +507,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 539
+        },
+        {
+          "date": "2026-11-02",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 575
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-26",
+        "lastChecked": "2026-11-02",
         "current": "up",
-        "checks": 9,
-        "up": 9,
+        "checks": 10,
+        "up": 10,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-26"
+        "lastUp": "2026-11-02"
       }
     },
     "rivm-stikstofoxide-no2-actueel": {
@@ -540,18 +582,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 557
+        },
+        {
+          "date": "2026-11-02",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 617
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-26",
+        "lastChecked": "2026-11-02",
         "current": "up",
-        "checks": 9,
-        "up": 9,
+        "checks": 10,
+        "up": 10,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-26"
+        "lastUp": "2026-11-02"
       }
     },
     "rivm-ozon-actueel": {
@@ -609,18 +657,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 516
+        },
+        {
+          "date": "2026-11-02",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 551
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-26",
+        "lastChecked": "2026-11-02",
         "current": "up",
-        "checks": 9,
-        "up": 9,
+        "checks": 10,
+        "up": 10,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-26"
+        "lastUp": "2026-11-02"
       }
     },
     "rivm-fijnstof-2016": {
@@ -678,18 +732,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 664
+        },
+        {
+          "date": "2026-11-02",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 879
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-26",
+        "lastChecked": "2026-11-02",
         "current": "up",
-        "checks": 9,
-        "up": 9,
+        "checks": 10,
+        "up": 10,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-26"
+        "lastUp": "2026-11-02"
       }
     },
     "rivm-stikstofdepositie-2015": {
@@ -747,18 +807,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 441
+        },
+        {
+          "date": "2026-11-02",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 442
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-26",
+        "lastChecked": "2026-11-02",
         "current": "up",
-        "checks": 9,
-        "up": 9,
+        "checks": 10,
+        "up": 10,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-26"
+        "lastUp": "2026-11-02"
       }
     },
     "rivm-stikstofdioxide-concentratie-2016": {
@@ -816,18 +882,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 766
+        },
+        {
+          "date": "2026-11-02",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 861
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-26",
+        "lastChecked": "2026-11-02",
         "current": "up",
-        "checks": 9,
-        "up": 9,
+        "checks": 10,
+        "up": 10,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-26"
+        "lastUp": "2026-11-02"
       }
     },
     "rivm-roet-2016": {
@@ -885,18 +957,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 820
+        },
+        {
+          "date": "2026-11-02",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 686
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-26",
+        "lastChecked": "2026-11-02",
         "current": "up",
-        "checks": 9,
-        "up": 8,
-        "uptime": 0.8889,
+        "checks": 10,
+        "up": 9,
+        "uptime": 0.9,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-26",
+        "lastUp": "2026-11-02",
         "lastDown": "2026-09-05"
       }
     },
@@ -955,18 +1033,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 598
+        },
+        {
+          "date": "2026-11-02",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 599
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-26",
+        "lastChecked": "2026-11-02",
         "current": "up",
-        "checks": 9,
-        "up": 9,
+        "checks": 10,
+        "up": 10,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-26"
+        "lastUp": "2026-11-02"
       }
     },
     "rivm-zonpotentie-velden": {
@@ -1024,18 +1108,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 345
+        },
+        {
+          "date": "2026-11-02",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 333
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-26",
+        "lastChecked": "2026-11-02",
         "current": "up",
-        "checks": 9,
-        "up": 9,
+        "checks": 10,
+        "up": 10,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-26"
+        "lastUp": "2026-11-02"
       }
     }
   }

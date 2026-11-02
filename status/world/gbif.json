@@ -57,18 +57,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 3330
+        },
+        {
+          "date": "2026-11-02",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 3282
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-26",
+        "lastChecked": "2026-11-02",
         "current": "up",
-        "checks": 9,
-        "up": 9,
+        "checks": 10,
+        "up": 10,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-26"
+        "lastUp": "2026-11-02"
       }
     },
     "gbif-occurrences-plants": {
@@ -126,18 +132,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 2087
+        },
+        {
+          "date": "2026-11-02",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 2037
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-26",
+        "lastChecked": "2026-11-02",
         "current": "up",
-        "checks": 9,
-        "up": 9,
+        "checks": 10,
+        "up": 10,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-26"
+        "lastUp": "2026-11-02"
       }
     },
     "gbif-occurrences-birds": {
@@ -195,18 +207,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 1623
+        },
+        {
+          "date": "2026-11-02",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 1633
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-26",
+        "lastChecked": "2026-11-02",
         "current": "up",
-        "checks": 9,
-        "up": 8,
-        "uptime": 0.8889,
+        "checks": 10,
+        "up": 9,
+        "uptime": 0.9,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-10-26",
+        "lastUp": "2026-11-02",
         "lastDown": "2026-09-21"
       }
     }

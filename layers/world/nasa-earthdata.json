@@ -52,7 +52,7 @@
               }
             }
           },
-          "lastChecked": "2026-10-26",
+          "lastChecked": "2026-11-02",
           "availability": "up",
           "time": {
             "identifier": "Time",
@@ -92,7 +92,7 @@
               }
             }
           },
-          "lastChecked": "2026-10-26",
+          "lastChecked": "2026-11-02",
           "availability": "up",
           "time": {
             "identifier": "Time",
@@ -111,7 +111,7 @@
           "title": "Sea Surface Temperature (daily)",
           "abstract": "Daily global sea surface temperature from the GHRSST L4 MUR product at 1km resolution.",
           "type": "wmts",
-          "status": "active",
+          "status": "unknown",
           "requiresKey": false,
           "webmapxConfig": {
             "source": {
@@ -138,8 +138,8 @@
               }
             }
           },
-          "availability": "up",
-          "lastChecked": "2026-10-26",
+          "availability": "down",
+          "lastChecked": "2026-11-02",
           "time": {
             "identifier": "Time",
             "default": "latest",
@@ -185,7 +185,7 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-10-26",
+          "lastChecked": "2026-11-02",
           "time": {
             "identifier": "Time",
             "default": "latest",
@@ -232,7 +232,7 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-10-26",
+          "lastChecked": "2026-11-02",
           "time": {
             "identifier": "Time",
             "default": "latest",
@@ -250,7 +250,7 @@
           "title": "Snow Cover (monthly average %)",
           "abstract": "Monthly average snow-cover percentage from MODIS Terra (MOD10). Replaces the daily product, which is only addressable with an explicit date.",
           "type": "wmts",
-          "status": "active",
+          "status": "unknown",
           "requiresKey": false,
           "webmapxConfig": {
             "source": {
@@ -277,8 +277,8 @@
               }
             }
           },
-          "availability": "up",
-          "lastChecked": "2026-10-26",
+          "availability": "down",
+          "lastChecked": "2026-11-02",
           "time": {
             "identifier": "Time",
             "default": "latest",
@@ -325,7 +325,7 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-10-26"
+          "lastChecked": "2026-11-02"
         },
         {
           "id": "gibs-gpw-population-density-2000",
@@ -360,7 +360,7 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-10-26"
+          "lastChecked": "2026-11-02"
         },
         {
           "id": "gibs-gpw-population-density-2005",
@@ -395,7 +395,7 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-10-26"
+          "lastChecked": "2026-11-02"
         },
         {
           "id": "gibs-gpw-population-density-2010",
@@ -430,7 +430,7 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-10-26"
+          "lastChecked": "2026-11-02"
         },
         {
           "id": "gibs-gpw-population-density-2015",
@@ -465,7 +465,7 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-10-26"
+          "lastChecked": "2026-11-02"
         },
         {
           "id": "gibs-grump-urban-extents-1995",
@@ -500,7 +500,7 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-10-26"
+          "lastChecked": "2026-11-02"
         },
         {
           "id": "gibs-lecz-urban-rural-below-10m",
@@ -535,7 +535,7 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-10-26"
+          "lastChecked": "2026-11-02"
         },
         {
           "id": "gibs-urban-expansion-2000-2030",
@@ -570,7 +570,7 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-10-26"
+          "lastChecked": "2026-11-02"
         },
         {
           "id": "gibs-uhi-summer-day-2013",
@@ -605,7 +605,7 @@
             }
           },
           "availability": "up",
-          "lastChecked": "2026-10-26"
+          "lastChecked": "2026-11-02"
         }
       ]
     }

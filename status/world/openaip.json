@@ -57,18 +57,26 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 715
+        },
+        {
+          "date": "2026-11-02",
+          "availability": "down",
+          "httpStatus": 500,
+          "ms": 858,
+          "reason": "HTTP 500"
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-26",
-        "current": "up",
-        "checks": 9,
+        "lastChecked": "2026-11-02",
+        "current": "down",
+        "checks": 10,
         "up": 9,
-        "uptime": 1,
+        "uptime": 0.9,
         "untested": 0,
-        "consecutiveFailures": 0,
-        "lastUp": "2026-10-26"
+        "consecutiveFailures": 1,
+        "lastUp": "2026-10-26",
+        "lastDown": "2026-11-02"
       }
     },
     "openaip-airspaces": {
@@ -126,18 +134,26 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 368
+        },
+        {
+          "date": "2026-11-02",
+          "availability": "down",
+          "httpStatus": 500,
+          "ms": 454,
+          "reason": "HTTP 500"
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-26",
-        "current": "up",
-        "checks": 9,
+        "lastChecked": "2026-11-02",
+        "current": "down",
+        "checks": 10,
         "up": 9,
-        "uptime": 1,
+        "uptime": 0.9,
         "untested": 0,
-        "consecutiveFailures": 0,
-        "lastUp": "2026-10-26"
+        "consecutiveFailures": 1,
+        "lastUp": "2026-10-26",
+        "lastDown": "2026-11-02"
       }
     },
     "openaip-airports": {
@@ -195,18 +211,26 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 303
+        },
+        {
+          "date": "2026-11-02",
+          "availability": "down",
+          "httpStatus": 500,
+          "ms": 437,
+          "reason": "HTTP 500"
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-26",
-        "current": "up",
-        "checks": 9,
+        "lastChecked": "2026-11-02",
+        "current": "down",
+        "checks": 10,
         "up": 9,
-        "uptime": 1,
+        "uptime": 0.9,
         "untested": 0,
-        "consecutiveFailures": 0,
-        "lastUp": "2026-10-26"
+        "consecutiveFailures": 1,
+        "lastUp": "2026-10-26",
+        "lastDown": "2026-11-02"
       }
     },
     "openaip-navaids": {
@@ -264,18 +288,26 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 326
+        },
+        {
+          "date": "2026-11-02",
+          "availability": "down",
+          "httpStatus": 500,
+          "ms": 474,
+          "reason": "HTTP 500"
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-26",
-        "current": "up",
-        "checks": 9,
+        "lastChecked": "2026-11-02",
+        "current": "down",
+        "checks": 10,
         "up": 9,
-        "uptime": 1,
+        "uptime": 0.9,
         "untested": 0,
-        "consecutiveFailures": 0,
-        "lastUp": "2026-10-26"
+        "consecutiveFailures": 1,
+        "lastUp": "2026-10-26",
+        "lastDown": "2026-11-02"
       }
     },
     "openaip-reporting-points": {
@@ -333,18 +365,26 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 332
+        },
+        {
+          "date": "2026-11-02",
+          "availability": "down",
+          "httpStatus": 500,
+          "ms": 428,
+          "reason": "HTTP 500"
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-26",
-        "current": "up",
-        "checks": 9,
+        "lastChecked": "2026-11-02",
+        "current": "down",
+        "checks": 10,
         "up": 9,
-        "uptime": 1,
+        "uptime": 0.9,
         "untested": 0,
-        "consecutiveFailures": 0,
-        "lastUp": "2026-10-26"
+        "consecutiveFailures": 1,
+        "lastUp": "2026-10-26",
+        "lastDown": "2026-11-02"
       }
     },
     "openaip-obstacles": {
@@ -402,18 +442,26 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 647
+        },
+        {
+          "date": "2026-11-02",
+          "availability": "down",
+          "httpStatus": 500,
+          "ms": 428,
+          "reason": "HTTP 500"
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-26",
-        "current": "up",
-        "checks": 9,
+        "lastChecked": "2026-11-02",
+        "current": "down",
+        "checks": 10,
         "up": 9,
-        "uptime": 1,
+        "uptime": 0.9,
         "untested": 0,
-        "consecutiveFailures": 0,
-        "lastUp": "2026-10-26"
+        "consecutiveFailures": 1,
+        "lastUp": "2026-10-26",
+        "lastDown": "2026-11-02"
       }
     },
     "openaip-hotspots": {
@@ -471,18 +519,26 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 352
+        },
+        {
+          "date": "2026-11-02",
+          "availability": "down",
+          "httpStatus": 500,
+          "ms": 435,
+          "reason": "HTTP 500"
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-26",
-        "current": "up",
-        "checks": 9,
+        "lastChecked": "2026-11-02",
+        "current": "down",
+        "checks": 10,
         "up": 9,
-        "uptime": 1,
+        "uptime": 0.9,
         "untested": 0,
-        "consecutiveFailures": 0,
-        "lastUp": "2026-10-26"
+        "consecutiveFailures": 1,
+        "lastUp": "2026-10-26",
+        "lastDown": "2026-11-02"
       }
     },
     "openaip-hang-gliding": {
@@ -540,18 +596,26 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 319
+        },
+        {
+          "date": "2026-11-02",
+          "availability": "down",
+          "httpStatus": 500,
+          "ms": 517,
+          "reason": "HTTP 500"
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-26",
-        "current": "up",
-        "checks": 9,
+        "lastChecked": "2026-11-02",
+        "current": "down",
+        "checks": 10,
         "up": 9,
-        "uptime": 1,
+        "uptime": 0.9,
         "untested": 0,
-        "consecutiveFailures": 0,
-        "lastUp": "2026-10-26"
+        "consecutiveFailures": 1,
+        "lastUp": "2026-10-26",
+        "lastDown": "2026-11-02"
       }
     },
     "openaip-rc-airfields": {
@@ -609,18 +673,26 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 318
+        },
+        {
+          "date": "2026-11-02",
+          "availability": "down",
+          "httpStatus": 500,
+          "ms": 536,
+          "reason": "HTTP 500"
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-10-26",
-        "current": "up",
-        "checks": 9,
+        "lastChecked": "2026-11-02",
+        "current": "down",
+        "checks": 10,
         "up": 9,
-        "uptime": 1,
+        "uptime": 0.9,
         "untested": 0,
-        "consecutiveFailures": 0,
-        "lastUp": "2026-10-26"
+        "consecutiveFailures": 1,
+        "lastUp": "2026-10-26",
+        "lastDown": "2026-11-02"
       }
     }
   }

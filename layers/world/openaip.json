@@ -22,14 +22,14 @@
       "title": "OpenAIP XYZ",
       "type": "xyz",
       "endpoint": "https://api.tiles.openaip.net",
-      "availability": "up",
+      "availability": "down",
       "layers": [
         {
           "id": "openaip-map",
           "title": "Aviation Chart",
           "abstract": "Airspaces, airports, navaids, and reporting points overlay. Transparent — add a basemap underneath.",
           "type": "raster",
-          "status": "active",
+          "status": "unknown",
           "requiresKey": true,
           "legendUrl": "https://edugis-org.github.io/webmapx-layer-repository/assets/legends/openaip-map.svg",
           "legendFrom": "https://api.tiles.openaip.net/api/styles/openaip-default-style.json",
@@ -54,8 +54,8 @@
               }
             }
           },
-          "availability": "up",
-          "lastChecked": "2026-10-26"
+          "availability": "down",
+          "lastChecked": "2026-11-02"
         }
       ]
     },
@@ -65,14 +65,14 @@
       "abstract": "The same content as the raster chart, as Mapbox Vector Tiles: one tile set carrying every dataset as its own source-layer, so each can be styled, queried and switched on its own. Zoom 12 and overzoomed above that.",
       "type": "vector-tiles",
       "endpoint": "https://api.tiles.openaip.net",
-      "availability": "up",
+      "availability": "down",
       "layers": [
         {
           "id": "openaip-airspaces",
           "title": "Airspaces",
           "abstract": "Airspace outlines — CTR, TMA, restricted, danger, gliding sectors and the rest — coloured by type as openAIP colours them. Source: OpenAIP.",
           "type": "vector",
-          "status": "active",
+          "status": "unknown",
           "requiresKey": true,
           "webmapxConfig": {
             "source": {
@@ -212,15 +212,15 @@
             }
           ],
           "attributesFrom": "https://api.tiles.openaip.net/api/data/openaip/{z}/{x}/{y}.pbf",
-          "availability": "up",
-          "lastChecked": "2026-10-26"
+          "availability": "down",
+          "lastChecked": "2026-11-02"
         },
         {
           "id": "openaip-airports",
           "title": "Airports and airfields",
           "abstract": "Airports, airfields, heliports and gliding sites, with ICAO and IATA codes. Source: OpenAIP.",
           "type": "vector",
-          "status": "active",
+          "status": "unknown",
           "requiresKey": true,
           "webmapxConfig": {
             "source": {
@@ -291,15 +291,15 @@
             }
           ],
           "attributesFrom": "https://api.tiles.openaip.net/api/data/openaip/{z}/{x}/{y}.pbf",
-          "availability": "up",
-          "lastChecked": "2026-10-26"
+          "availability": "down",
+          "lastChecked": "2026-11-02"
         },
         {
           "id": "openaip-navaids",
           "title": "Navaids",
           "abstract": "Radio navigation aids — VOR, DME, TACAN, NDB. Source: OpenAIP.",
           "type": "vector",
-          "status": "active",
+          "status": "unknown",
           "requiresKey": true,
           "webmapxConfig": {
             "source": {
@@ -364,15 +364,15 @@
             }
           ],
           "attributesFrom": "https://api.tiles.openaip.net/api/data/openaip/{z}/{x}/{y}.pbf",
-          "availability": "up",
-          "lastChecked": "2026-10-26"
+          "availability": "down",
+          "lastChecked": "2026-11-02"
         },
         {
           "id": "openaip-reporting-points",
           "title": "Reporting points",
           "abstract": "VFR reporting points, compulsory and on request. Source: OpenAIP.",
           "type": "vector",
-          "status": "active",
+          "status": "unknown",
           "requiresKey": true,
           "webmapxConfig": {
             "source": {
@@ -425,15 +425,15 @@
             }
           ],
           "attributesFrom": "https://api.tiles.openaip.net/api/data/openaip/{z}/{x}/{y}.pbf",
-          "availability": "up",
-          "lastChecked": "2026-10-26"
+          "availability": "down",
+          "lastChecked": "2026-11-02"
         },
         {
           "id": "openaip-obstacles",
           "title": "Obstacles",
           "abstract": "Masts, towers, chimneys, wind turbines and buildings, with height and top elevation. Source: OpenAIP.",
           "type": "vector",
-          "status": "active",
+          "status": "unknown",
           "requiresKey": true,
           "webmapxConfig": {
             "source": {
@@ -495,15 +495,15 @@
             }
           ],
           "attributesFrom": "https://api.tiles.openaip.net/api/data/openaip/{z}/{x}/{y}.pbf",
-          "availability": "up",
-          "lastChecked": "2026-10-26"
+          "availability": "down",
+          "lastChecked": "2026-11-02"
         },
         {
           "id": "openaip-hotspots",
           "title": "Thermal hotspots",
           "abstract": "Thermal hotspots for gliding, with reliability and time of occurrence. Source: OpenAIP.",
           "type": "vector",
-          "status": "active",
+          "status": "unknown",
           "requiresKey": true,
           "webmapxConfig": {
             "source": {
@@ -562,15 +562,15 @@
             }
           ],
           "attributesFrom": "https://api.tiles.openaip.net/api/data/openaip/{z}/{x}/{y}.pbf",
-          "availability": "up",
-          "lastChecked": "2026-10-26"
+          "availability": "down",
+          "lastChecked": "2026-11-02"
         },
         {
           "id": "openaip-hang-gliding",
           "title": "Hang gliding sites",
           "abstract": "Hang gliding take-off and landing sites, with suitable wind directions. Source: OpenAIP.",
           "type": "vector",
-          "status": "active",
+          "status": "unknown",
           "requiresKey": true,
           "webmapxConfig": {
             "source": {
@@ -629,15 +629,15 @@
             }
           ],
           "attributesFrom": "https://api.tiles.openaip.net/api/data/openaip/{z}/{x}/{y}.pbf",
-          "availability": "up",
-          "lastChecked": "2026-10-26"
+          "availability": "down",
+          "lastChecked": "2026-11-02"
         },
         {
           "id": "openaip-rc-airfields",
           "title": "RC model airfields",
           "abstract": "Model aircraft airfields, with the propulsion types allowed. Source: OpenAIP.",
           "type": "vector",
-          "status": "active",
+          "status": "unknown",
           "requiresKey": true,
           "webmapxConfig": {
             "source": {
@@ -699,8 +699,8 @@
             }
           ],
           "attributesFrom": "https://api.tiles.openaip.net/api/data/openaip/{z}/{x}/{y}.pbf",
-          "availability": "up",
-          "lastChecked": "2026-10-26"
+          "availability": "down",
+          "lastChecked": "2026-11-02"
         }
       ]
     }
