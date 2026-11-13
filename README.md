@@ -189,6 +189,22 @@ against it; the script never rewrites the table by itself, because a legend is a
 reading of a style and an automatic rewrite would hide the day the reading
 changed.
 
+## Complete Allmaps harvest
+
+Allmaps is imported from its [daily GeoJSONL export](https://allmaps.org/data),
+without a worldwide or per-region count limit. Records are streamed and map IDs
+are deduplicated before region assignment. Maps whose footprints cannot be placed
+are counted in the harvest report. Embedded IIIF manifest titles are preferred;
+missing titles are looked up through the API and cached.
+
+Run `node scripts/harvest.mjs --source allmaps` followed by
+`npm run build-index`. To reuse a downloaded export, run
+`node scripts/harvest.mjs --source allmaps --allmaps-file /path/to/maps.geojsonl`.
+The region polygons must exist (`node scripts/build-regions.mjs`) for provincial
+assignment. A failed download or malformed snapshot fails the targeted harvest before
+provider files are written. The export and generated provider files do not belong
+in git.
+
 ## Scripts
 
 | command | does |

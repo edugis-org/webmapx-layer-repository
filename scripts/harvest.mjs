@@ -8,14 +8,17 @@
  *
  * Usage:
  *   node scripts/harvest.mjs [--source pdok-plugin] [--dry-run]
+ *   node scripts/harvest.mjs --source allmaps --allmaps-file /path/to/maps.geojsonl
  */
 import { readFileSync, writeFileSync, readdirSync, mkdirSync, rmSync, existsSync } from 'fs';
 import { join, resolve, dirname, relative } from 'path';
 import { fileURLToPath } from 'url';
 import { XMLParser } from 'fast-xml-parser';
 import * as geonetwork from '../lib/geonetwork.mjs';
+import { deduplicateLayers } from '../lib/deduplicate-layers.mjs';
 import { endpointOf, withQuery } from '../lib/ows.mjs';
 import * as allmaps from '../lib/allmaps.mjs';
+import { snapshotPages } from '../lib/allmaps-snapshot.mjs';
 import { REGION_BOUNDS } from '../lib/regions.mjs';
 import { buildRegionIndex, assignRegion } from '../lib/region-index.mjs';
 
@@ -1048,7 +1051,10 @@ async function readManifestTitles(byRegion, fetchJson) {
     const cached = existsSync(file) ? JSON.parse(readFileSync(file, 'utf8')) : {};
     const wanted = new Set();
     for (const features of byRegion.values()) {
-        for (const f of features) for (const id of allmaps.manifestIds(f.properties)) wanted.add(id);
+        for (const f of features) {
+            if (allmaps.manifestTitle(f.properties)) continue;
+            for (const id of allmaps.manifestIds(f.properties)) wanted.add(id);
+        }
     }
     const missing = [...wanted].filter(id => !(id in cached));
     process.stdout.write(`\n   titles: ${wanted.size} manifests, ${missing.length} to fetch `);
@@ -1072,16 +1078,14 @@ async function readManifestTitles(byRegion, fetchJson) {
 /**
  * Allmaps: every georeferenced scan, filed under the region that contains it.
  *
- * One walk of the whole catalogue, newest first, rather than one query per
- * region: a map's footprint decides where it belongs, and the footprint is in
- * the record, so asking the API the same question once per region would be
- * paying for the same 20,000 rows several times over. `cap` bounds the walk
- * (200 records per request, no cursor, so the cost is linear in records).
+ * The daily GeoJSONL snapshot contains every map without API pagination or
+ * region caps. --allmaps-file reuses a downloaded snapshot. Older API sources
+ * remain supported, with optional cap/perRegion limits for smaller samples.
  */
 async function readAllmaps(source) {
     const inc = source.include ?? {};
-    const cap = inc.cap ?? 5000;
-    const perRegion = inc.perRegion ?? 250;
+    const cap = inc.cap ?? Infinity;
+    const perRegion = inc.perRegion ?? Infinity;
     const index = loadRegionIndex();
     // Fraction of a footprint's land samples one region must hold to claim it.
     const threshold = inc.threshold ?? 0.6;
@@ -1110,11 +1114,18 @@ async function readAllmaps(source) {
     /** 5-degree cell -> maps that fit no region, for the report below. */
     const misses = new Map();
     let read = 0, unplaceable = 0;
-    // What has been read is worth keeping. A walk that dies at map 1800 of 5000
-    // still knows where 1800 maps belong, and publishing those beats publishing
-    // none — the next harvest starts again from the newest anyway.
+    const localSnapshot = args.includes('--allmaps-file')
+        ? args[args.indexOf('--allmaps-file') + 1] : null;
+    if (args.includes('--allmaps-file') && (!localSnapshot || localSnapshot.startsWith('--'))) {
+        throw new Error('--allmaps-file requires a GeoJSONL file path');
+    }
+    const snapshot = localSnapshot || (source.url?.endsWith('.geojsonl') ? source.url : null);
+    const pages = snapshot ? snapshotPages(snapshot)
+        : allmaps.mapPages({ cap, fetchJson, maxArea: inc.maxArea });
+    // Legacy API walks may retain partial results. Snapshot failures propagate
+    // instead: a partial export must never masquerade as a complete harvest.
     try {
-    for await (const page of allmaps.mapPages({ cap, fetchJson, maxArea: inc.maxArea })) {
+    for await (const page of pages) {
         for (const feature of page) {
             read++;
             const bounds = allmaps.geometryBounds(feature.geometry);
@@ -1144,6 +1155,7 @@ async function readAllmaps(source) {
         process.stdout.write(`\r   ${read} maps read, ${byRegion.size} regions `);
     }
     } catch (e) {
+        if (snapshot) throw e; // Never replace a complete export with a truncated download.
         process.stdout.write(`\n   ⚠️  walk stopped after ${read} maps: ${e.message}\n   keeping what was read\n   `);
     }
     // Titles come from the manifests, one fetch each rather than one per map:
@@ -1196,7 +1208,13 @@ for (const source of sources) {
     process.stdout.write(`⛏  ${source.id} … `);
     let services;
     try { services = await reader(source); }
-    catch (e) { console.log(`failed: ${e.message}`); failed++; continue; }
+    catch (e) {
+        console.log(`failed: ${e.message}`);
+        failed++;
+        // A deploy must not publish a catalogue missing its complete Allmaps export.
+        if (source.type === 'allmaps-maps') process.exitCode = 1;
+        continue;
+    }
 
     // Catalogue-derived layers are always checked against the service itself.
     // It settles whether a transcribed name is real, and it is also the only
@@ -1226,6 +1244,9 @@ for (const source of sources) {
         process.stdout.write(` ${legends} legends, ${schemas} feature types` +
                              `${expand ? `, +${expansions} style layers` : ''}\n   `);
     }
+
+    const duplicates = deduplicateLayers(services);
+    if (duplicates) process.stdout.write(`\n   removed ${duplicates} exact duplicate layer(s)\n   `);
 
     const layers = services.reduce((n, s) => n + s.layers.length, 0);
     services = services.filter(s => s.layers.length > 0);
@@ -1288,3 +1309,4 @@ for (const source of sources) {
 console.log(`\n${totalServices} services, ${totalLayers} layers from ${sources.length} source(s)` +
             (failed ? `, ${failed} failed` : ''));
 if (dryRun) console.log('(dry-run: nothing written)');
+if (only && failed) process.exitCode = 1;

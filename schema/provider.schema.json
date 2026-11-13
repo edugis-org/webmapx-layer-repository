@@ -97,7 +97,9 @@
               "nature",
               "soil",
               "demographics",
-              "statistics"
+              "statistics",
+              "historical-maps",
+              "scanned-maps"
             ],
             "description": "Themes a provider's layers cover. Extended as real sources needed them — the atlases brought health, air-quality, noise and hazard; the Census brought demographics and statistics. Keep it a closed list so the generated topic indexes stay comparable."
           }
@@ -360,7 +362,8 @@
             "commercial",
             "research",
             "community",
-            "individual"
+            "individual",
+            "nonprofit"
           ],
           "description": "government = national/regional public body; intergovernmental = EU, UN, ESA and similar; commercial = company with paying customers; research = university or institute; community = volunteer project with governance (OSM, OpenTopoMap); individual = one person's server"
         },

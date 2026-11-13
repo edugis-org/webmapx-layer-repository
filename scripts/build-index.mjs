@@ -23,7 +23,7 @@ function providerJsonFiles(dir) {
     // Recursive — used when expanding a $ref directory; skips nested $ref link files
     const results = [];
     for (const entry of readdirSync(dir)) {
-        if (entry === 'index.json' || entry === 'catalogues.json') continue;
+        if (entry === 'index.json' || entry === 'catalogues.json' || entry === 'phrases.json') continue;
         const full = join(dir, entry);
         if (statSync(full).isDirectory()) {
             results.push(...providerJsonFiles(full));
@@ -40,7 +40,7 @@ function providerJsonFiles(dir) {
 function allJsonFiles(dir) {
     const results = [];
     for (const entry of readdirSync(dir)) {
-        if (entry === 'index.json' || entry === 'catalogues.json') continue;
+        if (entry === 'index.json' || entry === 'catalogues.json' || entry === 'phrases.json') continue;
         const full = join(dir, entry);
         if (statSync(full).isDirectory()) {
             if (entry === 'styles') continue; // reserved — not a region

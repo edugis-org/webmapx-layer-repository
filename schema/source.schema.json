@@ -26,7 +26,8 @@
         "wfs-capabilities",
         "pdok-plugin-list",
         "ogc-api-records",
-        "geonetwork-search"
+        "geonetwork-search",
+        "allmaps-maps"
       ],
       "description": "How to read this source. Self-describing services (WMS/WMTS GetCapabilities, OGC API) versus third-party catalogues that already did the harvesting, of which the QGIS PDOK plugin's layer list is one."
     },

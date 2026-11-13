@@ -31,6 +31,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Test harvest helpers
+        run: node --test tests/*.test.mjs
+
       # Natural Earth is 41 MB per run and changes rarely; the region shapes it
       # produces are what the harvest samples footprints against. Without them
       # the harvest falls back to the nine curated extents and files every
