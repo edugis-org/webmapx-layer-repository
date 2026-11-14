@@ -67,7 +67,13 @@ test('caches definite answers but leaves transient failures for the next run', a
         'https://b.example/busy': () => new Response('', { status: 503 }),
         'https://c.example/down': () => { throw new Error('timeout'); },
     };
-    const result = await fetchCatalogue(Object.keys(answers), { fetchImpl: async url => answers[url]() });
+    const stats = {};
+    const result = await fetchCatalogue(Object.keys(answers), { fetchImpl: async url => answers[url](), stats, pause: 0 });
+    assert.deepEqual(stats, {
+        'a.example': { record: 1, 'not-json': 1 },
+        'b.example': { 'http-404': 1, transient: 1 },
+        'c.example': { transient: 1 },
+    });
     assert.deepEqual(result.get('https://a.example/ok'), { date: '1700', year: 1700 });
     assert.equal(result.get('https://a.example/html'), null);
     assert.equal(result.get('https://b.example/gone'), null);
@@ -89,4 +95,17 @@ test('a catalogue record reaches the layer, and its date beats the title', () =>
     assert.deepEqual(m.subjects, ['Stadsplattegronden']);
     assert.match(layer.abstract, /Made by J\. Smit\. Dated \[ca\. 1895\]\. Scale 1:10\.000\. Subjects: Stadsplattegronden\./);
     assert.equal(layerFor(f).webmapxConfig.layer.metadata.year, 1900);
+});
+
+test('stops asking a host after repeated failures, and sends a wildcard Accept', async () => {
+    const urls = Array.from({ length: 30 }, (_, i) => `https://down.example/${i}`).concat('https://up.example/1');
+    let asked = 0, accept;
+    const result = await fetchCatalogue(urls, { pause: 0, giveUpAfter: 5, stats: {}, fetchImpl: async (url, init) => {
+        if (url.startsWith('https://up')) { accept = init.headers.accept; return new Response('{}'); }
+        asked++;
+        throw new Error('ECONNRESET');
+    } });
+    assert.equal(asked, 5);
+    assert.equal(result.size, 1);
+    assert.match(accept, /\*\/\*/);
 });

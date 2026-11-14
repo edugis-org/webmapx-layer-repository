@@ -1099,20 +1099,39 @@ async function readManifestCatalogue(byRegion, { limit = 5000 } = {}) {
             if (url) wanted.add(url);
         }
     }
-    const missing = [...wanted].filter(url => !(url in cached));
-    const batch = missing.slice(0, limit);
-    process.stdout.write(`\n   catalogue: ${wanted.size} manifests, ${missing.length} unread, reading ${batch.length} `);
+    // A transient failure is remembered as { failed: date } and asked again
+    // only after RETRY_DAYS, and after everything never asked: otherwise the
+    // same unreachable manifests head the queue every run and the batch never
+    // gets past them.
+    const RETRY_DAYS = 7;
+    const retryBefore = new Date(Date.now() - RETRY_DAYS * 864e5).toISOString().slice(0, 10);
+    const unread = [...wanted].filter(url => !(url in cached));
+    const retry = [...wanted].filter(url => cached[url]?.failed && cached[url].failed < retryBefore);
+    const batch = unread.concat(retry).slice(0, limit);
+    process.stdout.write(`\n   catalogue: ${wanted.size} manifests, ${unread.length} unread, ${retry.length} to retry, reading ${batch.length} `);
     if (batch.length) {
+        const stats = {};
         const fetched = await fetchCatalogue(batch, {
+            stats,
             onProgress: n => { if (n % 200 === 0) process.stdout.write('.'); },
         });
-        for (const [url, record] of fetched) cached[url] = record;
+        const today = new Date().toISOString().slice(0, 10);
+        for (const url of batch) cached[url] = fetched.has(url) ? fetched.get(url) : { failed: today };
         mkdirSync(CACHE, { recursive: true });
         writeFileSync(file, JSON.stringify(cached));
+        // Per host, biggest first: which libraries answer, which have nothing
+        // to say, and which refuse — the three need different responses.
+        const rows = Object.entries(stats)
+            .map(([host, t]) => [host, t, Object.values(t).reduce((a, b) => a + b, 0)])
+            .sort((a, b) => b[2] - a[2]).slice(0, 15);
+        for (const [host, t, n] of rows) {
+            process.stdout.write(`\n     ${host}: ${n} — ${Object.entries(t).map(([k, v]) => `${k} ${v}`).join(', ')}`);
+        }
     }
-    const catalogue = new Map(Object.entries(cached).filter(([, v]) => v));
+    const catalogue = new Map(Object.entries(cached).filter(([, v]) => v && !v.failed));
     const described = [...wanted].filter(url => catalogue.has(url)).length;
-    process.stdout.write(`\n   ${described} of ${wanted.size} manifests describe maker, date, scale or subject`);
+    const asked = [...wanted].filter(url => url in cached).length;
+    process.stdout.write(`\n   ${described} of ${wanted.size} manifests describe maker, date, scale or subject (${asked} asked so far)`);
     return catalogue;
 }
 
