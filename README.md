@@ -23,6 +23,16 @@ Two kinds of data live here, and the difference decides where each belongs.
 
 - `harvested/` — produced by `npm run harvest` from `sources/`. Regenerated
   wholesale, like `node_modules`. Never edit it; the next harvest overwrites it.
+  A layer's outline, when its source gives one (Allmaps does), goes to
+  `harvested/footprints/<provider>.fgb` rather than into the layer file, so
+  listing a region does not download every outline in it. FlatGeobuf with a
+  spatial index: a browser reads one outline with a bbox query on the layer's
+  `bounds` (HTTP range requests, a few kB) and filters on `layerId`. The file
+  cannot be appended to, so each harvest rewrites it; a `--source` run keeps
+  the features other sources wrote (each records its `source`).
+  Allmaps layers also carry maker, date, scale and subjects read from each
+  holding institution's IIIF manifest, cached in `.cache/allmaps-catalogue.json`
+  and filled at most `include.catalogueLimit` (default 5000) manifests per run.
 
 **Measured** — in git, because it cannot be regenerated:
 

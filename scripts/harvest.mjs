@@ -19,6 +19,9 @@ import { deduplicateLayers } from '../lib/deduplicate-layers.mjs';
 import { endpointOf, withQuery } from '../lib/ows.mjs';
 import * as allmaps from '../lib/allmaps.mjs';
 import { snapshotPages } from '../lib/allmaps-snapshot.mjs';
+import { fetchCatalogue } from '../lib/allmaps-catalogue.mjs';
+import { writeFlatGeobuf } from '../lib/flatgeobuf-writer.mjs';
+import { deserialize as readFlatGeobuf } from 'flatgeobuf/geojson';
 import { REGION_BOUNDS } from '../lib/regions.mjs';
 import { buildRegionIndex, assignRegion } from '../lib/region-index.mjs';
 
@@ -1076,6 +1079,44 @@ async function readManifestTitles(byRegion, fetchJson) {
 }
 
 /**
+ * Maker, date, scale and subjects from each holding institution's manifest,
+ * cached across runs.
+ *
+ * 79,000 maps share some 26,000 manifests on 249 library servers, so the first
+ * full read takes hours. `limit` caps how many new manifests one run asks for
+ * (default 5000): CI fills the cache over a few deploys instead of spending
+ * one deploy on it, and every later run asks only about maps added since.
+ * A transient failure (timeout, 5xx) is not cached, so it is retried next run;
+ * a manifest that answered with nothing usable is cached as null.
+ */
+async function readManifestCatalogue(byRegion, { limit = 5000 } = {}) {
+    const file = join(CACHE, 'allmaps-catalogue.json');
+    const cached = existsSync(file) ? JSON.parse(readFileSync(file, 'utf8')) : {};
+    const wanted = new Set();
+    for (const features of byRegion.values()) {
+        for (const f of features) {
+            const url = allmaps.manifestUrl(f.properties);
+            if (url) wanted.add(url);
+        }
+    }
+    const missing = [...wanted].filter(url => !(url in cached));
+    const batch = missing.slice(0, limit);
+    process.stdout.write(`\n   catalogue: ${wanted.size} manifests, ${missing.length} unread, reading ${batch.length} `);
+    if (batch.length) {
+        const fetched = await fetchCatalogue(batch, {
+            onProgress: n => { if (n % 200 === 0) process.stdout.write('.'); },
+        });
+        for (const [url, record] of fetched) cached[url] = record;
+        mkdirSync(CACHE, { recursive: true });
+        writeFileSync(file, JSON.stringify(cached));
+    }
+    const catalogue = new Map(Object.entries(cached).filter(([, v]) => v));
+    const described = [...wanted].filter(url => catalogue.has(url)).length;
+    process.stdout.write(`\n   ${described} of ${wanted.size} manifests describe maker, date, scale or subject`);
+    return catalogue;
+}
+
+/**
  * Allmaps: every georeferenced scan, filed under the region that contains it.
  *
  * The daily GeoJSONL snapshot contains every map without API pagination or
@@ -1162,6 +1203,8 @@ async function readAllmaps(source) {
     // 200 maps in the catalogue share 126 manifests. Cached, because a second
     // harvest should not ask Allmaps the same 3,000 questions again.
     const titles = inc.titles === false ? new Map() : await readManifestTitles(byRegion, fetchJson);
+    const catalogue = inc.catalogue === false ? new Map()
+        : await readManifestCatalogue(byRegion, { limit: inc.catalogueLimit });
 
     process.stdout.write(`\n   ${unplaceable} footprints fit no region`);
     const top = [...misses].sort((a, b) => b[1] - a[1]).slice(0, 12);
@@ -1180,8 +1223,67 @@ async function readAllmaps(source) {
         region,
         availability: 'up',
         harvestedFrom: source.id,
-        layers: features.map(f => allmaps.layerFor(f, { attribution: inc.attribution, titles })),
+        layers: features.map(f => allmaps.layerFor(f, { attribution: inc.attribution, titles, catalogue })),
     }));
+}
+
+/**
+ * Move each layer's `footprint` out of the layer file, into one FlatGeobuf per
+ * provider: `harvested/footprints/<provider>.fgb`.
+ *
+ * A footprint is the outline of where a layer has data — what "which maps
+ * cover this spot" is answered from. It is also the bulk of a region's file
+ * (for Allmaps it more than doubled every region's gzipped download), and the
+ * previewer, which opens a region to list its layers, never needs it. So any
+ * reader may set `footprint` on a layer; it never reaches the layer file.
+ *
+ * FlatGeobuf because it carries a spatial index a browser can query with HTTP
+ * range requests: one polygon is a bbox query on the layer's own `bounds`,
+ * a few kB, without reading the rest. One file per provider because the file
+ * cannot be appended to — a harvest of one source rewrites only its
+ * provider's file, and every feature records its `source` so the other
+ * sources feeding that provider are kept.
+ */
+function takeFootprints(services, sourceId) {
+    const features = [];
+    for (const svc of services) {
+        for (const layer of svc.layers ?? []) {
+            if (!layer.footprint) continue;
+            features.push({ type: 'Feature',
+                properties: { layerId: layer.id, title: layer.title ?? '', source: sourceId },
+                geometry: layer.footprint });
+            delete layer.footprint;
+        }
+    }
+    return features;
+}
+
+async function writeFootprints(byProvider, { only, providerOf }) {
+    const dir = join(OUT, 'footprints');
+    // A single-source run keeps what other sources wrote into the same file,
+    // and must also rewrite a file this source has stopped contributing to.
+    if (only && providerOf.has(only) && !byProvider.has(providerOf.get(only))) {
+        byProvider.set(providerOf.get(only), []);
+    }
+    const reports = [];
+    for (const [provider, features] of byProvider) {
+        const file = join(dir, `${provider}.fgb`);
+        let all = features;
+        if (only && existsSync(file)) {
+            const kept = [];
+            for await (const f of readFlatGeobuf(new Uint8Array(readFileSync(file)))) {
+                if (f.properties?.source !== only) kept.push({ type: 'Feature', properties: f.properties, geometry: f.geometry });
+            }
+            all = kept.concat(features);
+        }
+        if (dryRun) { reports.push(`${all.length} footprints → ${relative(ROOT, file)}`); continue; }
+        if (!all.length) { rmSync(file, { force: true }); continue; }
+        mkdirSync(dir, { recursive: true });
+        const bytes = writeFlatGeobuf({ type: 'FeatureCollection', features: all });
+        writeFileSync(file, bytes);
+        reports.push(`${all.length} footprints → ${relative(ROOT, file)} (${(bytes.length / 1e6).toFixed(1)} MB)`);
+    }
+    if (reports.length) console.log(`\n   ${reports.join('\n   ')}`);
 }
 
 const READERS = {
@@ -1202,6 +1304,10 @@ if (!dryRun && !only && existsSync(OUT)) rmSync(OUT, { recursive: true });
 let totalLayers = 0, totalServices = 0, failed = 0;
 /** Output file -> document, so several sources can feed one provider file. */
 const written = new Map();
+/** provider id -> footprint features, written once every source has been read. */
+const footprintsByProvider = new Map();
+/** source id -> provider id, so a single-source run knows which file it owns. */
+const providerOfSource = new Map(sources.map(s => [s.id, s.provider?.id]).filter(([, p]) => p));
 for (const source of sources) {
     const reader = READERS[source.type];
     if (!reader) { console.error(`✖ ${source.id}: no reader for type "${source.type}"`); failed++; continue; }
@@ -1264,6 +1370,12 @@ for (const source of sources) {
     }
     const reports = [];
     for (const [region, groupServices] of groups) {
+        const footprints = takeFootprints(groupServices, source.id);
+        if (footprints.length) {
+            const list = footprintsByProvider.get(source.provider.id) ?? [];
+            for (const f of footprints) list.push(f);
+            footprintsByProvider.set(source.provider.id, list);
+        }
         const doc = {
             provider: {
                 ...source.provider,
@@ -1306,6 +1418,7 @@ for (const source of sources) {
     console.log(reports.join('\n   '));
     totalServices += services.length; totalLayers += layers;
 }
+await writeFootprints(footprintsByProvider, { only, providerOf: providerOfSource });
 console.log(`\n${totalServices} services, ${totalLayers} layers from ${sources.length} source(s)` +
             (failed ? `, ${failed} failed` : ''));
 if (dryRun) console.log('(dry-run: nothing written)');

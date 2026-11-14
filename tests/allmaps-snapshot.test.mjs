@@ -36,3 +36,18 @@ test('uses embedded manifest titles before requesting cached API titles', () => 
     assert.equal(layerFor(f).title, 'Groningen & omgeving, 1900');
     assert.equal(manifestTitle({}), null);
 });
+
+test('carries the footprint polygon and the institution manifest URL', () => {
+    const f = feature('https://annotations.allmaps.org/maps/test');
+    f.geometry = {type: 'Polygon', coordinates: [[[6.123456789, 53.1], [6.2, 53.1], [6.2, 53.2], [6.123456789, 53.1]]]};
+    f.properties.resource = {id: 'https://iiif.example.org/image/1', partOf: [{type: 'Canvas', partOf: [
+        {type: 'Manifest', id: 'https://library.example.org/manifest.json', label: {en: ['Groningen, 1900']}},
+    ]}]};
+    const layer = layerFor(f);
+    const metadata = layer.webmapxConfig.layer.metadata;
+    assert.equal(metadata.iiifManifest, 'https://library.example.org/manifest.json');
+    assert.equal(metadata.footprint, undefined);
+    assert.deepEqual(layer.footprint, {type: 'Polygon',
+        coordinates: [[[6.12346, 53.1], [6.2, 53.1], [6.2, 53.2], [6.12346, 53.1]]]});
+    assert.equal(metadata.year, 1900);
+});

@@ -25,7 +25,8 @@
   "license": "MIT",
   "devDependencies": {
     "ajv": "^8.20.0",
-    "ajv-formats": "^3.0.1"
+    "ajv-formats": "^3.0.1",
+    "flatgeobuf": "^4.6.1"
   },
   "dependencies": {
     "fast-xml-parser": "^5.11.1"

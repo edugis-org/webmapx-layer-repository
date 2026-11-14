@@ -45,6 +45,16 @@ jobs:
           key: natural-earth-${{ hashFiles('scripts/build-regions.mjs') }}
           restore-keys: natural-earth-
 
+      # The institutions' catalogue records (maker, date, scale, subject) take
+      # hours to read in full, so each run reads a batch and keeps it. A key per
+      # run makes every run save; restore-keys picks up the latest.
+      - name: Cache Allmaps catalogue records
+        uses: actions/cache@v4
+        with:
+          path: .cache/allmaps-catalogue.json
+          key: allmaps-catalogue-${{ github.run_id }}
+          restore-keys: allmaps-catalogue-
+
       - name: Build the region tree
         run: node scripts/build-regions.mjs
 
