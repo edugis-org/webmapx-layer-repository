@@ -118,6 +118,22 @@ test('reports manifests it never asked, so they are not marked as failed', async
     assert.equal(skipped.size, 5);
 });
 
+test('stops starting requests when the time budget runs out, leaving the rest unread', async () => {
+    const urls = Array.from({ length: 6 }, (_, i) => `https://slow.example/${i}`);
+    const skipped = new Set();
+    const stats = {};
+    let asked = 0;
+    const result = await fetchCatalogue(urls, { pause: 0, budget: 50, skipped, stats, fetchImpl: async () => {
+        asked++;
+        await new Promise(r => setTimeout(r, 30));
+        return new Response('{}');
+    } });
+    assert.equal(asked, 2);
+    assert.equal(result.size, 2);
+    assert.equal(skipped.size, 4);
+    assert.equal(stats['slow.example'].deferred, 4);
+});
+
 test('hosts take turns, each keeping its own order', () => {
     const urls = ['https://a.example/1', 'https://a.example/2', 'https://a.example/3', 'https://b.example/1', 'https://c.example/1', 'https://c.example/2'];
     assert.deepEqual(interleaveByHost(urls), [

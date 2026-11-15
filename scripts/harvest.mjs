@@ -1115,10 +1115,14 @@ async function readManifestCatalogue(byRegion, { limit = 5000 } = {}) {
         const skipped = new Set();
         const fetched = await fetchCatalogue(batch, {
             stats, skipped,
+            // Bounds the deploy: a big library gets fifteen minutes a run and
+            // carries on next deploy, instead of one host setting the pace.
+            budget: 15 * 60e3,
             onProgress: n => { if (n % 200 === 0) process.stdout.write('.'); },
         });
         const today = new Date().toISOString().slice(0, 10);
-        // A url skipped because its host gave up was never asked: it stays
+        // A url skipped because its host gave up, or deferred by the time
+        // budget, was never asked: it stays
         // unread, first in line next run, rather than waiting out RETRY_DAYS.
         for (const url of batch) {
             if (fetched.has(url)) cached[url] = fetched.get(url);
