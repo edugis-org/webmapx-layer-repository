@@ -1118,9 +1118,9 @@ async function readManifestCatalogue(byRegion, { limit = 5000 } = {}) {
             // Bounds the deploy: a big library gets fifteen minutes a run and
             // carries on next deploy, instead of one host setting the pace.
             budget: 15 * 60e3,
-            // UT Austin resets connections after ~135 quick requests a run,
-            // and two minutes of backoff do not bring it back. A slower pace
-            // tests whether its limit counts requests per minute or per run.
+            // UT Austin resets connections after ~135 requests at 250 ms apart,
+            // and two minutes of backoff do not bring it back; at 2 s apart
+            // its last 89 manifests all answered.
             pauseFor: { 'curio.lib.utexas.edu': 2000 },
             onProgress: n => { if (n % 200 === 0) process.stdout.write('.'); },
         });
