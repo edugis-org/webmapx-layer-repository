@@ -146,6 +146,10 @@ function mkLayer({ id, name, title, abstract, datasetId, url, kind, background, 
                     title,
                     ...(abstract ? { abstract: abstract.slice(0, 600) } : {}),
                     legendRole: background ? 'background' : 'overlay',
+                    // A GeoJSON source has no bounds of its own, and webmapx
+                    // would otherwise work the zoom-to extent out of whatever
+                    // is loaded — for a WFS read per map view, only the view.
+                    ...(src.type === 'geojson' && bounds ? { bounds } : {}),
                     // Only when the answer is no. Queryable is the default a
                     // client assumes, and writing it onto twenty thousand
                     // layers to say so would be twenty thousand lines of
@@ -533,7 +537,12 @@ function getFeatureEndpointOf(cap) {
 /** A feature type's extent, which WFS states as an ows:WGS84BoundingBox. */
 function wgs84BoundsOf(featureType) {
     const bb = arr(featureType['ows:WGS84BoundingBox'] ?? featureType.WGS84BoundingBox)[0];
-    if (!bb) return null;
+    if (!bb) {
+        // WFS 1.0 states it as attributes: <LatLongBoundingBox minx= miny= maxx= maxy=/>.
+        const ll = arr(featureType.LatLongBoundingBox ?? featureType['wfs:LatLongBoundingBox'])[0];
+        const b = ll ? ['@minx', '@miny', '@maxx', '@maxy'].map(k => Number(ll[k])) : [];
+        return b.length === 4 && b.every(Number.isFinite) ? b : null;
+    }
     const lower = String(bb['ows:LowerCorner'] ?? bb.LowerCorner ?? '').trim().split(/\s+/);
     const upper = String(bb['ows:UpperCorner'] ?? bb.UpperCorner ?? '').trim().split(/\s+/);
     const b = [lower[0], lower[1], upper[0], upper[1]].map(Number);
@@ -790,11 +799,14 @@ async function wfsCapabilities(candidateUrl) {
     const list = cap['wfs:FeatureTypeList'] ?? cap.FeatureTypeList;
     const types = arr(list?.['wfs:FeatureType'] ?? list?.FeatureType);
     const typeNames = new Set();
+    const boundsByType = new Map();
     for (const t of types) {
         const name = t['wfs:Name'] ?? t.Name;
         if (name === undefined) continue;
         const full = String(name);
         typeNames.add(full);
+        const b = wgs84BoundsOf(t);
+        if (b) boundsByType.set(full, b);
         // A WMS layer is often named without the workspace the WFS prefixes.
         if (full.includes(':')) typeNames.add(full.split(':').pop());
     }
@@ -809,6 +821,7 @@ async function wfsCapabilities(candidateUrl) {
     return {
         endpoint: href ? endpointOf(String(href)) : candidateUrl,
         typeNames,
+        boundsByType,
         ...pagingOf(cap),
     };
 }
@@ -896,7 +909,8 @@ async function resolveAgainstCapabilities(services, expand) {
 
 /**
  * Give each WFS layer's source the service's own page size (CountDefault) and
- * whether it pages, read from its capabilities: one request per service.
+ * whether it pages, and each layer its feature type's extent, all read from
+ * the service's capabilities: one request per service.
  *
  * The total is not asked here. webmapx counts a layer when it is opened, and
  * only a small share of the published layers ever is; a count takes PDOK
@@ -908,17 +922,25 @@ async function sizeWfsLayers(services) {
     for (const svc of services) {
         const layers = svc.layers.filter(l => l.type === 'wfs' && typeof l.webmapxConfig?.source?.data === 'string');
         if (!layers.length) continue;
-        if (svc.featurePageSize === undefined && svc.endpoint) {
+        let boundsByType = new Map();
+        if (svc.endpoint) {
             try {
                 const wfs = await wfsCapabilities(svc.endpoint);
-                svc.featurePageSize = wfs.pageSize;
-                svc.featurePaging = wfs.canPage;
+                svc.featurePageSize ??= wfs.pageSize;
+                svc.featurePaging ??= wfs.canPage;
+                boundsByType = wfs.boundsByType;
             } catch { /* no capabilities: webmapx falls back to its own page size */ }
         }
         for (const l of layers) {
             const src = l.webmapxConfig.source;
             if (svc.featurePageSize !== undefined) src.wfsPageSize = svc.featurePageSize;
             if (svc.featurePaging !== undefined) src.wfsSupportsPaging = svc.featurePaging;
+            // The feature type's own extent from the capabilities, which says
+            // more than the extent of the source that listed the service.
+            const own = boundsByType.get(l.name)
+                ?? [...boundsByType].find(([n]) => n.split(':').pop() === String(l.name ?? '').split(':').pop())?.[1];
+            const meta = l.webmapxConfig.layer.metadata ??= {};
+            if (own) meta.bounds = own;
         }
         n += layers.length;
     }
