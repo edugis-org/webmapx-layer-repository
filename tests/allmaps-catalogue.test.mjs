@@ -214,3 +214,26 @@ test('titles lose appended shelfmarks and doubled halves', () => {
     assert.equal(labelOf('nae de meetinge gedaen by Daniel Schellinex .. in den j. 1617 ...'), 'nae de meetinge gedaen by Daniel Schellinex .. in den j. 1617 ...');
     assert.equal(labelOf('Ballarat. 836 Zone 7. base map / Ballarat. 836 Zone 7. base map'), 'Ballarat. 836 Zone 7. base map');
 });
+
+test('a map without a manifest says it has no metadata', () => {
+    const feature = {
+        type: 'Feature',
+        geometry: { type: 'Polygon', coordinates: [[[6.9, 52.9], [7, 52.9], [7, 53], [6.9, 53], [6.9, 52.9]]] },
+        properties: {
+            id: 'https://annotations.allmaps.org/maps/7f77aaae818b87b1',
+            resource: { id: 'https://objects.library.uu.nl/iiif/x.jp2', type: 'ImageService2', provider: [{ label: { none: ['Universiteitsbibliotheek Utrecht'] } }] },
+        },
+    };
+    const layer = layerFor(feature);
+    assert.match(layer.abstract, /Universiteitsbibliotheek Utrecht: no metadata for this map/);
+    assert.doesNotMatch(layer.abstract, /Scan held by/);
+});
+
+test('a map with neither manifest nor holder names the server its scan comes from', () => {
+    const layer = layerFor({
+        type: 'Feature',
+        geometry: { type: 'Polygon', coordinates: [[[6.5, 53.2], [6.6, 53.2], [6.6, 53.3], [6.5, 53.3], [6.5, 53.2]]] },
+        properties: { id: 'https://annotations.allmaps.org/maps/d95224f3a35606de', resource: { id: 'https://images.memorix.nl/gra/iiif/c9a6', type: 'ImageService2' } },
+    });
+    assert.match(layer.abstract, /Scan from images\.memorix\.nl: no metadata for this map/);
+});
