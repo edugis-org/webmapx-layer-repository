@@ -55,15 +55,6 @@ jobs:
           key: allmaps-catalogue-${{ github.run_id }}
           restore-keys: allmaps-catalogue-
 
-      # WFS feature counts (RESULTTYPE=hits) are kept for 30 days; each run
-      # counts what is stale within a budget, so the cache must carry over.
-      - name: Cache WFS feature counts
-        uses: actions/cache@v4
-        with:
-          path: .cache/wfs-counts.json
-          key: wfs-counts-${{ github.run_id }}
-          restore-keys: wfs-counts-
-
       - name: Build the region tree
         run: node scripts/build-regions.mjs
 

@@ -20,7 +20,6 @@ import { endpointOf, withQuery } from '../lib/ows.mjs';
 import * as allmaps from '../lib/allmaps.mjs';
 import { snapshotPages } from '../lib/allmaps-snapshot.mjs';
 import { fetchCatalogue, interleaveByHost, tidyRecord } from '../lib/allmaps-catalogue.mjs';
-import { featureCounts } from '../lib/wfs-counts.mjs';
 import { writeFlatGeobuf } from '../lib/flatgeobuf-writer.mjs';
 import { deserialize as readFlatGeobuf } from 'flatgeobuf/geojson';
 import { REGION_BOUNDS } from '../lib/regions.mjs';
@@ -895,16 +894,17 @@ async function resolveAgainstCapabilities(services, expand) {
     return { legends, expansions, dropped, timed, unread };
 }
 
-/** One budget for the whole run, shared by every source and started by the first: see lib/wfs-counts.mjs. */
-let wfsCountDeadline = null;
-
 /**
- * Give each WFS layer's source what webmapx needs to load it sensibly: the
- * service's own page size (CountDefault) and whether it pages, read from its
- * capabilities, and the layer's total, asked of the service with a hit count.
+ * Give each WFS layer's source the service's own page size (CountDefault) and
+ * whether it pages, read from its capabilities: one request per service.
+ *
+ * The total is not asked here. webmapx counts a layer when it is opened, and
+ * only a small share of the published layers ever is; a count takes PDOK
+ * about 0.2 s for the layers small enough to load whole, and a count that
+ * takes longer is answer enough — a great many — so it loads per map view.
  */
 async function sizeWfsLayers(services) {
-    const wfsLayers = [];
+    let n = 0;
     for (const svc of services) {
         const layers = svc.layers.filter(l => l.type === 'wfs' && typeof l.webmapxConfig?.source?.data === 'string');
         if (!layers.length) continue;
@@ -919,24 +919,10 @@ async function sizeWfsLayers(services) {
             const src = l.webmapxConfig.source;
             if (svc.featurePageSize !== undefined) src.wfsPageSize = svc.featurePageSize;
             if (svc.featurePaging !== undefined) src.wfsSupportsPaging = svc.featurePaging;
-            wfsLayers.push(l);
         }
+        n += layers.length;
     }
-    if (!wfsLayers.length) return { layers: 0, counted: 0 };
-    const counts = await featureCounts(wfsLayers.map(l => l.webmapxConfig.source.data), {
-        cacheFile: join(CACHE, 'wfs-counts.json'),
-        budgetMs: Math.max(0, (wfsCountDeadline ??= Date.now() + 10 * 60 * 1000) - Date.now()),
-        log: (msg) => process.stdout.write(`\n   wfs counts: ${msg}`),
-    });
-    let counted = 0;
-    for (const l of wfsLayers) {
-        const n = counts.get(l.webmapxConfig.source.data);
-        if (n === undefined) continue;
-        l.featureCount = n;
-        l.webmapxConfig.source.featureCount = n;
-        counted++;
-    }
-    return { layers: wfsLayers.length, counted };
+    return n;
 }
 
 /**
@@ -1432,10 +1418,8 @@ for (const source of sources) {
                              `${expand ? `, +${expansions} style layers` : ''}\n   `);
     }
 
-    // Every WFS layer, enriched or not: webmapx needs the page size and the
-    // total to choose between loading it whole and loading it per map view.
-    const sized = await sizeWfsLayers(services);
-    if (sized.layers) process.stdout.write(`\n   wfs: ${sized.layers} layers, ${sized.counted} with a feature count\n   `);
+    // Every WFS layer, enriched or not: webmapx pages by the service's own size.
+    await sizeWfsLayers(services);
 
     const duplicates = deduplicateLayers(services);
     if (duplicates) process.stdout.write(`\n   removed ${duplicates} exact duplicate layer(s)\n   `);
