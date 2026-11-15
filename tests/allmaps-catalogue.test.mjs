@@ -16,9 +16,9 @@ test('reads maker, date, scale and subjects from an IIIF 2 manifest', () => {
         ['License', 'CC BY'],
     ])), {
         creator: 'Sanborn Map Company',
-        date: '1912-01-01',
+        date: '1912',
         year: 1912,
-        scale: '1:600 ; drawn to a scale of 50 feet to an inch.',
+        scale: '1:600 ; drawn to a scale of 50 feet to an inch',
         scaleDenominator: 600,
         subjects: ['Fire insurance maps', 'Digital maps', 'Fire risk assessment maps'],
     });
@@ -166,4 +166,41 @@ test('reads NYPL Names and Dates / Origin as display text', () => {
 test('unwraps a label whose text is itself a language map', () => {
     assert.equal(labelOf({ none: ['{"none":["[Plan of the battles of Saratoga]"]}'] }), '[Plan of the battles of Saratoga]');
     assert.equal(labelOf({ none: ['{Braces} in a title'] }), '{Braces} in a title');
+});
+
+test('catalogue punctuation, authority ids and placeholder dates are tidied', () => {
+    const t = c => tidyRecord({ creator: c }).creator;
+    assert.equal(t('Schenk, Petrus, 1693-1775,; Zürner, Adam Friedrich, 1679-1742,'), 'Schenk, Petrus, 1693-1775; Zürner, Adam Friedrich, 1679-1742');
+    assert.equal(t('Flinders, Matthew, 1774-1814, cartographer.'), 'Flinders, Matthew, 1774-1814');
+    assert.equal(t('Hooghe, Cornelis de, 1540 or 1541-1583, engraver'), 'Hooghe, Cornelis de, 1540 or 1541-1583 (engraver)');
+    assert.equal(t('Ortelius, Abraham, 1527-1598 -- (GND: 118736590 )'), 'Ortelius, Abraham, 1527-1598');
+    assert.equal(t('Verniquet, Edme (1727-1804). Auteur du texte; Mathieu, A. J. (17..-18..; dessinateur). Graveur'),
+        'Verniquet, Edme (1727-1804); Mathieu, A. J. (17..-18..; dessinateur) (graveur)');
+    assert.equal(t('Great Britain. War Office. General Staff. Geographical Section.'), 'Great Britain. War Office. General Staff. Geographical Section');
+    assert.equal(t('Kochersperger, H. L. (publisher); O.W. Gray & Son; Davis, F. A.'), 'Kochersperger, H. L. (publisher); O.W. Gray & Son; Davis, F. A.');
+    assert.equal(t('Geo. H. Walker & Co.'), 'Geo. H. Walker & Co.');
+    assert.equal(t('Delisle, Guillaume, 1675-1726.'), 'Delisle, Guillaume, 1675-1726');
+    const d = s => tidyRecord({ date: s, year: 1 }).date;
+    assert.equal(d('1912-01-01'), '1912');
+    assert.equal(d('1912-03-01'), '1912-03-01');
+    assert.equal(d('1956-XX-XX/1961-XX-XX'), '1956–1961');
+    assert.equal(d('1850/1864'), '1850–1864');
+    assert.equal(d('1635;'), '1635');
+    assert.equal(d('1941-XX-XX/..'), '1941–');
+    assert.equal(d('[ca. 1710]'), '[ca. 1710]');
+    assert.deepEqual(tidyRecord({ date: 'Date of digitisation: 2022', year: 2022, creator: 'X' }), { creator: 'X' });
+    assert.equal(tidyRecord({ scale: "1:14 000. With 1 bar scale: Echelle de 1000 Mètres = 6.9 cm; (VE 2°21')" }).scale, '1:14 000');
+    assert.equal(tidyRecord({ scale: '1:600 ; drawn to a scale of 50 feet to an inch.' }).scale, '1:600 ; drawn to a scale of 50 feet to an inch');
+});
+
+test('a digitisation date is not read as the map\'s date', () => {
+    const record = catalogueRecord({ metadata: [{ label: 'Date of digitisation', value: '2022' }, { label: 'Scale', value: '1:50.000' }] });
+    assert.equal(record.date, undefined);
+    assert.equal(record.year, undefined);
+});
+
+test('titles lose appended shelfmarks and doubled halves', () => {
+    assert.equal(labelOf('Waterstaatskaart van Nederland : op de schaal van 1:50.000 KAART: *VII*.B.a.21'), 'Waterstaatskaart van Nederland : op de schaal van 1:50.000');
+    assert.equal(labelOf('[Le Sas de Gant fet en l\'an 1633] - COLLBN Port 38 N 128'), '[Le Sas de Gant fet en l\'an 1633]');
+    assert.equal(labelOf('Ballarat. 836 Zone 7. base map / Ballarat. 836 Zone 7. base map'), 'Ballarat. 836 Zone 7. base map');
 });
