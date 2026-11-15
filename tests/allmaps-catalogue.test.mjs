@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { catalogueRecord, scaleDenominator, fetchCatalogue } from '../lib/allmaps-catalogue.mjs';
+import { catalogueRecord, scaleDenominator, fetchCatalogue, interleaveByHost } from '../lib/allmaps-catalogue.mjs';
 import { layerFor } from '../lib/allmaps.mjs';
 
 const v2 = metadata => ({ '@type': 'sc:Manifest', metadata: metadata.map(([label, value]) => ({
@@ -108,4 +108,20 @@ test('stops asking a host after repeated failures, and sends a wildcard Accept',
     assert.equal(asked, 5);
     assert.equal(result.size, 1);
     assert.match(accept, /\*\/\*/);
+});
+
+test('reports manifests it never asked, so they are not marked as failed', async () => {
+    const urls = Array.from({ length: 8 }, (_, i) => `https://down.example/${i}`);
+    const skipped = new Set();
+    const result = await fetchCatalogue(urls, { pause: 0, giveUpAfter: 3, skipped, fetchImpl: async () => { throw new Error('ECONNRESET'); } });
+    assert.equal(result.size, 0);
+    assert.equal(skipped.size, 5);
+});
+
+test('hosts take turns, each keeping its own order', () => {
+    const urls = ['https://a.example/1', 'https://a.example/2', 'https://a.example/3', 'https://b.example/1', 'https://c.example/1', 'https://c.example/2'];
+    assert.deepEqual(interleaveByHost(urls), [
+        'https://a.example/1', 'https://b.example/1', 'https://c.example/1',
+        'https://a.example/2', 'https://c.example/2', 'https://a.example/3',
+    ]);
 });

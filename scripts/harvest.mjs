@@ -19,7 +19,7 @@ import { deduplicateLayers } from '../lib/deduplicate-layers.mjs';
 import { endpointOf, withQuery } from '../lib/ows.mjs';
 import * as allmaps from '../lib/allmaps.mjs';
 import { snapshotPages } from '../lib/allmaps-snapshot.mjs';
-import { fetchCatalogue } from '../lib/allmaps-catalogue.mjs';
+import { fetchCatalogue, interleaveByHost } from '../lib/allmaps-catalogue.mjs';
 import { writeFlatGeobuf } from '../lib/flatgeobuf-writer.mjs';
 import { deserialize as readFlatGeobuf } from 'flatgeobuf/geojson';
 import { REGION_BOUNDS } from '../lib/regions.mjs';
@@ -1107,16 +1107,23 @@ async function readManifestCatalogue(byRegion, { limit = 5000 } = {}) {
     const retryBefore = new Date(Date.now() - RETRY_DAYS * 864e5).toISOString().slice(0, 10);
     const unread = [...wanted].filter(url => !(url in cached));
     const retry = [...wanted].filter(url => cached[url]?.failed && cached[url].failed < retryBefore);
-    const batch = unread.concat(retry).slice(0, limit);
+    // Hosts take turns, so one big or failing library cannot fill the batch.
+    const batch = interleaveByHost(unread).concat(interleaveByHost(retry)).slice(0, limit);
     process.stdout.write(`\n   catalogue: ${wanted.size} manifests, ${unread.length} unread, ${retry.length} to retry, reading ${batch.length} `);
     if (batch.length) {
         const stats = {};
+        const skipped = new Set();
         const fetched = await fetchCatalogue(batch, {
-            stats,
+            stats, skipped,
             onProgress: n => { if (n % 200 === 0) process.stdout.write('.'); },
         });
         const today = new Date().toISOString().slice(0, 10);
-        for (const url of batch) cached[url] = fetched.has(url) ? fetched.get(url) : { failed: today };
+        // A url skipped because its host gave up was never asked: it stays
+        // unread, first in line next run, rather than waiting out RETRY_DAYS.
+        for (const url of batch) {
+            if (fetched.has(url)) cached[url] = fetched.get(url);
+            else if (!skipped.has(url)) cached[url] = { failed: today };
+        }
         mkdirSync(CACHE, { recursive: true });
         writeFileSync(file, JSON.stringify(cached));
         // Per host, biggest first: which libraries answer, which have nothing
