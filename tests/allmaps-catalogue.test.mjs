@@ -186,6 +186,8 @@ test('catalogue punctuation, authority ids and placeholder dates are tidied', ()
     assert.equal(d('1956-XX-XX/1961-XX-XX'), '1956–1961');
     assert.equal(d('1850/1864'), '1850–1864');
     assert.equal(d('1635;'), '1635');
+    assert.equal(d('2022/06/30'), undefined);
+    assert.deepEqual(tidyRecord({ subjects: ['Österreich', '(GND: 4043271-3 )', 'Atlas'] }).subjects, ['Österreich', 'Atlas']);
     assert.equal(d('1941-XX-XX/..'), '1941–');
     assert.equal(d('[ca. 1710]'), '[ca. 1710]');
     assert.deepEqual(tidyRecord({ date: 'Date of digitisation: 2022', year: 2022, creator: 'X' }), { creator: 'X' });
@@ -194,7 +196,11 @@ test('catalogue punctuation, authority ids and placeholder dates are tidied', ()
 });
 
 test('a digitisation date is not read as the map\'s date', () => {
-    const record = catalogueRecord({ metadata: [{ label: 'Date of digitisation', value: '2022' }, { label: 'Scale', value: '1:50.000' }] });
+    const record = catalogueRecord({ metadata: [
+        { label: 'Date of digitisation', value: '2022' },
+        { label: { fr: ['Date de mise en ligne'], en: ['Date of online publication'] }, value: { fr: ['2022/06/30'] } },
+        { label: 'Scale', value: '1:50.000' },
+    ] });
     assert.equal(record.date, undefined);
     assert.equal(record.year, undefined);
 });
@@ -202,5 +208,7 @@ test('a digitisation date is not read as the map\'s date', () => {
 test('titles lose appended shelfmarks and doubled halves', () => {
     assert.equal(labelOf('Waterstaatskaart van Nederland : op de schaal van 1:50.000 KAART: *VII*.B.a.21'), 'Waterstaatskaart van Nederland : op de schaal van 1:50.000');
     assert.equal(labelOf('[Le Sas de Gant fet en l\'an 1633] - COLLBN Port 38 N 128'), '[Le Sas de Gant fet en l\'an 1633]');
+    assert.equal(labelOf('Plate No. 248 [Map bounded by W. 140th St., Lenox Ave., W.. 135th St.]'), 'Plate No. 248 [Map bounded by W. 140th St., Lenox Ave., W. 135th St.]');
+    assert.equal(labelOf('nae de meetinge gedaen by Daniel Schellinex .. in den j. 1617 ...'), 'nae de meetinge gedaen by Daniel Schellinex .. in den j. 1617 ...');
     assert.equal(labelOf('Ballarat. 836 Zone 7. base map / Ballarat. 836 Zone 7. base map'), 'Ballarat. 836 Zone 7. base map');
 });
