@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { catalogueRecord, scaleDenominator, fetchCatalogue, interleaveByHost } from '../lib/allmaps-catalogue.mjs';
-import { layerFor } from '../lib/allmaps.mjs';
+import { catalogueRecord, scaleDenominator, fetchCatalogue, interleaveByHost, tidyRecord } from '../lib/allmaps-catalogue.mjs';
+import { layerFor, labelOf } from '../lib/allmaps.mjs';
 
 const v2 = metadata => ({ '@type': 'sc:Manifest', metadata: metadata.map(([label, value]) => ({
     label, value: { '@value': value, '@language': 'en' } })) });
@@ -15,7 +15,7 @@ test('reads maker, date, scale and subjects from an IIIF 2 manifest', () => {
         ['Cartographic Information', '29.3000, -94.7833 (WGS84)| Scale 1:600 ; drawn to a scale of 50 feet to an inch.'],
         ['License', 'CC BY'],
     ])), {
-        creator: 'Sanborn Map Company (cartographer)',
+        creator: 'Sanborn Map Company',
         date: '1912-01-01',
         year: 1912,
         scale: '1:600 ; drawn to a scale of 50 feet to an inch.',
@@ -44,7 +44,7 @@ test('reads IIIF 3 language maps and navDate, and returns null for a bare manife
         { label: { de: ['Maßstab'], en: ['Scale'] }, value: { none: ['[Ca. 1:7 700]'] } },
         { label: { en: ['Subjects'] }, value: { en: ['Oshkosh (Wis.) -- Maps', 'Fire insurance'] } },
     ] });
-    assert.equal(record.creator, 'Sanborn Map & Publishing Co. (Author)');
+    assert.equal(record.creator, 'Sanborn Map & Publishing Co.');
     assert.equal(record.year, 1883);
     assert.equal(record.scaleDenominator, 7700);
     assert.deepEqual(record.subjects, ['Oshkosh (Wis.)', 'Maps', 'Fire insurance']);
@@ -140,4 +140,30 @@ test('hosts take turns, each keeping its own order', () => {
         'https://a.example/1', 'https://b.example/1', 'https://c.example/1',
         'https://a.example/2', 'https://c.example/2', 'https://a.example/3',
     ]);
+});
+
+test('NYPL names fold their roles per person and dates lose their sub-label', () => {
+    assert.deepEqual(tidyRecord({
+        creator: 'Ohman Map Co. (Creator); Petersen, H. B. (H. Buchardt) (Draftsman); Petersen, H. B. (H. Buchardt) (Engineer)',
+        date: 'Date Issued: 1920 (Inferred)', year: 1920,
+    }), { creator: 'Ohman Map Co.; Petersen, H. B. (H. Buchardt) (draftsman, engineer)', date: '1920 (inferred)', year: 1920 });
+    assert.equal(tidyRecord({ creator: 'G.W. Bromley & Co. (Publication place)' }).creator, 'G.W. Bromley & Co.');
+    assert.equal(tidyRecord({ creator: 'Valentine, D. T. (David Thomas), 1801-1869 (Publisher)' }).creator, 'Valentine, D. T. (David Thomas), 1801-1869 (publisher)');
+    assert.equal(tidyRecord({ creator: 'Taintor Brothers', date: '[1875?]' }).date, '[1875?]');
+    assert.equal(tidyRecord({ creator: 'Smith, John (Firm)' }).creator, 'Smith, John (Firm)');
+});
+
+test('reads NYPL Names and Dates / Origin as display text', () => {
+    const record = catalogueRecord({ metadata: [
+        { label: { en: ['Names'] }, value: { en: ["<span><a href='x'>G.W. Bromley & Co.</a>  (Publication place)</span>"] } },
+        { label: { en: ['Dates / Origin'] }, value: { en: ["<span>Date Issued: <a href='x'>1959</a></span>", "<span>Place: <a href='x'>New York</a></span>"] } },
+        { label: { en: ['Date Issued'] }, value: { en: ['1959'] } },
+    ] });
+    assert.equal(record.creator, 'G.W. Bromley & Co.');
+    assert.equal(record.date, '1959');
+});
+
+test('unwraps a label whose text is itself a language map', () => {
+    assert.equal(labelOf({ none: ['{"none":["[Plan of the battles of Saratoga]"]}'] }), '[Plan of the battles of Saratoga]');
+    assert.equal(labelOf({ none: ['{Braces} in a title'] }), '{Braces} in a title');
 });

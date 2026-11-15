@@ -19,7 +19,7 @@ import { deduplicateLayers } from '../lib/deduplicate-layers.mjs';
 import { endpointOf, withQuery } from '../lib/ows.mjs';
 import * as allmaps from '../lib/allmaps.mjs';
 import { snapshotPages } from '../lib/allmaps-snapshot.mjs';
-import { fetchCatalogue, interleaveByHost } from '../lib/allmaps-catalogue.mjs';
+import { fetchCatalogue, interleaveByHost, tidyRecord } from '../lib/allmaps-catalogue.mjs';
 import { writeFlatGeobuf } from '../lib/flatgeobuf-writer.mjs';
 import { deserialize as readFlatGeobuf } from 'flatgeobuf/geojson';
 import { REGION_BOUNDS } from '../lib/regions.mjs';
@@ -1143,7 +1143,9 @@ async function readManifestCatalogue(byRegion, { limit = 5000 } = {}) {
             process.stdout.write(`\n     ${host}: ${n} — ${Object.entries(t).map(([k, v]) => `${k} ${v}`).join(', ')}`);
         }
     }
-    const catalogue = new Map(Object.entries(cached).filter(([, v]) => v && !v.failed));
+    // Tidied on the way out too: records cached by an older parser keep
+    // NYPL's role and date annotations until they are read again.
+    const catalogue = new Map(Object.entries(cached).filter(([, v]) => v && !v.failed).map(([url, v]) => [url, tidyRecord(v)]));
     const described = [...wanted].filter(url => catalogue.has(url)).length;
     const asked = [...wanted].filter(url => url in cached).length;
     process.stdout.write(`\n   ${described} of ${wanted.size} manifests describe maker, date, scale or subject (${asked} asked so far)`);
