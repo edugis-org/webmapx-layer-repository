@@ -179,6 +179,8 @@ test('catalogue punctuation, authority ids and placeholder dates are tidied', ()
     assert.equal(t('Great Britain. War Office. General Staff. Geographical Section.'), 'Great Britain. War Office. General Staff. Geographical Section');
     assert.equal(t('Kochersperger, H. L. (publisher); O.W. Gray & Son; Davis, F. A.'), 'Kochersperger, H. L. (publisher); O.W. Gray & Son; Davis, F. A.');
     assert.equal(t('Geo. H. Walker & Co.'), 'Geo. H. Walker & Co.');
+    assert.equal(t('Bull, Edward (Publisher), publisher'), 'Bull, Edward (publisher)');
+    assert.equal(t('Bull, Edward (Publisher) (Publisher)'), 'Bull, Edward (publisher)');
     assert.equal(t('Delisle, Guillaume, 1675-1726.'), 'Delisle, Guillaume, 1675-1726');
     const d = s => tidyRecord({ date: s, year: 1 }).date;
     assert.equal(d('1912-01-01'), '1912');
