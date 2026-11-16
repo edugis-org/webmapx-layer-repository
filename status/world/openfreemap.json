@@ -69,18 +69,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 216
+        },
+        {
+          "date": "2026-11-16",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 62
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-11-09",
+        "lastChecked": "2026-11-16",
         "current": "up",
-        "checks": 11,
-        "up": 11,
+        "checks": 12,
+        "up": 12,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-09"
+        "lastUp": "2026-11-16"
       }
     },
     "ofm-bright": {
@@ -150,18 +156,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 208
+        },
+        {
+          "date": "2026-11-16",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 28
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-11-09",
+        "lastChecked": "2026-11-16",
         "current": "up",
-        "checks": 11,
-        "up": 11,
+        "checks": 12,
+        "up": 12,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-09"
+        "lastUp": "2026-11-16"
       }
     },
     "ofm-positron": {
@@ -231,18 +243,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 27
+        },
+        {
+          "date": "2026-11-16",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 25
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-11-09",
+        "lastChecked": "2026-11-16",
         "current": "up",
-        "checks": 11,
-        "up": 11,
+        "checks": 12,
+        "up": 12,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-09"
+        "lastUp": "2026-11-16"
       }
     },
     "ofm-roads": {
@@ -312,18 +330,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 28
+        },
+        {
+          "date": "2026-11-16",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 15
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-11-09",
+        "lastChecked": "2026-11-16",
         "current": "up",
-        "checks": 11,
-        "up": 11,
+        "checks": 12,
+        "up": 12,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-09"
+        "lastUp": "2026-11-16"
       }
     },
     "ofm-water": {
@@ -393,18 +417,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 27
+        },
+        {
+          "date": "2026-11-16",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 17
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-11-09",
+        "lastChecked": "2026-11-16",
         "current": "up",
-        "checks": 11,
-        "up": 11,
+        "checks": 12,
+        "up": 12,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-09"
+        "lastUp": "2026-11-16"
       }
     },
     "ofm-boundaries": {
@@ -474,18 +504,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 29
+        },
+        {
+          "date": "2026-11-16",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 12
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-11-09",
+        "lastChecked": "2026-11-16",
         "current": "up",
-        "checks": 11,
-        "up": 11,
+        "checks": 12,
+        "up": 12,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-09"
+        "lastUp": "2026-11-16"
       }
     },
     "ofm-buildings": {
@@ -555,18 +591,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 25
+        },
+        {
+          "date": "2026-11-16",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 16
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-11-09",
+        "lastChecked": "2026-11-16",
         "current": "up",
-        "checks": 11,
-        "up": 11,
+        "checks": 12,
+        "up": 12,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-09"
+        "lastUp": "2026-11-16"
       }
     }
   }

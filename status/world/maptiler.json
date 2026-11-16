@@ -69,18 +69,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 226
+        },
+        {
+          "date": "2026-11-16",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 175
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-11-09",
+        "lastChecked": "2026-11-16",
         "current": "up",
-        "checks": 11,
-        "up": 11,
+        "checks": 12,
+        "up": 12,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-09"
+        "lastUp": "2026-11-16"
       }
     },
     "maptiler-satellite-style": {
@@ -150,18 +156,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 129
+        },
+        {
+          "date": "2026-11-16",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 83
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-11-09",
+        "lastChecked": "2026-11-16",
         "current": "up",
-        "checks": 11,
-        "up": 11,
+        "checks": 12,
+        "up": 12,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-09"
+        "lastUp": "2026-11-16"
       }
     },
     "maptiler-outdoor-style": {
@@ -231,18 +243,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 115
+        },
+        {
+          "date": "2026-11-16",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 188
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-11-09",
+        "lastChecked": "2026-11-16",
         "current": "up",
-        "checks": 11,
-        "up": 11,
+        "checks": 12,
+        "up": 12,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-09"
+        "lastUp": "2026-11-16"
       }
     },
     "maptiler-topo-style": {
@@ -312,18 +330,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 54
+        },
+        {
+          "date": "2026-11-16",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 25
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-11-09",
+        "lastChecked": "2026-11-16",
         "current": "up",
-        "checks": 11,
-        "up": 11,
+        "checks": 12,
+        "up": 12,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-09"
+        "lastUp": "2026-11-16"
       }
     },
     "maptiler-streets": {
@@ -393,18 +417,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 57
+        },
+        {
+          "date": "2026-11-16",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 29
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-11-09",
+        "lastChecked": "2026-11-16",
         "current": "up",
-        "checks": 11,
-        "up": 11,
+        "checks": 12,
+        "up": 12,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-09"
+        "lastUp": "2026-11-16"
       }
     },
     "maptiler-satellite": {
@@ -474,18 +504,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 62
+        },
+        {
+          "date": "2026-11-16",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 19
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-11-09",
+        "lastChecked": "2026-11-16",
         "current": "up",
-        "checks": 11,
-        "up": 11,
+        "checks": 12,
+        "up": 12,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-09"
+        "lastUp": "2026-11-16"
       }
     },
     "maptiler-outdoor": {
@@ -555,18 +591,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 135
+        },
+        {
+          "date": "2026-11-16",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 45
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-11-09",
+        "lastChecked": "2026-11-16",
         "current": "up",
-        "checks": 11,
-        "up": 11,
+        "checks": 12,
+        "up": 12,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-09"
+        "lastUp": "2026-11-16"
       }
     },
     "maptiler-topo": {
@@ -636,18 +678,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 120
+        },
+        {
+          "date": "2026-11-16",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 39
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-11-09",
+        "lastChecked": "2026-11-16",
         "current": "up",
-        "checks": 11,
-        "up": 11,
+        "checks": 12,
+        "up": 12,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-09"
+        "lastUp": "2026-11-16"
       }
     }
   }

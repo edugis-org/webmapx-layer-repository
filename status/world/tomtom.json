@@ -80,17 +80,24 @@
           "httpStatus": 403,
           "ms": 332,
           "reason": "HTTP 403 (endpoint answered but rejected our credentials)"
+        },
+        {
+          "date": "2026-11-16",
+          "availability": "auth-required",
+          "httpStatus": 403,
+          "ms": 221,
+          "reason": "HTTP 403 (endpoint answered but rejected our credentials)"
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-11-09",
+        "lastChecked": "2026-11-16",
         "current": "auth-required",
-        "checks": 11,
+        "checks": 12,
         "up": 0,
         "uptime": 0,
         "untested": 0,
-        "consecutiveFailures": 11
+        "consecutiveFailures": 12
       }
     },
     "tomtom-satellite": {
@@ -171,17 +178,24 @@
           "httpStatus": 403,
           "ms": 222,
           "reason": "HTTP 403 (endpoint answered but rejected our credentials)"
+        },
+        {
+          "date": "2026-11-16",
+          "availability": "auth-required",
+          "httpStatus": 403,
+          "ms": 32,
+          "reason": "HTTP 403 (endpoint answered but rejected our credentials)"
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-11-09",
+        "lastChecked": "2026-11-16",
         "current": "auth-required",
-        "checks": 11,
+        "checks": 12,
         "up": 0,
         "uptime": 0,
         "untested": 0,
-        "consecutiveFailures": 11
+        "consecutiveFailures": 12
       }
     },
     "tomtom-hybrid": {
@@ -262,17 +276,24 @@
           "httpStatus": 403,
           "ms": 135,
           "reason": "HTTP 403 (endpoint answered but rejected our credentials)"
+        },
+        {
+          "date": "2026-11-16",
+          "availability": "auth-required",
+          "httpStatus": 403,
+          "ms": 40,
+          "reason": "HTTP 403 (endpoint answered but rejected our credentials)"
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-11-09",
+        "lastChecked": "2026-11-16",
         "current": "auth-required",
-        "checks": 11,
+        "checks": 12,
         "up": 0,
         "uptime": 0,
         "untested": 0,
-        "consecutiveFailures": 11
+        "consecutiveFailures": 12
       }
     }
   }
