@@ -24,6 +24,7 @@ import { writeFlatGeobuf } from '../lib/flatgeobuf-writer.mjs';
 import { deserialize as readFlatGeobuf } from 'flatgeobuf/geojson';
 import { REGION_BOUNDS } from '../lib/regions.mjs';
 import { buildRegionIndex, assignRegion } from '../lib/region-index.mjs';
+import { styleIdSuffixes } from '../lib/style-ids.mjs';
 
 const ROOT = resolve(fileURLToPath(import.meta.url), '../../');
 const SOURCES = join(ROOT, 'sources');
@@ -830,11 +831,12 @@ function expandStyles(layer, styles, expand = true) {
         if (only?.title && only?.name) layer.styleTitle = only.title;
         return [layer];
     }
-    return named.map(st => {
+    const suffixes = styleIdSuffixes(named.map(st => st.name), slug);
+    return named.map((st, i) => {
         const title = st.title || st.name;
         const out = {
             ...layer,
-            id: `${layer.id}-${slug(st.name)}`,
+            id: `${layer.id}-${suffixes[i]}`,
             title: `${layer.title} — ${title}`,
             styleName: st.name,
             styleTitle: title,
