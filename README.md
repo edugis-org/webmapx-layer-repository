@@ -121,6 +121,52 @@ Two limits worth knowing:
 - WMTS links are not turned into layers. A WMTS link states no tile matrix set,
   and a guessed grid is a layer whose every tile 404s.
 
+## Portolan catalogs
+
+A source of type `portolan-catalog` is a [Portolan](https://github.com/portolan-sdi/portolan-spec)
+catalog: static STAC for cloud-native data, as PolderGIS publishes its
+libraries. Like a WMS it offers many layers of which a map shows a few, so
+each collection becomes one layer, filed under the region its own extent falls
+in.
+
+```json
+{
+  "type": "portolan-catalog",
+  "url": "https://edugis.b-cdn.net/catalog.json",
+  "include": { "kinds": ["vector"] }
+}
+```
+
+- **The config references the collection, never its files**:
+  `webmapxConfig` is `{ "type": "style", "url": "<collection.json>" }`. webmapx
+  reads the collection when the map loads and draws it in the publisher's
+  default style. PolderGIS puts a content hash in every data file name and
+  serves `collection.json` uncached, so a config naming the PMTiles directly
+  would break at the next republication — and a listing here that lags the
+  library leaves no map stale.
+- **A PolderGIS library is listed in two requests**: its root links a flat index
+  (`rel: "pg:index"`) naming every layer with kind and bbox. Any other catalog
+  is walked through its `child` links, bounded at 200 catalogs.
+- **`include.kinds`** chooses what is offered: `vector` (PMTiles, or a small
+  GeoParquet), `raster` (COG), `table`. Vector only by default, because webmapx
+  does not draw a COG yet.
+- **Read live as well as harvested.** `lib/portolan.mjs` imports nothing, like
+  `lib/geonetwork.mjs`, so the previewer's sidebar reads a catalog straight from
+  the browser: a library published this morning is there before any harvest.
+  The harvest is still what makes its layers findable by the search box and the
+  region tree.
+- **The Portolan registry is browsed, not harvested.** `sources/portolan-registry.json`
+  (type `portolan-registry`, `"harvest": false`) puts the registry's 98
+  catalogs in the previewer's sidebar: filter by place, producer or licence,
+  pick one, and it is read live like any Portolan source. None of it reaches
+  `harvested/`, the search index or the region tree — those are other people's
+  endpoints nobody here has reviewed. A catalog worth keeping gets a
+  `portolan-catalog` source of its own, as Portolan NL and Vlaanderen did.
+- Previewing needs a webmapx that reads Portolan collections. The previewer
+  loads `@edugis-org/webmapx@0.2` from npm, and the release carrying that
+  support was not published yet on 2026-11-22: until it is, listing and
+  configs work, the preview map stays empty.
+
 ## Availability
 
 `npm run test-layers` probes one tile or feature per layer and records what it

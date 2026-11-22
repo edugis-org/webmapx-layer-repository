@@ -211,8 +211,8 @@ if (existsSync(HARVESTED_DIR)) {
 /**
  * The catalogues the previewer may search live.
  *
- * A browser cannot list sources/, and the list of GeoNetwork catalogues is
- * curated there like every other endpoint, so it is projected out here — the
+ * A browser cannot list sources/, and the list of GeoNetwork catalogues and
+ * Portolan catalogs is curated there like every other endpoint, so it is projected out here — the
  * same curated/generated split the rest of the repository follows. Only what
  * the client needs travels: where to ask, what to call it, and the region to
  * frame results in.
@@ -220,13 +220,19 @@ if (existsSync(HARVESTED_DIR)) {
 const catalogues = readdirSync(join(ROOT, 'sources'))
     .filter(f => f.endsWith('.json'))
     .map(f => { try { return JSON.parse(readFileSync(join(ROOT, 'sources', f), 'utf8')); } catch { return null; } })
-    .filter(s => s && s.type === 'geonetwork-search' && s.enabled !== false)
+    .filter(s => s && ['geonetwork-search', 'portolan-catalog', 'portolan-registry'].includes(s.type) && s.enabled !== false)
     // A catalogue whose deployment refuses CORS preflight cannot be searched from
     // a page at all, so listing it would offer the reader a control that fails.
     .filter(s => s.liveSearch !== false)
     .map(s => ({
         id: s.id, title: s.title ?? s.provider?.name ?? s.id, url: s.url,
+        // A GeoNetwork catalogue is searched; a Portolan catalog is read whole.
+        kind: { 'portolan-catalog': 'portolan', 'portolan-registry': 'portolan-registry' }[s.type] ?? 'geonetwork',
+        ...(s.type.startsWith('portolan-') ? { idPrefix: s.id, kinds: s.include?.kinds ?? ['vector'] } : {}),
         provider: s.provider?.name, region: s.region ?? 'world',
+        // The sidebar names an entry by its provider, which a registry shares with
+        // catalogs it lists (Portolan SDI hosts both): give it a name of its own.
+        label: s.type === 'portolan-registry' ? 'Portolan registry' : (s.provider?.name ?? s.title ?? s.id),
         ...(s.bounds ? { bounds: s.bounds } : {}),
         ...(s.note ? { note: s.note } : {}),
     }));

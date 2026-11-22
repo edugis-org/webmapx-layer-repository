@@ -85,11 +85,25 @@ function countDsoOpenDatasets(body) {
                   && arr(d.api_authentication).every(s => s === 'OPENBAAR')).length;
 }
 
+/**
+ * Entries at the top of a Portolan catalog: its child and item links. Not every
+ * collection — a walk costs a request per group — but a changed count is the
+ * signal that the catalog changed, which is all this number is for.
+ */
+function countPortolanEntries(body) {
+    const root = JSON.parse(body);
+    const links = Array.isArray(root.links) ? root.links : [];
+    return links.filter(l => l.rel === 'child' || l.rel === 'item').length;
+}
+
 const COUNTERS = {
     'wms-capabilities': countWmsLayers,
     'wfs-capabilities': countWfsFeatureTypes,
     'dso-api-datasets': countDsoOpenDatasets,
     'pdok-plugin-list': countPdokPluginRows,
+    'portolan-catalog': countPortolanEntries,
+    // The registry's child links are its catalogs, so the same count applies.
+    'portolan-registry': countPortolanEntries,
 };
 
 /**

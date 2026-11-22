@@ -1,0 +1,28 @@
+{
+  "id": "vlaanderen-open-data",
+  "title": "Open geodata Vlaanderen (Portolan)",
+  "type": "portolan-catalog",
+  "url": "https://storage.googleapis.com/carto-open-catalogs/vlaanderen-open-data/main/catalog.json",
+  "note": "A selection of open geodata of the Flemish Region (heritage, boundaries, agriculture, mobility, nature, spatial planning, water) published as a Portolan catalog by CARTO's open-catalogs project and listed in the Portolan registry. The collections are mirrors; each names its own producer.",
+  "provider": {
+    "id": "vlaanderen-open-data",
+    "name": "Open geodata Vlaanderen (CARTO open catalogs)",
+    "url": "https://storage.googleapis.com/carto-open-catalogs/vlaanderen-open-data/main/catalog.json",
+    "license": "varies per collection (open data)",
+    "access": "free",
+    "operator": {
+      "type": "commercial"
+    },
+    "categories": [
+      "general-purpose",
+      "boundaries"
+    ]
+  },
+  "region": "world/europe/belgium",
+  "include": {
+    "kinds": [
+      "vector"
+    ]
+  },
+  "enabled": true
+}

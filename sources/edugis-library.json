@@ -1,0 +1,28 @@
+{
+  "id": "edugis-library",
+  "title": "EduGIS library (Portolan)",
+  "type": "portolan-catalog",
+  "url": "https://edugis.b-cdn.net/catalog.json",
+  "note": "A PolderGIS library published as a Portolan catalog. Each vector collection becomes one layer, filed by its own extent; the layer's config references the collection.json, so republished data is picked up without a new harvest. Rasters (COG) are left out until webmapx draws them (webmapx ADR 0001, step 4).",
+  "provider": {
+    "id": "edugis",
+    "name": "EduGIS",
+    "url": "https://www.edugis.nl",
+    "license": "CC-BY-4.0",
+    "access": "free",
+    "operator": {
+      "type": "nonprofit"
+    },
+    "categories": [
+      "general-purpose",
+      "historical"
+    ]
+  },
+  "region": "world",
+  "include": {
+    "kinds": [
+      "vector"
+    ]
+  },
+  "enabled": true
+}

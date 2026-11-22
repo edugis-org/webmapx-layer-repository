@@ -22,9 +22,10 @@ import { snapshotPages } from '../lib/allmaps-snapshot.mjs';
 import { fetchCatalogue, interleaveByHost, tidyRecord } from '../lib/allmaps-catalogue.mjs';
 import { writeFlatGeobuf } from '../lib/flatgeobuf-writer.mjs';
 import { deserialize as readFlatGeobuf } from 'flatgeobuf/geojson';
-import { REGION_BOUNDS } from '../lib/regions.mjs';
+import { REGION_BOUNDS, regionBounds } from '../lib/regions.mjs';
 import { buildRegionIndex, assignRegion } from '../lib/region-index.mjs';
 import { styleIdSuffixes } from '../lib/style-ids.mjs';
+import * as portolan from '../lib/portolan.mjs';
 
 const ROOT = resolve(fileURLToPath(import.meta.url), '../../');
 const SOURCES = join(ROOT, 'sources');
@@ -1482,6 +1483,95 @@ async function writeFootprints(byProvider, { only, providerOf }) {
     if (reports.length) console.log(`\n   ${reports.join('\n   ')}`);
 }
 
+/**
+ * The source's own region, when the extent-based placement lands on one of its
+ * ancestors although the data is centred inside it.
+ *
+ * A national dataset's bbox is a rectangle, and the Netherlands fills barely half
+ * of its own: the rest is Belgium, Germany and the North Sea, so the majority
+ * rule files the BAG or Natura 2000 under Europe. A catalog that declares its
+ * region (Portolan NL: the Netherlands) is the better judge of that, as long as
+ * the layer's centre lies inside the region. A placement *below* the source
+ * region (Noord-Holland) is finer and is kept; a world catalog declares world
+ * and is never overruled.
+ */
+function withinSourceRegion(placed, bounds, sourceRegion) {
+    if (!placed || !bounds || !sourceRegion || !sourceRegion.startsWith(`${placed}/`)) return null;
+    const box = regionBounds(sourceRegion);
+    if (!box) return null;
+    const [cx, cy] = [(bounds[0] + bounds[2]) / 2, (bounds[1] + bounds[3]) / 2];
+    return cx >= box[0] && cx <= box[2] && cy >= box[1] && cy <= box[3] ? sourceRegion : null;
+}
+
+/**
+ * Every collection of a Portolan catalog, one layer each (lib/portolan.mjs).
+ *
+ * A catalog is filed like Allmaps: each collection by its own extent, so a
+ * library holding the BAG and a world boundary layer puts the first under the
+ * Netherlands and the second under world, and one service per region carries
+ * them. The layer's config references the collection, not its files, so what
+ * is listed here may lag a library without any map going stale.
+ *
+ * `include.kinds` chooses what is offered; by default only vector collections,
+ * since webmapx does not yet draw a COG and a table without geometry is not a
+ * map layer. `include.match`/`exclude` filter on collection title and URL.
+ */
+async function readPortolanCatalog(source) {
+    const inc = source.include ?? {};
+    const kinds = new Set(inc.kinds ?? ['vector']);
+    const fetchJson = async (url) => {
+        let last;
+        for (let attempt = 0; attempt < 3; attempt++) {
+            if (attempt) await new Promise(r => setTimeout(r, 2000 * attempt));
+            try {
+                const res = await fetch(url, { signal: AbortSignal.timeout(60000) });
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                return await res.json();
+            } catch (e) { last = e; }
+        }
+        throw new Error(`${last.message} fetching ${url}`);
+    };
+
+    const { title, collections } = await portolan.listCollections(source.url, { fetchJson, maxCatalogs: inc.maxCatalogs });
+    const wanted = collections.filter(c => !(inc.match && !new RegExp(inc.match, 'i').test(`${c.title} ${c.url}`))
+        && !(inc.exclude && new RegExp(inc.exclude, 'i').test(`${c.title} ${c.url}`)));
+
+    const index = loadRegionIndex();
+    const byRegion = new Map();
+    let unreadable = 0, skipped = 0;
+    for (const entry of wanted) {
+        // The listing may already know the kind (a PolderGIS index or link says);
+        // skip what is not offered before paying for the collection document.
+        if (entry.kind && !kinds.has(entry.kind)) { skipped++; continue; }
+        let collection;
+        try { collection = await fetchJson(entry.url); } catch { unreadable++; continue; }
+        const kind = portolan.collectionKind(collection);
+        if (!kind || !kinds.has(kind)) { skipped++; continue; }
+        const layer = portolan.layerFromCollection(collection, entry.url, { idPrefix: source.id, group: entry.group });
+        const bounds = portolan.collectionBounds(collection) ?? entry.bbox;
+        // The region shapes when built, else the curated extents — as Allmaps does.
+        const placed = !bounds ? null
+            : index ? assignRegion(bounds, index)?.region
+            : allmaps.regionFor(bounds, REGION_BOUNDS);
+        const region = withinSourceRegion(placed, bounds, source.region) ?? placed ?? source.region ?? 'world';
+        const list = byRegion.get(region) ?? [];
+        list.push(layer);
+        byRegion.set(region, list);
+    }
+    if (unreadable || skipped) process.stdout.write(`${unreadable} collections unreadable, ${skipped} of another kind … `);
+
+    return [...byRegion].map(([region, layers]) => ({
+        id: `${source.id}-${region.split('/').pop()}`,
+        title: source.title ?? title,
+        abstract: `Collections of the Portolan catalog "${title}" whose extent falls within ${region}.`,
+        type: 'portolan',
+        endpoint: source.url,
+        region,
+        harvestedFrom: source.id,
+        layers,
+    }));
+}
+
 const READERS = {
     'pdok-plugin-list': readPdokPluginList,
     'wms-capabilities': readWmsCapabilities,
@@ -1489,11 +1579,14 @@ const READERS = {
     'dso-api-datasets': readDsoApiDatasets,
     'geonetwork-search': readGeoNetworkSearch,
     'allmaps-maps': readAllmaps,
+    'portolan-catalog': readPortolanCatalog,
 };
 
 const sources = readdirSync(SOURCES).filter(f => f.endsWith('.json'))
     .map(f => JSON.parse(readFileSync(join(SOURCES, f), 'utf8')))
     .filter(s => s.enabled !== false)
+    // Live-only sources (a registry of catalogs) are browsed, never harvested.
+    .filter(s => s.harvest !== false)
     .filter(s => !only || s.id === only);
 
 if (!dryRun && !only && existsSync(OUT)) rmSync(OUT, { recursive: true });

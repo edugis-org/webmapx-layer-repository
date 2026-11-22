@@ -1,0 +1,27 @@
+{
+  "id": "portolan-registry",
+  "title": "Portolan registry — every registered Portolan catalog",
+  "type": "portolan-registry",
+  "url": "https://registry.portolan-sdi.org/v0.1/catalogs.json",
+  "note": "The Portolan project's registry of independently hosted catalogs (98 in November 2026: national and city open data, global datasets, community mirrors). Browsed live only and never harvested: these are other people's endpoints nobody here has reviewed, so they stay out of the search index and the region tree. A catalog worth keeping becomes its own portolan-catalog source.",
+  "provider": {
+    "id": "portolan-sdi",
+    "name": "Portolan SDI",
+    "url": "https://www.portolan-sdi.org/registry",
+    "access": "free",
+    "operator": {
+      "type": "nonprofit"
+    },
+    "categories": [
+      "general-purpose"
+    ]
+  },
+  "region": "world",
+  "harvest": false,
+  "include": {
+    "kinds": [
+      "vector"
+    ]
+  },
+  "enabled": true
+}

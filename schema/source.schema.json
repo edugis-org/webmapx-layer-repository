@@ -28,6 +28,8 @@
         "pdok-plugin-list",
         "ogc-api-records",
         "geonetwork-search",
+        "portolan-catalog",
+        "portolan-registry",
         "allmaps-maps"
       ],
       "description": "How to read this source. Self-describing services (WMS/WMTS GetCapabilities, OGC API) versus third-party catalogues that already did the harvesting, of which the QGIS PDOK plugin's layer list is one."
@@ -157,6 +159,11 @@
           "description": "Set false to keep a layer with several published WMS styles as one layer. Default is to expand: a style is a different rendering of the same source, which is what a layer is."
         }
       }
+    },
+    "harvest": {
+      "type": "boolean",
+      "default": true,
+      "description": "Set false for a source that is offered only live in the previewer and never harvested: a registry of other people's catalogs, which a person browses but nobody has reviewed endpoint by endpoint. Its layers never reach harvested/, the search index or the region tree — the curated/generated split, kept."
     },
     "liveSearch": {
       "type": "boolean",

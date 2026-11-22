@@ -1,0 +1,28 @@
+{
+  "id": "portolan-nl",
+  "title": "Portolan NL — Cloud-Native Dutch Geodata",
+  "type": "portolan-catalog",
+  "url": "https://data.source.coop/cholmes/portolan-nl/catalog.json",
+  "note": "A community Portolan catalog of Dutch open geodata (Rijkswaterstaat, Kadaster, CBS, RVO, RCE, Beeldmateriaal, TU Delft, VRO), hosted on Source Cooperative and listed in the Portolan registry. The collections are mirrors: each names its own producer, which is what a layer's attribution credits.",
+  "provider": {
+    "id": "portolan-nl",
+    "name": "Portolan NL",
+    "url": "https://data.source.coop/cholmes/portolan-nl",
+    "license": "varies per collection (open data)",
+    "access": "free",
+    "operator": {
+      "type": "community"
+    },
+    "categories": [
+      "general-purpose",
+      "boundaries"
+    ]
+  },
+  "region": "world/europe/netherlands",
+  "include": {
+    "kinds": [
+      "vector"
+    ]
+  },
+  "enabled": true
+}

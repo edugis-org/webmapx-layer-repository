@@ -187,6 +187,7 @@
             "vector-tiles",
             "geojson",
             "style",
+            "portolan",
             "ogc-api-tiles",
             "ogc-api-features",
             "arcgis-rest"

@@ -187,6 +187,7 @@ import { layerEntries } from './lib/catalog.mjs';
 import { regionBounds } from './lib/regions.mjs';
 import { filterByQuery, searchText, hasPhrase } from './lib/search.mjs';
 import * as geonetwork from './lib/geonetwork.mjs';
+import * as portolan from './lib/portolan.mjs';
 const LAYERS_BASE = './layers';
 
 let apiKeys = {};
@@ -411,11 +412,11 @@ function renderSidebar(index) {
     ? `<div class="filter-note">🔍 filtered: ${escapeHtml(searchQuery)} — ${index.length} match${index.length !== 1 ? 'es' : ''}</div>`
     : '';
   const catalogueSection = catalogues.length ? `
-    <div class="catalogue-heading">🔎 Search a catalogue</div>
+    <div class="catalogue-heading">🔎 Search or read a catalogue</div>
     ${catalogues.map(c => `
       <div class="region-node catalogue-node" style="padding-left:16px"
            onclick="selectCatalogue('${c.id}')">
-        <span class="arrow"></span><span>${escapeHtml(c.provider ?? c.title)}</span>
+        <span class="arrow"></span><span>${escapeHtml(c.label ?? c.provider ?? c.title)}</span>
       </div>`).join('')}
     <div class="catalogue-heading">📁 Browse this repository</div>` : '';
   document.getElementById('sidebar').innerHTML =
@@ -1340,13 +1341,15 @@ function renderSearchResults(query, entries) {
 function selectCatalogue(id) {
   const cat = catalogues.find(c => c.id === id);
   if (!cat) return;
+  if (cat.kind === 'portolan') return selectPortolanCatalogue(cat);
+  if (cat.kind === 'portolan-registry') return selectPortolanRegistry(cat);
   currentCatalogue = cat;
   currentProvider = null;
   currentPath = null;
   currentRegion = null;
   document.querySelectorAll('.region-node').forEach(n => n.classList.remove('selected'));
   document.querySelectorAll('.catalogue-node').forEach(n => {
-    if (n.textContent.trim() === (cat.provider ?? cat.title)) n.classList.add('selected');
+    if (n.textContent.trim() === (cat.label ?? cat.provider ?? cat.title)) n.classList.add('selected');
   });
   document.getElementById('main').innerHTML = `
     <h2>${escapeHtml(cat.title)}</h2>
@@ -1366,6 +1369,161 @@ function selectCatalogue(id) {
     e.preventDefault();
     runCatalogueSearch(cat, document.getElementById('catalogue-query').value);
   });
+}
+
+/**
+ * Live reading of a Portolan catalog: the browser walks it with the same
+ * lib/portolan.mjs the harvest uses, so a library published since the last
+ * harvest is already here. Each collection becomes the layer record the harvest
+ * would have written — a webmapxConfig referencing the collection.json — and the
+ * result is rendered as a provider page like any other.
+ */
+/** Most collection documents one live read fetches; a bigger catalog is listed in part, and says so. */
+const MAX_LIVE_COLLECTIONS = 300;
+
+async function selectPortolanCatalogue(cat, { from } = {}) {
+  currentCatalogue = cat;
+  currentProvider = null;
+  currentPath = null;
+  currentRegion = null;
+  if (!from) {
+    document.querySelectorAll('.region-node').forEach(n => n.classList.remove('selected'));
+    document.querySelectorAll('.catalogue-node').forEach(n => {
+      if (n.textContent.trim() === (cat.label ?? cat.provider ?? cat.title)) n.classList.add('selected');
+    });
+  }
+  const main = document.getElementById('main');
+  main.innerHTML = `
+    ${from ? `<p style="font-size:0.8rem;margin:0 0 6px"><a href="#" id="portolan-back">← ${escapeHtml(from.title)}</a></p>` : ''}
+    <h2>${escapeHtml(cat.title)}</h2>
+    <p style="font-size:0.8rem;color:#888;margin:4px 0 12px">
+      Portolan catalog, read live in your browser · <a href="${cat.url}" target="_blank">${escapeHtml(cat.url)}</a>
+    </p>
+    <p class="empty">Reading the catalog…</p>`;
+  main.querySelector('#portolan-back')?.addEventListener('click', e => { e.preventDefault(); selectPortolanRegistry(from); });
+  const kinds = new Set(cat.kinds ?? ['vector']);
+  let listing;
+  try {
+    listing = await portolan.listCollections(cat.url);
+  } catch (e) {
+    main.querySelector('.empty').outerHTML = `<p class="empty" style="color:#c00">${escapeHtml(cat.title)} could not be read: ${escapeHtml(e.message)}</p>`;
+    return;
+  }
+  // The listing may already know each kind (a PolderGIS index does); read only the
+  // collections that can be offered, a few at a time.
+  const offered = listing.collections.filter(c => !c.kind || kinds.has(c.kind));
+  const entries = offered.slice(0, MAX_LIVE_COLLECTIONS);
+  const layers = [];
+  let next = 0, unreadable = 0;
+  const worker = async () => {
+    while (next < entries.length) {
+      const entry = entries[next++];
+      try {
+        const res = await fetch(entry.url);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const collection = await res.json();
+        if (!kinds.has(portolan.collectionKind(collection))) continue;
+        layers.push(portolan.layerFromCollection(collection, entry.url, { idPrefix: cat.idPrefix ?? cat.id, group: entry.group }));
+      } catch { unreadable++; }
+    }
+  };
+  await Promise.all(Array.from({ length: 6 }, worker));
+  layers.sort((a, b) => a.title.localeCompare(b.title));
+  if (currentCatalogue !== cat) return; // the reader moved on while this was loading
+  if (from) {
+    // Keep the way back once the page below replaces the loading notice.
+    queueMicrotask(() => {
+      const main = document.getElementById('main');
+      if (!main.querySelector('#portolan-back')) {
+        main.insertAdjacentHTML('afterbegin', `<p style="font-size:0.8rem;margin:0 0 6px"><a href="#" id="portolan-back">← ${escapeHtml(from.title)}</a></p>`);
+        main.querySelector('#portolan-back').addEventListener('click', e => { e.preventDefault(); selectPortolanRegistry(from); });
+      }
+    });
+  }
+  currentProvider = {
+    provider: {
+      name: cat.provider ?? cat.title,
+      url: cat.url,
+      access: 'free',
+      categories: [],
+      abstract: `${layers.length} layer(s) from the Portolan catalog “${listing.title}”` +
+        `${unreadable ? `; ${unreadable} collection(s) could not be read` : ''}` +
+        `${offered.length > entries.length ? `; only the first ${entries.length} of ${offered.length} collections were read` : ''}. ` +
+        'Read live — a library published since the last harvest is included.',
+    },
+    services: [{
+      id: cat.id,
+      title: listing.title,
+      type: 'portolan',
+      endpoint: cat.url,
+      layers,
+    }],
+  };
+  renderMain(currentProvider);
+}
+
+/**
+ * The Portolan registry, browsed live: every registered catalog with what the
+ * registry says about it (host, producers, licences, number of collections,
+ * whether it currently validates). Nothing of it is harvested — it is other
+ * people's endpoints, unreviewed — so it lives here and not in the region tree.
+ * Choosing a catalog reads it the way a curated Portolan source is read.
+ */
+let registryCache = null;
+async function selectPortolanRegistry(cat) {
+  currentCatalogue = cat;
+  currentProvider = null;
+  currentPath = null;
+  currentRegion = null;
+  document.querySelectorAll('.region-node').forEach(n => n.classList.remove('selected'));
+  document.querySelectorAll('.catalogue-node').forEach(n => {
+    if (n.textContent.trim() === (cat.label ?? cat.provider ?? cat.title)) n.classList.add('selected');
+  });
+  const main = document.getElementById('main');
+  main.innerHTML = `
+    <h2>${escapeHtml(cat.title)}</h2>
+    <p style="font-size:0.8rem;color:#888;margin:4px 0 12px">
+      Read live in your browser · <a href="${cat.url}" target="_blank">${escapeHtml(cat.url)}</a>
+    </p>
+    ${cat.note ? `<p style="font-size:0.82rem;color:#856404;background:#fff3cd;border-radius:4px;padding:6px 10px;margin-bottom:10px">ℹ️ ${escapeHtml(cat.note)}</p>` : ''}
+    <input type="search" id="registry-filter" placeholder="Filter: a place, a producer, a theme…" style="width:100%;max-width:420px;padding:4px 6px">
+    <div id="registry-list" style="margin-top:12px"><p class="empty">Reading the registry…</p></div>`;
+  try {
+    registryCache ??= { url: cat.url, catalogs: await portolan.registryCatalogs(cat.url) };
+  } catch (e) {
+    document.getElementById('registry-list').innerHTML = `<p class="empty" style="color:#c00">The registry could not be read: ${escapeHtml(e.message)}</p>`;
+    return;
+  }
+  const catalogs = [...registryCache.catalogs].sort((a, b) => a.title.localeCompare(b.title));
+  const render = (query) => {
+    const words = query.toLowerCase().split(/\s+/).filter(Boolean);
+    const shown = catalogs.filter(c => {
+      const hay = [c.title, c.host, ...c.producers, ...c.licences, c.kind].join(' ').toLowerCase();
+      return words.every(w => hay.includes(w));
+    });
+    document.getElementById('registry-list').innerHTML = shown.length ? `
+      <p style="font-size:0.8rem;color:#666">${shown.length} of ${catalogs.length} catalogs</p>
+      <table><thead><tr><th>Catalog</th><th>Host</th><th>Collections</th><th>Licence</th><th>Status</th></tr></thead><tbody>
+      ${shown.map(c => `<tr>
+        <td><a href="#" data-registry-id="${escapeHtml(c.id)}">${escapeHtml(c.title)}</a>
+          ${c.producers.length ? `<div style="font-size:0.75rem;color:#777">${escapeHtml(c.producers.slice(0, 4).join(', '))}${c.producers.length > 4 ? ' …' : ''}</div>` : ''}</td>
+        <td>${escapeHtml(c.host ?? '')}</td>
+        <td>${c.collections ?? '?'}</td>
+        <td style="font-size:0.75rem">${escapeHtml(c.licences.join(', '))}</td>
+        <td style="font-size:0.75rem">${escapeHtml(c.status ?? '')}${c.valid === false ? ' · <span title="The registry\'s nightly STAC validation currently fails for this catalog">not valid</span>' : ''}</td>
+      </tr>`).join('')}
+      </tbody></table>` : '<p class="empty">No catalog matches.</p>';
+    document.querySelectorAll('[data-registry-id]').forEach(a => a.addEventListener('click', e => {
+      e.preventDefault();
+      const c = catalogs.find(x => x.id === a.dataset.registryId);
+      selectPortolanCatalogue({
+        id: `${cat.id}-${c.id}`, title: c.title, url: c.url, kind: 'portolan',
+        kinds: cat.kinds, idPrefix: `${cat.id}-${c.id}`, provider: c.host ?? c.title,
+      }, { from: cat });
+    }));
+  };
+  render('');
+  document.getElementById('registry-filter').addEventListener('input', e => render(e.target.value));
 }
 
 /** One search, rendered as a provider page over live records. */

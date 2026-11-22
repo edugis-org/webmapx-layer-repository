@@ -1,0 +1,28 @@
+{
+  "id": "portolan-reference",
+  "title": "Portolan reference catalog",
+  "type": "portolan-catalog",
+  "url": "https://data.source.coop/portolan-mirrors/portolan-spec-examples/portolan-reference/main/catalog.json",
+  "note": "The Portolan specification's own reference catalog (portolan-sdi/portolan-spec, examples/), hosted on Source Cooperative: Natural Earth, US Census, Boston, PDOK and DataSF data as GeoParquet and PMTiles with data-driven MapLibre styles. Useful as a known-good catalog. Every collection is a mirror of open data whose producer is named on the collection itself.",
+  "provider": {
+    "id": "portolan-sdi",
+    "name": "Portolan SDI",
+    "url": "https://github.com/portolan-sdi",
+    "license": "varies per collection (open data)",
+    "access": "free",
+    "operator": {
+      "type": "nonprofit"
+    },
+    "categories": [
+      "general-purpose",
+      "boundaries"
+    ]
+  },
+  "region": "world",
+  "include": {
+    "kinds": [
+      "vector"
+    ]
+  },
+  "enabled": true
+}
