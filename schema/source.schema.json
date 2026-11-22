@@ -24,6 +24,7 @@
         "wms-capabilities",
         "wmts-capabilities",
         "wfs-capabilities",
+        "dso-api-datasets",
         "pdok-plugin-list",
         "ogc-api-records",
         "geonetwork-search",

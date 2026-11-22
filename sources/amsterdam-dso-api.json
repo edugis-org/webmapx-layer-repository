@@ -1,0 +1,28 @@
+{
+  "id": "amsterdam-dso-api",
+  "title": "Gemeente Amsterdam — DSO API datasets (WFS)",
+  "type": "dso-api-datasets",
+  "url": "https://api.data.amsterdam.nl/v1",
+  "note": "The city's dataset index. Every dataset has its own WFS; the harvest takes those whose access is OPENBAAR (105 of 122 in November 2026) and skips the ones that need a login. Follows the index, so new datasets arrive on their own.",
+  "provider": {
+    "id": "amsterdam",
+    "name": "Gemeente Amsterdam",
+    "url": "https://data.amsterdam.nl",
+    "access": "free",
+    "operator": {
+      "type": "government",
+      "country": "NL"
+    },
+    "categories": [
+      "general-purpose"
+    ]
+  },
+  "region": "world/europe/netherlands/noord-holland/amsterdam",
+  "enabled": true,
+  "bounds": [
+    4.72,
+    52.27,
+    5.08,
+    52.44
+  ]
+}

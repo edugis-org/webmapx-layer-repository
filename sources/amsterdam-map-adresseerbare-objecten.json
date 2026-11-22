@@ -1,0 +1,32 @@
+{
+  "id": "amsterdam-map-adresseerbare-objecten",
+  "title": "Gemeente Amsterdam — Adresseerbare objecten (WMS)",
+  "type": "wms-capabilities",
+  "url": "https://map.data.amsterdam.nl/maps/adresseerbare_objecten?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities",
+  "note": "One of the MapServer maps behind the city's map viewer (data.amsterdam.nl/data/geozoek), read from the viewer's own layer configuration. MapServer publishes one mapfile per theme and no list of them, so each is its own source. Excluded, as of 2026-11-16: standplaatsen_gezondheidszorgfunctie, standplaatsen_industriefunctie, standplaatsen_celfunctie, standplaatsen_onderwijsfunctie, standplaatsen_sportfunctie, ligplaatsen_gezondheidszorgfunctie, ligplaatsen_celfunctie, ligplaatsen_onderwijsfunctie, verblijfsobjecten_verblijfsobject_ten_onrechte_opgevoerd, verblijfsobjecten_niet_gerealiseerd_verblijfsobject, verblijfsobjecten_verblijfsobject_ingetrokken, verblijfsobjecten_verblijfsobject_in_gebruik_niet_ingemeten, verblijfsobjecten_verblijfsobject_buiten_gebruik hold no features.",
+  "provider": {
+    "id": "amsterdam",
+    "name": "Gemeente Amsterdam",
+    "url": "https://data.amsterdam.nl",
+    "access": "free",
+    "operator": {
+      "type": "government",
+      "country": "NL"
+    },
+    "categories": [
+      "general-purpose"
+    ]
+  },
+  "region": "world/europe/netherlands/noord-holland/amsterdam",
+  "include": {
+    "crs": "EPSG:3857",
+    "exclude": "^(?:standplaatsen_gezondheidszorgfunctie|standplaatsen_industriefunctie|standplaatsen_celfunctie|standplaatsen_onderwijsfunctie|standplaatsen_sportfunctie|ligplaatsen_gezondheidszorgfunctie|ligplaatsen_celfunctie|ligplaatsen_onderwijsfunctie|verblijfsobjecten_verblijfsobject_ten_onrechte_opgevoerd|verblijfsobjecten_niet_gerealiseerd_verblijfsobject|verblijfsobjecten_verblijfsobject_ingetrokken|verblijfsobjecten_verblijfsobject_in_gebruik_niet_ingemeten|verblijfsobjecten_verblijfsobject_buiten_gebruik) "
+  },
+  "enabled": true,
+  "bounds": [
+    4.72,
+    52.27,
+    5.08,
+    52.44
+  ]
+}

@@ -495,6 +495,111 @@ async function readWfsCapabilities(source) {
 }
 
 /**
+ * Every open dataset of a DSO API, each read through its own WFS.
+ *
+ * Amsterdam's DSO API (api.data.amsterdam.nl/v1) publishes one WFS per
+ * dataset — 122 of them, rather than one service with everything — and lists
+ * them all in a JSON index at its root. Reading that index means the catalog
+ * follows the city's own list instead of one someone copied out once: a
+ * dataset added next year arrives with the next harvest.
+ *
+ * Only datasets whose every access scope is OPENBAAR are taken. The others
+ * (BRK, HR, FP/MDW …) answer anonymous requests with a 403, and are marked
+ * government_only besides.
+ */
+async function readDsoApiDatasets(source) {
+    const res = await fetch(source.url, { signal: AbortSignal.timeout(60000) });
+    if (!res.ok) throw new Error(`HTTP ${res.status} fetching ${source.url}`);
+    const datasets = Object.values((await res.json()).datasets ?? {});
+    const inc = source.include ?? {};
+    const open = datasets.filter(d => {
+        const scopes = arr(d.api_authentication);
+        return scopes.length > 0 && scopes.every(s => s === 'OPENBAAR')
+            && d.terms_of_use?.government_only !== true;
+    }).filter(d => !(inc.match && !new RegExp(inc.match, 'i').test(`${d.id} ${d.service_name}`))
+               && !(inc.exclude && new RegExp(inc.exclude, 'i').test(`${d.id} ${d.service_name}`)));
+
+    const out = []; let unread = 0, authOnly = 0, empty = 0;
+    for (const d of open) {
+        // The unversioned URL follows whichever version the city recommends.
+        const versions = arr(d.versions).filter(v => v.wfs_url);
+        const wfsUrl = (versions.find(v => !/\/v\d+\/?$/.test(v.wfs_url)) ?? versions[0])?.wfs_url;
+        if (!wfsUrl) continue;
+        let services;
+        try {
+            services = await readWfsCapabilities({
+                ...source,
+                url: withQuery(wfsUrl.replace(/\/?$/, '/'),
+                    'SERVICE=WFS&VERSION=2.0.0&REQUEST=GetCapabilities'),
+                title: d.service_name,
+                include: { ...inc, match: undefined, exclude: undefined },
+            });
+        } catch { unread++; continue; }
+        for (const svc of services) {
+            const kept = [];
+            for (const l of svc.layers) {
+                const verdict = await dsoFeatureTypeVerdict(l.webmapxConfig.source.data,
+                    l.webmapxConfig.layer.metadata?.bounds ?? source.bounds);
+                if (verdict === 'auth') authOnly++;
+                else if (verdict === 'empty') empty++;
+                else kept.push(l);
+            }
+            svc.layers = kept;
+            // Every dataset names its types app:<table>, so buurt, gebied and
+            // the like recur across datasets: the dataset goes into the id.
+            for (const l of svc.layers) {
+                const id = `${source.provider.id}-${slug(d.id)}-${slug(String(l.name).replace(/^[^:]*:/, ''))}`;
+                l.id = id;
+                l.webmapxConfig.layer.id = id;
+            }
+            out.push({
+                ...svc,
+                title: String(d.service_name ?? svc.title),
+                ...(d.description ? { abstract: String(d.description).slice(0, 600) } : {}),
+            });
+        }
+    }
+    if (unread) process.stdout.write(`${unread} of ${open.length} datasets unreadable … `);
+    if (authOnly || empty) process.stdout.write(
+        `dropped ${authOnly} feature types behind a login, ${empty} empty … `);
+    return out;
+}
+
+/**
+ * Whether one feature type of a DSO dataset can actually be shown.
+ *
+ * A dataset marked OPENBAAR can still hold tables that are not: bomen's
+ * groeiplaatsboom and benkagg's BRK and KvK tables answer 403, and neither the
+ * index nor the dataset's OpenAPI says so. Nor is every table filled. So each
+ * type is asked for one feature. 'auth' and 'empty' are verdicts; anything else
+ * (a timeout, a 503 from the API's rate limit that outlasts the retries) is
+ * not, and the layer is kept for the prober to judge.
+ *
+ * The one feature is asked for inside the layer's bounds. A table with several
+ * geometry columns gets one feature type per column, and a secondary column
+ * (bgt's kruinlijn, brt10's geometrie_punt) is mostly null: the first feature
+ * of the unfiltered table has no geometry even when thousands further on do.
+ * A BBOX skips the nulls, and a type with nothing at all inside the area it
+ * claims (brt10 plaatsen-geometrie_punt, meldingen/acc) would draw nothing.
+ */
+async function dsoFeatureTypeVerdict(dataUrl, bounds) {
+    let url = dataUrl.replace(/([?&]COUNT=)\d+/i, '$11');
+    if (bounds) url += `&BBOX=${bounds.join(',')},urn:ogc:def:crs:OGC::CRS84`;
+    for (const wait of [0, 2000, 6000]) {
+        if (wait) await new Promise(r => setTimeout(r, wait));
+        try {
+            const res = await fetch(url, { signal: AbortSignal.timeout(60000) });
+            if (res.status === 401 || res.status === 403) return 'auth';
+            if (res.status === 503 || res.status === 429) continue;
+            if (!res.ok) return 'unknown';
+            const doc = await res.json();
+            return Array.isArray(doc.features) && doc.features.length === 0 ? 'empty' : 'ok';
+        } catch { return 'unknown'; }
+    }
+    return 'unknown';
+}
+
+/**
  * The JSON flavour a WFS will answer GetFeature in.
  *
  * Servers spell it application/json, application/geo+json, geojson or json, and
@@ -1379,6 +1484,7 @@ const READERS = {
     'pdok-plugin-list': readPdokPluginList,
     'wms-capabilities': readWmsCapabilities,
     'wfs-capabilities': readWfsCapabilities,
+    'dso-api-datasets': readDsoApiDatasets,
     'geonetwork-search': readGeoNetworkSearch,
     'allmaps-maps': readAllmaps,
 };

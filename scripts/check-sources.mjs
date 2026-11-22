@@ -78,9 +78,17 @@ function countPdokPluginRows(body) {
     return Array.isArray(rows) ? rows.length : 0;
 }
 
+/** Open datasets a DSO API index lists — each is one WFS the harvest reads. */
+function countDsoOpenDatasets(body) {
+    return Object.values(JSON.parse(body).datasets ?? {})
+        .filter(d => arr(d.api_authentication).length > 0
+                  && arr(d.api_authentication).every(s => s === 'OPENBAAR')).length;
+}
+
 const COUNTERS = {
     'wms-capabilities': countWmsLayers,
     'wfs-capabilities': countWfsFeatureTypes,
+    'dso-api-datasets': countDsoOpenDatasets,
     'pdok-plugin-list': countPdokPluginRows,
 };
 
