@@ -69,18 +69,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 142
+        },
+        {
+          "date": "2026-11-23",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 316
         }
       ],
       "summary": {
         "firstChecked": "2026-09-07",
-        "lastChecked": "2026-11-16",
+        "lastChecked": "2026-11-23",
         "current": "up",
-        "checks": 11,
-        "up": 11,
+        "checks": 12,
+        "up": 12,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-16"
+        "lastUp": "2026-11-23"
       }
     },
     "ellipsis-drive-bonaire-infrarood-luchtfoto-s": {
@@ -150,18 +156,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 158
+        },
+        {
+          "date": "2026-11-23",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 308
         }
       ],
       "summary": {
         "firstChecked": "2026-09-07",
-        "lastChecked": "2026-11-16",
+        "lastChecked": "2026-11-23",
         "current": "up",
-        "checks": 11,
-        "up": 11,
+        "checks": 12,
+        "up": 12,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-16"
+        "lastUp": "2026-11-23"
       }
     },
     "ellipsis-drive-sint-eustatius-luchtfoto-s": {
@@ -231,18 +243,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 201
+        },
+        {
+          "date": "2026-11-23",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 262
         }
       ],
       "summary": {
         "firstChecked": "2026-09-07",
-        "lastChecked": "2026-11-16",
+        "lastChecked": "2026-11-23",
         "current": "up",
-        "checks": 11,
-        "up": 11,
+        "checks": 12,
+        "up": 12,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-16"
+        "lastUp": "2026-11-23"
       }
     },
     "ellipsis-drive-st-eustatius-infrarood-luchtfoto-s": {
@@ -312,18 +330,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 188
+        },
+        {
+          "date": "2026-11-23",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 279
         }
       ],
       "summary": {
         "firstChecked": "2026-09-07",
-        "lastChecked": "2026-11-16",
+        "lastChecked": "2026-11-23",
         "current": "up",
-        "checks": 11,
-        "up": 11,
+        "checks": 12,
+        "up": 12,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-16"
+        "lastUp": "2026-11-23"
       }
     },
     "ellipsis-drive-st-eustatius-hoogtekaart": {
@@ -393,18 +417,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 203
+        },
+        {
+          "date": "2026-11-23",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 320
         }
       ],
       "summary": {
         "firstChecked": "2026-09-07",
-        "lastChecked": "2026-11-16",
+        "lastChecked": "2026-11-23",
         "current": "up",
-        "checks": 11,
-        "up": 11,
+        "checks": 12,
+        "up": 12,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-16"
+        "lastUp": "2026-11-23"
       }
     },
     "ellipsis-drive-saba-luchtfoto-s": {
@@ -474,18 +504,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 160
+        },
+        {
+          "date": "2026-11-23",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 297
         }
       ],
       "summary": {
         "firstChecked": "2026-09-07",
-        "lastChecked": "2026-11-16",
+        "lastChecked": "2026-11-23",
         "current": "up",
-        "checks": 11,
-        "up": 11,
+        "checks": 12,
+        "up": 12,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-16"
+        "lastUp": "2026-11-23"
       }
     },
     "ellipsis-drive-saba-infrarood-luchtfoto-s": {
@@ -555,18 +591,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 241
+        },
+        {
+          "date": "2026-11-23",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 232
         }
       ],
       "summary": {
         "firstChecked": "2026-09-07",
-        "lastChecked": "2026-11-16",
+        "lastChecked": "2026-11-23",
         "current": "up",
-        "checks": 11,
-        "up": 11,
+        "checks": 12,
+        "up": 12,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-16"
+        "lastUp": "2026-11-23"
       }
     }
   }

@@ -75,18 +75,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 107
+        },
+        {
+          "date": "2026-11-23",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 166
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-11-16",
+        "lastChecked": "2026-11-23",
         "current": "up",
-        "checks": 12,
-        "up": 12,
+        "checks": 13,
+        "up": 13,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-16"
+        "lastUp": "2026-11-23"
       }
     },
     "carto-light-matter": {
@@ -162,18 +168,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 17
+        },
+        {
+          "date": "2026-11-23",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 30
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-11-16",
+        "lastChecked": "2026-11-23",
         "current": "up",
-        "checks": 12,
-        "up": 12,
+        "checks": 13,
+        "up": 13,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-16"
+        "lastUp": "2026-11-23"
       }
     },
     "carto-light-matter-no-labels": {
@@ -249,18 +261,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 23
+        },
+        {
+          "date": "2026-11-23",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 29
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-11-16",
+        "lastChecked": "2026-11-23",
         "current": "up",
-        "checks": 12,
-        "up": 12,
+        "checks": 13,
+        "up": 13,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-16"
+        "lastUp": "2026-11-23"
       }
     },
     "carto-dark-matter": {
@@ -336,18 +354,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 17
+        },
+        {
+          "date": "2026-11-23",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 30
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-11-16",
+        "lastChecked": "2026-11-23",
         "current": "up",
-        "checks": 12,
-        "up": 12,
+        "checks": 13,
+        "up": 13,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-16"
+        "lastUp": "2026-11-23"
       }
     },
     "carto-dark-matter-no-labels": {
@@ -423,18 +447,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 14
+        },
+        {
+          "date": "2026-11-23",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 27
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-11-16",
+        "lastChecked": "2026-11-23",
         "current": "up",
-        "checks": 12,
-        "up": 12,
+        "checks": 13,
+        "up": 13,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-16"
+        "lastUp": "2026-11-23"
       }
     }
   }

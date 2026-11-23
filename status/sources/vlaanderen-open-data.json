@@ -1,0 +1,29 @@
+{
+  "source": "vlaanderen-open-data",
+  "provider": "vlaanderen-open-data",
+  "url": "https://storage.googleapis.com/carto-open-catalogs/vlaanderen-open-data/main/catalog.json",
+  "endpoints": {
+    "vlaanderen-open-data": {
+      "checks": [
+        {
+          "date": "2026-11-23",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 206,
+          "layersOffered": 7
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-11-23",
+        "lastChecked": "2026-11-23",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-11-23"
+      }
+    }
+  }
+}

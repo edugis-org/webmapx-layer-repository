@@ -1,0 +1,29 @@
+{
+  "source": "edugis-library",
+  "provider": "edugis",
+  "url": "https://edugis.b-cdn.net/catalog.json",
+  "endpoints": {
+    "edugis-library": {
+      "checks": [
+        {
+          "date": "2026-11-23",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 2305,
+          "layersOffered": 12
+        }
+      ],
+      "summary": {
+        "firstChecked": "2026-11-23",
+        "lastChecked": "2026-11-23",
+        "current": "up",
+        "checks": 1,
+        "up": 1,
+        "uptime": 1,
+        "untested": 0,
+        "consecutiveFailures": 0,
+        "lastUp": "2026-11-23"
+      }
+    }
+  }
+}

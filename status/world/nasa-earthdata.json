@@ -75,18 +75,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 261
+        },
+        {
+          "date": "2026-11-23",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 364
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-11-16",
+        "lastChecked": "2026-11-23",
         "current": "up",
-        "checks": 12,
-        "up": 12,
+        "checks": 13,
+        "up": 13,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-16"
+        "lastUp": "2026-11-23"
       }
     },
     "viirs-nighttime-lights": {
@@ -162,18 +168,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 417
+        },
+        {
+          "date": "2026-11-23",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 275
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-11-16",
+        "lastChecked": "2026-11-23",
         "current": "up",
-        "checks": 12,
-        "up": 12,
+        "checks": 13,
+        "up": 13,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-16"
+        "lastUp": "2026-11-23"
       }
     },
     "ghrsst-sea-surface-temperature": {
@@ -251,18 +263,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 546
+        },
+        {
+          "date": "2026-11-23",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 256
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-11-16",
+        "lastChecked": "2026-11-23",
         "current": "up",
-        "checks": 12,
-        "up": 10,
-        "uptime": 0.8333,
+        "checks": 13,
+        "up": 11,
+        "uptime": 0.8462,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-16",
+        "lastUp": "2026-11-23",
         "lastDown": "2026-11-02"
       }
     },
@@ -339,18 +357,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 336
+        },
+        {
+          "date": "2026-11-23",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 391
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-11-16",
+        "lastChecked": "2026-11-23",
         "current": "up",
-        "checks": 12,
-        "up": 12,
+        "checks": 13,
+        "up": 13,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-16"
+        "lastUp": "2026-11-23"
       }
     },
     "modis-aqua-chlorophyll": {
@@ -470,18 +494,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 311
+        },
+        {
+          "date": "2026-11-23",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 254
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-11-16",
+        "lastChecked": "2026-11-23",
         "current": "up",
-        "checks": 12,
-        "up": 11,
-        "uptime": 0.9167,
+        "checks": 13,
+        "up": 12,
+        "uptime": 0.9231,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-16",
+        "lastUp": "2026-11-23",
         "lastDown": "2026-11-02"
       }
     },
@@ -558,18 +588,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 237
+        },
+        {
+          "date": "2026-11-23",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 364
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-11-16",
+        "lastChecked": "2026-11-23",
         "current": "up",
-        "checks": 12,
-        "up": 12,
+        "checks": 13,
+        "up": 13,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-16"
+        "lastUp": "2026-11-23"
       }
     },
     "gibs-gpw-population-density-2020": {
@@ -639,18 +675,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 255
+        },
+        {
+          "date": "2026-11-23",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 200
         }
       ],
       "summary": {
         "firstChecked": "2026-09-07",
-        "lastChecked": "2026-11-16",
+        "lastChecked": "2026-11-23",
         "current": "up",
-        "checks": 11,
-        "up": 11,
+        "checks": 12,
+        "up": 12,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-16"
+        "lastUp": "2026-11-23"
       }
     },
     "gibs-gpw-population-density-2000": {
@@ -720,18 +762,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 447
+        },
+        {
+          "date": "2026-11-23",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 433
         }
       ],
       "summary": {
         "firstChecked": "2026-09-07",
-        "lastChecked": "2026-11-16",
+        "lastChecked": "2026-11-23",
         "current": "up",
-        "checks": 11,
-        "up": 11,
+        "checks": 12,
+        "up": 12,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-16"
+        "lastUp": "2026-11-23"
       }
     },
     "gibs-gpw-population-density-2005": {
@@ -801,18 +849,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 465
+        },
+        {
+          "date": "2026-11-23",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 324
         }
       ],
       "summary": {
         "firstChecked": "2026-09-07",
-        "lastChecked": "2026-11-16",
+        "lastChecked": "2026-11-23",
         "current": "up",
-        "checks": 11,
-        "up": 11,
+        "checks": 12,
+        "up": 12,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-16"
+        "lastUp": "2026-11-23"
       }
     },
     "gibs-gpw-population-density-2010": {
@@ -882,18 +936,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 415
+        },
+        {
+          "date": "2026-11-23",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 444
         }
       ],
       "summary": {
         "firstChecked": "2026-09-07",
-        "lastChecked": "2026-11-16",
+        "lastChecked": "2026-11-23",
         "current": "up",
-        "checks": 11,
-        "up": 11,
+        "checks": 12,
+        "up": 12,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-16"
+        "lastUp": "2026-11-23"
       }
     },
     "gibs-gpw-population-density-2015": {
@@ -963,18 +1023,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 428
+        },
+        {
+          "date": "2026-11-23",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 368
         }
       ],
       "summary": {
         "firstChecked": "2026-09-07",
-        "lastChecked": "2026-11-16",
+        "lastChecked": "2026-11-23",
         "current": "up",
-        "checks": 11,
-        "up": 11,
+        "checks": 12,
+        "up": 12,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-16"
+        "lastUp": "2026-11-23"
       }
     },
     "gibs-grump-urban-extents-1995": {
@@ -1044,18 +1110,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 270
+        },
+        {
+          "date": "2026-11-23",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 316
         }
       ],
       "summary": {
         "firstChecked": "2026-09-07",
-        "lastChecked": "2026-11-16",
+        "lastChecked": "2026-11-23",
         "current": "up",
-        "checks": 11,
-        "up": 11,
+        "checks": 12,
+        "up": 12,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-16"
+        "lastUp": "2026-11-23"
       }
     },
     "gibs-lecz-urban-rural-below-10m": {
@@ -1125,18 +1197,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 353
+        },
+        {
+          "date": "2026-11-23",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 272
         }
       ],
       "summary": {
         "firstChecked": "2026-09-07",
-        "lastChecked": "2026-11-16",
+        "lastChecked": "2026-11-23",
         "current": "up",
-        "checks": 11,
-        "up": 11,
+        "checks": 12,
+        "up": 12,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-16"
+        "lastUp": "2026-11-23"
       }
     },
     "gibs-urban-expansion-2000-2030": {
@@ -1206,18 +1284,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 358
+        },
+        {
+          "date": "2026-11-23",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 299
         }
       ],
       "summary": {
         "firstChecked": "2026-09-07",
-        "lastChecked": "2026-11-16",
+        "lastChecked": "2026-11-23",
         "current": "up",
-        "checks": 11,
-        "up": 11,
+        "checks": 12,
+        "up": 12,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-16"
+        "lastUp": "2026-11-23"
       }
     },
     "gibs-uhi-summer-day-2013": {
@@ -1287,18 +1371,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 223
+        },
+        {
+          "date": "2026-11-23",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 305
         }
       ],
       "summary": {
         "firstChecked": "2026-09-07",
-        "lastChecked": "2026-11-16",
+        "lastChecked": "2026-11-23",
         "current": "up",
-        "checks": 11,
-        "up": 11,
+        "checks": 12,
+        "up": 12,
         "uptime": 1,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-16"
+        "lastUp": "2026-11-23"
       }
     }
   }

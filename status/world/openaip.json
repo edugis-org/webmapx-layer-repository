@@ -76,18 +76,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 854
+        },
+        {
+          "date": "2026-11-23",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 643
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-11-16",
+        "lastChecked": "2026-11-23",
         "current": "up",
-        "checks": 12,
-        "up": 11,
-        "uptime": 0.9167,
+        "checks": 13,
+        "up": 12,
+        "uptime": 0.9231,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-16",
+        "lastUp": "2026-11-23",
         "lastDown": "2026-11-02"
       }
     },
@@ -165,18 +171,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 461
+        },
+        {
+          "date": "2026-11-23",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 817
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-11-16",
+        "lastChecked": "2026-11-23",
         "current": "up",
-        "checks": 12,
-        "up": 11,
-        "uptime": 0.9167,
+        "checks": 13,
+        "up": 12,
+        "uptime": 0.9231,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-16",
+        "lastUp": "2026-11-23",
         "lastDown": "2026-11-02"
       }
     },
@@ -254,18 +266,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 2371
+        },
+        {
+          "date": "2026-11-23",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 726
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-11-16",
+        "lastChecked": "2026-11-23",
         "current": "up",
-        "checks": 12,
-        "up": 11,
-        "uptime": 0.9167,
+        "checks": 13,
+        "up": 12,
+        "uptime": 0.9231,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-16",
+        "lastUp": "2026-11-23",
         "lastDown": "2026-11-02"
       }
     },
@@ -343,18 +361,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 584
+        },
+        {
+          "date": "2026-11-23",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 775
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-11-16",
+        "lastChecked": "2026-11-23",
         "current": "up",
-        "checks": 12,
-        "up": 11,
-        "uptime": 0.9167,
+        "checks": 13,
+        "up": 12,
+        "uptime": 0.9231,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-16",
+        "lastUp": "2026-11-23",
         "lastDown": "2026-11-02"
       }
     },
@@ -432,18 +456,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 804
+        },
+        {
+          "date": "2026-11-23",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 500
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-11-16",
+        "lastChecked": "2026-11-23",
         "current": "up",
-        "checks": 12,
-        "up": 11,
-        "uptime": 0.9167,
+        "checks": 13,
+        "up": 12,
+        "uptime": 0.9231,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-16",
+        "lastUp": "2026-11-23",
         "lastDown": "2026-11-02"
       }
     },
@@ -521,18 +551,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 899
+        },
+        {
+          "date": "2026-11-23",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 442
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-11-16",
+        "lastChecked": "2026-11-23",
         "current": "up",
-        "checks": 12,
-        "up": 11,
-        "uptime": 0.9167,
+        "checks": 13,
+        "up": 12,
+        "uptime": 0.9231,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-16",
+        "lastUp": "2026-11-23",
         "lastDown": "2026-11-02"
       }
     },
@@ -610,18 +646,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 648
+        },
+        {
+          "date": "2026-11-23",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 463
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-11-16",
+        "lastChecked": "2026-11-23",
         "current": "up",
-        "checks": 12,
-        "up": 11,
-        "uptime": 0.9167,
+        "checks": 13,
+        "up": 12,
+        "uptime": 0.9231,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-16",
+        "lastUp": "2026-11-23",
         "lastDown": "2026-11-02"
       }
     },
@@ -699,18 +741,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 598
+        },
+        {
+          "date": "2026-11-23",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 450
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-11-16",
+        "lastChecked": "2026-11-23",
         "current": "up",
-        "checks": 12,
-        "up": 11,
-        "uptime": 0.9167,
+        "checks": 13,
+        "up": 12,
+        "uptime": 0.9231,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-16",
+        "lastUp": "2026-11-23",
         "lastDown": "2026-11-02"
       }
     },
@@ -788,18 +836,24 @@
           "availability": "up",
           "httpStatus": 200,
           "ms": 580
+        },
+        {
+          "date": "2026-11-23",
+          "availability": "up",
+          "httpStatus": 200,
+          "ms": 498
         }
       ],
       "summary": {
         "firstChecked": "2026-09-05",
-        "lastChecked": "2026-11-16",
+        "lastChecked": "2026-11-23",
         "current": "up",
-        "checks": 12,
-        "up": 11,
-        "uptime": 0.9167,
+        "checks": 13,
+        "up": 12,
+        "uptime": 0.9231,
         "untested": 0,
         "consecutiveFailures": 0,
-        "lastUp": "2026-11-16",
+        "lastUp": "2026-11-23",
         "lastDown": "2026-11-02"
       }
     }

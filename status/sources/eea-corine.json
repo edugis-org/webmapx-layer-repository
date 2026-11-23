@@ -81,18 +81,25 @@
           "httpStatus": 200,
           "ms": 811,
           "layersOffered": 12
+        },
+        {
+          "date": "2026-11-23",
+          "availability": "unreachable",
+          "ms": 10490,
+          "reason": "fetch failed"
         }
       ],
       "summary": {
         "firstChecked": "2026-09-07",
-        "lastChecked": "2026-11-16",
-        "current": "up",
-        "checks": 11,
+        "lastChecked": "2026-11-23",
+        "current": "unreachable",
+        "checks": 12,
         "up": 11,
-        "uptime": 1,
+        "uptime": 0.9167,
         "untested": 0,
-        "consecutiveFailures": 0,
-        "lastUp": "2026-11-16"
+        "consecutiveFailures": 1,
+        "lastUp": "2026-11-16",
+        "lastDown": "2026-11-23"
       }
     }
   }
